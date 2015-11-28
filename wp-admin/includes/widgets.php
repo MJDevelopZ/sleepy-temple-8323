@@ -10,12 +10,9 @@
  * Display list of the available widgets.
  *
  * @since 2.5.0
-<<<<<<< HEAD
  *
  * @global array $wp_registered_widgets
  * @global array $wp_registered_widget_controls
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_list_widgets() {
 	global $wp_registered_widgets, $wp_registered_widget_controls;
@@ -57,11 +54,8 @@ function wp_list_widgets() {
  *
  * @since 3.1.0
  * @access private
-<<<<<<< HEAD
  *
  * @return int
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function _sort_name_callback( $a, $b ) {
 	return strnatcasecmp( $a['name'], $b['name'] );
@@ -110,13 +104,10 @@ function wp_list_widget_controls( $sidebar, $sidebar_name = '' ) {
  *
  * @since 2.5.0
  *
-<<<<<<< HEAD
  * @global array $wp_registered_widgets
  *
  * @staticvar int $i
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param array $params
  * @return array
  */
@@ -141,7 +132,6 @@ function wp_list_widget_controls_dynamic_sidebar( $params ) {
 	return $params;
 }
 
-<<<<<<< HEAD
 /**
  *
  * @global array $wp_registered_widgets
@@ -150,9 +140,6 @@ function wp_list_widget_controls_dynamic_sidebar( $params ) {
  * @return int
  */
 function next_widget_id_number( $id_base ) {
-=======
-function next_widget_id_number($id_base) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	global $wp_registered_widgets;
 	$number = 1;
 
@@ -172,13 +159,10 @@ function next_widget_id_number($id_base) {
  *
  * @since 2.5.0
  *
-<<<<<<< HEAD
  * @global array $wp_registered_widgets
  * @global array $wp_registered_widget_controls
  * @global array $sidebars_widgets
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param array $sidebar_args
  * @return array
  */
@@ -241,11 +225,7 @@ function wp_widget_control( $sidebar_args ) {
 	</div>
 
 	<div class="widget-inside">
-<<<<<<< HEAD
 	<form method="post">
-=======
-	<form action="" method="post">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<div class="widget-content">
 <?php
 	if ( isset($control['callback']) )

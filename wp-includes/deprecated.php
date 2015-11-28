@@ -54,11 +54,7 @@ function get_postdata($postid) {
  *
  * @since 1.0.1
  * @deprecated 1.5.0
-<<<<<<< HEAD
  * @deprecated Use The Loop - {@link https://codex.wordpress.org/The_Loop Use new WordPress Loop}
-=======
- * @deprecated Use The Loop - {@link http://codex.wordpress.org/The_Loop Use new WordPress Loop}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function start_wp() {
 	global $wp_query;
@@ -1314,11 +1310,7 @@ function get_category_children( $id, $before = '/', $after = '', $visited = arra
  * @since 2.0.0
  * @deprecated 4.0.0 Use get_terms() instead.
  * @see get_terms()
-<<<<<<< HEAD
  * @link https://codex.wordpress.org/Function_Reference/get_all_category_ids
-=======
- * @link http://codex.wordpress.org/Function_Reference/get_all_category_ids
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @return object List of all of the category IDs.
  */
@@ -1764,11 +1756,7 @@ function make_url_footnote( $content ) {
 	_deprecated_function( __FUNCTION__, '2.9', '' );
 	preg_match_all( '/<a(.+?)href=\"(.+?)\"(.*?)>(.+?)<\/a>/', $content, $matches );
 	$links_summary = "\n";
-<<<<<<< HEAD
 	for ( $i = 0, $c = count( $matches[0] ); $i < $c; $i++ ) {
-=======
-	for ( $i=0; $i<count($matches[0]); $i++ ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$link_match = $matches[0][$i];
 		$link_number = '['.($i+1).']';
 		$link_url = $matches[2][$i];
@@ -2173,11 +2161,7 @@ function attribute_escape( $text ) {
  * @param string|int $name Widget ID.
  * @param callback $output_callback Run when widget is called.
  * @param string $classname Classname widget option.
-<<<<<<< HEAD
  * @param mixed $params ,... Widget parameters.
-=======
- * @param mixed $params,... Widget parameters.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function register_sidebar_widget($name, $output_callback, $classname = '') {
 	_deprecated_function( __FUNCTION__, '2.8', 'wp_register_sidebar_widget()' );
@@ -2412,11 +2396,7 @@ function update_usermeta( $user_id, $meta_key, $meta_value ) {
 
 	if ( !$cur )
 		$wpdb->insert($wpdb->usermeta, compact('user_id', 'meta_key', 'meta_value') );
-<<<<<<< HEAD
 	elseif ( $cur->meta_value != $meta_value )
-=======
-	else if ( $cur->meta_value != $meta_value )
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$wpdb->update($wpdb->usermeta, compact('meta_value'), compact('user_id', 'meta_key') );
 	else
 		return false;
@@ -2465,11 +2445,7 @@ function get_users_of_blog( $id = '' ) {
  * @deprecated 3.0.0
  * @deprecated Use add_theme_support( 'automatic-feed-links' )
  *
-<<<<<<< HEAD
  * @param bool $add Optional, default is true. Add or remove links. Defaults to true.
-=======
- * @param boolean $add Optional, default is true. Add or remove links. Defaults to true.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function automatic_feed_links( $add = true ) {
 	_deprecated_function( __FUNCTION__, '3.0', "add_theme_support( 'automatic-feed-links' )" );
@@ -2656,10 +2632,6 @@ function the_editor($content, $id = 'content', $prev_id = 'title', $media_button
 	_deprecated_function( __FUNCTION__, '3.3', 'wp_editor()' );
 
 	wp_editor( $content, $id, array( 'media_buttons' => $media_buttons ) );
-<<<<<<< HEAD
-=======
-	return;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -2711,11 +2683,7 @@ function sanitize_user_object($user, $context = 'display') {
 	if ( is_object($user) ) {
 		if ( !isset($user->ID) )
 			$user->ID = 0;
-<<<<<<< HEAD
 		if ( ! ( $user instanceof WP_User ) ) {
-=======
-		if ( !is_a( $user, 'WP_User' ) ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$vars = get_object_vars($user);
 			foreach ( array_keys($vars) as $field ) {
 				if ( is_string($user->$field) || is_numeric($user->$field) )
@@ -3523,7 +3491,6 @@ function url_is_accessable_via_ssl( $url ) {
 
 	return false;
 }
-<<<<<<< HEAD
 
 /**
  * Start preview theme output buffer.
@@ -3669,5 +3636,3 @@ function wp_htmledit_pre($output) {
 	return apply_filters( 'htmledit_pre', $output );
 }
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

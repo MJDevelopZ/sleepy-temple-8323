@@ -135,7 +135,6 @@ class getid3_flac extends getid3_handler
 		if (isset($info['flac']['PICTURE']) && ($this->getid3->option_save_attachments !== getID3::ATTACHMENTS_NONE)) {
 			foreach ($info['flac']['PICTURE'] as $entry) {
 				if (!empty($entry['data'])) {
-<<<<<<< HEAD
 					if (!isset($info['flac']['comments']['picture'])) {
 						$info['flac']['comments']['picture'] = array();
 					}
@@ -147,9 +146,6 @@ class getid3_flac extends getid3_handler
 					}
 					$info['flac']['comments']['picture'][] = $comments_picture_data;
 					unset($comments_picture_data);
-=======
-					$info['flac']['comments']['picture'][] = array('image_mime'=>$entry['image_mime'], 'data'=>$entry['data']);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 			}
 		}
@@ -357,17 +353,12 @@ class getid3_flac extends getid3_handler
 		$info = &$this->getid3->info;
 
 		$picture['typeid']         = getid3_lib::BigEndian2Int($this->fread(4));
-<<<<<<< HEAD
 		$picture['picturetype']    = self::pictureTypeLookup($picture['typeid']);
-=======
-		$picture['type']           = self::pictureTypeLookup($picture['typeid']);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$picture['image_mime']     = $this->fread(getid3_lib::BigEndian2Int($this->fread(4)));
 		$descr_length              = getid3_lib::BigEndian2Int($this->fread(4));
 		if ($descr_length) {
 			$picture['description'] = $this->fread($descr_length);
 		}
-<<<<<<< HEAD
 		$picture['image_width']    = getid3_lib::BigEndian2Int($this->fread(4));
 		$picture['image_height']   = getid3_lib::BigEndian2Int($this->fread(4));
 		$picture['color_depth']    = getid3_lib::BigEndian2Int($this->fread(4));
@@ -381,21 +372,6 @@ class getid3_flac extends getid3_handler
 				str_replace('/', '_', $picture['picturetype']).'_'.$this->ftell(),
 				$this->ftell(),
 				$picture['datalength'],
-=======
-		$picture['width']          = getid3_lib::BigEndian2Int($this->fread(4));
-		$picture['height']         = getid3_lib::BigEndian2Int($this->fread(4));
-		$picture['color_depth']    = getid3_lib::BigEndian2Int($this->fread(4));
-		$picture['colors_indexed'] = getid3_lib::BigEndian2Int($this->fread(4));
-		$data_length               = getid3_lib::BigEndian2Int($this->fread(4));
-
-		if ($picture['image_mime'] == '-->') {
-			$picture['data'] = $this->fread($data_length);
-		} else {
-			$picture['data'] = $this->saveAttachment(
-				str_replace('/', '_', $picture['type']).'_'.$this->ftell(),
-				$this->ftell(),
-				$data_length,
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$picture['image_mime']);
 		}
 
@@ -474,8 +450,4 @@ class getid3_flac extends getid3_handler
 		return (isset($lookup[$type_id]) ? $lookup[$type_id] : 'reserved');
 	}
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

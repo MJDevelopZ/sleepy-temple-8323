@@ -16,30 +16,19 @@
  */
 class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	public $link;
-<<<<<<< HEAD
 
 	/**
 	 *
 	 * @param array $opt
 	 */
 	public function __construct( $opt = '' ) {
-=======
-	public $errors = null;
-	public $options = array();
-
-	public function __construct($opt='') {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$this->method = 'ftpext';
 		$this->errors = new WP_Error();
 
 		// Check if possible to use ftp functions.
 		if ( ! extension_loaded('ftp') ) {
 			$this->errors->add('no_ftp_ext', __('The ftp PHP extension is not available'));
-<<<<<<< HEAD
 			return;
-=======
-			return false;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 
 		// This Class uses the timeout on a per-connection basis, Others use it on a per-action basis.
@@ -57,12 +46,6 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 		else
 			$this->options['hostname'] = $opt['hostname'];
 
-<<<<<<< HEAD
-=======
-		if ( ! empty($opt['base']) )
-			$this->wp_base = $opt['base'];
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// Check if the options provided are OK.
 		if ( empty($opt['username']) )
 			$this->errors->add('empty_username', __('FTP username is required'));
@@ -79,13 +62,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 			$this->options['ssl'] = true;
 	}
 
-<<<<<<< HEAD
 	/**
 	 *
 	 * @return bool
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function connect() {
 		if ( isset($this->options['ssl']) && $this->options['ssl'] && function_exists('ftp_ssl_connect') )
 			$this->link = @ftp_ssl_connect($this->options['hostname'], $this->options['port'], FS_CONNECT_TIMEOUT);
@@ -112,11 +92,7 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 
 	/**
 	 * @param string $file
-<<<<<<< HEAD
 	 * @return false|string
-=======
-	 * @return bool|string
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function get_contents( $file ) {
 		$tempfile = wp_tempnam($file);
@@ -204,18 +180,6 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 
 	/**
 	 * @param string $file
-<<<<<<< HEAD
-=======
-	 * @param bool $group
-	 * @param bool $recursive
-	 */
-	public function chgrp($file, $group, $recursive = false ) {
-		return false;
-	}
-
-	/**
-	 * @param string $file
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param int $mode
 	 * @param bool $recursive
 	 * @return bool
@@ -319,14 +283,11 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	 */
 	public function exists($file) {
 		$list = @ftp_nlist($this->link, $file);
-<<<<<<< HEAD
 
 		if ( empty( $list ) && $this->is_dir( $file ) ) {
 			return true; // File is an empty directory.
 		}
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		return !empty($list); //empty list = no file, so invert.
 	}
 	/**
@@ -408,13 +369,6 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 		if ( !@ftp_mkdir($this->link, $path) )
 			return false;
 		$this->chmod($path, $chmod);
-<<<<<<< HEAD
-=======
-		if ( $chown )
-			$this->chown($path, $chown);
-		if ( $chgrp )
-			$this->chgrp($path, $chgrp);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		return true;
 	}
 
@@ -430,17 +384,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	/**
 	 * @staticvar bool $is_windows
 	 * @param string $line
-<<<<<<< HEAD
 	 * @return array
 	 */
 	public function parselisting($line) {
 		static $is_windows = null;
-=======
-	 * @return string
-	 */
-	public function parselisting($line) {
-		static $is_windows;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( is_null($is_windows) )
 			$is_windows = stripos( ftp_systype($this->link), 'win') !== false;
 
@@ -479,10 +426,7 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 			else
 				$b['type'] = 'f';
 			$b['perms'] = $lucifer[0];
-<<<<<<< HEAD
 			$b['permsn'] = $this->getnumchmodfromh( $b['perms'] );
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$b['number'] = $lucifer[1];
 			$b['owner'] = $lucifer[2];
 			$b['group'] = $lucifer[3];
@@ -571,12 +515,9 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 		return $ret;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function __destruct() {
 		if ( $this->link )
 			ftp_close($this->link);

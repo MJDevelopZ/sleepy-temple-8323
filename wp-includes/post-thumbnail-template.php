@@ -2,13 +2,8 @@
 /**
  * WordPress Post Thumbnail Template Functions.
  *
-<<<<<<< HEAD
  * Support for post thumbnails.
  * Theme's functions.php must call add_theme_support( 'post-thumbnails' ) to use these.
-=======
- * Support for post thumbnails
- * Themes function.php must call add_theme_support( 'post-thumbnails' ) to use these.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @package WordPress
  * @subpackage Template
@@ -31,13 +26,8 @@ function has_post_thumbnail( $post_id = null ) {
  *
  * @since 2.9.0
  *
-<<<<<<< HEAD
  * @param int|null $post_id Optional. Post ID.
  * @return mixed
-=======
- * @param int $post_id Optional. Post ID.
- * @return int
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function get_post_thumbnail_id( $post_id = null ) {
 	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
@@ -45,7 +35,6 @@ function get_post_thumbnail_id( $post_id = null ) {
 }
 
 /**
-<<<<<<< HEAD
  * Display the post thumbnail.
  *
  * When a theme adds 'post-thumbnail' support, a special 'post-thumbnail' image size
@@ -62,14 +51,6 @@ function get_post_thumbnail_id( $post_id = null ) {
  * @param string|array $size Optional. Registered image size to use, or flat array of height
  *                           and width values. Default 'post-thumbnail'.
  * @param string|array $attr Optional. Query string or array of attributes. Default empty.
-=======
- * Display Post Thumbnail.
- *
- * @since 2.9.0
- *
- * @param string|array $size Optional. Image size. Defaults to 'post-thumbnail', which theme sets using set_post_thumbnail_size( $width, $height, $crop_flag );.
- * @param string|array $attr Optional. Query string or array of attributes.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function the_post_thumbnail( $size = 'post-thumbnail', $attr = '' ) {
 	echo get_the_post_thumbnail( null, $size, $attr );
@@ -80,13 +61,9 @@ function the_post_thumbnail( $size = 'post-thumbnail', $attr = '' ) {
  *
  * @since 3.2.0
  *
-<<<<<<< HEAD
  * @global WP_Query $wp_query
  *
  * @param WP_Query $wp_query Optional. A WP_Query instance. Defaults to the $wp_query global.
-=======
- * @param object $wp_query Optional. A WP_Query instance. Defaults to the $wp_query global.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function update_post_thumbnail_cache( $wp_query = null ) {
 	if ( ! $wp_query )
@@ -109,7 +86,6 @@ function update_post_thumbnail_cache( $wp_query = null ) {
 }
 
 /**
-<<<<<<< HEAD
  * Retrieve the post thumbnail.
  *
  * When a theme adds 'post-thumbnail' support, a special 'post-thumbnail' image size
@@ -126,15 +102,6 @@ function update_post_thumbnail_cache( $wp_query = null ) {
  *                           and width values. Default 'post-thumbnail'.
  * @param string|array $attr Optional. Query string or array of attributes. Default empty.
  * @return string
-=======
- * Retrieve Post Thumbnail.
- *
- * @since 2.9.0
- *
- * @param int $post_id Optional. Post ID.
- * @param string $size Optional. Image size. Defaults to 'post-thumbnail'.
- * @param string|array $attr Optional. Query string or array of attributes.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function get_the_post_thumbnail( $post_id = null, $size = 'post-thumbnail', $attr = '' ) {
 	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;

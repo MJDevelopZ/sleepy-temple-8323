@@ -154,7 +154,6 @@ function maybe_drop_column($table_name, $column_name, $drop_ddl) {
  *
  * @since 1.0.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  *
  * @param string $table_name Table name
@@ -164,15 +163,6 @@ function maybe_drop_column($table_name, $column_name, $drop_ddl) {
  * @param mixed  $key        Optional. Key info.
  * @param mixed  $default    Optional. Default value.
  * @param mixed  $extra      Optional. Extra value.
-=======
- * @param string $table_name Table name
- * @param string $col_name Column name
- * @param string $col_type Column type
- * @param bool $is_null Optional. Check is null.
- * @param mixed $key Optional. Key info.
- * @param mixed $default Optional. Default value.
- * @param mixed $extra Optional. Extra value.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return bool True, if matches. False, if not matching.
  */
 function check_column($table_name, $col_name, $col_type, $is_null = null, $key = null, $default = null, $extra = null) {

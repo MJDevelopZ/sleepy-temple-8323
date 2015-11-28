@@ -37,31 +37,19 @@ columns = {
 	},
 
 	checked : function(column) {
-<<<<<<< HEAD
 		$('.column-' + column).removeClass( 'hidden' );
-=======
-		$('.column-' + column).show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		this.colSpanChange(+1);
 	},
 
 	unchecked : function(column) {
-<<<<<<< HEAD
 		$('.column-' + column).addClass( 'hidden' );
-=======
-		$('.column-' + column).hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		this.colSpanChange(-1);
 	},
 
 	hidden : function() {
-<<<<<<< HEAD
 		return $( '.manage-column[id]' ).filter( ':hidden' ).map(function() {
 			return this.id;
 		}).get().join( ',' );
-=======
-		return $('.manage-column').filter(':hidden').map(function() { return this.id; }).get().join(',');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	},
 
 	useCheckboxesForHidden : function() {
@@ -117,24 +105,14 @@ screenMeta = {
 
 	init: function() {
 		this.element = $('#screen-meta');
-<<<<<<< HEAD
 		this.toggles = $( '#screen-meta-links' ).find( '.show-settings' );
-=======
-		this.toggles = $('.screen-meta-toggle a');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		this.page    = $('#wpcontent');
 
 		this.toggles.click( this.toggleEvent );
 	},
 
-<<<<<<< HEAD
 	toggleEvent: function() {
 		var panel = $( '#' + $( this ).attr( 'aria-controls' ) );
-=======
-	toggleEvent: function( e ) {
-		var panel = $( this.href.replace(/.+#/, '#') );
-		e.preventDefault();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		if ( !panel.length )
 			return;
@@ -145,38 +123,22 @@ screenMeta = {
 			screenMeta.open( panel, $(this) );
 	},
 
-<<<<<<< HEAD
 	open: function( panel, button ) {
 
 		$( '#screen-meta-links' ).find( '.screen-meta-toggle' ).not( button.parent() ).css( 'visibility', 'hidden' );
-=======
-	open: function( panel, link ) {
-
-		$('.screen-meta-toggle').not( link.parent() ).css('visibility', 'hidden');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		panel.parent().show();
 		panel.slideDown( 'fast', function() {
 			panel.focus();
-<<<<<<< HEAD
 			button.addClass( 'screen-meta-active' ).attr( 'aria-expanded', true );
-=======
-			link.addClass('screen-meta-active').attr('aria-expanded', true);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		});
 
 		$( document ).trigger( 'screen:options:open' );
 	},
 
-<<<<<<< HEAD
 	close: function( panel, button ) {
 		panel.slideUp( 'fast', function() {
 			button.removeClass( 'screen-meta-active' ).attr( 'aria-expanded', false );
-=======
-	close: function( panel, link ) {
-		panel.slideUp( 'fast', function() {
-			link.removeClass('screen-meta-active').attr('aria-expanded', false);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$('.screen-meta-toggle').css('visibility', '');
 			panel.parent().hide();
 		});
@@ -408,7 +370,6 @@ $(document).ready( function() {
 	}
 
 	// Move .notice, .updated and .error alert boxes. Don't move boxes designed to be inline.
-<<<<<<< HEAD
 	$firstHeading = $( '.wrap > h1:first' );
 
 	// Back compatibility: if there is no H1, apply to first H2.
@@ -440,12 +401,6 @@ $(document).ready( function() {
 		});
 	});
 
-=======
-	$firstHeading = $( 'div.wrap h2:first' );
-	$firstHeading.nextAll( 'div.updated, div.error, div.notice' ).addClass( 'below-h2' );
-	$( 'div.updated, div.error, div.notice' ).not( '.below-h2, .inline' ).insertAfter( $firstHeading );
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	// Init screen meta
 	screenMeta.init();
 
@@ -515,7 +470,6 @@ $(document).ready( function() {
 	});
 
 	// Show row actions on keyboard focus of its parent container element or any other elements contained within
-<<<<<<< HEAD
 	$( '#wpbody-content' ).on({
 		focusin: function() {
 			clearTimeout( transitionTimeout );
@@ -536,18 +490,6 @@ $(document).ready( function() {
 	// Toggle list table rows on small screens
 	$( 'tbody' ).on( 'click', '.toggle-row', function() {
 		$( this ).closest( 'tr' ).toggleClass( 'is-expanded' );
-=======
-	$( 'td.post-title, td.title, td.comment, .bookmarks td.column-name, td.blogname, td.username, .dashboard-comment-wrap' ).focusin(function(){
-		clearTimeout( transitionTimeout );
-		focusedRowActions = $(this).find( '.row-actions' );
-		focusedRowActions.addClass( 'visible' );
-	}).focusout(function(){
-		// Tabbing between post title and .row-actions links needs a brief pause, otherwise
-		// the .row-actions div gets hidden in transit in some browsers (ahem, Firefox).
-		transitionTimeout = setTimeout(function(){
-			focusedRowActions.removeClass( 'visible' );
-		}, 30);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	});
 
 	$('#default-password-nag-no').click( function() {
@@ -561,11 +503,8 @@ $(document).ready( function() {
 		var el = e.target, selStart, selEnd, val, scroll, sel;
 
 		if ( e.keyCode == 27 ) { // escape key
-<<<<<<< HEAD
 			// when pressing Escape: Opera 12 and 27 blur form fields, IE 8 clears them
 			e.preventDefault();
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$(el).data('tab-out', true);
 			return;
 		}
@@ -582,13 +521,6 @@ $(document).ready( function() {
 		selEnd = el.selectionEnd;
 		val = el.value;
 
-<<<<<<< HEAD
-=======
-		try {
-			this.lastKey = 9; // not a standard DOM property, lastKey is to help stop Opera tab event. See blur handler below.
-		} catch(err) {}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( document.selection ) {
 			el.focus();
 			sel = document.selection.createRange();
@@ -606,14 +538,6 @@ $(document).ready( function() {
 			e.preventDefault();
 	});
 
-<<<<<<< HEAD
-=======
-	$('#newcontent').bind('blur.wpevent_InsertTab', function() {
-		if ( this.lastKey && 9 == this.lastKey )
-			this.focus();
-	});
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	if ( pageInput.length ) {
 		pageInput.closest('form').submit( function() {
 
@@ -828,13 +752,10 @@ $(document).ready( function() {
 			// Toggle sidebar when toggle is clicked
 			$( '#wp-admin-bar-menu-toggle' ).on( 'click.wp-responsive', function( event ) {
 				event.preventDefault();
-<<<<<<< HEAD
 
 				// close any open toolbar submenus
 				$adminbar.find( '.hover' ).removeClass( 'hover' );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$wpwrap.toggleClass( 'wp-responsive-open' );
 				if ( $wpwrap.hasClass( 'wp-responsive-open' ) ) {
 					$(this).find('a').attr( 'aria-expanded', 'true' );
@@ -955,11 +876,7 @@ $(document).ready( function() {
 	window.wpResponsive.init();
 	setPinMenu();
 
-<<<<<<< HEAD
 	$document.on( 'wp-pin-menu wp-window-resized.pin-menu postboxes-columnchange.pin-menu postbox-toggled.pin-menu wp-collapse-menu.pin-menu wp-scroll-start.pin-menu', setPinMenu );
-=======
-	$document.on( 'wp-window-resized.pin-menu postboxes-columnchange.pin-menu postbox-toggled.pin-menu wp-collapse-menu.pin-menu wp-scroll-start.pin-menu', setPinMenu );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 });
 
 // Fire a custom jQuery event at the end of window resize

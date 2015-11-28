@@ -19,14 +19,7 @@ function is_subdomain_install() {
 	if ( defined('SUBDOMAIN_INSTALL') )
 		return SUBDOMAIN_INSTALL;
 
-<<<<<<< HEAD
 	return ( defined( 'VHOST' ) && VHOST == 'yes' );
-=======
-	if ( defined('VHOST') && VHOST == 'yes' )
-		return true;
-
-	return false;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -72,11 +65,7 @@ function wp_get_active_network_plugins() {
  *
  * @since 3.0.0
  *
-<<<<<<< HEAD
  * @return true|string Returns true on success, or drop-in file to include.
-=======
- * @return bool|string Returns true on success, or drop-in file to include.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function ms_site_check() {
 	$blog = get_blog_details();
@@ -125,19 +114,12 @@ function ms_site_check() {
  *
  * @since 3.9.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  *
  * @param string   $domain   Domain to check.
  * @param string   $path     Path to check.
  * @param int|null $segments Path segments to use. Defaults to null, or the full path.
  * @return object|false Network object if successful. False when no network is found.
-=======
- * @param string   $domain   Domain to check.
- * @param string   $path     Path to check.
- * @param int|null $segments Path segments to use. Defaults to null, or the full path.
- * @return object|bool Network object if successful. False when no network is found.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function get_network_by_path( $domain, $path, $segments = null ) {
 	global $wpdb;
@@ -277,15 +259,10 @@ function get_network_by_path( $domain, $path, $segments = null ) {
  *
  * @since 3.9.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  *
  * @param object|int $network The network's database row or ID.
  * @return object|false Object containing network information if found, false if not.
-=======
- * @param object|int $network The network's database row or ID.
- * @return object|bool Object containing network information if found, false if not.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_get_network( $network ) {
 	global $wpdb;
@@ -305,19 +282,12 @@ function wp_get_network( $network ) {
  *
  * @since 3.9.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  *
  * @param string   $domain   Domain to check.
  * @param string   $path     Path to check.
  * @param int|null $segments Path segments to use. Defaults to null, or the full path.
  * @return object|false Site object if successful. False when no site is found.
-=======
- * @param string   $domain   Domain to check.
- * @param string   $path     Path to check.
- * @param int|null $segments Path segments to use. Defaults to null, or the full path.
- * @return object|bool Site object if successful. False when no site is found.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function get_site_by_path( $domain, $path, $segments = null ) {
 	global $wpdb;
@@ -341,11 +311,8 @@ function get_site_by_path( $domain, $path, $segments = null ) {
 		$path_segments = array_slice( $path_segments, 0, $segments );
 	}
 
-<<<<<<< HEAD
 	$paths = array();
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	while ( count( $path_segments ) ) {
 		$paths[] = '/' . implode( '/', $path_segments ) . '/';
 		array_pop( $path_segments );
@@ -427,18 +394,14 @@ function get_site_by_path( $domain, $path, $segments = null ) {
  *
  * @access private
  * @since 3.0.0
-<<<<<<< HEAD
  *
  * @global wpdb   $wpdb
  * @global string $domain
  * @global string $path
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function ms_not_installed() {
 	global $wpdb, $domain, $path;
 
-<<<<<<< HEAD
 	if ( ! is_admin() ) {
 		dead_db();
 	}
@@ -448,20 +411,10 @@ function ms_not_installed() {
 	$title = __( 'Error establishing a database connection' );
 
 	$msg  = '<h1>' . $title . '</h1>';
-=======
-	wp_load_translations_early();
-
-	$title = __( 'Error establishing a database connection' );
-	$msg  = '<h1>' . $title . '</h1>';
-	if ( ! is_admin() ) {
-		die( $msg );
-	}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$msg .= '<p>' . __( 'If your site does not display, please contact the owner of this network.' ) . '';
 	$msg .= ' ' . __( 'If you are the owner of this network please check that MySQL is running properly and all tables are error free.' ) . '</p>';
 	$query = $wpdb->prepare( "SHOW TABLES LIKE %s", $wpdb->esc_like( $wpdb->site ) );
 	if ( ! $wpdb->get_var( $query ) ) {
-<<<<<<< HEAD
 		$msg .= '<p>' . sprintf(
 			/* translators: %s: table name */
 			__( '<strong>Database tables are missing.</strong> This means that MySQL is not running, WordPress was not installed properly, or someone deleted %s. You really should look at your database now.' ),
@@ -478,14 +431,6 @@ function ms_not_installed() {
 	}
 	$msg .= '<p><strong>' . __( 'What do I do now?' ) . '</strong> ';
 	$msg .= __( 'Read the <a target="_blank" href="https://codex.wordpress.org/Debugging_a_WordPress_Network">bug report</a> page. Some of the guidelines there may help you figure out what went wrong.' );
-=======
-		$msg .= '<p>' . sprintf( __( '<strong>Database tables are missing.</strong> This means that MySQL is not running, WordPress was not installed properly, or someone deleted <code>%s</code>. You really should look at your database now.' ), $wpdb->site ) . '</p>';
-	} else {
-		$msg .= '<p>' . sprintf( __( '<strong>Could not find site <code>%1$s</code>.</strong> Searched for table <code>%2$s</code> in database <code>%3$s</code>. Is that right?' ), rtrim( $domain . $path, '/' ), $wpdb->blogs, DB_NAME ) . '</p>';
-	}
-	$msg .= '<p><strong>' . __( 'What do I do now?' ) . '</strong> ';
-	$msg .= __( 'Read the <a target="_blank" href="http://codex.wordpress.org/Debugging_a_WordPress_Network">bug report</a> page. Some of the guidelines there may help you figure out what went wrong.' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$msg .= ' ' . __( 'If you&#8217;re still stuck with this message, then check that your database contains the following tables:' ) . '</p><ul>';
 	foreach ( $wpdb->tables('global') as $t => $table ) {
 		if ( 'sitecategories' == $t )
@@ -494,11 +439,7 @@ function ms_not_installed() {
 	}
 	$msg .= '</ul>';
 
-<<<<<<< HEAD
 	wp_die( $msg, $title, array( 'response' => 500 ) );
-=======
-	wp_die( $msg, $title );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -529,11 +470,8 @@ function get_current_site_name( $current_site ) {
  * @since 3.0.0
  * @deprecated 3.9.0
  *
-<<<<<<< HEAD
  * @global object $current_site
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return object
  */
 function wpmu_current_site() {

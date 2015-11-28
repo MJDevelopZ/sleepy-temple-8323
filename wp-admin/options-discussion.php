@@ -14,7 +14,6 @@ if ( ! current_user_can( 'manage_options' ) )
 $title = __('Discussion Settings');
 $parent_file = 'options-general.php';
 
-<<<<<<< HEAD
 /**
  * Output JavaScript to toggle display of additional settings if avatars are disabled.
  *
@@ -35,8 +34,6 @@ function options_discussion_add_js() {
 }
 add_action( 'admin_print_footer_scripts', 'options_discussion_add_js' );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
 	'title'   => __('Overview'),
@@ -46,11 +43,7 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
-<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Settings_Discussion_Screen" target="_blank">Documentation on Discussion Settings</a>') . '</p>' .
-=======
-	'<p>' . __('<a href="http://codex.wordpress.org/Settings_Discussion_Screen" target="_blank">Documentation on Discussion Settings</a>') . '</p>' .
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
@@ -58,11 +51,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
-<<<<<<< HEAD
 <h1><?php echo esc_html( $title ); ?></h1>
-=======
-<h2><?php echo esc_html( $title ); ?></h2>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <form method="post" action="options.php">
 <?php settings_fields('discussion'); ?>
@@ -77,11 +66,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <br />
 <label for="default_ping_status">
 <input name="default_ping_status" type="checkbox" id="default_ping_status" value="open" <?php checked('open', get_option('default_ping_status')); ?> />
-<<<<<<< HEAD
 <?php _e('Allow link notifications from other blogs (pingbacks and trackbacks) on new articles'); ?></label>
-=======
-<?php _e('Allow link notifications from other blogs (pingbacks and trackbacks)'); ?></label>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <br />
 <label for="default_comment_status">
 <input name="default_comment_status" type="checkbox" id="default_comment_status" value="open" <?php checked('open', get_option('default_comment_status')); ?> />
@@ -207,35 +192,23 @@ printf( __('Comments should be displayed with the %s comments at the top of each
 
 <p><?php _e('An avatar is an image that follows you from weblog to weblog appearing beside your name when you comment on avatar enabled sites. Here you can enable the display of avatars for people who comment on your site.'); ?></p>
 
-<<<<<<< HEAD
 <?php
 // the above would be a good place to link to codex documentation on the gravatar functions, for putting it in themes. anything like that?
 
 $show_avatars = get_option( 'show_avatars' );
 ?>
-=======
-<?php // the above would be a good place to link to codex documentation on the gravatar functions, for putting it in themes. anything like that? ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <table class="form-table">
 <tr>
 <th scope="row"><?php _e('Avatar Display'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Avatar Display'); ?></span></legend>
 	<label for="show_avatars">
-<<<<<<< HEAD
 		<input type="checkbox" id="show_avatars" name="show_avatars" value="1" <?php checked( $show_avatars, 1 ); ?> />
-=======
-		<input type="checkbox" id="show_avatars" name="show_avatars" value="1" <?php checked( get_option('show_avatars'), 1 ); ?> />
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		<?php _e( 'Show Avatars' ); ?>
 	</label>
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
 <tr class="avatar-settings<?php if ( ! $show_avatars ) echo ' hide-if-js'; ?>">
-=======
-<tr>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <th scope="row"><?php _e('Maximum Rating'); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Maximum Rating'); ?></span></legend>
 
@@ -258,11 +231,7 @@ endforeach;
 
 </fieldset></td>
 </tr>
-<<<<<<< HEAD
 <tr class="avatar-settings<?php if ( ! $show_avatars ) echo ' hide-if-js'; ?>">
-=======
-<tr>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <th scope="row"><?php _e('Default Avatar'); ?></th>
 <td class="defaultavatarpicker"><fieldset><legend class="screen-reader-text"><span><?php _e('Default Avatar'); ?></span></legend>
 
@@ -289,7 +258,6 @@ $avatar_defaults = array(
  * @param array $avatar_defaults Array of default avatars.
  */
 $avatar_defaults = apply_filters( 'avatar_defaults', $avatar_defaults );
-<<<<<<< HEAD
 $default = get_option( 'avatar_default', 'mystery' );
 $size = 32;
 $avatar_list = '';
@@ -297,35 +265,21 @@ $avatar_list = '';
 // Force avatars on to display these choices
 add_filter( 'pre_option_show_avatars', '__return_true', 100 );
 
-=======
-$default = get_option('avatar_default');
-if ( empty($default) )
-	$default = 'mystery';
-$size = 32;
-$avatar_list = '';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 foreach ( $avatar_defaults as $default_key => $default_name ) {
 	$selected = ($default == $default_key) ? 'checked="checked" ' : '';
 	$avatar_list .= "\n\t<label><input type='radio' name='avatar_default' id='avatar_{$default_key}' value='" . esc_attr($default_key) . "' {$selected}/> ";
 
 	$avatar = get_avatar( $user_email, $size, $default_key );
-<<<<<<< HEAD
 	$avatar = preg_replace( "/src='(.+?)'/", "src='\$1&amp;forcedefault=1'", $avatar );
 	$avatar = preg_replace( "/srcset='(.+?) 2x'/", "srcset='\$1&amp;forcedefault=1 2x'", $avatar );
 	$avatar_list .= $avatar;
-=======
-	$avatar_list .= preg_replace("/src='(.+?)'/", "src='\$1&amp;forcedefault=1'", $avatar);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	$avatar_list .= ' ' . $default_name . '</label>';
 	$avatar_list .= '<br />';
 }
-<<<<<<< HEAD
 
 remove_filter( 'pre_option_show_avatars', '__return_true', 100 );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /**
  * Filter the HTML output of the default avatar list.
  *

@@ -84,7 +84,6 @@ class WP_Styles extends WP_Dependencies {
 		 * Filter the HTML link tag of an enqueued style.
 		 *
 		 * @since 2.6.0
-<<<<<<< HEAD
 		 * @since 4.3.0 Introduced the `$href` parameter.
 		 *
 		 * @param string $html   The link tag for the enqueued style.
@@ -92,13 +91,6 @@ class WP_Styles extends WP_Dependencies {
 		 * @param string $href   The stylesheet's source URL.
 		 */
 		$tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-css' $title href='$href' type='text/css' media='$media' />\n", $handle, $href );
-=======
-		 *
-		 * @param string         The link tag for the enqueued style.
-		 * @param string $handle The style's registered handle.
-		 */
-		$tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-css' $title href='$href' type='text/css' media='$media' />\n", $handle );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( 'rtl' === $this->text_direction && isset($obj->extra['rtl']) && $obj->extra['rtl'] ) {
 			if ( is_bool( $obj->extra['rtl'] ) || 'replace' === $obj->extra['rtl'] ) {
 				$suffix = isset( $obj->extra['suffix'] ) ? $obj->extra['suffix'] : '';
@@ -108,11 +100,7 @@ class WP_Styles extends WP_Dependencies {
 			}
 
 			/** This filter is documented in wp-includes/class.wp-styles.php */
-<<<<<<< HEAD
 			$rtl_tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-rtl-css' $title href='$rtl_href' type='text/css' media='$media' />\n", $handle, $rtl_href );
-=======
-			$rtl_tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-rtl-css' $title href='$rtl_href' type='text/css' media='$media' />\n", $handle );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			if ( $obj->extra['rtl'] === 'replace' ) {
 				$tag = $rtl_tag;
@@ -121,7 +109,6 @@ class WP_Styles extends WP_Dependencies {
 			}
 		}
 
-<<<<<<< HEAD
 		$conditional_pre = $conditional_post = '';
 		if ( isset( $obj->extra['conditional'] ) && $obj->extra['conditional'] ) {
 			$conditional_pre  = "<!--[if {$obj->extra['conditional']}]>\n";
@@ -140,19 +127,6 @@ class WP_Styles extends WP_Dependencies {
 			echo $tag;
 			$this->print_inline_style( $handle );
 			echo $conditional_post;
-=======
-		if ( isset($obj->extra['conditional']) && $obj->extra['conditional'] ) {
-			$tag = "<!--[if {$obj->extra['conditional']}]>\n" . $tag . "<![endif]-->\n";
-		}
-
-		if ( $this->do_concat ) {
-			$this->print_html .= $tag;
-			if ( $inline_style = $this->print_inline_style( $handle, false ) )
-				$this->print_html .= sprintf( "<style id='%s-inline-css' type='text/css'>\n%s\n</style>\n", esc_attr( $handle ), $inline_style );
-		} else {
-			echo $tag;
-			$this->print_inline_style( $handle );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 
 		return true;
@@ -262,23 +236,17 @@ class WP_Styles extends WP_Dependencies {
 		return false;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return array
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function do_footer_items() { // HTML 5 allows styles in the body, grab late enqueued items and output them in the footer.
 		$this->do_items(false, 1);
 		return $this->done;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function reset() {
 		$this->do_concat = false;
 		$this->concat = '';

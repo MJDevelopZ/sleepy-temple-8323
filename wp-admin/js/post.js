@@ -1,200 +1,15 @@
 /* global postL10n, ajaxurl, wpAjax, setPostThumbnailL10n, postboxes, pagenow, tinymce, alert, deleteUserSetting */
-<<<<<<< HEAD
 /* global theList:true, theExtraList:true, getUserSetting, setUserSetting, commentReply */
 
 var commentsBox, WPSetThumbnailHTML, WPSetThumbnailID, WPRemoveThumbnail, wptitlehint, makeSlugeditClickable, editPermalink;
-=======
-/* global theList:true, theExtraList:true, getUserSetting, setUserSetting */
-
-var tagBox, commentsBox, WPSetThumbnailHTML, WPSetThumbnailID, WPRemoveThumbnail, wptitlehint, makeSlugeditClickable, editPermalink;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 // Back-compat: prevent fatal errors
 makeSlugeditClickable = editPermalink = function(){};
 
 window.wp = window.wp || {};
 
-<<<<<<< HEAD
 ( function( $ ) {
 	var titleHasFocus = false;
 
-=======
-// return an array with any duplicate, whitespace or values removed
-function array_unique_noempty(a) {
-	var out = [];
-	jQuery.each( a, function(key, val) {
-		val = jQuery.trim(val);
-		if ( val && jQuery.inArray(val, out) == -1 )
-			out.push(val);
-		} );
-	return out;
-}
-
-( function($) {
-	var titleHasFocus = false;
-
-tagBox = {
-	clean : function(tags) {
-		var comma = postL10n.comma;
-		if ( ',' !== comma )
-			tags = tags.replace(new RegExp(comma, 'g'), ',');
-		tags = tags.replace(/\s*,\s*/g, ',').replace(/,+/g, ',').replace(/[,\s]+$/, '').replace(/^[,\s]+/, '');
-		if ( ',' !== comma )
-			tags = tags.replace(/,/g, comma);
-		return tags;
-	},
-
-	parseTags : function(el) {
-		var id = el.id, num = id.split('-check-num-')[1], taxbox = $(el).closest('.tagsdiv'),
-			thetags = taxbox.find('.the-tags'), comma = postL10n.comma,
-			current_tags = thetags.val().split(comma), new_tags = [];
-		delete current_tags[num];
-
-		$.each( current_tags, function(key, val) {
-			val = $.trim(val);
-			if ( val ) {
-				new_tags.push(val);
-			}
-		});
-
-		thetags.val( this.clean( new_tags.join(comma) ) );
-
-		this.quickClicks(taxbox);
-		return false;
-	},
-
-	quickClicks : function(el) {
-		var thetags = $('.the-tags', el),
-			tagchecklist = $('.tagchecklist', el),
-			id = $(el).attr('id'),
-			current_tags, disabled;
-
-		if ( !thetags.length )
-			return;
-
-		disabled = thetags.prop('disabled');
-
-		current_tags = thetags.val().split(postL10n.comma);
-		tagchecklist.empty();
-
-		$.each( current_tags, function( key, val ) {
-			var span, xbutton;
-
-			val = $.trim( val );
-
-			if ( ! val )
-				return;
-
-			// Create a new span, and ensure the text is properly escaped.
-			span = $('<span />').text( val );
-
-			// If tags editing isn't disabled, create the X button.
-			if ( ! disabled ) {
-				xbutton = $( '<a id="' + id + '-check-num-' + key + '" class="ntdelbutton">X</a>' );
-				xbutton.click( function(){ tagBox.parseTags(this); });
-				span.prepend('&nbsp;').prepend( xbutton );
-			}
-
-			// Append the span to the tag list.
-			tagchecklist.append( span );
-		});
-	},
-
-	flushTags : function(el, a, f) {
-		var tagsval, newtags, text,
-			tags = $('.the-tags', el),
-			newtag = $('input.newtag', el),
-			comma = postL10n.comma;
-		a = a || false;
-
-		text = a ? $(a).text() : newtag.val();
-		tagsval = tags.val();
-		newtags = tagsval ? tagsval + comma + text : text;
-
-		newtags = this.clean( newtags );
-		newtags = array_unique_noempty( newtags.split(comma) ).join(comma);
-		tags.val(newtags);
-		this.quickClicks(el);
-
-		if ( !a )
-			newtag.val('');
-		if ( 'undefined' == typeof(f) )
-			newtag.focus();
-
-		return false;
-	},
-
-	get : function(id) {
-		var tax = id.substr(id.indexOf('-')+1);
-
-		$.post(ajaxurl, {'action':'get-tagcloud', 'tax':tax}, function(r, stat) {
-			if ( 0 === r || 'success' != stat )
-				r = wpAjax.broken;
-
-			r = $('<p id="tagcloud-'+tax+'" class="the-tagcloud">'+r+'</p>');
-			$('a', r).click(function(){
-				tagBox.flushTags( $(this).closest('.inside').children('.tagsdiv'), this);
-				return false;
-			});
-
-			$('#'+id).after(r);
-		});
-	},
-
-	init : function() {
-		var t = this, ajaxtag = $('div.ajaxtag');
-
-		$('.tagsdiv').each( function() {
-			tagBox.quickClicks(this);
-		});
-
-		$('input.tagadd', ajaxtag).click(function(){
-			t.flushTags( $(this).closest('.tagsdiv') );
-		});
-
-		$('div.taghint', ajaxtag).click(function(){
-			$(this).css('visibility', 'hidden').parent().siblings('.newtag').focus();
-		});
-
-		$('input.newtag', ajaxtag).blur(function() {
-			if ( '' === this.value )
-				$(this).parent().siblings('.taghint').css('visibility', '');
-		}).focus(function(){
-			$(this).parent().siblings('.taghint').css('visibility', 'hidden');
-		}).keyup(function(e){
-			if ( 13 == e.which ) {
-				tagBox.flushTags( $(this).closest('.tagsdiv') );
-				return false;
-			}
-		}).keypress(function(e){
-			if ( 13 == e.which ) {
-				e.preventDefault();
-				return false;
-			}
-		}).each(function(){
-			var tax = $(this).closest('div.tagsdiv').attr('id');
-			$(this).suggest( ajaxurl + '?action=ajax-tag-search&tax=' + tax, { delay: 500, minchars: 2, multiple: true, multipleSep: postL10n.comma + ' ' } );
-		});
-
-		// save tags on post save/publish
-		$('#post').submit(function(){
-			$('div.tagsdiv').each( function() {
-				tagBox.flushTags(this, false, 1);
-			});
-		});
-
-		// tag cloud
-		$('a.tagcloud-link').click(function(){
-			tagBox.get( $(this).attr('id') );
-			$(this).unbind().click(function(){
-				$(this).siblings('.the-tagcloud').toggle();
-				return false;
-			});
-			return false;
-		});
-	}
-};
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 commentsBox = {
 	st : 0,
 
@@ -205,11 +20,7 @@ commentsBox = {
 
 		this.st += num;
 		this.total = total;
-<<<<<<< HEAD
 		$( '#commentsdiv .spinner' ).addClass( 'is-active' );
-=======
-		$('#commentsdiv .spinner').show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		data = {
 			'action' : 'get-comments',
@@ -224,11 +35,7 @@ commentsBox = {
 			function(r) {
 				r = wpAjax.parseAjaxResponse(r);
 				$('#commentsdiv .widefat').show();
-<<<<<<< HEAD
 				$( '#commentsdiv .spinner' ).removeClass( 'is-active' );
-=======
-				$('#commentsdiv .spinner').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 				if ( 'object' == typeof r && r.responses[0] ) {
 					$('#the-comment-list').append( r.responses[0].data );
@@ -363,7 +170,6 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 	}
 
 	$(document).on( 'heartbeat-send.wp-refresh-nonces', function( e, data ) {
-<<<<<<< HEAD
 		var post_id,
 			$authCheck = $('#wp-auth-check-wrap');
 
@@ -371,15 +177,6 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 			if ( ( post_id = $('#post_ID').val() ) && $('#_wpnonce').val() ) {
 				data['wp-refresh-post-nonces'] = {
 					post_id: post_id
-=======
-		var nonce, post_id;
-
-		if ( check ) {
-			if ( ( post_id = $('#post_ID').val() ) && ( nonce = $('#_wpnonce').val() ) ) {
-				data['wp-refresh-post-nonces'] = {
-					post_id: post_id,
-					post_nonce: nonce
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				};
 			}
 		}
@@ -406,12 +203,7 @@ $(document).on( 'heartbeat-send.refresh-lock', function( e, data ) {
 jQuery(document).ready( function($) {
 	var stamp, visibility, $submitButtons, updateVisibility, updateText,
 		sticky = '',
-<<<<<<< HEAD
 		$textarea = $('#content'),
-=======
-		last = 0,
-		co = $('#content'),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$document = $(document),
 		$editSlugWrap = $('#edit-slug-box'),
 		postId = $('#post_ID').val() || 0,
@@ -419,12 +211,8 @@ jQuery(document).ready( function($) {
 		releaseLock = true,
 		$postVisibilitySelect = $('#post-visibility-select'),
 		$timestampdiv = $('#timestampdiv'),
-<<<<<<< HEAD
 		$postStatusSelect = $('#post-status-select'),
 		isMac = window.navigator.platform ? window.navigator.platform.indexOf( 'Mac' ) !== -1 : false;
-=======
-		$postStatusSelect = $('#post-status-select');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	postboxes.add_postbox_toggles(pagenow);
 
@@ -478,7 +266,6 @@ jQuery(document).ready( function($) {
 				wp.autosave.server.suspend();
 			}
 
-<<<<<<< HEAD
 			if ( typeof commentReply !== 'undefined' ) {
 				/*
 				 * Close the comment edit/reply form if open to stop the form
@@ -487,23 +274,15 @@ jQuery(document).ready( function($) {
 				commentReply.close();
 			}
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			releaseLock = false;
 			$(window).off( 'beforeunload.edit-post' );
 
 			$submitButtons.addClass( 'disabled' );
 
 			if ( $button.attr('id') === 'publish' ) {
-<<<<<<< HEAD
 				$submitpost.find( '#major-publishing-actions .spinner' ).addClass( 'is-active' );
 			} else {
 				$submitpost.find( '#minor-publishing .spinner' ).addClass( 'is-active' );
-=======
-				$submitpost.find('#major-publishing-actions .spinner').show();
-			} else {
-				$submitpost.find('#minor-publishing .spinner').show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		});
 	});
@@ -542,18 +321,10 @@ jQuery(document).ready( function($) {
 
 	// This code is meant to allow tabbing from Title to Post content.
 	$('#title').on( 'keydown.editor-focus', function( event ) {
-<<<<<<< HEAD
 		var editor;
 
 		if ( event.keyCode === 9 && ! event.ctrlKey && ! event.altKey && ! event.shiftKey ) {
 			editor = typeof tinymce != 'undefined' && tinymce.get('content');
-=======
-		var editor, $textarea;
-
-		if ( event.keyCode === 9 && ! event.ctrlKey && ! event.altKey && ! event.shiftKey ) {
-			editor = typeof tinymce != 'undefined' && tinymce.get('content');
-			$textarea = $('#content');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			if ( editor && ! editor.isHidden() ) {
 				editor.focus();
@@ -635,19 +406,11 @@ jQuery(document).ready( function($) {
 
 	// multi-taxonomies
 	if ( $('#tagsdiv-post_tag').length ) {
-<<<<<<< HEAD
 		window.tagBox && window.tagBox.init();
 	} else {
 		$('#side-sortables, #normal-sortables, #advanced-sortables').children('div.postbox').each(function(){
 			if ( this.id.indexOf('tagsdiv-') === 0 ) {
 				window.tagBox && window.tagBox.init();
-=======
-		tagBox.init();
-	} else {
-		$('#side-sortables, #normal-sortables, #advanced-sortables').children('div.postbox').each(function(){
-			if ( this.id.indexOf('tagsdiv-') === 0 ) {
-				tagBox.init();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				return false;
 			}
 		});
@@ -795,7 +558,6 @@ jQuery(document).ready( function($) {
 				$('#timestamp').html(stamp);
 			} else {
 				$('#timestamp').html(
-<<<<<<< HEAD
 					'\n' + publishOn + ' <b>' +
 					postL10n.dateFormat
 						.replace( '%1$s', $( 'option[value="' + mm + '"]', '#mm' ).attr( 'data-text' ) )
@@ -803,14 +565,6 @@ jQuery(document).ready( function($) {
 						.replace( '%3$s', aa )
 						.replace( '%4$s', ( '00' + hh ).slice( -2 ) )
 						.replace( '%5$s', ( '00' + mn ).slice( -2 ) ) +
-=======
-					publishOn + ' <b>' +
-					postL10n.dateFormat.replace( '%1$s', $('option[value="' + $('#mm').val() + '"]', '#mm').text() )
-						.replace( '%2$s', jj )
-						.replace( '%3$s', aa )
-						.replace( '%4$s', hh )
-						.replace( '%5$s', mn ) +
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						'</b> '
 				);
 			}
@@ -853,13 +607,9 @@ jQuery(document).ready( function($) {
 		$( '#visibility .edit-visibility').click( function () {
 			if ( $postVisibilitySelect.is(':hidden') ) {
 				updateVisibility();
-<<<<<<< HEAD
 				$postVisibilitySelect.slideDown( 'fast', function() {
 					$postVisibilitySelect.find( 'input[type="radio"]' ).first().focus();
 				} );
-=======
-				$postVisibilitySelect.slideDown('fast').find('input[type="radio"]').first().focus();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$(this).hide();
 			}
 			return false;
@@ -878,11 +628,7 @@ jQuery(document).ready( function($) {
 
 		$postVisibilitySelect.find('.save-post-visibility').click( function( event ) { // crazyhorse - multiple ok cancels
 			$postVisibilitySelect.slideUp('fast');
-<<<<<<< HEAD
 			$('#visibility .edit-visibility').show().focus();
-=======
-			$('#visibility .edit-visibility').show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			updateText();
 
 			if ( $postVisibilitySelect.find('input:radio:checked').val() != 'public' ) {
@@ -905,14 +651,9 @@ jQuery(document).ready( function($) {
 
 		$timestampdiv.siblings('a.edit-timestamp').click( function( event ) {
 			if ( $timestampdiv.is( ':hidden' ) ) {
-<<<<<<< HEAD
 				$timestampdiv.slideDown( 'fast', function() {
 					$( 'input, select', $timestampdiv.find( '.timestamp-wrap' ) ).first().focus();
 				} );
-=======
-				$timestampdiv.slideDown('fast');
-				$('#mm').focus();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$(this).hide();
 			}
 			event.preventDefault();
@@ -932,11 +673,7 @@ jQuery(document).ready( function($) {
 		$timestampdiv.find('.save-timestamp').click( function( event ) { // crazyhorse - multiple ok cancels
 			if ( updateText() ) {
 				$timestampdiv.slideUp('fast');
-<<<<<<< HEAD
 				$timestampdiv.siblings('a.edit-timestamp').show().focus();
-=======
-				$timestampdiv.siblings('a.edit-timestamp').show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 			event.preventDefault();
 		});
@@ -950,44 +687,28 @@ jQuery(document).ready( function($) {
 					wp.autosave.enableButtons();
 				}
 
-<<<<<<< HEAD
 				$( '#publishing-action .spinner' ).removeClass( 'is-active' );
-=======
-				$('#publishing-action .spinner').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		});
 
 		$postStatusSelect.siblings('a.edit-post-status').click( function( event ) {
 			if ( $postStatusSelect.is( ':hidden' ) ) {
-<<<<<<< HEAD
 				$postStatusSelect.slideDown( 'fast', function() {
 					$postStatusSelect.find('select').focus();
 				} );
-=======
-				$postStatusSelect.slideDown('fast').find('select').focus();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$(this).hide();
 			}
 			event.preventDefault();
 		});
 
 		$postStatusSelect.find('.save-post-status').click( function( event ) {
-<<<<<<< HEAD
 			$postStatusSelect.slideUp( 'fast' ).siblings( 'a.edit-post-status' ).show().focus();
-=======
-			$postStatusSelect.slideUp('fast').siblings('a.edit-post-status').show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			updateText();
 			event.preventDefault();
 		});
 
 		$postStatusSelect.find('.cancel-post-status').click( function( event ) {
-<<<<<<< HEAD
 			$postStatusSelect.slideUp( 'fast' ).siblings( 'a.edit-post-status' ).show().focus();
-=======
-			$('#post-status-select').slideUp('fast').siblings( 'a.edit-post-status' ).show().focus();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$('#post_status').val( $('#hidden_post_status').val() );
 			updateText();
 			event.preventDefault();
@@ -1004,15 +725,11 @@ jQuery(document).ready( function($) {
 			revert_slug = real_slug.val(),
 			b = $('#edit-slug-buttons'),
 			revert_b = b.html(),
-<<<<<<< HEAD
 			full = $('#editable-post-name-full');
 
 		// Deal with Twemoji in the post-name
 		full.find( 'img' ).replaceWith( function() { return this.alt; } );
 		full = full.html();
-=======
-			full = $('#editable-post-name-full').html();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		$('#view-post-btn').hide();
 		b.html('<a href="#" class="save button button-small">'+postL10n.ok+'</a> <a class="cancel" href="#">'+postL10n.cancel+'</a>');
@@ -1036,10 +753,7 @@ jQuery(document).ready( function($) {
 						box.removeClass('hidden');
 					});
 				}
-<<<<<<< HEAD
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				b.html(revert_b);
 				real_slug.val(new_slug);
 				$('#view-post-btn').show();
@@ -1087,27 +801,6 @@ jQuery(document).ready( function($) {
 		});
 	}
 
-<<<<<<< HEAD
-=======
-	// word count
-	if ( typeof(wpWordCount) != 'undefined' ) {
-		$document.triggerHandler('wpcountwords', [ co.val() ]);
-
-		co.keyup( function(e) {
-			var k = e.keyCode || e.charCode;
-
-			if ( k == last )
-				return true;
-
-			if ( 13 == k || 8 == last || 46 == last )
-				$document.triggerHandler('wpcountwords', [ co.val() ]);
-
-			last = k;
-			return true;
-		});
-	}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	wptitlehint = function(id) {
 		id = id || 'title';
 
@@ -1137,10 +830,6 @@ jQuery(document).ready( function($) {
 	// Resize the visual and text editors
 	( function() {
 		var editor, offset, mce,
-<<<<<<< HEAD
-=======
-			$textarea = $('textarea#content'),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$handle = $('#post-status-info'),
 			$postdivrich = $('#postdivrich');
 
@@ -1228,7 +917,6 @@ jQuery(document).ready( function($) {
 			}
 		});
 	}
-<<<<<<< HEAD
 
 	// Save on pressing Ctrl/Command + S in the Text editor
 	$textarea.on( 'keydown.wp-autosave', function( event ) {
@@ -1283,6 +971,3 @@ jQuery(document).ready( function($) {
 		update();
 	} );
 } )( jQuery, new wp.utils.WordCounter() );
-=======
-});
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

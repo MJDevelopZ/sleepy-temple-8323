@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /* global _wpCustomizeHeader, _wpCustomizeBackground, _wpMediaViewsL10n, MediaElementPlayer */
-=======
-/* globals _wpCustomizeHeader, _wpCustomizeBackground, _wpMediaViewsL10n */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 (function( exports, $ ){
 	var Container, focus, api = wp.customize;
 
@@ -21,10 +17,7 @@
 
 			this.id = id;
 			this.transport = this.transport || 'refresh';
-<<<<<<< HEAD
 			this._dirty = options.dirty || false;
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			this.bind( this.preview );
 		},
@@ -74,7 +67,6 @@
 		construct = this;
 		params = params || {};
 		focus = function () {
-<<<<<<< HEAD
 			var focusContainer;
 			if ( construct.extended( api.Panel ) && construct.expanded && construct.expanded() ) {
 				focusContainer = construct.container.find( 'ul.control-panel-content' );
@@ -86,10 +78,6 @@
 
 			// Note that we can't use :focusable due to a jQuery UI issue. See: https://github.com/jquery/jquery-ui/pull/1583
 			focusContainer.find( 'input, select, textarea, button, object, a[href], [tabindex]' ).filter( ':visible' ).first().focus();
-=======
-			construct.container.find( ':focusable:first' ).focus();
-			construct.container[0].scrollIntoView( true );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		};
 		if ( params.completeCallback ) {
 			completeCallback = params.completeCallback;
@@ -171,7 +159,6 @@
 	Container = api.Class.extend({
 		defaultActiveArguments: { duration: 'fast', completeCallback: $.noop },
 		defaultExpandedArguments: { duration: 'fast', completeCallback: $.noop },
-<<<<<<< HEAD
 		containerType: 'container',
 		defaults: {
 			title: '',
@@ -182,13 +169,10 @@
 			active: true,
 			instanceNumber: null
 		},
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		/**
 		 * @since 4.1.0
 		 *
-<<<<<<< HEAD
 		 * @param {string}         id - The ID for the container.
 		 * @param {object}         options - Object containing one property: params.
 		 * @param {object}         options.params - Object containing the following properties.
@@ -198,15 +182,10 @@
 		 * @param {string=default} [options.params.type] - The type of the panel. See wp.customize.panelConstructor.
 		 * @param {string=}        [options.params.content] - The markup to be used for the panel container. If empty, a JS template is used.
 		 * @param {boolean=true}   [options.params.active] - Whether the panel is active or not.
-=======
-		 * @param {String} id
-		 * @param {Object} options
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 */
 		initialize: function ( id, options ) {
 			var container = this;
 			container.id = id;
-<<<<<<< HEAD
 			options = options || {};
 
 			options.params = _.defaults(
@@ -220,11 +199,6 @@
 			if ( 0 === container.container.length ) {
 				container.container = $( container.getContainer() );
 			}
-=======
-			container.params = {};
-			$.extend( container, options || {} );
-			container.container = $( container.params.content );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			container.deferred = {
 				embedded: new $.Deferred()
@@ -247,7 +221,6 @@
 				container.onChangeExpanded( expanded, args );
 			});
 
-<<<<<<< HEAD
 			container.deferred.embedded.done( function () {
 				container.attachEvents();
 			});
@@ -255,13 +228,6 @@
 			api.utils.bubbleChildValueChanges( container, [ 'priority', 'active' ] );
 
 			container.priority.set( container.params.priority );
-=======
-			container.attachEvents();
-
-			api.utils.bubbleChildValueChanges( container, [ 'priority', 'active' ] );
-
-			container.priority.set( isNaN( container.params.priority ) ? 100 : container.params.priority );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			container.active.set( container.params.active );
 			container.expanded.set( false );
 		},
@@ -320,7 +286,6 @@
 		 * @param {Object}  args.duration
 		 * @param {Object}  args.completeCallback
 		 */
-<<<<<<< HEAD
 		onChangeActive: function( active, args ) {
 			var duration, construct = this;
 			if ( args.unchanged ) {
@@ -334,18 +299,10 @@
 			if ( ! $.contains( document, construct.container[0] ) ) {
 				// jQuery.fn.slideUp is not hiding an element if it is not in the DOM
 				construct.container.toggle( active );
-=======
-		onChangeActive: function ( active, args ) {
-			var duration = ( 'resolved' === api.previewer.deferred.active.state() ? args.duration : 0 );
-			if ( ! $.contains( document, this.container ) ) {
-				// jQuery.fn.slideUp is not hiding an element if it is not in the DOM
-				this.container.toggle( active );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				if ( args.completeCallback ) {
 					args.completeCallback();
 				}
 			} else if ( active ) {
-<<<<<<< HEAD
 				construct.container.stop( true, true ).slideDown( duration, args.completeCallback );
 			} else {
 				if ( construct.expanded() ) {
@@ -358,11 +315,6 @@
 				} else {
 					construct.container.stop( true, true ).slideUp( duration, args.completeCallback );
 				}
-=======
-				this.container.stop( true, true ).slideDown( duration, args.completeCallback );
-			} else {
-				this.container.stop( true, true ).slideUp( duration, args.completeCallback );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		},
 
@@ -420,7 +372,6 @@
 		_toggleExpanded: function ( expanded, params ) {
 			var self = this;
 			params = params || {};
-<<<<<<< HEAD
 			var section = this, previousCompleteCallback = params.completeCallback;
 			params.completeCallback = function () {
 				if ( previousCompleteCallback ) {
@@ -432,8 +383,6 @@
 					section.container.trigger( 'collapsed' );
 				}
 			};
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			if ( ( expanded && this.expanded.get() ) || ( ! expanded && ! this.expanded.get() ) ) {
 				params.unchanged = true;
 				self.onChangeExpanded( self.expanded.get(), params );
@@ -466,7 +415,6 @@
 		 * Bring the container into view and then expand this and bring it into view
 		 * @param {Object} [params]
 		 */
-<<<<<<< HEAD
 		focus: focus,
 
 		/**
@@ -489,9 +437,6 @@
 
 			return '<li></li>';
 		}
-=======
-		focus: focus
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	});
 
 	/**
@@ -501,7 +446,6 @@
 	 * @augments wp.customize.Class
 	 */
 	api.Section = Container.extend({
-<<<<<<< HEAD
 		containerType: 'section',
 		defaults: {
 			title: '',
@@ -514,13 +458,10 @@
 			panel: null,
 			customizeAction: ''
 		},
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		/**
 		 * @since 4.1.0
 		 *
-<<<<<<< HEAD
 		 * @param {string}         id - The ID for the section.
 		 * @param {object}         options - Object containing one property: params.
 		 * @param {object}         options.params - Object containing the following properties.
@@ -532,10 +473,6 @@
 		 * @param {boolean=true}   [options.params.active] - Whether the section is active or not.
 		 * @param {string}         options.params.panel - The ID for the panel this section is associated with.
 		 * @param {string=}        [options.params.customizeAction] - Additional context information shown before the section title when expanded.
-=======
-		 * @param {String} id
-		 * @param {Array}  options
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 */
 		initialize: function ( id, options ) {
 			var section = this;
@@ -600,11 +537,7 @@
 			var section = this;
 
 			// Expand/Collapse accordion sections on click.
-<<<<<<< HEAD
 			section.container.find( '.accordion-section-title, .customize-section-back' ).on( 'click keydown', function( event ) {
-=======
-			section.container.find( '.accordion-section-title' ).on( 'click keydown', function( event ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 					return;
 				}
@@ -658,7 +591,6 @@
 		 */
 		onChangeExpanded: function ( expanded, args ) {
 			var section = this,
-<<<<<<< HEAD
 				container = section.container.closest( '.wp-full-overlay-sidebar-content' ),
 				content = section.container.find( '.accordion-section-content' ),
 				overlay = section.container.closest( '.wp-full-overlay' ),
@@ -668,17 +600,10 @@
 				resizeContentHeight, expand, position, scroll;
 
 			if ( expanded && ! section.container.hasClass( 'open' ) ) {
-=======
-				content = section.container.find( '.accordion-section-content' ),
-				expand;
-
-			if ( expanded ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 				if ( args.unchanged ) {
 					expand = args.completeCallback;
 				} else {
-<<<<<<< HEAD
 					container.scrollTop( 0 );
 					resizeContentHeight = function() {
 						var matchMedia, offset;
@@ -715,11 +640,6 @@
 								content.css( 'margin-top', ( parseInt( content.css( 'margin-top' ), 10 ) - offset ) );
 							}
 						}, 100 ) );
-=======
-					expand = function () {
-						content.stop().slideDown( args.duration, args.completeCallback );
-						section.container.addClass( 'open' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					};
 				}
 
@@ -737,7 +657,6 @@
 						completeCallback: expand
 					});
 				} else {
-<<<<<<< HEAD
 					api.panel.each( function( panel ) {
 						panel.collapse();
 					});
@@ -760,20 +679,11 @@
 				if ( args.completeCallback ) {
 					args.completeCallback();
 				}
-=======
-					expand();
-				}
-
-			} else {
-				section.container.removeClass( 'open' );
-				content.slideUp( args.duration, args.completeCallback );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		}
 	});
 
 	/**
-<<<<<<< HEAD
 	 * wp.customize.ThemesSection
 	 *
 	 * Custom section for themes that functions similarly to a backwards panel,
@@ -854,58 +764,11 @@
 
 			// Expand/Collapse section/panel.
 			section.container.find( '.change-theme, .customize-theme' ).on( 'click keydown', function( event ) {
-=======
-	 * @since 4.1.0
-	 *
-	 * @class
-	 * @augments wp.customize.Class
-	 */
-	api.Panel = Container.extend({
-		/**
-		 * @since 4.1.0
-		 *
-		 * @param  {String} id
-		 * @param  {Object} options
-		 */
-		initialize: function ( id, options ) {
-			var panel = this;
-			Container.prototype.initialize.call( panel, id, options );
-			panel.embed();
-			panel.deferred.embedded.done( function () {
-				panel.ready();
-			});
-		},
-
-		/**
-		 * Embed the container in the DOM when any parent panel is ready.
-		 *
-		 * @since 4.1.0
-		 */
-		embed: function () {
-			var panel = this,
-				parentContainer = $( '#customize-theme-controls > ul' ); // @todo This should be defined elsewhere, and to be configurable
-
-			if ( ! panel.container.parent().is( parentContainer ) ) {
-				parentContainer.append( panel.container );
-			}
-			panel.deferred.embedded.resolve();
-		},
-
-		/**
-		 * @since 4.1.0
-		 */
-		attachEvents: function () {
-			var meta, panel = this;
-
-			// Expand/Collapse accordion sections on click.
-			panel.container.find( '.accordion-section-title' ).on( 'click keydown', function( event ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 					return;
 				}
 				event.preventDefault(); // Keep this AFTER the key filter above
 
-<<<<<<< HEAD
 				if ( section.expanded() ) {
 					section.collapse();
 				} else {
@@ -971,75 +834,12 @@
 					}
 				});
 			});
-=======
-				if ( ! panel.expanded() ) {
-					panel.expand();
-				}
-			});
-
-			meta = panel.container.find( '.panel-meta:first' );
-
-			meta.find( '> .accordion-section-title' ).on( 'click keydown', function( event ) {
-				if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
-					return;
-				}
-				event.preventDefault(); // Keep this AFTER the key filter above
-
-				if ( meta.hasClass( 'cannot-expand' ) ) {
-					return;
-				}
-
-				var content = meta.find( '.accordion-section-content:first' );
-				if ( meta.hasClass( 'open' ) ) {
-					meta.toggleClass( 'open' );
-					content.slideUp( panel.defaultExpandedArguments.duration );
-				} else {
-					content.slideDown( panel.defaultExpandedArguments.duration );
-					meta.toggleClass( 'open' );
-				}
-			});
-
-		},
-
-		/**
-		 * Get the sections that are associated with this panel, sorted by their priority Value.
-		 *
-		 * @since 4.1.0
-		 *
-		 * @returns {Array}
-		 */
-		sections: function () {
-			return this._children( 'panel', 'section' );
-		},
-
-		/**
-		 * Return whether this panel has any active sections.
-		 *
-		 * @since 4.1.0
-		 *
-		 * @returns {boolean}
-		 */
-		isContextuallyActive: function () {
-			var panel = this,
-				sections = panel.sections(),
-				activeCount = 0;
-			_( sections ).each( function ( section ) {
-				if ( section.active() && section.isContextuallyActive() ) {
-					activeCount += 1;
-				}
-			} );
-			return ( activeCount !== 0 );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		},
 
 		/**
 		 * Update UI to reflect expanded state
 		 *
-<<<<<<< HEAD
 		 * @since 4.2.0
-=======
-		 * @since 4.1.0
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 *
 		 * @param {Boolean}  expanded
 		 * @param {Object}   args
@@ -1061,24 +861,15 @@
 				panel = this,
 				section = panel.container.closest( '.accordion-section' ),
 				overlay = section.closest( '.wp-full-overlay' ),
-<<<<<<< HEAD
 				container = section.closest( '.wp-full-overlay-sidebar-content' ),
 				siblings = container.find( '.open' ),
 				customizeBtn = section.find( '.customize-theme' ),
 				changeBtn = section.find( '.change-theme' ),
-=======
-				container = section.closest( '.accordion-container' ),
-				siblings = container.find( '.open' ),
-				topPanel = overlay.find( '#customize-theme-controls > ul > .accordion-section > .accordion-section-title' ).add( '#customize-info > .accordion-section-title' ),
-				backBtn = overlay.find( '.control-panel-back' ),
-				panelTitle = section.find( '.accordion-section-title' ).first(),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				content = section.find( '.control-panel-content' );
 
 			if ( expanded ) {
 
 				// Collapse any sibling sections/panels
-<<<<<<< HEAD
 				api.section.each( function ( otherSection ) {
 					if ( otherSection !== panel ) {
 						otherSection.collapse( { duration: args.duration } );
@@ -1086,62 +877,33 @@
 				});
 				api.panel.each( function ( otherPanel ) {
 					otherPanel.collapse( { duration: 0 } );
-=======
-				api.section.each( function ( section ) {
-					if ( ! section.panel() ) {
-						section.collapse( { duration: 0 } );
-					}
-				});
-				api.panel.each( function ( otherPanel ) {
-					if ( panel !== otherPanel ) {
-						otherPanel.collapse( { duration: 0 } );
-					}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				});
 
 				content.show( 0, function() {
 					position = content.offset().top;
 					scroll = container.scrollTop();
-<<<<<<< HEAD
 					content.css( 'margin-top', ( $( '#customize-header-actions' ).height() - position - scroll ) );
 					section.addClass( 'current-panel' );
 					overlay.addClass( 'in-themes-panel' );
 					container.scrollTop( 0 );
 					_.delay( panel.renderScreenshots, 10 ); // Wait for the controls
 					panel.$customizeSidebar.on( 'scroll.customize-themes-section', _.throttle( panel.renderScreenshots, 300 ) );
-=======
-					content.css( 'margin-top', ( 45 - position - scroll ) );
-					section.addClass( 'current-panel' );
-					overlay.addClass( 'in-sub-panel' );
-					container.scrollTop( 0 );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					if ( args.completeCallback ) {
 						args.completeCallback();
 					}
 				} );
-<<<<<<< HEAD
 				customizeBtn.focus();
 			} else {
 				siblings.removeClass( 'open' );
 				section.removeClass( 'current-panel' );
 				overlay.removeClass( 'in-themes-panel' );
 				panel.$customizeSidebar.off( 'scroll.customize-themes-section' );
-=======
-				topPanel.attr( 'tabindex', '-1' );
-				backBtn.attr( 'tabindex', '0' );
-				backBtn.focus();
-			} else {
-				siblings.removeClass( 'open' );
-				section.removeClass( 'current-panel' );
-				overlay.removeClass( 'in-sub-panel' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				content.delay( 180 ).hide( 0, function() {
 					content.css( 'margin-top', 'inherit' ); // Reset
 					if ( args.completeCallback ) {
 						args.completeCallback();
 					}
 				} );
-<<<<<<< HEAD
 				customizeBtn.attr( 'tabindex', '0' );
 				changeBtn.focus();
 				container.scrollTop( 0 );
@@ -2027,293 +1789,10 @@
 			this.params.attachment = {};
 			this.setting( '' );
 			this.renderContent(); // Not bound to setting change when emptying.
-=======
-				topPanel.attr( 'tabindex', '0' );
-				backBtn.attr( 'tabindex', '-1' );
-				panelTitle.focus();
-				container.scrollTop( 0 );
-			}
 		}
 	});
 
 	/**
-	 * A Customizer Control.
-	 *
-	 * A control provides a UI element that allows a user to modify a Customizer Setting.
-	 *
-	 * @see PHP class WP_Customize_Control.
-	 *
-	 * @class
-	 * @augments wp.customize.Class
-	 *
-	 * @param {string} id                            Unique identifier for the control instance.
-	 * @param {object} options                       Options hash for the control instance.
-	 * @param {object} options.params
-	 * @param {object} options.params.type           Type of control (e.g. text, radio, dropdown-pages, etc.)
-	 * @param {string} options.params.content        The HTML content for the control.
-	 * @param {string} options.params.priority       Order of priority to show the control within the section.
-	 * @param {string} options.params.active
-	 * @param {string} options.params.section
-	 * @param {string} options.params.label
-	 * @param {string} options.params.description
-	 * @param {string} options.params.instanceNumber Order in which this instance was created in relation to other instances.
-	 */
-	api.Control = api.Class.extend({
-		defaultActiveArguments: { duration: 'fast', completeCallback: $.noop },
-
-		initialize: function( id, options ) {
-			var control = this,
-				nodes, radios, settings;
-
-			control.params = {};
-			$.extend( control, options || {} );
-			control.id = id;
-			control.selector = '#customize-control-' + id.replace( /\]/g, '' ).replace( /\[/g, '-' );
-			control.templateSelector = 'customize-control-' + control.params.type + '-content';
-			control.container = control.params.content ? $( control.params.content ) : $( control.selector );
-
-			control.deferred = {
-				embedded: new $.Deferred()
-			};
-			control.section = new api.Value();
-			control.priority = new api.Value();
-			control.active = new api.Value();
-			control.activeArgumentsQueue = [];
-
-			control.elements = [];
-
-			nodes  = control.container.find('[data-customize-setting-link]');
-			radios = {};
-
-			nodes.each( function() {
-				var node = $( this ),
-					name;
-
-				if ( node.is( ':radio' ) ) {
-					name = node.prop( 'name' );
-					if ( radios[ name ] ) {
-						return;
-					}
-
-					radios[ name ] = true;
-					node = nodes.filter( '[name="' + name + '"]' );
-				}
-
-				api( node.data( 'customizeSettingLink' ), function( setting ) {
-					var element = new api.Element( node );
-					control.elements.push( element );
-					element.sync( setting );
-					element.set( setting() );
-				});
-			});
-
-			control.active.bind( function ( active ) {
-				var args = control.activeArgumentsQueue.shift();
-				args = $.extend( {}, control.defaultActiveArguments, args );
-				control.onChangeActive( active, args );
-			} );
-
-			control.section.set( control.params.section );
-			control.priority.set( isNaN( control.params.priority ) ? 10 : control.params.priority );
-			control.active.set( control.params.active );
-
-			api.utils.bubbleChildValueChanges( control, [ 'section', 'priority', 'active' ] );
-
-			// Associate this control with its settings when they are created
-			settings = $.map( control.params.settings, function( value ) {
-				return value;
-			});
-			api.apply( api, settings.concat( function () {
-				var key;
-
-				control.settings = {};
-				for ( key in control.params.settings ) {
-					control.settings[ key ] = api( control.params.settings[ key ] );
-				}
-
-				control.setting = control.settings['default'] || null;
-
-				control.embed();
-			}) );
-
-			control.deferred.embedded.done( function () {
-				control.ready();
-			});
-		},
-
-		/**
-		 * Embed the control into the page.
-		 */
-		embed: function () {
-			var control = this,
-				inject;
-
-			// Watch for changes to the section state
-			inject = function ( sectionId ) {
-				var parentContainer;
-				if ( ! sectionId ) { // @todo allow a control to be embedded without a section, for instance a control embedded in the frontend
-					return;
-				}
-				// Wait for the section to be registered
-				api.section( sectionId, function ( section ) {
-					// Wait for the section to be ready/initialized
-					section.deferred.embedded.done( function () {
-						parentContainer = section.container.find( 'ul:first' );
-						if ( ! control.container.parent().is( parentContainer ) ) {
-							parentContainer.append( control.container );
-							control.renderContent();
-						}
-						control.deferred.embedded.resolve();
-					});
-				});
-			};
-			control.section.bind( inject );
-			inject( control.section.get() );
-		},
-
-		/**
-		 * Triggered when the control's markup has been injected into the DOM.
-		 *
-		 * @abstract
-		 */
-		ready: function() {},
-
-		/**
-		 * Normal controls do not expand, so just expand its parent
-		 *
-		 * @param {Object} [params]
-		 */
-		expand: function ( params ) {
-			api.section( this.section() ).expand( params );
-		},
-
-		/**
-		 * Bring the containing section and panel into view and then
-		 * this control into view, focusing on the first input.
-		 */
-		focus: focus,
-
-		/**
-		 * Update UI in response to a change in the control's active state.
-		 * This does not change the active state, it merely handles the behavior
-		 * for when it does change.
-		 *
-		 * @since 4.1.0
-		 *
-		 * @param {Boolean}  active
-		 * @param {Object}   args
-		 * @param {Number}   args.duration
-		 * @param {Callback} args.completeCallback
-		 */
-		onChangeActive: function ( active, args ) {
-			if ( ! $.contains( document, this.container ) ) {
-				// jQuery.fn.slideUp is not hiding an element if it is not in the DOM
-				this.container.toggle( active );
-				if ( args.completeCallback ) {
-					args.completeCallback();
-				}
-			} else if ( active ) {
-				this.container.slideDown( args.duration, args.completeCallback );
-			} else {
-				this.container.slideUp( args.duration, args.completeCallback );
-			}
-		},
-
-		/**
-		 * @deprecated 4.1.0 Use this.onChangeActive() instead.
-		 */
-		toggle: function ( active ) {
-			return this.onChangeActive( active, this.defaultActiveArguments );
-		},
-
-		/**
-		 * Shorthand way to enable the active state.
-		 *
-		 * @since 4.1.0
-		 *
-		 * @param {Object} [params]
-		 * @returns {Boolean} false if already active
-		 */
-		activate: Container.prototype.activate,
-
-		/**
-		 * Shorthand way to disable the active state.
-		 *
-		 * @since 4.1.0
-		 *
-		 * @param {Object} [params]
-		 * @returns {Boolean} false if already inactive
-		 */
-		deactivate: Container.prototype.deactivate,
-
-		/**
-		 * Re-use _toggleActive from Container class.
-		 *
-		 * @access private
-		 */
-		_toggleActive: Container.prototype._toggleActive,
-
-		dropdownInit: function() {
-			var control      = this,
-				statuses     = this.container.find('.dropdown-status'),
-				params       = this.params,
-				toggleFreeze = false,
-				update       = function( to ) {
-					if ( typeof to === 'string' && params.statuses && params.statuses[ to ] )
-						statuses.html( params.statuses[ to ] ).show();
-					else
-						statuses.hide();
-				};
-
-			// Support the .dropdown class to open/close complex elements
-			this.container.on( 'click keydown', '.dropdown', function( event ) {
-				if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
-					return;
-				}
-
-				event.preventDefault();
-
-				if (!toggleFreeze)
-					control.container.toggleClass('open');
-
-				if ( control.container.hasClass('open') )
-					control.container.parent().parent().find('li.library-selected').focus();
-
-				// Don't want to fire focus and click at same time
-				toggleFreeze = true;
-				setTimeout(function () {
-					toggleFreeze = false;
-				}, 400);
-			});
-
-			this.setting.bind( update );
-			update( this.setting() );
-		},
-
-		/**
-		 * Render the control from its JS template, if it exists.
-		 *
-		 * The control's container must already exist in the DOM.
-		 *
-		 * @since 4.1.0
-		 */
-		renderContent: function () {
-			var template,
-				control = this;
-
-			// Replace the container element's content with the control.
-			if ( 0 !== $( '#tmpl-' + control.templateSelector ).length ) {
-				template = wp.template( control.templateSelector );
-				if ( template && control.container ) {
-					control.container.html( template( control.params ) );
-				}
-			}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
-		}
-	});
-
-	/**
-<<<<<<< HEAD
 	 * An upload control, which utilizes the media modal.
 	 *
 	 * @class
@@ -2381,50 +1860,12 @@
 	 * @augments wp.customize.Class
 	 */
 	api.BackgroundControl = api.UploadControl.extend({
-=======
-	 * A colorpicker control.
-	 *
-	 * @class
-	 * @augments wp.customize.Control
-	 * @augments wp.customize.Class
-	 */
-	api.ColorControl = api.Control.extend({
-		ready: function() {
-			var control = this,
-				picker = this.container.find('.color-picker-hex');
-
-			picker.val( control.setting() ).wpColorPicker({
-				change: function() {
-					control.setting.set( picker.wpColorPicker('color') );
-				},
-				clear: function() {
-					control.setting.set( false );
-				}
-			});
-
-			this.setting.bind( function ( value ) {
-				picker.val( value );
-				picker.wpColorPicker( 'color', value );
-			});
-		}
-	});
-
-	/**
-	 * An upload control, which utilizes the media modal.
-	 *
-	 * @class
-	 * @augments wp.customize.Control
-	 * @augments wp.customize.Class
-	 */
-	api.UploadControl = api.Control.extend({
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		/**
 		 * When the control's DOM structure is ready,
 		 * set up internal event bindings.
 		 */
 		ready: function() {
-<<<<<<< HEAD
 			api.UploadControl.prototype.ready.apply( this, arguments );
 		},
 
@@ -2456,31 +1897,12 @@
 
 		/**
 		 * Open the media modal to the library state.
-=======
-			var control = this;
-			// Shortcut so that we don't have to use _.bind every time we add a callback.
-			_.bindAll( control, 'restoreDefault', 'removeFile', 'openFrame', 'select' );
-
-			// Bind events, with delegation to facilitate re-rendering.
-			control.container.on( 'click keydown', '.upload-button', control.openFrame );
-			control.container.on( 'click keydown', '.thumbnail-image img', control.openFrame );
-			control.container.on( 'click keydown', '.default-button', control.restoreDefault );
-			control.container.on( 'click keydown', '.remove-button', control.removeFile );
-
-			// Re-render whenever the control's setting changes.
-			control.setting.bind( function () { control.renderContent(); } );
-		},
-
-		/**
-		 * Open the media modal.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 */
 		openFrame: function( event ) {
 			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 				return;
 			}
 
-<<<<<<< HEAD
 			this.initFrame();
 			this.frame.setState( 'library' ).open();
 		},
@@ -2669,22 +2091,11 @@
 	 * @augments wp.customize.Class
 	 */
 	api.SiteIconControl = api.CroppedImageControl.extend({
-=======
-			event.preventDefault();
-
-			if ( ! this.frame ) {
-				this.initFrame();
-			}
-
-			this.frame.open();
-		},
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		/**
 		 * Create a media modal select frame, and store it so the instance can be reused when needed.
 		 */
 		initFrame: function() {
-<<<<<<< HEAD
 			var l10n = _wpMediaViewsL10n;
 
 			this.frame = wp.media({
@@ -2705,23 +2116,10 @@
 					new wp.media.controller.SiteIconCropper({
 						imgSelectOptions: this.calculateImageSelectOptions,
 						control: this
-=======
-			this.frame = wp.media({
-				button: {
-					text: this.params.button_labels.frame_button
-				},
-				states: [
-					new wp.media.controller.Library({
-						title:     this.params.button_labels.frame_title,
-						library:   wp.media.query({ type: this.params.mime_type }),
-						multiple:  false,
-						date:      false
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					})
 				]
 			});
 
-<<<<<<< HEAD
 			this.frame.on( 'select', this.onSelect, this );
 			this.frame.on( 'cropped', this.onCropped, this );
 			this.frame.on( 'skippedcrop', this.onSkippedCrop, this );
@@ -2773,24 +2171,10 @@
 					icon = attachment.sizes[ size ];
 				}
 			} );
-=======
-			// When a file is selected, run a callback.
-			this.frame.on( 'select', this.select );
-		},
-
-		/**
-		 * Callback handler for when an attachment is selected in the media modal.
-		 * Gets the selected image information, and sets it within the control.
-		 */
-		select: function() {
-			// Get the attachment from the modal frame.
-			var attachment = this.frame.state().get( 'selection' ).first().toJSON();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			this.params.attachment = attachment;
 
 			// Set the Customizer setting; the callback takes care of rendering.
-<<<<<<< HEAD
 			this.setting( attachment.id );
 
 			// Update the icon in-browser.
@@ -2798,25 +2182,6 @@
 		},
 
 		/**
-=======
-			this.setting( attachment.url );
-		},
-
-		/**
-		 * Reset the setting to the default value.
-		 */
-		restoreDefault: function( event ) {
-			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
-				return;
-			}
-			event.preventDefault();
-
-			this.params.attachment = this.params.defaultAttachment;
-			this.setting( this.params.defaultAttachment.url );
- 		},
-
-		/**
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 * Called when the "Remove" link is clicked. Empties the setting.
 		 *
 		 * @param {object} event jQuery Event object
@@ -2830,66 +2195,7 @@
 			this.params.attachment = {};
 			this.setting( '' );
 			this.renderContent(); // Not bound to setting change when emptying.
-<<<<<<< HEAD
 			$( 'link[rel="icon"]' ).attr( 'href', '' );
-=======
-		},
-
-		// @deprecated
-		success: function() {},
-
-		// @deprecated
-		removerVisibility: function() {}
-	});
-
-	/**
-	 * A control for uploading images.
-	 *
-	 * This control no longer needs to do anything more
-	 * than what the upload control does in JS.
-	 *
-	 * @class
-	 * @augments wp.customize.UploadControl
-	 * @augments wp.customize.Control
-	 * @augments wp.customize.Class
-	 */
-	api.ImageControl = api.UploadControl.extend({
-		// @deprecated
-		thumbnailSrc: function() {}
-	});
-
-	/**
-	 * A control for uploading background images.
-	 *
-	 * @class
-	 * @augments wp.customize.UploadControl
-	 * @augments wp.customize.Control
-	 * @augments wp.customize.Class
-	 */
-	api.BackgroundControl = api.UploadControl.extend({
-
-		/**
-		 * When the control's DOM structure is ready,
-		 * set up internal event bindings.
-		 */
-		ready: function() {
-			api.UploadControl.prototype.ready.apply( this, arguments );
-		},
-
-		/**
-		 * Callback handler for when an attachment is selected in the media modal.
-		 * Does an additional AJAX request for setting the background context.
-		 */
-		select: function() {
-			api.UploadControl.prototype.select.apply( this, arguments );
-
-			wp.ajax.post( 'custom-background-add', {
-				nonce: _wpCustomizeBackground.nonces.add,
-				wp_customize: 'on',
-				theme: api.settings.theme.stylesheet,
-				attachment_id: this.params.attachment.id
-			} );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 	});
 
@@ -2900,24 +2206,15 @@
 	 */
 	api.HeaderControl = api.Control.extend({
 		ready: function() {
-<<<<<<< HEAD
 			this.btnRemove = $('#customize-control-header_image .actions .remove');
 			this.btnNew    = $('#customize-control-header_image .actions .new');
-=======
-			this.btnRemove        = $('#customize-control-header_image .actions .remove');
-			this.btnNew           = $('#customize-control-header_image .actions .new');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			_.bindAll(this, 'openMedia', 'removeImage');
 
 			this.btnNew.on( 'click', this.openMedia );
 			this.btnRemove.on( 'click', this.removeImage );
 
-<<<<<<< HEAD
 			api.HeaderTool.currentHeader = this.getInitialHeaderImage();
-=======
-			api.HeaderTool.currentHeader = new api.HeaderTool.ImageModel();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			new api.HeaderTool.CurrentView({
 				model: api.HeaderTool.currentHeader,
@@ -2941,7 +2238,6 @@
 		},
 
 		/**
-<<<<<<< HEAD
 		 * Returns a new instance of api.HeaderTool.ImageModel based on the currently
 		 * saved header image (if any).
 		 *
@@ -2974,8 +2270,6 @@
 		},
 
 		/**
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 * Returns a set of options, computed from the attached image data and
 		 * theme-specific data, to be fed to the imgAreaSelect plugin in
 		 * wp.media.view.Cropper.
@@ -3169,7 +2463,6 @@
 
 	});
 
-<<<<<<< HEAD
 	/**
 	 * wp.customize.ThemeControl
 	 *
@@ -3279,8 +2572,6 @@
 		}
 	});
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	// Change objects contained within the main customize object to Settings.
 	api.defaultConstructor = api.Setting;
 
@@ -3338,12 +2629,9 @@
 			this.bind( 'ready', this._ready );
 
 			this.bind( 'ready', function ( data ) {
-<<<<<<< HEAD
 
 				this.container.addClass( 'iframe-ready' );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				if ( ! data ) {
 					return;
 				}
@@ -3361,15 +2649,11 @@
 				_( constructs ).each( function ( activeConstructs, type ) {
 					api[ type ].each( function ( construct, id ) {
 						var active = !! ( activeConstructs && activeConstructs[ id ] );
-<<<<<<< HEAD
 						if ( active ) {
 							construct.activate();
 						} else {
 							construct.deactivate();
 						}
-=======
-						construct.active( active );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					} );
 				} );
 			} );
@@ -3421,11 +2705,7 @@
 				response = response.slice( 0, index ) + response.slice( index + signature.length );
 
 				// Create the iframe and inject the html content.
-<<<<<<< HEAD
 				self.iframe = $( '<iframe />', { 'title': api.l10n.previewIframeTitle } ).appendTo( self.container );
-=======
-				self.iframe = $('<iframe />').appendTo( self.container );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 				// Bind load event after the iframe has been added to the page;
 				// otherwise it will fire when injected into the DOM.
@@ -3457,14 +2737,9 @@
 				deferred.rejectWith( self, [ 'logged out' ] );
 			};
 
-<<<<<<< HEAD
 			if ( this.triedLogin ) {
 				return reject();
 			}
-=======
-			if ( this.triedLogin )
-				return reject();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			// Check if we have an admin cookie.
 			$.get( api.settings.url.ajax, {
@@ -3472,18 +2747,11 @@
 			}).fail( reject ).done( function( response ) {
 				var iframe;
 
-<<<<<<< HEAD
 				if ( '1' !== response ) {
 					reject();
 				}
 
 				iframe = $( '<iframe />', { 'src': self.previewUrl(), 'title': api.l10n.previewIframeTitle } ).hide();
-=======
-				if ( '1' !== response )
-					reject();
-
-				iframe = $('<iframe src="' + self.previewUrl() + '" />').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				iframe.appendTo( self.container );
 				iframe.load( function() {
 					self.triedLogin = true;
@@ -3531,13 +2799,7 @@
 		tmpl = api.settings.documentTitleTmpl;
 		title = tmpl.replace( '%s', documentTitle );
 		document.title = title;
-<<<<<<< HEAD
 		api.trigger( 'title', title );
-=======
-		if ( window !== window.parent ) {
-			window.parent.document.title = document.title;
-		}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	};
 
 	/**
@@ -3677,12 +2939,9 @@
 		refresh: function() {
 			var self = this;
 
-<<<<<<< HEAD
 			// Display loading indicator
 			this.send( 'loading-initiated' );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			this.abort();
 
 			this.loading = new api.PreviewFrame({
@@ -3715,15 +2974,10 @@
 			});
 
 			this.loading.fail( function( reason, location ) {
-<<<<<<< HEAD
 				self.send( 'loading-failed' );
 				if ( 'redirect' === reason && location ) {
 					self.previewUrl( location );
 				}
-=======
-				if ( 'redirect' === reason && location )
-					self.previewUrl( location );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 				if ( 'logged out' === reason ) {
 					if ( self.preview ) {
@@ -3734,14 +2988,9 @@
 					self.login().done( self.refresh );
 				}
 
-<<<<<<< HEAD
 				if ( 'cheatin' === reason ) {
 					self.cheatin();
 				}
-=======
-				if ( 'cheatin' === reason )
-					self.cheatin();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			});
 		},
 
@@ -3760,7 +3009,6 @@
 				url:     api.settings.url.login
 			});
 
-<<<<<<< HEAD
 			iframe = $( '<iframe />', { 'src': api.settings.url.login, 'title': api.l10n.loginIframeTitle } ).appendTo( this.container );
 
 			messenger.targetWindow( iframe[0].contentWindow );
@@ -3782,17 +3030,6 @@
 					previewer.cheatin();
 					deferred.reject();
 				});
-=======
-			iframe = $('<iframe src="' + api.settings.url.login + '" />').appendTo( this.container );
-
-			messenger.targetWindow( iframe[0].contentWindow );
-
-			messenger.bind( 'login', function() {
-				iframe.remove();
-				messenger.destroy();
-				delete previewer._login;
-				deferred.resolve();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			});
 
 			return this._login;
@@ -3800,7 +3037,6 @@
 
 		cheatin: function() {
 			$( document.body ).empty().addClass('cheatin').append( '<p>' + api.l10n.cheatin + '</p>' );
-<<<<<<< HEAD
 		},
 
 		refreshNonces: function() {
@@ -3823,13 +3059,10 @@
 			});
 
 			return deferred;
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 	});
 
 	api.controlConstructor = {
-<<<<<<< HEAD
 		color:         api.ColorControl,
 		media:         api.MediaControl,
 		upload:        api.UploadControl,
@@ -3844,16 +3077,6 @@
 	api.sectionConstructor = {
 		themes: api.ThemesSection
 	};
-=======
-		color:  api.ColorControl,
-		upload: api.UploadControl,
-		image:  api.ImageControl,
-		header: api.HeaderControl,
-		background: api.BackgroundControl
-	};
-	api.panelConstructor = {};
-	api.sectionConstructor = {};
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	$( function() {
 		api.settings = window._wpCustomizeSettings;
@@ -3864,25 +3087,15 @@
 			return;
 		}
 
-<<<<<<< HEAD
 		// Bail if any incompatibilities are found.
 		if ( ! $.support.postMessage || ( ! $.support.cors && api.settings.isCrossDomain ) ) {
 			return;
 		}
-=======
-		// Redirect to the fallback preview if any incompatibilities are found.
-		if ( ! $.support.postMessage || ( ! $.support.cors && api.settings.isCrossDomain ) )
-			return window.location = api.settings.url.fallback;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		var parent, topFocus,
 			body = $( document.body ),
 			overlay = body.children( '.wp-full-overlay' ),
-<<<<<<< HEAD
 			title = $( '#customize-info .panel-title.site-title' ),
-=======
-			title = $( '#customize-info .theme-name.site-title' ),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			closeBtn = $( '.customize-controls-close' ),
 			saveBtn = $( '#save' );
 
@@ -3897,23 +3110,14 @@
 		});
 
 		// Expand/Collapse the main customizer customize info.
-<<<<<<< HEAD
 		$( '.customize-info' ).find( '> .accordion-section-title .customize-help-toggle' ).on( 'click keydown', function( event ) {
-=======
-		$( '#customize-info' ).find( '> .accordion-section-title' ).on( 'click keydown', function( event ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 				return;
 			}
 			event.preventDefault(); // Keep this AFTER the key filter above
 
-<<<<<<< HEAD
 			var section = $( this ).closest( '.accordion-section' ),
 				content = section.find( '.customize-panel-description:first' );
-=======
-			var section = $( this ).parent(),
-				content = section.find( '.accordion-section-content:first' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			if ( section.hasClass( 'cannot-expand' ) ) {
 				return;
@@ -3922,17 +3126,11 @@
 			if ( section.hasClass( 'open' ) ) {
 				section.toggleClass( 'open' );
 				content.slideUp( api.Panel.prototype.defaultExpandedArguments.duration );
-<<<<<<< HEAD
 				$( this ).attr( 'aria-expanded', false );
 			} else {
 				content.slideDown( api.Panel.prototype.defaultExpandedArguments.duration );
 				section.toggleClass( 'open' );
 				$( this ).attr( 'aria-expanded', true );
-=======
-			} else {
-				content.slideDown( api.Panel.prototype.defaultExpandedArguments.duration );
-				section.toggleClass( 'open' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		});
 
@@ -3964,15 +3162,7 @@
 			},
 
 			save: function() {
-<<<<<<< HEAD
 				var self = this,
-=======
-				var self  = this,
-					query = $.extend( this.query(), {
-						action: 'customize_save',
-						nonce:  this.nonce.save
-					} ),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					processing = api.state( 'processing' ),
 					submitWhenDoneProcessing,
 					submit;
@@ -3980,15 +3170,11 @@
 				body.addClass( 'saving' );
 
 				submit = function () {
-<<<<<<< HEAD
 					var request, query;
 					query = $.extend( self.query(), {
 						nonce:  self.nonce.save
 					} );
 					request = wp.ajax.post( 'customize_save', query );
-=======
-					var request = $.post( api.settings.url.ajax, query );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 					api.trigger( 'save', request );
 
@@ -3996,7 +3182,6 @@
 						body.removeClass( 'saving' );
 					} );
 
-<<<<<<< HEAD
 					request.fail( function ( response ) {
 						if ( '0' === response ) {
 							response = 'not_logged_in';
@@ -4008,43 +3193,22 @@
 						if ( 'invalid_nonce' === response ) {
 							self.cheatin();
 						} else if ( 'not_logged_in' === response ) {
-=======
-					request.done( function( response ) {
-						// Check if the user is logged out.
-						if ( '0' === response ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 							self.preview.iframe.hide();
 							self.login().done( function() {
 								self.save();
 								self.preview.iframe.show();
 							} );
-<<<<<<< HEAD
 						}
 						api.trigger( 'error', response );
 					} );
 
 					request.done( function( response ) {
-=======
-							return;
-						}
-
-						// Check for cheaters.
-						if ( '-1' === response ) {
-							self.cheatin();
-							return;
-						}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						// Clear setting dirty states
 						api.each( function ( value ) {
 							value._dirty = false;
 						} );
-<<<<<<< HEAD
 
 						api.trigger( 'saved', response );
-=======
-						api.trigger( 'saved' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					} );
 				};
 
@@ -4068,25 +3232,18 @@
 			$.extend( this.nonce, nonce );
 		});
 
-<<<<<<< HEAD
 		// Refresh the nonces if login sends updated nonces over.
 		api.bind( 'nonce-refresh', function( nonce ) {
 			$.extend( api.settings.nonce, nonce );
 			$.extend( api.previewer.nonce, nonce );
 		});
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// Create Settings
 		$.each( api.settings.settings, function( id, data ) {
 			api.create( id, id, data.value, {
 				transport: data.transport,
-<<<<<<< HEAD
 				previewer: api.previewer,
 				dirty: !! data.dirty
-=======
-				previewer: api.previewer
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			} );
 		});
 
@@ -4207,10 +3364,7 @@
 			if ( wasReflowed && activeElement ) {
 				activeElement.focus();
 			}
-<<<<<<< HEAD
 			api.trigger( 'pane-contents-reflowed' );
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}, api );
 		api.bind( 'ready', api.reflowPaneContents );
 		api.reflowPaneContents = _.debounce( api.reflowPaneContents, 100 );
@@ -4284,21 +3438,6 @@
 			event.preventDefault();
 		});
 
-<<<<<<< HEAD
-=======
-		// Go back to the top-level Customizer accordion.
-		$( '#customize-header-actions' ).on( 'click keydown', '.control-panel-back', function( event ) {
-			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
-				return;
-			}
-
-			event.preventDefault(); // Keep this AFTER the key filter above
-			api.panel.each( function ( panel ) {
-				panel.collapse();
-			});
-		});
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		closeBtn.keydown( function( event ) {
 			if ( 9 === event.which ) // tab
 				return;
@@ -4307,7 +3446,6 @@
 			event.preventDefault();
 		});
 
-<<<<<<< HEAD
 		$( '.collapse-sidebar' ).on( 'click', function() {
 			if ( 'true' === $( this ).attr( 'aria-expanded' ) ) {
 				$( this ).attr({ 'aria-expanded': 'false', 'aria-label': api.l10n.expandSidebar });
@@ -4319,18 +3457,11 @@
 		});
 
 		$( '.customize-controls-preview-toggle' ).on( 'click keydown', function( event ) {
-=======
-		$('.collapse-sidebar').on( 'click keydown', function( event ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			if ( api.utils.isKeydownButNotEnterEvent( event ) ) {
 				return;
 			}
 
-<<<<<<< HEAD
 			overlay.toggleClass( 'preview-only' );
-=======
-			overlay.toggleClass( 'collapsed' ).toggleClass( 'expanded' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			event.preventDefault();
 		});
 
@@ -4359,12 +3490,9 @@
 		// Prompt user with AYS dialog if leaving the Customizer with unsaved changes
 		$( window ).on( 'beforeunload', function () {
 			if ( ! api.state( 'saved' )() ) {
-<<<<<<< HEAD
 				setTimeout( function() {
 					overlay.removeClass( 'customize-loading' );
 				}, 1 );
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				return api.l10n.saveAlert;
 			}
 		} );
@@ -4385,14 +3513,11 @@
 				window.location = api.settings.url.activated;
 		});
 
-<<<<<<< HEAD
 		// Pass titles to the parent
 		api.bind( 'title', function( newTitle ) {
 			parent.send( 'title', newTitle );
 		});
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// Initialize the connection with the parent frame.
 		parent.send( 'ready' );
 
@@ -4446,7 +3571,6 @@
 			});
 		});
 
-<<<<<<< HEAD
 		// Change previewed URL to the homepage when changing the page_on_front.
 		api( 'show_on_front', 'page_on_front', function( showOnFront, pageOnFront ) {
 			var updatePreviewUrl = function() {
@@ -4468,8 +3592,6 @@
 			});
 		});
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		api.trigger( 'ready' );
 
 		// Make sure left column gets focus

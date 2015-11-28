@@ -195,11 +195,7 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
  *                                      $categorize is true. Accepts 'ASC' (ascending) or 'DESC' (descending).
  *                                      Default 'ASC'.
  * }
-<<<<<<< HEAD
  * @return string|void Will only return if echo option is set to not echo. Default is not return anything.
-=======
- * @return string|null Will only return if echo option is set to not echo. Default is not return anything.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_list_bookmarks( $args = '' ) {
 	$defaults = array(
@@ -218,15 +214,12 @@ function wp_list_bookmarks( $args = '' ) {
 
 	$output = '';
 
-<<<<<<< HEAD
 	if ( ! is_array( $r['class'] ) ) {
 		$r['class'] = explode( ' ', $r['class'] );
 	}
  	$r['class'] = array_map( 'sanitize_html_class', $r['class'] );
  	$r['class'] = trim( join( ' ', $r['class'] ) );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	if ( $r['categorize'] ) {
 		$cats = get_terms( 'link_category', array(
 			'name__like' => $r['category_name'],

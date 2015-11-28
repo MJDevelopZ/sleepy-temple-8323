@@ -33,10 +33,6 @@ function tinymce_include() {
  */
 function documentation_link() {
 	_deprecated_function( __FUNCTION__, '2.5' );
-<<<<<<< HEAD
-=======
-	return;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -207,10 +203,6 @@ function remove_option_update_handler( $option_group, $option_name, $sanitize_ca
 **/
 function codepress_get_lang( $filename ) {
 	_deprecated_function( __FUNCTION__, '3.0' );
-<<<<<<< HEAD
-=======
-	return;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -221,10 +213,6 @@ function codepress_get_lang( $filename ) {
 **/
 function codepress_footer_js() {
 	_deprecated_function( __FUNCTION__, '3.0' );
-<<<<<<< HEAD
-=======
-	return;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -235,10 +223,6 @@ function codepress_footer_js() {
 **/
 function use_codepress() {
 	_deprecated_function( __FUNCTION__, '3.0' );
-<<<<<<< HEAD
-=======
-	return;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -486,11 +470,7 @@ class WP_User_Search {
 	var $paging_text;
 
 	/**
-<<<<<<< HEAD
 	 * PHP5 Constructor - Sets up the object properties.
-=======
-	 * PHP4 Constructor - Sets up the object properties.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @since 2.1.0
 	 *
@@ -499,11 +479,7 @@ class WP_User_Search {
 	 * @param string $role Role name.
 	 * @return WP_User_Search
 	 */
-<<<<<<< HEAD
 	function __construct( $search_term = '', $page = '', $role = '' ) {
-=======
-	function WP_User_Search ($search_term = '', $page = '', $role = '') {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		_deprecated_function( __FUNCTION__, '3.1', 'WP_User_Query' );
 
 		$this->search_term = wp_unslash( $search_term );
@@ -517,7 +493,6 @@ class WP_User_Search {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * PHP4 Constructor - Sets up the object properties.
 	 *
 	 * @since 2.1.0
@@ -532,8 +507,6 @@ class WP_User_Search {
 	}
 
 	/**
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * {@internal Missing Short Description}}
 	 *
 	 * {@internal Missing Long Description}}
@@ -589,11 +562,7 @@ class WP_User_Search {
 		if ( $this->results )
 			$this->total_users_for_query = $wpdb->get_var("SELECT COUNT(DISTINCT($wpdb->users.ID))" . $this->query_from . $this->query_where); // no limit
 		else
-<<<<<<< HEAD
 			$this->search_errors = new WP_Error('no_matching_users_found', __('No users found.'));
-=======
-			$this->search_errors = new WP_Error('no_matching_users_found', __('No matching users were found!'));
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -617,15 +586,9 @@ class WP_User_Search {
 	function do_paging() {
 		if ( $this->total_users_for_query > $this->users_per_page ) { // have to page the results
 			$args = array();
-<<<<<<< HEAD
 			if ( ! empty($this->search_term) )
 				$args['usersearch'] = urlencode($this->search_term);
 			if ( ! empty($this->role) )
-=======
-			if( ! empty($this->search_term) )
-				$args['usersearch'] = urlencode($this->search_term);
-			if( ! empty($this->role) )
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$args['role'] = urlencode($this->role);
 
 			$this->paging_text = paginate_links( array(
@@ -783,11 +746,8 @@ function wp_dashboard_quick_press_output() {
  * @deprecated 3.3.0
  * @deprecated Use wp_editor()
  * @see wp_editor()
-<<<<<<< HEAD
  *
  * @staticvar int $num
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_tiny_mce( $teeny = false, $settings = false ) {
 	_deprecated_function( __FUNCTION__, '3.3', 'wp_editor()' );

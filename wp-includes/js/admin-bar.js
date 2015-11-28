@@ -3,13 +3,8 @@
 if ( typeof(jQuery) != 'undefined' ) {
 	if ( typeof(jQuery.fn.hoverIntent) == 'undefined' ) {
 		/* jshint ignore:start */
-<<<<<<< HEAD
 		// hoverIntent v1.8.1 - Copy of wp-includes/js/hoverIntent.min.js
 		!function(a){a.fn.hoverIntent=function(b,c,d){var e={interval:100,sensitivity:6,timeout:0};e="object"==typeof b?a.extend(e,b):a.isFunction(c)?a.extend(e,{over:b,out:c,selector:d}):a.extend(e,{over:b,out:b,selector:c});var f,g,h,i,j=function(a){f=a.pageX,g=a.pageY},k=function(b,c){return c.hoverIntent_t=clearTimeout(c.hoverIntent_t),Math.sqrt((h-f)*(h-f)+(i-g)*(i-g))<e.sensitivity?(a(c).off("mousemove.hoverIntent",j),c.hoverIntent_s=!0,e.over.apply(c,[b])):(h=f,i=g,c.hoverIntent_t=setTimeout(function(){k(b,c)},e.interval),void 0)},l=function(a,b){return b.hoverIntent_t=clearTimeout(b.hoverIntent_t),b.hoverIntent_s=!1,e.out.apply(b,[a])},m=function(b){var c=a.extend({},b),d=this;d.hoverIntent_t&&(d.hoverIntent_t=clearTimeout(d.hoverIntent_t)),"mouseenter"===b.type?(h=c.pageX,i=c.pageY,a(d).on("mousemove.hoverIntent",j),d.hoverIntent_s||(d.hoverIntent_t=setTimeout(function(){k(c,d)},e.interval))):(a(d).off("mousemove.hoverIntent",j),d.hoverIntent_s&&(d.hoverIntent_t=setTimeout(function(){l(c,d)},e.timeout)))};return this.on({"mouseenter.hoverIntent":m,"mouseleave.hoverIntent":m},e.selector)}}(jQuery);
-=======
-		// hoverIntent r6 - Copy of wp-includes/js/hoverIntent.min.js
-		(function(a){a.fn.hoverIntent=function(m,d,h){var j={interval:100,sensitivity:7,timeout:0};if(typeof m==="object"){j=a.extend(j,m)}else{if(a.isFunction(d)){j=a.extend(j,{over:m,out:d,selector:h})}else{j=a.extend(j,{over:m,out:m,selector:d})}}var l,k,g,f;var e=function(n){l=n.pageX;k=n.pageY};var c=function(o,n){n.hoverIntent_t=clearTimeout(n.hoverIntent_t);if((Math.abs(g-l)+Math.abs(f-k))<j.sensitivity){a(n).off("mousemove.hoverIntent",e);n.hoverIntent_s=1;return j.over.apply(n,[o])}else{g=l;f=k;n.hoverIntent_t=setTimeout(function(){c(o,n)},j.interval)}};var i=function(o,n){n.hoverIntent_t=clearTimeout(n.hoverIntent_t);n.hoverIntent_s=0;return j.out.apply(n,[o])};var b=function(p){var o=jQuery.extend({},p);var n=this;if(n.hoverIntent_t){n.hoverIntent_t=clearTimeout(n.hoverIntent_t)}if(p.type=="mouseenter"){g=o.pageX;f=o.pageY;a(n).on("mousemove.hoverIntent",e);if(n.hoverIntent_s!=1){n.hoverIntent_t=setTimeout(function(){c(o,n)},j.interval)}}else{a(n).off("mousemove.hoverIntent",e);if(n.hoverIntent_s==1){n.hoverIntent_t=setTimeout(function(){i(o,n)},j.timeout)}}};return this.on({"mouseenter.hoverIntent":b,"mouseleave.hoverIntent":b},j.selector)}})(jQuery);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		/* jshint ignore:end */
 	}
 	jQuery(document).ready(function($){
@@ -33,15 +28,12 @@ if ( typeof(jQuery) != 'undefined' ) {
 					e.stopPropagation();
 					e.preventDefault();
 					el.addClass('hover');
-<<<<<<< HEAD
 				} else if ( ! $( e.target ).closest( 'div' ).hasClass( 'ab-sub-wrapper' ) ) {
 					// We're dealing with an already-touch-opened menu genericon (we know el.hasClass('hover')),
 					// so close it on a second tap and prevent propag and defaults. See #29906
 					e.stopPropagation();
 					e.preventDefault();
 					el.removeClass('hover');
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 
 				if ( unbind ) {
@@ -105,13 +97,9 @@ if ( typeof(jQuery) != 'undefined' ) {
 			if ( e.which != 13 )
 				return;
 
-<<<<<<< HEAD
 			var target = $(e.target),
 				wrap = target.closest('.ab-sub-wrapper'),
 				parentHasHover = target.parent().hasClass('hover');
-=======
-			var target = $(e.target), wrap = target.closest('ab-sub-wrapper');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			e.stopPropagation();
 			e.preventDefault();
@@ -120,15 +108,11 @@ if ( typeof(jQuery) != 'undefined' ) {
 				wrap = $('#wpadminbar .quicklinks');
 
 			wrap.find('.menupop').removeClass('hover');
-<<<<<<< HEAD
 
 			if ( ! parentHasHover ) {
 				target.parent().toggleClass('hover');
 			}
 
-=======
-			target.parent().toggleClass('hover');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			target.siblings('.ab-sub-wrapper').find('.ab-item').each(refresh);
 		}).each(refresh);
 
@@ -145,7 +129,6 @@ if ( typeof(jQuery) != 'undefined' ) {
 			target.siblings('.ab-sub-wrapper').find('.ab-item').each(refresh);
 		});
 
-<<<<<<< HEAD
 		adminbar.click( function(e) {
 			if ( e.target.id != 'wpadminbar' && e.target.id != 'wp-admin-bar-top-secondary' ) {
 				return;
@@ -154,14 +137,6 @@ if ( typeof(jQuery) != 'undefined' ) {
 			adminbar.find( 'li.menupop.hover' ).removeClass( 'hover' );
 			$( 'html, body' ).animate( { scrollTop: 0 }, 'fast' );
 			e.preventDefault();
-=======
-		$('#wpadminbar').click( function(e) {
-			if ( e.target.id != 'wpadminbar' && e.target.id != 'wp-admin-bar-top-secondary' )
-				return;
-
-			e.preventDefault();
-			$('html, body').animate({ scrollTop: 0 }, 'fast');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		});
 
 		// fix focus bug in WebKit
@@ -182,7 +157,6 @@ if ( typeof(jQuery) != 'undefined' ) {
 			}
 		});
 
-<<<<<<< HEAD
 		$( '#adminbar-search' ).on({
 			focus: function() {
 				$( '#adminbarsearch' ).addClass( 'adminbar-focused' );
@@ -191,8 +165,6 @@ if ( typeof(jQuery) != 'undefined' ) {
 			}
 		} );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// Empty sessionStorage on logging out
 		if ( 'sessionStorage' in window ) {
 			$('#wp-admin-bar-logout a').click( function() {

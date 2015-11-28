@@ -53,10 +53,6 @@ function activate_sitewide_plugin() {
  */
 function deactivate_sitewide_plugin( $plugin = false ) {
 	_deprecated_function(__FUNCTION__, '3.0', 'deactivate_plugin()' );
-<<<<<<< HEAD
-=======
-	return;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -68,34 +64,25 @@ function is_wpmu_sitewide_plugin( $file ) {
 	return is_network_only_plugin( $file );
 }
 
-<<<<<<< HEAD
 /**
  * @deprecated 3.4.0
  * @see WP_Theme::get_allowed_on_network()
  */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function get_site_allowed_themes() {
 	_deprecated_function( __FUNCTION__, '3.4', 'WP_Theme::get_allowed_on_network()' );
 	return array_map( 'intval', WP_Theme::get_allowed_on_network() );
 }
 
-<<<<<<< HEAD
 /**
  * @deprecated 3.4.0
  * @see WP_Theme::get_allowed_on_site()
  */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function wpmu_get_blog_allowedthemes( $blog_id = 0 ) {
 	_deprecated_function( __FUNCTION__, '3.4', 'WP_Theme::get_allowed_on_site()' );
 	return array_map( 'intval', WP_Theme::get_allowed_on_site( $blog_id ) );
 }
 
-<<<<<<< HEAD
 /**
  * @deprecated
  */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function ms_deprecated_blogs_file() {}

@@ -14,20 +14,15 @@ class POMO_Reader {
 	var $endian = 'little';
 	var $_post = '';
 
-<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct() {
-=======
-	function POMO_Reader() {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$this->is_overloaded = ((ini_get("mbstring.func_overload") & 2) != 0) && function_exists('mb_substr');
 		$this->_pos = 0;
 	}
 
 	/**
-<<<<<<< HEAD
 	 * PHP4 constructor.
 	 */
 	public function POMO_Reader() {
@@ -35,8 +30,6 @@ class POMO_Reader {
 	}
 
 	/**
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * Sets the endianness of the file.
 	 *
 	 * @param $endian string 'big' or 'little'
@@ -57,11 +50,7 @@ class POMO_Reader {
 			return false;
 		$endian_letter = ('big' == $this->endian)? 'N' : 'V';
 		$int = unpack($endian_letter, $bytes);
-<<<<<<< HEAD
 		return reset( $int );
-=======
-		return array_shift($int);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -122,33 +111,23 @@ class POMO_Reader {
 		}
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return int
 	 */
-=======
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function pos() {
 		return $this->_pos;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return true
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function is_resource() {
 		return true;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return true
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function close() {
 		return true;
 	}
@@ -161,17 +140,12 @@ class POMO_FileReader extends POMO_Reader {
 	/**
 	 * @param string $filename
 	 */
-<<<<<<< HEAD
 	function __construct( $filename ) {
-=======
-	function POMO_FileReader($filename) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		parent::POMO_Reader();
 		$this->_f = fopen($filename, 'rb');
 	}
 
 	/**
-<<<<<<< HEAD
 	 * PHP4 constructor.
 	 */
 	public function POMO_FileReader( $filename ) {
@@ -179,8 +153,6 @@ class POMO_FileReader extends POMO_Reader {
 	}
 
 	/**
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param int $bytes
 	 */
 	function read($bytes) {
@@ -199,42 +171,30 @@ class POMO_FileReader extends POMO_Reader {
 		return true;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return bool
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function is_resource() {
 		return is_resource($this->_f);
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return bool
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function feof() {
 		return feof($this->_f);
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return bool
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function close() {
 		return fclose($this->_f);
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return string
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function read_all() {
 		$all = '';
 		while ( !$this->feof() )
@@ -253,21 +213,16 @@ class POMO_StringReader extends POMO_Reader {
 
 	var $_str = '';
 
-<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct( $str = '' ) {
-=======
-	function POMO_StringReader($str = '') {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		parent::POMO_Reader();
 		$this->_str = $str;
 		$this->_pos = 0;
 	}
 
 	/**
-<<<<<<< HEAD
 	 * PHP4 constructor.
 	 */
 	public function POMO_StringReader( $str = '' ) {
@@ -275,8 +230,6 @@ class POMO_StringReader extends POMO_Reader {
 	}
 
 	/**
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param string $bytes
 	 * @return string
 	 */
@@ -297,22 +250,16 @@ class POMO_StringReader extends POMO_Reader {
 		return $this->_pos;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return int
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function length() {
 		return $this->strlen($this->_str);
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return string
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function read_all() {
 		return $this->substr($this->_str, $this->_pos, $this->strlen($this->_str));
 	}
@@ -325,21 +272,16 @@ if ( !class_exists( 'POMO_CachedFileReader' ) ):
  * Reads the contents of the file in the beginning.
  */
 class POMO_CachedFileReader extends POMO_StringReader {
-<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
 	function __construct( $filename ) {
-=======
-	function POMO_CachedFileReader($filename) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		parent::POMO_StringReader();
 		$this->_str = file_get_contents($filename);
 		if (false === $this->_str)
 			return false;
 		$this->_pos = 0;
 	}
-<<<<<<< HEAD
 
 	/**
 	 * PHP4 constructor.
@@ -347,8 +289,6 @@ class POMO_CachedFileReader extends POMO_StringReader {
 	public function POMO_CachedFileReader( $filename ) {
 		self::__construct( $filename );
 	}
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 endif;
 
@@ -357,7 +297,6 @@ if ( !class_exists( 'POMO_CachedIntFileReader' ) ):
  * Reads the contents of the file in the beginning.
  */
 class POMO_CachedIntFileReader extends POMO_CachedFileReader {
-<<<<<<< HEAD
 	/**
 	 * PHP5 constructor.
 	 */
@@ -374,10 +313,3 @@ class POMO_CachedIntFileReader extends POMO_CachedFileReader {
 }
 endif;
 
-=======
-	function POMO_CachedIntFileReader($filename) {
-		parent::POMO_CachedFileReader($filename);
-	}
-}
-endif;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

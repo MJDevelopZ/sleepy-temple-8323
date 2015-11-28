@@ -26,8 +26,4 @@ getID3 Commercial License: http://getid3.org/#gCL (payment required)
 *****************************************************************
 
 Copies of each of the above licenses are included in the 'licenses'
-<<<<<<< HEAD
 directory of the getID3 distribution.
-=======
-directory of the getID3 distribution.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

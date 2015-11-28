@@ -126,10 +126,7 @@
 	overflow: hidden;
 	clip: rect(0 0 0 0);
 	border: 0;
-<<<<<<< HEAD
 	word-wrap: normal !important; /* many screen reader and browser combinations announce broken words as they would appear visually */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .screen-reader-shortcut {
@@ -181,12 +178,8 @@ p.popular-tags,
 .wp-editor-container,
 .popular-tags,
 .feature-filter,
-<<<<<<< HEAD
 .imgedit-group,
 .comment-ays {
-=======
-.imgedit-group {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	border: 1px solid #e5e5e5;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
@@ -199,12 +192,8 @@ p.popular-tags,
 .widgets-holder-wrap,
 .popular-tags,
 .feature-filter,
-<<<<<<< HEAD
 .imgedit-group,
 .comment-ays {
-=======
-.imgedit-group {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	background: #fff;
 }
 
@@ -239,10 +228,7 @@ body.modal-open {
 
 body.mobile.modal-open #wpwrap {
 	overflow: hidden;
-<<<<<<< HEAD
 	position: fixed;
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	height: 100%;
 }
 
@@ -259,11 +245,7 @@ td {
 }
 
 a {
-<<<<<<< HEAD
 	color: #0073aa;
-=======
-	color: #0074a2;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	-webkit-transition-property: border, background, color;
 	transition-property: border, background, color;
 	-webkit-transition-duration: .05s;
@@ -279,18 +261,11 @@ div {
 
 a:hover,
 a:active {
-<<<<<<< HEAD
 	color: #00a0d2;
 }
 
 a:focus,
 a:focus .media-icon img {
-=======
-	color: #2ea2cc;
-}
-
-a:focus {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	color: #124964;
     -webkit-box-shadow:
     	0 0 0 1px #5b9dd9,
@@ -354,25 +329,16 @@ h1 {
 	margin: .67em 0;
 }
 
-<<<<<<< HEAD
 .wrap > h1,
 h2 {
 	color: #23282d;
-=======
-h2 {
-	color: #222;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	font-size: 1.5em;
 	margin: .83em 0;
 	font-weight: 400;
 }
 
 h3 {
-<<<<<<< HEAD
 	color: #23282d;
-=======
-	color: #222;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	font-size: 1.3em;
 	margin: 1em 0;
 }
@@ -430,20 +396,12 @@ ol.ol-decimal > li {
 	margin: 0 0 0.5em;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .ltr {
 	direction: ltr;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .code,
 code {
 	font-family: Consolas, Monaco, monospace;
@@ -514,7 +472,6 @@ code {
 	padding: 8px 10px;
 }
 
-<<<<<<< HEAD
 .widefat thead th,
 .widefat thead td {
 	border-bottom: 1px solid #e1e1e1;
@@ -522,13 +479,6 @@ code {
 
 .widefat tfoot th,
 .widefat tfoot td {
-=======
-.widefat thead th {
-	border-bottom: 1px solid #e1e1e1;
-}
-
-.widefat tfoot th {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	border-top: 1px solid #e1e1e1;
 	border-bottom: none;
 }
@@ -549,25 +499,17 @@ code {
 	line-height: 1.5em;
 }
 
-<<<<<<< HEAD
 .widefat th,
 .widefat thead td,
 .widefat tfoot td {
-=======
-.widefat th {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	text-align: left;
 	line-height: 1.3em;
 	font-size: 14px;
 }
 
-<<<<<<< HEAD
 .widefat th input,
 .widefat thead td input,
 .widefat tfoot td input {
-=======
-.widefat th input {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin: 0 0 0 8px;
 	padding: 0;
 	vertical-align: text-top;
@@ -579,13 +521,9 @@ code {
 	vertical-align: top;
 }
 
-<<<<<<< HEAD
 .widefat th input[type=checkbox],
 .widefat thead td input[type=checkbox],
 .widefat tfoot td input[type=checkbox] {
-=======
-.widefat th input[type=checkbox] {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin-top: -1px;
 }
 
@@ -593,7 +531,6 @@ code {
 	padding: 9px 0 22px;
 }
 
-<<<<<<< HEAD
 .widefat thead td.check-column,
 .widefat tbody th.check-column,
 .widefat tfoot td.check-column {
@@ -602,19 +539,6 @@ code {
 
 .widefat thead td.check-column,
 .widefat tfoot td.check-column {
-=======
-.widefat.media .check-column {
-	padding-top: 8px;
-}
-
-.widefat thead th.check-column,
-.widefat tbody th.check-column,
-.widefat tfoot th.check-column {
-	padding: 11px 0 0 3px;
-}
-
-.widefat thead th.check-column {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	padding-top: 10px;
 }
 
@@ -643,24 +567,14 @@ code {
 	margin: 10px 20px 0 2px;
 }
 
-<<<<<<< HEAD
 .wrap h1,
-=======
-.attention {
-	color: #2ea2cc;
-}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .wrap h2,
 .subtitle {
 	font-weight: normal;
 	margin: 0;
 }
 
-<<<<<<< HEAD
 .wrap h1,
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .wrap h2 {
 	font-size: 23px;
 	font-weight: 400;
@@ -674,15 +588,10 @@ code {
 	padding-left: 25px;
 }
 
-<<<<<<< HEAD
 .wrap .add-new-h2, /* deprecated */
 .wrap .add-new-h2:active, /* deprecated */
 .wrap .page-title-action,
 .wrap .page-title-action:active {
-=======
-.wrap .add-new-h2,
-.wrap .add-new-h2:active {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin-left: 4px;
 	padding: 4px 8px;
 	position: relative;
@@ -697,7 +606,6 @@ code {
 	font-size: 13px;
 }
 
-<<<<<<< HEAD
 .wrap .add-new-h2:hover, /* deprecated */
 .wrap .page-title-action:hover {
 	background: #00a0d2;
@@ -705,14 +613,6 @@ code {
 }
 
 .wrap h1.long-header {
-=======
-.wrap .add-new-h2:hover {
-	background: #2ea2cc;
-	color: #fff;
-}
-
-.wrap h2.long-header {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	padding-right: 0;
 }
 
@@ -739,14 +639,9 @@ div#widgets-right .widget-top:hover,
 	color: #000;
 }
 
-<<<<<<< HEAD
 .striped > tbody > :nth-child(odd),
 ul.striped > :nth-child(odd),
 .alternate {
-=======
-.alternate,
-.alt {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	background-color: #f9f9f9;
 }
 
@@ -769,17 +664,10 @@ td.help {
 
 .wp-ui-primary {
 	color: #fff;
-<<<<<<< HEAD
 	background-color: #32373c;
 }
 .wp-ui-text-primary {
 	color: #32373c;
-=======
-	background-color: #333;
-}
-.wp-ui-text-primary {
-	color: #333;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .wp-ui-highlight {
@@ -802,7 +690,6 @@ td.help {
 	color: #999;
 }
 
-<<<<<<< HEAD
 /* For emoji replacement images */
 img.emoji {
 	display: inline !important;
@@ -817,8 +704,6 @@ img.emoji {
 	box-shadow: none !important;
 }
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /*------------------------------------------------------------------------------
   1.0 - Text Styles
 ------------------------------------------------------------------------------*/
@@ -835,24 +720,16 @@ img.emoji {
 .side-info,
 #your-profile #rich_editing,
 .widefat thead th,
-<<<<<<< HEAD
 .widefat thead td,
 .widefat tfoot th,
 .widefat tfoot td {
-=======
-.widefat tfoot th {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	line-height: 1.4em;
 }
 
 .widget .widget-top,
 .menu-item-handle {
 	background: #fafafa;
-<<<<<<< HEAD
 	color: #23282d;
-=======
-	color: #222;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .postbox .hndle,
@@ -872,7 +749,6 @@ img.emoji {
 }
 
 /* @todo can we combine these into a class or use an existing dashicon one? */
-<<<<<<< HEAD
 .welcome-panel .welcome-panel-close:before,
 .tagchecklist span a:before,
 #bulk-titles div a:before,
@@ -882,49 +758,25 @@ img.emoji {
 	content: '\f153';
 	display: block;
 	font: normal 16px/20px 'dashicons';
-=======
-#welcome-panel.welcome-panel .welcome-panel-close:before,
-.tagchecklist span a:before,
-#bulk-titles div a:before {
-	background: none;
-	color: #bbb;
-	content: '\f153';
-	display: block !important;
-	font: normal 16px/1 'dashicons';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	speak: none;
 	height: 20px;
 	text-align: center;
 	width: 20px;
-<<<<<<< HEAD
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
 .welcome-panel .welcome-panel-close:before {
-=======
-	-webkit-font-smoothing: antialiased !important;
-}
-
-#welcome-panel.welcome-panel .welcome-panel-close:before {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin: 0;
 }
 
 .tagchecklist span a:before,
 #bulk-titles div a:before {
-<<<<<<< HEAD
 	margin: 1px 0;
 }
 
 .welcome-panel .welcome-panel-close:hover:before,
 .welcome-panel .welcome-panel-close:focus:before,
-=======
-	margin: 2px 0;
-}
-
-#welcome-panel.welcome-panel .welcome-panel-close:hover:before,
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .tagchecklist span a:hover:before,
 #bulk-titles div a:hover:before {
 	color: #c00;
@@ -1093,11 +945,7 @@ th.action-links {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	margin: 12px 0 25px;
-<<<<<<< HEAD
 	padding: 0 10px;
-=======
-	padding: 0 20px;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	width: 100%;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
@@ -1166,22 +1014,14 @@ th.action-links {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	border-bottom: 4px solid #666;
-<<<<<<< HEAD
 	color: #23282d;
-=======
-	color: #222;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .filter-links li > a:hover,
 .filter-links li > a:focus,
 .show-filters .filter-links a.current:hover,
 .show-filters .filter-links a.current:focus {
-<<<<<<< HEAD
 	color: #00a0d2;
-=======
-	color: #2ea2cc;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .wp-filter .search-form {
@@ -1239,11 +1079,7 @@ th.action-links {
 
 .wp-filter .drawer-toggle:hover,
 .wp-filter .drawer-toggle:hover:before {
-<<<<<<< HEAD
 	color: #00a0d2;
-=======
-	color: #2ea2cc;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .wp-filter .drawer-toggle.current:before {
@@ -1332,11 +1168,7 @@ th.action-links {
 
 .wp-filter .button.clear-filters {
 	display: none;
-<<<<<<< HEAD
 	margin-left: 10px;
-=======
-	margin: 0 0 20px 10px;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .filtered-by {
@@ -1472,7 +1304,6 @@ div.error p,
 	padding: 2px;
 }
 
-<<<<<<< HEAD
 .wp-core-ui .notice.is-dismissible {
 	padding-right: 38px;
 	position: relative;
@@ -1513,32 +1344,15 @@ div.updated {
 
 .notice-warning {
 	border-color: #ffba00;
-=======
-.notice-success,
-div.updated {
-     border-color: #7ad03a;
-}
-
-.notice-warning {
-    border-color: #ffba00;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .notice-error,
 div.error {
-<<<<<<< HEAD
 	border-color: #dd3d36;
 }
 
 .notice-info {
 	border-color: #00a0d2;
-=======
-    border-color: #dd3d36;
-}
-
-.notice-info {
-    border-color: #2ea2cc;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .wrap .notice,
@@ -1603,10 +1417,6 @@ form.upgrade .hint {
   6.0 - Admin Header
 ------------------------------------------------------------------------------*/
 #adminmenu a,
-<<<<<<< HEAD
-=======
-#sidemenu a,
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #taglist a,
 #catlist a {
 	text-decoration: none;
@@ -1636,17 +1446,6 @@ form.upgrade .hint {
 	margin: 0 20px 0 0;
 }
 
-<<<<<<< HEAD
-=======
-#screen-meta-links a {
-	padding: 3px 6px 3px 16px;
-}
-
-#screen-meta-links a:focus {
-	outline: none;
-}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /* screen options and help tabs revert */
 #screen-meta {
 	display: none;
@@ -1676,7 +1475,6 @@ form.upgrade .hint {
 	top: 0;
 }
 
-<<<<<<< HEAD
 #screen-meta-links .show-settings {
 	border: 0;
 	background: none;
@@ -1694,28 +1492,6 @@ form.upgrade .hint {
 }
 
 #screen-meta-links .show-settings:after {
-=======
-#screen-meta-links a {
-	color: #777;
-}
-
-#screen-meta-links a:hover,
-#screen-meta-links a:active,
-#screen-meta-links a:focus {
-	color: #333;
-}
-
-#screen-meta-links a.show-settings {
-	display: block;
-	font-size: 13px;
-	height: 22px;
-	line-height: 22px;
-	text-decoration: none;
-	z-index: 1;
-}
-
-#screen-meta-links a:after {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	right: 0;
 	content: '\f140';
 	font: normal 20px/1 'dashicons';
@@ -1728,7 +1504,6 @@ form.upgrade .hint {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-decoration: none !important;
-<<<<<<< HEAD
 	color: #b4b9be;
 }
 
@@ -1736,18 +1511,6 @@ form.upgrade .hint {
 	content: '\f142';
 }
 
-=======
-	color: #bbb;
-}
-
-#screen-meta-links a.screen-meta-active:after {
-	content: '\f142';
-}
-
-#screen-meta-links a.show-settings:hover {
-	text-decoration: none;
-}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /* end screen options and help tabs */
 
 .toggle-arrow {
@@ -1792,7 +1555,6 @@ form.upgrade .hint {
 	display: none;
 }
 
-<<<<<<< HEAD
 .metabox-prefs .screen-options {
 	padding-top: 10px;
 }
@@ -1813,8 +1575,6 @@ form.upgrade .hint {
 	padding-right: 0;
 }
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /*------------------------------------------------------------------------------
   6.2 - Help Menu
 ------------------------------------------------------------------------------*/
@@ -1875,21 +1635,13 @@ form.upgrade .hint {
 }
 
 .contextual-help-tabs a:hover {
-<<<<<<< HEAD
 	color: #32373c;
-=======
-	color: #333;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .contextual-help-tabs .active {
 	padding: 0;
 	margin: 0 -1px 0 0;
-<<<<<<< HEAD
 	border-left: 2px solid #00a0d2;
-=======
-	border-left: 2px solid #2ea2cc;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	background: #f6fbfd;
 	-webkit-box-shadow: 0 2px 0 rgba(0,0,0,0.02), 0 1px 0 rgba(0,0,0,0.02);
 	box-shadow: 0 2px 0 rgba(0,0,0,0.02), 0 1px 0 rgba(0,0,0,0.02);
@@ -1897,11 +1649,7 @@ form.upgrade .hint {
 
 .contextual-help-tabs .active a {
 	border-color: #e1e1e1;
-<<<<<<< HEAD
 	color: #32373c;
-=======
-	color: #333;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .contextual-help-tabs-wrap {
@@ -1942,7 +1690,6 @@ html.wp-toolbar {
 	box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 .widefat th,
 .widefat td {
 	color: #555;
@@ -1951,37 +1698,14 @@ html.wp-toolbar {
 .widefat th,
 .widefat thead td,
 .widefat tfoot td {
-=======
-.narrow {
-	width: 70%;
-	margin-bottom: 40px;
-}
-
-.narrow p {
-	line-height: 150%;
-}
-
-.widefat th,
-.widefat td {
-	overflow: hidden;
-	color: #555;
-}
-
-.widefat th {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	font-weight: normal;
 }
 
 .widefat thead tr th,
-<<<<<<< HEAD
 .widefat thead tr td,
 .widefat tfoot tr th,
 .widefat tfoot tr td {
 	color: #32373c;
-=======
-.widefat tfoot tr th {
-	color: #333;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .widefat td p {
@@ -1991,11 +1715,7 @@ html.wp-toolbar {
 .widefat p,
 .widefat ol,
 .widefat ul {
-<<<<<<< HEAD
 	color: #32373c;
-=======
-	color: #333;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .widefat .column-comment p {
@@ -2018,11 +1738,7 @@ html.wp-toolbar {
 }
 
 .metabox-holder .postbox-container .empty-container {
-<<<<<<< HEAD
 	border: 3px dashed #b4b9be;
-=======
-	border: 3px dashed #bbb;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	height: 250px;
 }
 
@@ -2081,11 +1797,7 @@ html.wp-toolbar {
 }
 
 .sortable-placeholder {
-<<<<<<< HEAD
 	border: 1px dashed #b4b9be;
-=======
-	border: 1px dashed #bbb;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin-bottom: 20px;
 }
 
@@ -2226,10 +1938,7 @@ html.wp-toolbar {
 	color: #000;
 }
 
-<<<<<<< HEAD
 h1.nav-tab-wrapper,
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 h2.nav-tab-wrapper,
 h3.nav-tab-wrapper {
 	border-bottom: 1px solid #ccc;
@@ -2237,10 +1946,7 @@ h3.nav-tab-wrapper {
 	padding-left: 10px;
 }
 
-<<<<<<< HEAD
 h1 .nav-tab,
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 h2 .nav-tab {
 	padding: 6px 10px;
 	font-weight: bold;
@@ -2257,28 +1963,19 @@ h2 .nav-tab {
 	background: url(../images/spinner.gif) no-repeat;
 	-webkit-background-size: 20px 20px;
 	background-size: 20px 20px;
-<<<<<<< HEAD
 	display: inline-block;
 	visibility: hidden;
 	float: right;
 	vertical-align: middle;
-=======
-	display: none;
-	float: right;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	opacity: 0.7;
 	filter: alpha(opacity=70);
 	width: 20px;
 	height: 20px;
-<<<<<<< HEAD
 	margin: 4px 10px 0;
 }
 
 .spinner.is-active {
 	visibility: visible;
-=======
-	margin: 2px 5px 0;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 #template div {
@@ -2296,59 +1993,6 @@ h2 .nav-tab {
 	text-decoration: none;
 }
 
-<<<<<<< HEAD
-=======
-#sidemenu {
-	margin: -30px 15px 0 315px;
-	list-style: none;
-	position: relative;
-	float: right;
-	padding-left: 10px;
-	font-size: 12px;
-}
-
-#sidemenu a {
-	padding: 0 7px;
-	display: block;
-	float: left;
-	line-height: 28px;
-	border-top: 1px solid #f9f9f9;
-	border-bottom: 1px solid #dfdfdf;
-	background-color: #f9f9f9;
-	-webkit-transition: none;
-	transition: none;
-}
-
-#sidemenu li {
-	display: inline;
-	line-height: 200%;
-	list-style: none;
-	text-align: center;
-	white-space: nowrap;
-	margin: 0;
-	padding: 0;
-}
-
-/* @todo: remove border radius */
-#sidemenu a.current {
-	font-weight: normal;
-	padding-left: 6px;
-	padding-right: 6px;
-	-webkit-border-top-left-radius: 3px;
-	border-top-left-radius: 3px;
-	-webkit-border-top-right-radius: 3px;
-	border-top-right-radius: 3px;
-	border: 1px solid #dfdfdf;
-	border-bottom-color: #f1f1f1;
-	background-color: #f1f1f1;
-	color: #000;
-}
-
-#sidemenu li a .count-0 {
-	display: none;
-}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .plugin-install #description,
 .plugin-install-network #description {
 	width: 60%;
@@ -2360,10 +2004,7 @@ table .column-rating {
 	text-align: left;
 }
 
-<<<<<<< HEAD
 .attention,
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .error-message {
 	color: red;
 	font-weight: 600;
@@ -2385,7 +2026,6 @@ body.iframe {
 
 /* - Only used once or twice in all of WP - deprecate for global style
 ------------------------------------------------------------------------------*/
-<<<<<<< HEAD
 .media-icon {
 	width: 62px; /* icon + border */
 	text-align: center;
@@ -2393,23 +2033,6 @@ body.iframe {
 
 .media-icon img {
 	border: 1px solid #e7e7e7;
-=======
-td.media-icon {
-	text-align: center;
-	width: 80px;
-	padding-top: 8px;
-	padding-bottom: 8px;
-}
-
-td.media-icon img {
-	max-width: 80px;
-	max-height: 60px;
-	width: auto;
-	height: auto;
-}
-
-td.image-icon img {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	border: 1px solid rgba(0, 0, 0, 0.07);
 }
 
@@ -2432,7 +2055,6 @@ td.image-icon img {
 	margin-top: 0;
 }
 
-<<<<<<< HEAD
 .edit-comment-author {
 	font-size: 14px;
 	line-height: 1.4;
@@ -2441,8 +2063,6 @@ td.image-icon img {
 	margin: 2px 0 0 9px;
 }
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #namediv h3 label {
 	vertical-align: baseline;
 }
@@ -2540,11 +2160,7 @@ div.star-holder .star-rating {
 	-webkit-transition: color .1s ease-in 0;
 	transition: color .1s ease-in 0;
 	text-align: center;
-<<<<<<< HEAD
 	color: #ffb900;
-=======
-	color: #0074a2;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .star-rating .star-full:before {
@@ -2584,10 +2200,7 @@ div.action-links {
 
 #plugin-information-scrollable {
 	overflow: auto;
-<<<<<<< HEAD
 	-webkit-overflow-scrolling: touch;
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	height: 100%;
 }
 
@@ -2611,13 +2224,8 @@ div.action-links {
 	margin-right: 0;
 	height: 250px;
 	bottom: 250px;
-<<<<<<< HEAD
 	-webkit-background-size: cover;
 	background-size: cover;
-=======
-	-webkit-background-size: 100% auto;
-	background-size: 100% auto;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 #plugin-information-title h2 {
@@ -2693,11 +2301,7 @@ div.action-links {
 	border: 1px solid #ddd;
 	border-bottom-color: #fff;
 	padding-top: 8px;
-<<<<<<< HEAD
 	color: #32373c;
-=======
-	color: #333;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 #plugin-information-tabs.with-banner a.current {
@@ -2807,11 +2411,7 @@ div.action-links {
 
 #plugin-information .counter-bar {
 	height: 17px;
-<<<<<<< HEAD
 	background-color: #ffc733; /* slightly lighter than stars due to larger expanse */
-=======
-	background-color: #fddb5a;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	float: left;
 }
 
@@ -2851,20 +2451,12 @@ div.action-links {
 	background: #f3f3f3;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .section {
 	direction: ltr;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .section ul,
 #plugin-information .section ol {
 	list-style-type: disc;
@@ -2892,11 +2484,7 @@ div.action-links {
 	box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.3 );
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information #section-screenshots li p {
 	font-style: italic;
 	padding-left: 20px;
@@ -2908,11 +2496,7 @@ div.action-links {
 	border: 1px solid #ccc;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .review {
 	overflow: hidden; /* clearfix */
 	width: 100%;
@@ -2924,11 +2508,7 @@ div.action-links {
 	overflow: hidden; /* clearfix */
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .review-title-section h4 {
 	display: inline-block;
 	float: left;
@@ -2941,40 +2521,24 @@ div.action-links {
 	padding-top: 2px;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .reviewer-info .avatar {
 	float: left;
 	margin: 4px 6px 0 0;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .reviewer-info .star-rating {
 	float: left;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .review-meta {
 	float: left;
 	margin-left: 0.75em;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #plugin-information .review-body {
 	float: left;
 	width: 100%;
@@ -3050,10 +2614,6 @@ body.index-php #TB_window {
 }
 
 @media print,
-<<<<<<< HEAD
-=======
-	(-o-min-device-pixel-ratio: 5/4),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	(-webkit-min-device-pixel-ratio: 1.25),
 	(min-resolution: 120dpi) {
 
@@ -3117,11 +2677,7 @@ body.index-php #TB_closeWindowButton:focus,
 body.index-php #TB_closeWindowButton:focus .tb-close-icon,
 body.index-php .tb-close-icon:focus,
 body.index-php .tb-close-icon:hover {
-<<<<<<< HEAD
 	color: #00a0d2;
-=======
-	color: #2ea2cc;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	outline: none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -3230,11 +2786,7 @@ img {
 	outline: none;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #template textarea,
 #docs-list {
 	direction: ltr;
@@ -3333,11 +2885,7 @@ img {
 .item-edit,
 .sidebar-name-arrow,
 .accordion-section-title:after {
-<<<<<<< HEAD
 	color: #a0a5aa;
-=======
-	color: #aaa;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .widget-action:hover,
@@ -3376,28 +2924,17 @@ img {
 }
 
 /*!
-<<<<<<< HEAD
  * jQuery UI Draggable/Sortable 1.11.4
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
-=======
- * jQuery UI Draggable/Sortable 1.11.2
- * http://jqueryui.com
- *
- * Copyright 2014 jQuery Foundation and other contributors
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * Released under the MIT license.
  * http://jquery.org/license
  */
 .ui-draggable-handle,
 .ui-sortable-handle {
 	-ms-touch-action: none;
-<<<<<<< HEAD
 	touch-action: none;
-=======
-	touch-action:     none;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /* Accordion */
@@ -3451,11 +2988,7 @@ img {
 
 .accordion-section-title:hover:after,
 .accordion-section-title:focus:after {
-<<<<<<< HEAD
 	border-color: #a0a5aa transparent;
-=======
-	border-color: #aaa transparent;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .cannot-expand .accordion-section-title {
@@ -3482,11 +3015,7 @@ img {
 .js .control-section .accordion-section-title:hover,
 .js .control-section.open .accordion-section-title,
 .js .control-section .accordion-section-title:focus {
-<<<<<<< HEAD
 	color: #23282d;
-=======
-	color: #222;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	background: #f5f5f5;
 }
 
@@ -3495,7 +3024,6 @@ img {
 	border-bottom: 1px solid #dfdfdf;
 }
 
-<<<<<<< HEAD
 /* Edit Site */
 .network-admin .edit-site-actions {
 	margin-top: 0;
@@ -3644,8 +3172,6 @@ img {
 	text-decoration: none;
 }
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /* =Media Queries
 -------------------------------------------------------------- */
 
@@ -3700,10 +3226,6 @@ img {
  * HiDPI Displays
  */
 @media print,
-<<<<<<< HEAD
-=======
-  (-o-min-device-pixel-ratio: 5/4),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 120dpi) {
 	/* Back-compat for pre-3.8 */
@@ -3780,7 +3302,6 @@ img {
 		display: none !important;
 	}
 
-<<<<<<< HEAD
 	.wrap .add-new-h2, /* deprecated */
 	.wrap .add-new-h2:active, /* deprecated */
 	.wrap .page-title-action,
@@ -3788,11 +3309,6 @@ img {
 		padding: 10px 15px;
 		font-size: 14px;
 		white-space: nowrap;
-=======
-	.wrap .add-new-h2, .wrap .add-new-h2:active {
-		padding: 10px 15px;
-		font-size: 14px;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	.wp-color-result {
@@ -3807,21 +3323,16 @@ img {
 	}
 
 	/* Feedback Messages */
-<<<<<<< HEAD
 	.notice,
 	.wrap div.updated,
 	.wrap div.error,
 	.media-upload-form div.error {
-=======
-	.wrap div.updated, .wrap div.error, .media-upload-form div.error {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		margin: 20px 0 10px 0;
 		padding: 5px 10px;
 		font-size: 14px;
 		line-height: 175%;
 	}
 
-<<<<<<< HEAD
 	.wp-core-ui .notice.is-dismissible {
 		padding-right: 46px;
 	}
@@ -3830,8 +3341,6 @@ img {
 		padding: 13px;
 	}
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	.wrap .icon32 + h2 {
 		margin-top: -2px;
 	}
@@ -3906,13 +3415,10 @@ img {
 	#comments-form .checkforspam {
 		display: none;
 	}
-<<<<<<< HEAD
 
 	.edit-comment-author {
 		margin: 2px 0 0;
 	}
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /* Smartphone */
@@ -3936,7 +3442,6 @@ img {
 		overflow-x: hidden;
 	}
 }
-<<<<<<< HEAD
 
 @media screen and (max-width: 320px) {
 	/* Prevent default center alignment and larger font for the Right Now widget when
@@ -3946,5 +3451,3 @@ img {
 		text-align: left;
 	}
 }
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

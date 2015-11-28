@@ -115,11 +115,8 @@ class WP {
 	 *
 	 * @since 2.0.0
 	 *
-<<<<<<< HEAD
 	 * @global WP_Rewrite $wp_rewrite
 	 *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param array|string $extra_query_vars Set the extra query variables.
 	 */
 	public function parse_request($extra_query_vars = '') {
@@ -140,19 +137,11 @@ class WP {
 		$this->query_vars = array();
 		$post_type_query_vars = array();
 
-<<<<<<< HEAD
 		if ( is_array( $extra_query_vars ) ) {
 			$this->extra_query_vars = & $extra_query_vars;
 		} elseif ( ! empty( $extra_query_vars ) ) {
 			parse_str( $extra_query_vars, $this->extra_query_vars );
 		}
-=======
-		if ( is_array($extra_query_vars) )
-			$this->extra_query_vars = & $extra_query_vars;
-		else if (! empty($extra_query_vars))
-			parse_str($extra_query_vars, $this->extra_query_vars);
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// Process PATH_INFO, REQUEST_URI, and 404 for permalinks.
 
 		// Fetch the rewrite rules.
@@ -170,10 +159,7 @@ class WP {
 			list( $req_uri ) = explode( '?', $_SERVER['REQUEST_URI'] );
 			$self = $_SERVER['PHP_SELF'];
 			$home_path = trim( parse_url( home_url(), PHP_URL_PATH ), '/' );
-<<<<<<< HEAD
 			$home_path_regex = sprintf( '|^%s|i', preg_quote( $home_path, '|' ) );
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			// Trim path info from the end and the leading home path from the
 			// front. For path info requests, this leaves us with the requesting
@@ -181,7 +167,6 @@ class WP {
 			// requested permalink.
 			$req_uri = str_replace($pathinfo, '', $req_uri);
 			$req_uri = trim($req_uri, '/');
-<<<<<<< HEAD
 			$req_uri = preg_replace( $home_path_regex, '', $req_uri );
 			$req_uri = trim($req_uri, '/');
 			$pathinfo = trim($pathinfo, '/');
@@ -189,15 +174,6 @@ class WP {
 			$pathinfo = trim($pathinfo, '/');
 			$self = trim($self, '/');
 			$self = preg_replace( $home_path_regex, '', $self );
-=======
-			$req_uri = preg_replace("|^$home_path|i", '', $req_uri);
-			$req_uri = trim($req_uri, '/');
-			$pathinfo = trim($pathinfo, '/');
-			$pathinfo = preg_replace("|^$home_path|i", '', $pathinfo);
-			$pathinfo = trim($pathinfo, '/');
-			$self = trim($self, '/');
-			$self = preg_replace("|^$home_path|i", '', $self);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$self = trim($self, '/');
 
 			// The requested permalink is in $pathinfo for path info requests and
@@ -333,12 +309,9 @@ class WP {
 			}
 		}
 
-<<<<<<< HEAD
 		// Resolve conflicts between posts with numeric slugs and date archive queries.
 		$this->query_vars = wp_resolve_numeric_slug_conflicts( $this->query_vars );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		foreach ( (array) $this->private_query_vars as $var) {
 			if ( isset($this->extra_query_vars[$var]) )
 				$this->query_vars[$var] = $this->extra_query_vars[$var];
@@ -390,11 +363,7 @@ class WP {
 			} elseif ( in_array( $status, array( 403, 500, 502, 503 ) ) ) {
 				$exit_required = true;
 			}
-<<<<<<< HEAD
 		} elseif ( empty( $this->query_vars['feed'] ) ) {
-=======
-		} else if ( empty($this->query_vars['feed']) ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$headers['Content-Type'] = get_option('html_type') . '; charset=' . get_option('blog_charset');
 		} else {
 			// We're showing a feed, so WP is indeed the only thing that last changed
@@ -525,7 +494,6 @@ class WP {
 	 * be taken when naming global variables that might interfere with the
 	 * WordPress environment.
 	 *
-<<<<<<< HEAD
 	 * @global WP_Query     $wp_query
 	 * @global string       $query_string Query string for the loop.
 	 * @global array        $posts The found posts.
@@ -534,15 +502,6 @@ class WP {
 	 * @global int          $more Only set, if single page or post.
 	 * @global int          $single If single page or post. Only set, if single page or post.
 	 * @global WP_User      $authordata Only set, if author archive.
-=======
-	 * @global string $query_string Query string for the loop.
-	 * @global array $posts The found posts.
-	 * @global WP_Post|null $post The current post, if available.
-	 * @global string $request The SQL statement for the request.
-	 * @global int $more Only set, if single page or post.
-	 * @global int $single If single page or post. Only set, if single page or post.
-	 * @global WP_User $authordata Only set, if author archive.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @since 2.0.0
 	 */
@@ -581,11 +540,8 @@ class WP {
 	 * Set up the Loop based on the query variables.
 	 *
 	 * @since 2.0.0
-<<<<<<< HEAD
 	 *
 	 * @global WP_Query $wp_the_query
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function query_posts() {
 		global $wp_the_query;
@@ -594,11 +550,7 @@ class WP {
  	}
 
  	/**
-<<<<<<< HEAD
 	 * Set the Headers for 404, if nothing is found for requested URL.
-=======
- 	 * Set the Headers for 404, if nothing is found for requested URL.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * Issue a 404 if a request doesn't match any posts and doesn't match
 	 * any object (e.g. an existing-but-empty category, tag, author) and a 404 was not already
@@ -607,11 +559,8 @@ class WP {
 	 * Otherwise, issue a 200.
 	 *
 	 * @since 2.0.0
-<<<<<<< HEAD
 	 *
 	 * @global WP_Query $wp_query
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  	 */
 	public function handle_404() {
 		global $wp_query;
@@ -683,10 +632,6 @@ class WP {
 		 */
 		do_action_ref_array( 'wp', array( &$this ) );
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -727,87 +672,12 @@ class WP_MatchesMapRegex {
 	public $_pattern = '(\$matches\[[1-9]+[0-9]*\])'; // magic number
 
 	/**
-<<<<<<< HEAD
-=======
-	 * Make private properties readable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name Property to get.
-	 * @return mixed Property.
-	 */
-	public function __get( $name ) {
-		return $this->$name;
-	}
-
-	/**
-	 * Make private properties settable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name  Property to set.
-	 * @param mixed  $value Property value.
-	 * @return mixed Newly-set property.
-	 */
-	public function __set( $name, $value ) {
-		return $this->$name = $value;
-	}
-
-	/**
-	 * Make private properties checkable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name Property to check if set.
-	 * @return bool Whether the property is set.
-	 */
-	public function __isset( $name ) {
-		return isset( $this->$name );
-	}
-
-	/**
-	 * Make private properties un-settable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param string $name Property to unset.
-	 */
-	public function __unset( $name ) {
-		unset( $this->$name );
-	}
-
-	/**
-	 * Make private/protected methods readable for backwards compatibility.
-	 *
-	 * @since 4.0.0
-	 * @access public
-	 *
-	 * @param callable $name      Method to call.
-	 * @param array    $arguments Arguments to pass when calling.
-	 * @return mixed|bool Return value of the callback, false otherwise.
-	 */
-	public function __call( $name, $arguments ) {
-		return call_user_func_array( array( $this, $name ), $arguments );
-	}
-
-	/**
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * constructor
 	 *
 	 * @param string $subject subject if regex
 	 * @param array  $matches data to use in map
-<<<<<<< HEAD
 	 */
 	public function __construct($subject, $matches) {
-=======
-	 * @return self
-	 */
-	public function WP_MatchesMapRegex($subject, $matches) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$this->_subject = $subject;
 		$this->_matches = $matches;
 		$this->output = $this->_map();
@@ -818,13 +688,9 @@ class WP_MatchesMapRegex {
 	 *
 	 * static helper function to ease use
 	 *
-<<<<<<< HEAD
 	 * @static
 	 * @access public
 	 *
-=======
-	 * @access public
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param string $subject subject
 	 * @param array  $matches data used for substitution
 	 * @return string
@@ -856,8 +722,4 @@ class WP_MatchesMapRegex {
 		$index = intval(substr($matches[0], 9, -1));
 		return ( isset( $this->_matches[$index] ) ? urlencode($this->_matches[$index]) : '' );
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }

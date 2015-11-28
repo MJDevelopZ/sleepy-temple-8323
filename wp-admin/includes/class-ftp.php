@@ -121,13 +121,6 @@ class ftp_base {
 	var $AutoAsciiExt;
 
 	/* Constructor */
-<<<<<<< HEAD
-=======
-	function ftp_base($port_mode=FALSE) {
-		$this->__construct($port_mode);
-	}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function __construct($port_mode=FALSE, $verb=FALSE, $le=FALSE) {
 		$this->LocalEcho=$le;
 		$this->Verbose=$verb;
@@ -160,13 +153,10 @@ class ftp_base {
 		elseif(strtoupper(substr(PHP_OS, 0, 3)) === 'MAC') $this->OS_local=FTP_OS_Mac;
 	}
 
-<<<<<<< HEAD
 	function ftp_base($port_mode=FALSE) {
 		$this->__construct($port_mode);
 	}
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 // <!-- --------------------------------------------------------------------------------------- -->
 // <!--       Public functions                                                                  -->
 // <!-- --------------------------------------------------------------------------------------- -->

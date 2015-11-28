@@ -85,11 +85,7 @@ unset( $help );
 
 $screen->set_help_sidebar(
 	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
-<<<<<<< HEAD
 	'<p>' . __( '<a href="https://codex.wordpress.org/Dashboard_Screen" target="_blank">Documentation on Dashboard</a>' ) . '</p>' .
-=======
-	'<p>' . __( '<a href="http://codex.wordpress.org/Dashboard_Screen" target="_blank">Documentation on Dashboard</a>' ) . '</p>' .
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __( '<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
 );
 
@@ -97,11 +93,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
-<<<<<<< HEAD
 	<h1><?php echo esc_html( $title ); ?></h1>
-=======
-	<h2><?php echo esc_html( $title ); ?></h2>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <?php if ( has_action( 'welcome_panel' ) && current_user_can( 'edit_theme_options' ) ) :
 	$classes = 'welcome-panel';

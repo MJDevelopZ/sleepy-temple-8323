@@ -166,15 +166,11 @@ function get_blog_list( $start = 0, $num = 10, $deprecated = '' ) {
 	global $wpdb;
 	$blogs = $wpdb->get_results( $wpdb->prepare("SELECT blog_id, domain, path FROM $wpdb->blogs WHERE site_id = %d AND public = '1' AND archived = '0' AND mature = '0' AND spam = '0' AND deleted = '0' ORDER BY registered DESC", $wpdb->siteid), ARRAY_A );
 
-<<<<<<< HEAD
 	$blog_list = array();
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	foreach ( (array) $blogs as $details ) {
 		$blog_list[ $details['blog_id'] ] = $details;
 		$blog_list[ $details['blog_id'] ]['postcount'] = $wpdb->get_var( "SELECT COUNT(ID) FROM " . $wpdb->get_blog_prefix( $details['blog_id'] ). "posts WHERE post_status='publish' AND post_type='post'" );
 	}
-<<<<<<< HEAD
 
 	if ( ! $blog_list ) {
 		return array();
@@ -185,18 +181,6 @@ function get_blog_list( $start = 0, $num = 10, $deprecated = '' ) {
 	} else {
 		return array_slice( $blog_list, $start, $num );
 	}
-=======
-	unset( $blogs );
-	$blogs = $blog_list;
-
-	if ( false == is_array( $blogs ) )
-		return array();
-
-	if ( $num == 'all' )
-		return array_slice( $blogs, $start, count( $blogs ) );
-	else
-		return array_slice( $blogs, $start, $num );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -210,36 +194,23 @@ function get_most_active_blogs( $num = 10, $display = true ) {
 	$blogs = get_blog_list( 0, 'all', false ); // $blog_id -> $details
 	if ( is_array( $blogs ) ) {
 		reset( $blogs );
-<<<<<<< HEAD
 		$most_active = array();
 		$blog_list = array();
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		foreach ( (array) $blogs as $key => $details ) {
 			$most_active[ $details['blog_id'] ] = $details['postcount'];
 			$blog_list[ $details['blog_id'] ] = $details; // array_slice() removes keys!!
 		}
 		arsort( $most_active );
 		reset( $most_active );
-<<<<<<< HEAD
 		$t = array();
 		foreach ( (array) $most_active as $key => $details ) {
 			$t[ $key ] = $blog_list[ $key ];
 		}
-=======
-		foreach ( (array) $most_active as $key => $details )
-			$t[ $key ] = $blog_list[ $key ];
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		unset( $most_active );
 		$most_active = $t;
 	}
 
-<<<<<<< HEAD
 	if ( $display ) {
-=======
-	if ( $display == true ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( is_array( $most_active ) ) {
 			reset( $most_active );
 			foreach ( (array) $most_active as $key => $details ) {
@@ -282,11 +253,7 @@ function wpmu_admin_do_redirect( $url = '' ) {
 		wp_redirect( $ref );
 		exit();
 	}
-<<<<<<< HEAD
 	if ( ! empty( $_SERVER['HTTP_REFERER'] ) ) {
-=======
-	if ( empty( $_SERVER['HTTP_REFERER'] ) == false ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		wp_redirect( $_SERVER['HTTP_REFERER'] );
 		exit();
 	}

@@ -11,11 +11,7 @@
  *
  * @since 2.0.0
  *
-<<<<<<< HEAD
  * @return int|WP_Error WP_Error or User ID.
-=======
- * @return null|WP_Error|int Null when adding user, WP_Error or User ID integer when no parameters.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function add_user() {
 	return edit_user();
@@ -29,17 +25,10 @@ function add_user() {
  * @since 2.0.0
  *
  * @param int $user_id Optional. User ID.
-<<<<<<< HEAD
  * @return int|WP_Error user id of the updated user
  */
 function edit_user( $user_id = 0 ) {
 	$wp_roles = wp_roles();
-=======
- * @return int user id of the updated user
- */
-function edit_user( $user_id = 0 ) {
-	global $wp_roles;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$user = new stdClass;
 	if ( $user_id ) {
 		$update = true;
@@ -187,11 +176,7 @@ function edit_user( $user_id = 0 ) {
 		$user_id = wp_update_user( $user );
 	} else {
 		$user_id = wp_insert_user( $user );
-<<<<<<< HEAD
 		wp_new_user_notification( $user_id, null, 'both' );
-=======
-		wp_new_user_notification( $user_id, isset( $_POST['send_password'] ) ? wp_unslash( $pass1 ) : '' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 	return $user_id;
 }
@@ -213,13 +198,7 @@ function edit_user( $user_id = 0 ) {
  * @return array
  */
 function get_editable_roles() {
-<<<<<<< HEAD
 	$all_roles = wp_roles()->roles;
-=======
-	global $wp_roles;
-
-	$all_roles = $wp_roles->roles;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	/**
 	 * Filter the list of editable roles.
@@ -255,11 +234,8 @@ function get_user_to_edit( $user_id ) {
  *
  * @since 2.0.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $user_id User ID.
  * @return array
  */
@@ -281,22 +257,15 @@ function get_users_drafts( $user_id ) {
 /**
  * Remove user and optionally reassign posts and links to another user.
  *
-<<<<<<< HEAD
  * If the $reassign parameter is not assigned to a User ID, then all posts will
-=======
- * If the $reassign parameter is not assigned to an User ID, then all posts will
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * be deleted of that user. The action 'delete_user' that is passed the User ID
  * being deleted will be run after the posts are either reassigned or deleted.
  * The user meta will also be deleted that are for that User ID.
  *
  * @since 2.0.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $id User ID.
  * @param int $reassign Optional. Reassign posts and links to new User ID.
  * @return bool True when finished.
@@ -417,18 +386,12 @@ function wp_revoke_user($id) {
 	$user->remove_all_caps();
 }
 
-<<<<<<< HEAD
 /**
  * @since 2.8.0
  *
  * @global int $user_ID
  *
  * @param false $errors Deprecated.
-=======
-add_action('admin_init', 'default_password_nag_handler');
-/**
- * @since 2.8.0
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function default_password_nag_handler($errors = false) {
 	global $user_ID;
@@ -443,18 +406,11 @@ function default_password_nag_handler($errors = false) {
 	}
 }
 
-<<<<<<< HEAD
 /**
  * @since 2.8.0
  *
  * @param int    $user_ID
  * @param object $old_data
-=======
-add_action('profile_update', 'default_password_nag_edit_user', 10, 2);
-
-/**
- * @since 2.8.0
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function default_password_nag_edit_user($user_ID, $old_data) {
 	// Short-circuit it.
@@ -470,17 +426,10 @@ function default_password_nag_edit_user($user_ID, $old_data) {
 	}
 }
 
-<<<<<<< HEAD
 /**
  * @since 2.8.0
  *
  * @global string $pagenow
-=======
-add_action('admin_notices', 'default_password_nag');
-
-/**
- * @since 2.8.0
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function default_password_nag() {
 	global $pagenow;
@@ -491,11 +440,7 @@ function default_password_nag() {
 	echo '<div class="error default-password-nag">';
 	echo '<p>';
 	echo '<strong>' . __('Notice:') . '</strong> ';
-<<<<<<< HEAD
 	_e('You&rsquo;re using the auto-generated password for your account. Would you like to change it?');
-=======
-	_e('You&rsquo;re using the auto-generated password for your account. Would you like to change it to something easier to remember?');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	echo '</p><p>';
 	printf( '<a href="%s">' . __('Yes, take me to my profile page') . '</a> | ', get_edit_profile_url() . '#password' );
 	printf( '<a href="%s" id="default-password-nag-no">' . __('No thanks, do not remind me again') . '</a>', '?default_password_nag=0' );

@@ -146,7 +146,6 @@
 
 .welcome-panel .welcome-panel-close {
 	position: absolute;
-<<<<<<< HEAD
 	top: 10px;
 	left: 10px;
 	padding: 10px 21px 10px 15px;
@@ -159,20 +158,6 @@
 	position: absolute;
 	top: 8px;
 	right: 0;
-=======
-	top: 5px;
-	left: 10px;
-	padding: 20px 3px 0 15px;
-	font-size: 13px;
-	text-decoration: none;
-	line-height: 1;
-}
-
-#welcome-panel.welcome-panel .welcome-panel-close:before {
-	position: absolute;
-	right: -18px;
-	margin-top: -2px;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	-webkit-transition: all .1s ease-in-out;
 	transition: all .1s ease-in-out;
 }
@@ -192,10 +177,6 @@
 
 .welcome-panel .welcome-panel-column-container {
 	clear: both;
-<<<<<<< HEAD
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	position: relative;
 }
 
@@ -223,20 +204,11 @@
 }
 
 .welcome-panel .welcome-icon {
-<<<<<<< HEAD
-=======
-	display: block;
-	padding: 0 0 8px;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	background: transparent !important;
 }
 
 .welcome-panel .welcome-icon:before {
-<<<<<<< HEAD
 	color: #82878c;
-=======
-	color: #888;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	font: normal 20px/1 'dashicons';
 	speak: none;
 	display: inline-block;
@@ -290,10 +262,7 @@
 .welcome-panel .welcome-panel-column li {
 	line-height: 16px;
 	list-style-type: none;
-<<<<<<< HEAD
 	padding: 0 0 8px;
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /* Dashboard WordPress news */
@@ -357,13 +326,9 @@ body #dashboard-widgets .postbox form .submit {
 
 #dashboard_right_now ul {
 	margin: 0;
-<<<<<<< HEAD
 	/* contain floats but don't use overflow: hidden */
 	display: inline-block;
 	width: 100%;
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 #dashboard_right_now li {
@@ -373,18 +338,10 @@ body #dashboard-widgets .postbox form .submit {
 }
 
 #dashboard_right_now .inside {
-<<<<<<< HEAD
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	padding: 0;
 }
 
 #dashboard_right_now .main {
-<<<<<<< HEAD
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	padding: 0 12px 11px;
 }
 
@@ -393,17 +350,10 @@ body #dashboard-widgets .postbox form .submit {
 }
 
 #dashboard_right_now #wp-version-message .button {
-<<<<<<< HEAD
 	float: left;
 	position: relative;
 	top: -5px;
 	margin-right: 5px;
-=======
-	clear: left;
-	float: left;
-	position: relative;
-	top: -5px;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .mu-storage {
@@ -418,11 +368,7 @@ body #dashboard-widgets .postbox form .submit {
 
 #dashboard_right_now li a:before,
 #dashboard_right_now li span:before {
-<<<<<<< HEAD
 	color: #82878c;
-=======
-	color: #888;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 #dashboard_right_now .sub {
@@ -502,10 +448,6 @@ body #dashboard-widgets .postbox form .submit {
 }
 
 #dashboard_quick_press form {
-<<<<<<< HEAD
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin: 12px;
 }
 
@@ -626,19 +568,11 @@ form.initial-form.quickpress-open input#title {
 }
 
 #dashboard_quick_press .draft-title {
-<<<<<<< HEAD
 	word-wrap: break-word;
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 #dashboard_quick_press .draft-title a,
 #dashboard_quick_press .draft-title time {
-<<<<<<< HEAD
-=======
-	float: right;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin: 0 0 0 5px;
 }
 
@@ -720,26 +654,15 @@ form.initial-form.quickpress-open input#title {
 
 #future-posts li,
 #published-posts li {
-<<<<<<< HEAD
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin-bottom: 8px;
 }
 
 #future-posts ul span,
 #published-posts ul span {
-<<<<<<< HEAD
 	display: inline-block;
 	margin-left: 5px;
 	min-width: 150px;
 	color: #777;
-=======
-	color: #777;
-	float: right;
-	margin-left: 8px;
-	min-width: 150px;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .activity-block {
@@ -766,25 +689,13 @@ form.initial-form.quickpress-open input#title {
 	margin-right: 12px;
 }
 
-<<<<<<< HEAD
-=======
-#activity-widget #the-comment-list .alternate,
-#activity-widget #the-comment-list .alt {
-	background: none;
-}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #activity-widget #the-comment-list .comment-item {
 	background: #fafafa;
 	padding: 12px;
 	position: relative;
 }
 
-<<<<<<< HEAD
 #activity-widget #the-comment-list .avatar {
-=======
-#activity-widget #the-comment-list img {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	position: absolute;
 	top: 13px;
 }
@@ -884,11 +795,7 @@ h3:hover .edit-box {
 }
 
 #dashboard-widgets h4 {
-<<<<<<< HEAD
 	color: #23282d;
-=======
-	color: #222;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	font-weight: normal;
 	font-size: 14px;
 	margin: 0 0 .2em;
@@ -1005,10 +912,6 @@ a.rsswidget {
 }
 
 .dashboard-comment-wrap {
-<<<<<<< HEAD
-=======
-	overflow: hidden;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	word-wrap: break-word;
 }
 
@@ -1186,7 +1089,6 @@ a.rsswidget {
 	/* Keep the close icon from overlapping the Welcome text. */
 	.welcome-panel .welcome-panel-close {
 		overflow: hidden;
-<<<<<<< HEAD
 		text-indent: 40px;
 		white-space: nowrap;
 		width: 20px;
@@ -1201,19 +1103,5 @@ a.rsswidget {
 		font-size: 20px;
 		top: 5px;
 		right: -35px;
-=======
-		text-indent: 100%;
-		white-space: nowrap;
-		width: 20px;
-		height: 20px;
-		left: 0;
-		padding: 5px;
-	}
-
-	/* Make the close icon larger for tappability. */
-	#welcome-panel.welcome-panel .welcome-panel-close:before {
-		font-size: 20px;
-		margin: 0;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 }

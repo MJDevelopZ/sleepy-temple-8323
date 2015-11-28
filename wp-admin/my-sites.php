@@ -13,11 +13,7 @@ if ( !is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
 
 if ( ! current_user_can('read') )
-<<<<<<< HEAD
 	wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-=======
-	wp_die( __( 'You do not have sufficient permissions to view this page.' ) );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 $action = isset( $_POST['action'] ) ? $_POST['action'] : 'splash';
 
@@ -49,30 +45,18 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
-<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Dashboard_My_Sites_Screen" target="_blank">Documentation on My Sites</a>') . '</p>' .
-=======
-	'<p>' . __('<a href="http://codex.wordpress.org/Dashboard_My_Sites_Screen" target="_blank">Documentation on My Sites</a>') . '</p>' .
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 if ( $updated ) { ?>
-<<<<<<< HEAD
 	<div id="message" class="updated notice is-dismissible"><p><strong><?php _e( 'Settings saved.' ); ?></strong></p></div>
 <?php } ?>
 
 <div class="wrap">
 <h1><?php echo esc_html( $title ); ?></h1>
-=======
-	<div id="message" class="updated"><p><strong><?php _e( 'Settings saved.' ); ?></strong></p></div>
-<?php } ?>
-
-<div class="wrap">
-<h2><?php echo esc_html( $title ); ?></h2>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php
 if ( empty( $blogs ) ) :
 	echo '<p>';
@@ -80,30 +64,18 @@ if ( empty( $blogs ) ) :
 	echo '</p>';
 else :
 ?>
-<<<<<<< HEAD
 <form id="myblogs" method="post">
 	<?php
 	choose_primary_blog();
 	/**
 	 * Fires before the sites list on the My Sites screen.
-=======
-<form id="myblogs" action="" method="post">
-	<?php
-	choose_primary_blog();
-	/**
-	 * Fires before the sites table on the My Sites screen.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @since 3.0.0
 	 */
 	do_action( 'myblogs_allblogs_options' );
 	?>
 	<br clear="all" />
-<<<<<<< HEAD
 	<ul class="my-sites striped">
-=======
-	<table class="widefat fixed">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<?php
 	/**
 	 * Enable the Global Settings section on the My Sites screen.
@@ -119,7 +91,6 @@ else :
 	 */
 	$settings_html = apply_filters( 'myblogs_options', '', 'global' );
 	if ( $settings_html != '' ) {
-<<<<<<< HEAD
 		echo '<h3>' . __( 'Global Settings' ) . '</h3>';
 		echo $settings_html;
 	}
@@ -149,55 +120,6 @@ else :
 		submit_button();
 	}
 	?>
-=======
-		echo '<tr><td><h3>' . __( 'Global Settings' ) . '</h3></td><td>';
-		echo $settings_html;
-		echo '</td></tr>';
-	}
-	reset( $blogs );
-	$num = count( $blogs );
-	$cols = 1;
-	if ( $num >= 20 )
-		$cols = 4;
-	elseif ( $num >= 10 )
-		$cols = 2;
-	$num_rows = ceil( $num / $cols );
-	$split = 0;
-	for ( $i = 1; $i <= $num_rows; $i++ ) {
-		$rows[] = array_slice( $blogs, $split, $cols );
-		$split = $split + $cols;
-	}
-
-	$c = '';
-	foreach ( $rows as $row ) {
-		$c = $c == 'alternate' ? '' : 'alternate';
-		echo "<tr class='$c'>";
-		$i = 0;
-		foreach ( $row as $user_blog ) {
-			$s = $i == 3 ? '' : 'border-right: 1px solid #ccc;';
-			echo "<td style='$s'>";
-			echo "<h3>{$user_blog->blogname}</h3>";
-			/**
-			 * Filter the row links displayed for each site on the My Sites screen.
-			 *
-			 * @since MU
-			 *
-			 * @param string $string    The HTML site link markup.
-			 * @param object $user_blog An object containing the site data.
-			 */
-			echo "<p>" . apply_filters( 'myblogs_blog_actions', "<a href='" . esc_url( get_home_url( $user_blog->userblog_id ) ). "'>" . __( 'Visit' ) . "</a> | <a href='" . esc_url( get_admin_url( $user_blog->userblog_id ) ) . "'>" . __( 'Dashboard' ) . "</a>", $user_blog ) . "</p>";
-			/** This filter is documented in wp-admin/my-sites.php */
-			echo apply_filters( 'myblogs_options', '', $user_blog );
-			echo "</td>";
-			$i++;
-		}
-		echo "</tr>";
-	}?>
-	</table>
-	<input type="hidden" name="action" value="updateblogsettings" />
-	<?php wp_nonce_field( 'update-my-sites' ); ?>
-	<?php submit_button(); ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	</form>
 <?php endif; ?>
 	</div>

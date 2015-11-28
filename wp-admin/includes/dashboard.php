@@ -12,13 +12,10 @@
  * Handles POST data, sets up filters.
  *
  * @since 2.5.0
-<<<<<<< HEAD
  *
  * @global array $wp_registered_widgets
  * @global array $wp_registered_widget_controls
  * @global array $wp_dashboard_control_callbacks
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_dashboard_setup() {
 	global $wp_registered_widgets, $wp_registered_widget_controls, $wp_dashboard_control_callbacks;
@@ -132,7 +129,6 @@ function wp_dashboard_setup() {
 	do_action( 'do_meta_boxes', $screen->id, 'side', '' );
 }
 
-<<<<<<< HEAD
 /**
  *
  * @global array   $wp_dashboard_control_callbacks
@@ -143,8 +139,6 @@ function wp_dashboard_setup() {
  * @param callback $control_callback
  * @param array    $callback_args
  */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function wp_add_dashboard_widget( $widget_id, $widget_name, $callback, $control_callback = null, $callback_args = null ) {
 	$screen = get_current_screen();
 	global $wp_dashboard_control_callbacks;
@@ -174,7 +168,6 @@ function wp_add_dashboard_widget( $widget_id, $widget_name, $callback, $control_
 	add_meta_box( $widget_id, $widget_name, $callback, $screen, $location, $priority, $callback_args );
 }
 
-<<<<<<< HEAD
 /**
  *
  * @param type $dashboard
@@ -182,10 +175,6 @@ function wp_add_dashboard_widget( $widget_id, $widget_name, $callback, $control_
  */
 function _wp_dashboard_control_callback( $dashboard, $meta_box ) {
 	echo '<form method="post" class="dashboard-widget-control-form">';
-=======
-function _wp_dashboard_control_callback( $dashboard, $meta_box ) {
-	echo '<form action="" method="post" class="dashboard-widget-control-form">';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	wp_dashboard_trigger_widget_control( $meta_box['id'] );
 	wp_nonce_field( 'edit-dashboard-widget_' . $meta_box['id'], 'dashboard-widget-nonce' );
 	echo '<input type="hidden" name="widget_id" value="' . esc_attr($meta_box['id']) . '" />';
@@ -366,12 +355,9 @@ function wp_dashboard_right_now() {
 	<?php endif;
 }
 
-<<<<<<< HEAD
 /**
  * @since 3.1.0
  */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function wp_network_dashboard_right_now() {
 	$actions = array();
 	if ( current_user_can('create_sites') )
@@ -415,24 +401,16 @@ function wp_network_dashboard_right_now() {
 
 	<form action="<?php echo network_admin_url('users.php'); ?>" method="get">
 		<p>
-<<<<<<< HEAD
 			<label class="screen-reader-text" for="search-users"><?php _e( 'Search Users' ); ?></label>
 			<input type="search" name="s" value="" size="30" autocomplete="off" id="search-users"/>
-=======
-			<input type="search" name="s" value="" size="30" autocomplete="off" />
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			<?php submit_button( __( 'Search Users' ), 'button', 'submit', false, array( 'id' => 'submit_users' ) ); ?>
 		</p>
 	</form>
 
 	<form action="<?php echo network_admin_url('sites.php'); ?>" method="get">
 		<p>
-<<<<<<< HEAD
 			<label class="screen-reader-text" for="search-sites"><?php _e( 'Search Sites' ); ?></label>
 			<input type="search" name="s" value="" size="30" autocomplete="off" id="search-sites"/>
-=======
-			<input type="search" name="s" value="" size="30" autocomplete="off" />
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			<?php submit_button( __( 'Search Sites' ), 'button', 'submit', false, array( 'id' => 'submit_sites' ) ); ?>
 		</p>
 	</form>
@@ -457,23 +435,17 @@ function wp_network_dashboard_right_now() {
  *
  * @since 3.8.0
  *
-<<<<<<< HEAD
  * @global int $post_ID
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $error_msg Optional. Error message. Default false.
  */
 function wp_dashboard_quick_press( $error_msg = false ) {
 	global $post_ID;
 
-<<<<<<< HEAD
 	if ( ! current_user_can( 'edit_posts' ) ) {
 		return;
 	}
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	/* Check if a new auto-draft (= no new post_ID) is needed or if the old can be used */
 	$last_post_id = (int) get_user_option( 'dashboard_quick_press_last_post_id' ); // Get the last post_ID
 	if ( $last_post_id ) {
@@ -535,11 +507,8 @@ function wp_dashboard_quick_press( $error_msg = false ) {
  * Show recent drafts of the user on the dashboard.
  *
  * @since 2.7.0
-<<<<<<< HEAD
  *
  * @param array $drafts
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_dashboard_recent_drafts( $drafts = false ) {
 	if ( ! $drafts ) {
@@ -578,7 +547,6 @@ function wp_dashboard_recent_drafts( $drafts = false ) {
 	echo "</ul>\n</div>";
 }
 
-<<<<<<< HEAD
 /**
  * @global object $comment
  *
@@ -589,12 +557,6 @@ function _wp_dashboard_recent_comments_row( &$comment, $show_date = true ) {
 	$GLOBALS['comment'] =& $comment;
 
 	$comment_post_title = _draft_or_post_title( $comment->comment_post_ID );
-=======
-function _wp_dashboard_recent_comments_row( &$comment, $show_date = true ) {
-	$GLOBALS['comment'] =& $comment;
-
-	$comment_post_title = strip_tags(get_the_title( $comment->comment_post_ID ));
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	if ( current_user_can( 'edit_post', $comment->comment_post_ID ) ) {
 		$comment_post_url = get_edit_post_link( $comment->comment_post_ID );
@@ -669,11 +631,7 @@ function _wp_dashboard_recent_comments_row( &$comment, $show_date = true ) {
 
 			<?php if ( !$comment->comment_type || 'comment' == $comment->comment_type ) : ?>
 
-<<<<<<< HEAD
 			<div class="dashboard-comment-wrap has-row-actions">
-=======
-			<div class="dashboard-comment-wrap">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			<h4 class="comment-meta">
 				<?php printf( /* translators: 1: comment author, 2: post link, 3: notification if the comment is pending */__( 'From %1$s on %2$s%3$s' ),
 					'<cite class="comment-author">' . get_comment_author_link() . '</cite>', $comment_post_link.' '.$comment_link, ' <span class="approve">' . __( '[Pending]' ) . '</span>' ); ?>
@@ -693,11 +651,7 @@ function _wp_dashboard_recent_comments_row( &$comment, $show_date = true ) {
 				}
 				$type = esc_html( $type );
 			?>
-<<<<<<< HEAD
 			<div class="dashboard-comment-wrap has-row-actions">
-=======
-			<div class="dashboard-comment-wrap">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			<?php /* translators: %1$s is type of comment, %2$s is link to the post */ ?>
 			<h4 class="comment-meta"><?php printf( _x( '%1$s on %2$s', 'dashboard' ), "<strong>$type</strong>", $comment_post_link." ".$comment_link ); ?></h4>
 			<p class="comment-author"><?php comment_author_link(); ?></p>
@@ -773,7 +727,6 @@ function wp_dashboard_recent_posts( $args ) {
 		'cache_results'  => false,
 		'perm'           => ( 'future' === $args['status'] ) ? 'editable' : 'readable',
 	);
-<<<<<<< HEAD
 
 	/**
 	 * Filter the query arguments used for the Recent Posts widget.
@@ -783,8 +736,6 @@ function wp_dashboard_recent_posts( $args ) {
 	 * @param array $query_args The arguments passed to WP_Query to produce the list of posts.
 	 */
 	$query_args = apply_filters( 'dashboard_recent_posts_query_args', $query_args );
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$posts = new WP_Query( $query_args );
 
 	if ( $posts->have_posts() ) {
@@ -811,24 +762,12 @@ function wp_dashboard_recent_posts( $args ) {
 				$relative = date_i18n( __( 'M jS' ), $time );
 			}
 
-<<<<<<< HEAD
 			// Use the post edit link for those who can edit, the permalink otherwise.
 			$recent_post_link = current_user_can( 'edit_post', get_the_ID() ) ? get_edit_post_link() : get_permalink();
 
 			/* translators: 1: relative date, 2: time, 3: post edit link or permalink, 4: post title */
 			$format = __( '<span>%1$s, %2$s</span> <a href="%3$s">%4$s</a>' );
 			printf( "<li>$format</li>", $relative, get_the_time(), $recent_post_link, _draft_or_post_title() );
-=======
-			if ( current_user_can( 'edit_post', get_the_ID() ) ) {
-				/* translators: 1: relative date, 2: time, 3: post edit link, 4: post title */
-				$format = __( '<span>%1$s, %2$s</span> <a href="%3$s">%4$s</a>' );
-				printf( "<li>$format</li>", $relative, get_the_time(), get_edit_post_link(), _draft_or_post_title() );
-			} else {
-				/* translators: 1: relative date, 2: time, 3: post title */
-				$format = __( '<span>%1$s, %2$s</span> %3$s' );
-				printf( "<li>$format</li>", $relative, get_the_time(), _draft_or_post_title() );
-			}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 
 		echo '</ul>';
@@ -863,12 +802,9 @@ function wp_dashboard_recent_comments( $total_items = 5 ) {
 		$comments_query['status'] = 'approve';
 
 	while ( count( $comments ) < $total_items && $possible = get_comments( $comments_query ) ) {
-<<<<<<< HEAD
 		if ( ! is_array( $possible ) ) {
 			break;
 		}
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		foreach ( $possible as $comment ) {
 			if ( ! current_user_can( 'read_post', $comment->comment_post_ID ) )
 				continue;
@@ -944,12 +880,8 @@ function wp_dashboard_cached_rss_widget( $widget_id, $callback, $check_urls = ar
 		$check_urls = array( $widgets[$widget_id]['url'] );
 	}
 
-<<<<<<< HEAD
 	$locale = get_locale();
 	$cache_key = 'dash_' . md5( $widget_id . '_' . $locale );
-=======
-	$cache_key = 'dash_' . md5( $widget_id );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	if ( false !== ( $output = get_transient( $cache_key ) ) ) {
 		echo $output;
 		return true;
@@ -979,11 +911,8 @@ function wp_dashboard_cached_rss_widget( $widget_id, $callback, $check_urls = ar
  *
  * @since 2.5.0
  *
-<<<<<<< HEAD
  * @global array $wp_dashboard_control_callbacks
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $widget_control_id Registered Widget ID.
  */
 function wp_dashboard_trigger_widget_control( $widget_control_id = false ) {
@@ -1283,10 +1212,6 @@ function wp_dashboard_quota() {
 	</div>
 	<?php
 }
-<<<<<<< HEAD
-=======
-add_action( 'activity_box_end', 'wp_dashboard_quota' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 // Display Browser Nag Meta Box
 function wp_dashboard_browser_nag() {
@@ -1330,15 +1255,12 @@ function wp_dashboard_browser_nag() {
 	echo apply_filters( 'browse-happy-notice', $notice, $response );
 }
 
-<<<<<<< HEAD
 /**
  * @since 3.2.0
  *
  * @param array $classes
  * @return array
  */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function dashboard_browser_nag_class( $classes ) {
 	$response = wp_check_browser_version();
 
@@ -1353,11 +1275,8 @@ function dashboard_browser_nag_class( $classes ) {
  *
  * @since 3.2.0
  *
-<<<<<<< HEAD
  * @global string $wp_version
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return array|bool False on failure, array of browser data on success.
  */
 function wp_check_browser_version() {
@@ -1462,11 +1381,7 @@ function wp_welcome_panel() {
 		<?php if ( current_user_can( 'manage_options' ) ) : ?>
 			<li><?php printf( '<a href="%s" class="welcome-icon welcome-comments">' . __( 'Turn comments on or off' ) . '</a>', admin_url( 'options-discussion.php' ) ); ?></li>
 		<?php endif; ?>
-<<<<<<< HEAD
 			<li><?php printf( '<a href="%s" class="welcome-icon welcome-learn-more">' . __( 'Learn more about getting started' ) . '</a>', __( 'https://codex.wordpress.org/First_Steps_With_WordPress' ) ); ?></li>
-=======
-			<li><?php printf( '<a href="%s" class="welcome-icon welcome-learn-more">' . __( 'Learn more about getting started' ) . '</a>', __( 'http://codex.wordpress.org/First_Steps_With_WordPress' ) ); ?></li>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		</ul>
 	</div>
 	</div>

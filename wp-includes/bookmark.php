@@ -16,11 +16,7 @@
  * @param int|stdClass $bookmark
  * @param string $output Optional. Either OBJECT, ARRAY_N, or ARRAY_A constant
  * @param string $filter Optional, default is 'raw'.
-<<<<<<< HEAD
  * @return array|object|null Type returned depends on $output value.
-=======
- * @return array|object Type returned depends on $output value.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function get_bookmark($bookmark, $output = OBJECT, $filter = 'raw') {
 	global $wpdb;
@@ -69,11 +65,7 @@ function get_bookmark($bookmark, $output = OBJECT, $filter = 'raw') {
  * @param string $field The name of the data field to return
  * @param int $bookmark The bookmark ID to get field
  * @param string $context Optional. The context of how the field will be used.
-<<<<<<< HEAD
  * @return string|WP_Error
-=======
- * @return string
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function get_bookmark_field( $field, $bookmark, $context = 'display' ) {
 	$bookmark = (int) $bookmark;
@@ -394,29 +386,18 @@ function sanitize_bookmark_field($field, $value, $bookmark_id, $context) {
 		} else {
 			$value = esc_attr($value);
 		}
-<<<<<<< HEAD
 	} elseif ( 'db' == $context ) {
-=======
-	} else if ( 'db' == $context ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		/** This filter is documented in wp-includes/post.php */
 		$value = apply_filters( "pre_$field", $value );
 	} else {
 		/** This filter is documented in wp-includes/post.php */
 		$value = apply_filters( $field, $value, $bookmark_id, $context );
 
-<<<<<<< HEAD
 		if ( 'attribute' == $context ) {
 			$value = esc_attr( $value );
 		} elseif ( 'js' == $context ) {
 			$value = esc_js( $value );
 		}
-=======
-		if ( 'attribute' == $context )
-			$value = esc_attr($value);
-		else if ( 'js' == $context )
-			$value = esc_js($value);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	return $value;

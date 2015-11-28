@@ -695,14 +695,11 @@ $_old_files = array(
 'wp-includes/js/jquery/ui/jquery.ui.tooltip.min.js',
 'wp-includes/js/jquery/ui/jquery.ui.widget.min.js',
 'wp-includes/js/tinymce/skins/wordpress/images/dashicon-no-alt.png',
-<<<<<<< HEAD
 // 4.3
 'wp-admin/js/wp-fullscreen.js',
 'wp-admin/js/wp-fullscreen.min.js',
 'wp-includes/js/tinymce/wp-mce-help.php',
 'wp-includes/js/tinymce/plugins/wpfullscreen',
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 );
 
 /**
@@ -776,7 +773,6 @@ $_new_bundled_files = array(
  *
  * @since 2.7.0
  *
-<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem
  * @global array              $_old_files
  * @global array              $_new_bundled_files
@@ -787,10 +783,6 @@ $_new_bundled_files = array(
  *
  * @param string $from New release unzipped path.
  * @param string $to   Path to old WordPress installation.
-=======
- * @param string $from New release unzipped path.
- * @param string $to Path to old WordPress installation.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return WP_Error|null WP_Error on failure, null on success.
  */
 function update_core($from, $to) {
@@ -831,7 +823,6 @@ function update_core($from, $to) {
 		return new WP_Error( 'insane_distro', __('The update could not be unpacked') );
 	}
 
-<<<<<<< HEAD
 
 	/**
 	 * Import $wp_version, $required_php_version, and $required_mysql_version from the new version
@@ -843,10 +834,6 @@ function update_core($from, $to) {
 	 */
 	global $wp_version, $required_php_version, $required_mysql_version;
 
-=======
-	// Import $wp_version, $required_php_version, and $required_mysql_version from the new version
-	// $wp_filesystem->wp_content_dir() returned unslashed pre-2.8
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$versions_file = trailingslashit( $wp_filesystem->wp_content_dir() ) . 'upgrade/version-current.php';
 	if ( ! $wp_filesystem->copy( $from . $distro . 'wp-includes/version.php', $versions_file ) ) {
 		$wp_filesystem->delete( $from, true );
@@ -859,11 +846,7 @@ function update_core($from, $to) {
 
 	$php_version    = phpversion();
 	$mysql_version  = $wpdb->db_version();
-<<<<<<< HEAD
 	$old_wp_version = $wp_version; // The version of WordPress we're updating from
-=======
-	$old_wp_version = $GLOBALS['wp_version']; // The version of WordPress we're updating from
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$development_build = ( false !== strpos( $old_wp_version . $wp_version, '-' )  ); // a dash in the version indicates a Development release
 	$php_compat     = version_compare( $php_version, $required_php_version, '>=' );
 	if ( file_exists( WP_CONTENT_DIR . '/db.php' ) && empty( $wpdb->is_mysql ) )
@@ -1087,12 +1070,9 @@ function update_core($from, $to) {
 		$wp_filesystem->delete($old_file, true);
 	}
 
-<<<<<<< HEAD
 	// Remove any Genericons example.html's from the filesystem
 	_upgrade_422_remove_genericons();
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	// Upgrade DB with separate request
 	/** This filter is documented in wp-admin/includes/update-core.php */
 	apply_filters( 'update_feedback', __( 'Upgrading database&#8230;' ) );
@@ -1141,15 +1121,10 @@ function update_core($from, $to) {
  * @since 3.7.0 Updated not to use a regular expression for the skip list
  * @see copy_dir()
  *
-<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem
  *
  * @param string $from     source directory
  * @param string $to       destination directory
-=======
- * @param string $from source directory
- * @param string $to destination directory
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param array $skip_list a list of files/folders to skip copying
  * @return mixed WP_Error on failure, True on success.
  */
@@ -1203,14 +1178,11 @@ function _copy_dir($from, $to, $skip_list = array() ) {
  *
  * @since 3.3.0
  *
-<<<<<<< HEAD
  * @global string $wp_version
  * @global string $pagenow
  * @global string $action
  *
  * @param string $new_version
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function _redirect_to_about_wordpress( $new_version ) {
 	global $wp_version, $pagenow, $action;
@@ -1245,7 +1217,6 @@ window.location = 'about.php?updated';
 	include(ABSPATH . 'wp-admin/admin-footer.php');
 	exit();
 }
-<<<<<<< HEAD
 
 /**
  * Cleans up Genericons example files.
@@ -1316,6 +1287,3 @@ function _upgrade_422_find_genericons_files_in_folder( $directory ) {
 
 	return $files;
 }
-=======
-add_action( '_core_updated_successfully', '_redirect_to_about_wordpress' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

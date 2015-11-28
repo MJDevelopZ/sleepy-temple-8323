@@ -26,11 +26,7 @@ if ( ! current_user_can( 'manage_sites' ) )
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
-<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Network_Admin_Sites_Screen" target="_blank">Documentation on Site Management</a>') . '</p>' .
-=======
-	'<p>' . __('<a href="http://codex.wordpress.org/Network_Admin_Sites_Screen" target="_blank">Documentation on Site Management</a>') . '</p>' .
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/forum/multisite/" target="_blank">Support Forums</a>') . '</p>'
 );
 
@@ -80,23 +76,15 @@ if ( isset($_REQUEST['action']) && 'add-site' == $_REQUEST['action'] ) {
 	if ( !$user_id ) { // Create a new user with a random password
 		$password = wp_generate_password( 12, false );
 		$user_id = wpmu_create_user( $domain, $password, $email );
-<<<<<<< HEAD
 		if ( false === $user_id )
 			wp_die( __( 'There was an error creating the user.' ) );
 		else
 			wp_new_user_notification( $user_id, null, 'both' );
-=======
-		if ( false == $user_id )
-			wp_die( __( 'There was an error creating the user.' ) );
-		else
-			wp_new_user_notification( $user_id, $password );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	$wpdb->hide_errors();
 	$id = wpmu_create_blog( $newdomain, $path, $title, $user_id , array( 'public' => 1 ), $current_site->id );
 	$wpdb->show_errors();
-<<<<<<< HEAD
 	if ( ! is_wp_error( $id ) ) {
 		if ( ! is_super_admin( $user_id ) && !get_user_option( 'primary_blog', $user_id ) ) {
 			update_user_option( $user_id, 'primary_blog', $id, true );
@@ -112,15 +100,6 @@ Name: %3$s' ),
 			get_site_url( $id ),
 			wp_unslash( $title )
 		);
-=======
-	if ( !is_wp_error( $id ) ) {
-		if ( !is_super_admin( $user_id ) && !get_user_option( 'primary_blog', $user_id ) )
-			update_user_option( $user_id, 'primary_blog', $id, true );
-		$content_mail = sprintf( __( 'New site created by %1$s
-
-Address: %2$s
-Name: %3$s' ), $current_user->user_login , get_site_url( $id ), wp_unslash( $title ) );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		wp_mail( get_site_option('admin_email'), sprintf( __( '[%s] New Site Created' ), $current_site->site_name ), $content_mail, 'From: "Site Admin" <' . get_site_option( 'admin_email' ) . '>' );
 		wpmu_welcome_notification( $id, $user_id, $password, $title, array( 'public' => 1 ) );
 		wp_redirect( add_query_arg( array( 'update' => 'added', 'id' => $id ), 'site-new.php' ) );
@@ -133,16 +112,12 @@ Name: %3$s' ), $current_user->user_login , get_site_url( $id ), wp_unslash( $tit
 if ( isset($_GET['update']) ) {
 	$messages = array();
 	if ( 'added' == $_GET['update'] )
-<<<<<<< HEAD
 		$messages[] = sprintf(
 			/* translators: 1: dashboard url, 2: network admin edit url */
 			__( 'Site added. <a href="%1$s">Visit Dashboard</a> or <a href="%2$s">Edit Site</a>' ),
 			esc_url( get_admin_url( absint( $_GET['id'] ) ) ),
 			network_admin_url( 'site-info.php?id=' . absint( $_GET['id'] ) )
 		);
-=======
-		$messages[] = sprintf( __( 'Site added. <a href="%1$s">Visit Dashboard</a> or <a href="%2$s">Edit Site</a>' ), esc_url( get_admin_url( absint( $_GET['id'] ) ) ), network_admin_url( 'site-info.php?id=' . absint( $_GET['id'] ) ) );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 $title = __('Add New Site');
@@ -155,25 +130,16 @@ require( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
-<<<<<<< HEAD
 <h1 id="add-new-site"><?php _e( 'Add New Site' ); ?></h1>
 <?php
 if ( ! empty( $messages ) ) {
 	foreach ( $messages as $msg )
 		echo '<div id="message" class="updated notice is-dismissible"><p>' . $msg . '</p></div>';
-=======
-<h2 id="add-new-site"><?php _e('Add New Site') ?></h2>
-<?php
-if ( ! empty( $messages ) ) {
-	foreach ( $messages as $msg )
-		echo '<div id="message" class="updated"><p>' . $msg . '</p></div>';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 } ?>
 <form method="post" action="<?php echo network_admin_url( 'site-new.php?action=add-site' ); ?>" novalidate="novalidate">
 <?php wp_nonce_field( 'add-blog', '_wpnonce_add-blog' ) ?>
 	<table class="form-table">
 		<tr class="form-field form-required">
-<<<<<<< HEAD
 			<th scope="row"><label for="site-address"><?php _e( 'Site Address' ) ?></label></th>
 			<td>
 			<?php if ( is_subdomain_install() ) { ?>
@@ -182,35 +148,16 @@ if ( ! empty( $messages ) ) {
 				echo $current_site->domain . $current_site->path ?><input name="blog[domain]" type="text" class="regular-text" id="site-address" aria-describedby="site-address-desc"  autocapitalize="none" autocorrect="off" />
 			<?php }
 			echo '<p id="site-address-desc">' . __( 'Only lowercase letters (a-z) and numbers are allowed.' ) . '</p>';
-=======
-			<th scope="row"><?php _e( 'Site Address' ) ?></th>
-			<td>
-			<?php if ( is_subdomain_install() ) { ?>
-				<input name="blog[domain]" type="text" class="regular-text" id="site-address" title="<?php esc_attr_e( 'Domain' ) ?>"/><span class="no-break">.<?php echo preg_replace( '|^www\.|', '', $current_site->domain ); ?></span>
-			<?php } else {
-				echo $current_site->domain . $current_site->path ?><input name="blog[domain]" class="regular-text" id="site-address" type="text" title="<?php esc_attr_e( 'Domain' ) ?>"/>
-			<?php }
-			echo '<p>' . __( 'Only lowercase letters (a-z) and numbers are allowed.' ) . '</p>';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			?>
 			</td>
 		</tr>
 		<tr class="form-field form-required">
-<<<<<<< HEAD
 			<th scope="row"><label for="site-title"><?php _e( 'Site Title' ) ?></label></th>
 			<td><input name="blog[title]" type="text" class="regular-text" id="site-title" /></td>
 		</tr>
 		<tr class="form-field form-required">
 			<th scope="row"><label for="admin-email"><?php _e( 'Admin Email' ) ?></label></th>
 			<td><input name="blog[email]" type="email" class="regular-text wp-suggest-user" id="admin-email" data-autocomplete-type="search" data-autocomplete-field="user_email" /></td>
-=======
-			<th scope="row"><?php _e( 'Site Title' ) ?></th>
-			<td><input name="blog[title]" type="text" class="regular-text" id="site-title" title="<?php esc_attr_e( 'Title' ) ?>"/></td>
-		</tr>
-		<tr class="form-field form-required">
-			<th scope="row"><?php _e( 'Admin Email' ) ?></th>
-			<td><input name="blog[email]" type="email" class="regular-text wp-suggest-user" id="admin-email" data-autocomplete-type="search" data-autocomplete-field="user_email" title="<?php esc_attr_e( 'Email' ) ?>"/></td>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		</tr>
 		<tr class="form-field">
 			<td colspan="2"><?php _e( 'A new user will be created if the above email address is not in the database.' ) ?><br /><?php _e( 'The username and password will be mailed to this email address.' ) ?></td>

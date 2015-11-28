@@ -11,11 +11,7 @@
 define( 'SHORTINIT', true );
 require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
 
-<<<<<<< HEAD
 if ( !is_multisite() )
-=======
-if( !is_multisite() )
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	die( 'Multisite support not enabled' );
 
 ms_file_constants();
@@ -34,17 +30,10 @@ if ( !is_file( $file ) ) {
 }
 
 $mime = wp_check_filetype( $file );
-<<<<<<< HEAD
 if ( false === $mime[ 'type' ] && function_exists( 'mime_content_type' ) )
 	$mime[ 'type' ] = mime_content_type( $file );
 
 if ( $mime[ 'type' ] )
-=======
-if( false === $mime[ 'type' ] && function_exists( 'mime_content_type' ) )
-	$mime[ 'type' ] = mime_content_type( $file );
-
-if( $mime[ 'type' ] )
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$mimetype = $mime[ 'type' ];
 else
 	$mimetype = 'image/' . substr( $file, strrpos( $file, '.' ) + 1 );
@@ -71,11 +60,7 @@ header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', time() + 100000000 ) . ' GMT' );
 // Support for Conditional GET - use stripslashes to avoid formatting.php dependency
 $client_etag = isset( $_SERVER['HTTP_IF_NONE_MATCH'] ) ? stripslashes( $_SERVER['HTTP_IF_NONE_MATCH'] ) : false;
 
-<<<<<<< HEAD
 if ( ! isset( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) )
-=======
-if( ! isset( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) )
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$_SERVER['HTTP_IF_MODIFIED_SINCE'] = false;
 
 $client_last_modified = trim( $_SERVER['HTTP_IF_MODIFIED_SINCE'] );

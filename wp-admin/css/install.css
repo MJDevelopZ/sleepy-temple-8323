@@ -16,20 +16,12 @@ body {
 }
 
 a {
-<<<<<<< HEAD
 	color: #0073aa;
-=======
-	color: #0074a2;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	text-decoration: none;
 }
 
 a:hover {
-<<<<<<< HEAD
 	color: #00a0d2;
-=======
-	color: #2ea2cc;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 h1 {
@@ -129,10 +121,6 @@ textarea {
 .form-table td {
 	margin-bottom: 9px;
 	padding: 10px 20px 10px 0;
-<<<<<<< HEAD
-=======
-	border-bottom: 8px solid #fff;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	font-size: 14px;
 	vertical-align: top
 }
@@ -140,11 +128,7 @@ textarea {
 .form-table th {
 	font-size: 14px;
 	text-align: left;
-<<<<<<< HEAD
 	padding: 10px 20px 10px 0;
-=======
-	padding: 16px 20px 10px 0;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	width: 140px;
 	vertical-align: top;
 }
@@ -186,11 +170,7 @@ submit {
 
 .form-table.install-success td {
 	vertical-align: middle;
-<<<<<<< HEAD
 	padding: 16px 20px 16px 0;
-=======
-	padding: 16px 20px 10px 0;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .form-table.install-success td p {
@@ -217,7 +197,6 @@ submit {
 	font-family: Consolas, Monaco, monospace;
 }
 
-<<<<<<< HEAD
 .wp-hide-pw > .dashicons {
 	line-height: inherit;
 }
@@ -278,38 +257,6 @@ submit {
 
 .pw-weak {
 	display: none;
-=======
-#pass-strength-result {
-	background-color: #eee;
-	border-color: #ddd !important;
-	border-style: solid;
-	border-width: 1px;
-	margin: 5px 5px 5px 0;
-	padding: 5px;
-	text-align: center;
-	width: 200px;
-	display: none;
-}
-
-#pass-strength-result.bad {
-	background-color: #ffb78c;
-	border-color: #ff853c !important;
-}
-
-#pass-strength-result.good {
-	background-color: #ffec8b;
-	border-color: #ffcc00 !important;
-}
-
-#pass-strength-result.short {
-	background-color: #ffa0a0;
-	border-color: #f04040 !important;
-}
-
-#pass-strength-result.strong {
-	background-color: #c3ff88;
-	border-color: #8dff1c !important;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .message {
@@ -319,11 +266,7 @@ submit {
 	background-color: #ffebe8;
 }
 
-<<<<<<< HEAD
 /* rtl:ignore */
-=======
-/* @noflip */
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #dbname,
 #uname,
 #pwd,
@@ -336,7 +279,6 @@ submit {
 	direction: ltr;
 }
 
-<<<<<<< HEAD
 #pass1-text,
 .show-password #pass1 {
 	display: none;
@@ -351,8 +293,6 @@ submit {
 	font-size: 12px;
 }
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /* localization */
 body.rtl,
@@ -436,11 +376,7 @@ body.language-chooser {
 	display: block;
 	border: 1px solid #ddd;
 	background-color: #fff;
-<<<<<<< HEAD
 	color: #32373c;
-=======
-	color: #333;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	font-size: 16px;
 	font-family: Arial, sans-serif;
 	font-weight: normal;
@@ -481,22 +417,15 @@ body.language-chooser {
 	vertical-align: top;
 }
 
-<<<<<<< HEAD
 .button-secondary.hide-if-no-js,
 .hide-if-no-js {
 	display: none;
 }
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /**
  * HiDPI Displays
  */
 @media print,
-<<<<<<< HEAD
-=======
-  (-o-min-device-pixel-ratio: 5/4),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 120dpi) {
 

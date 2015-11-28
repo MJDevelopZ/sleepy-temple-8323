@@ -20,13 +20,9 @@ var wpNavMenu;
 
 		options : {
 			menuItemDepthPerLevel : 30, // Do not use directly. Use depthToPx and pxToDepth instead.
-<<<<<<< HEAD
 			globalMaxDepth:  11,
 			sortableItems:   '> *',
 			targetTolerance: 0
-=======
-			globalMaxDepth : 11
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		},
 
 		menuList : undefined,	// Set in init.
@@ -93,17 +89,10 @@ var wpNavMenu;
 				childMenuItems : function() {
 					var result = $();
 					this.each(function(){
-<<<<<<< HEAD
 						var t = $(this), depth = t.menuItemDepth(), next = t.next( '.menu-item' );
 						while( next.length && next.menuItemDepth() > depth ) {
 							result = result.add( next );
 							next = next.next( '.menu-item' );
-=======
-						var t = $(this), depth = t.menuItemDepth(), next = t.next();
-						while( next.length && next.menuItemDepth() > depth ) {
-							result = result.add( next );
-							next = next.next();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						}
 					});
 					return result;
@@ -190,11 +179,7 @@ var wpNavMenu;
 							return false;
 
 						// Show the ajax spinner
-<<<<<<< HEAD
 						t.find( '.spinner' ).addClass( 'is-active' );
-=======
-						t.find('.spinner').show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 						// Retrieve menu item data
 						$(checkboxes).each(function(){
@@ -211,11 +196,7 @@ var wpNavMenu;
 						api.addItemToMenu(menuItems, processMethod, function(){
 							// Deselect the items and hide the ajax spinner
 							checkboxes.removeAttr('checked');
-<<<<<<< HEAD
 							t.find( '.spinner' ).removeClass( 'is-active' );
-=======
-							t.find('.spinner').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						});
 					});
 				},
@@ -407,7 +388,6 @@ var wpNavMenu;
 			api.refreshKeyboardAccessibility();
 			api.refreshAdvancedAccessibility();
 
-<<<<<<< HEAD
 			// Refresh the accessibility when the user comes close to the item in any way
 			menu.on( 'mouseenter.refreshAccessibility focus.refreshAccessibility touchstart.refreshAccessibility' , '.menu-item' , function(){
 				api.refreshAdvancedAccessibilityOfItem( $( this ).find( 'a.item-edit' ) );
@@ -426,32 +406,10 @@ var wpNavMenu;
 				if ( 'undefined' !== typeof dir ) {
 					api.moveMenuItem( $( this ).parents( 'li.menu-item' ).find( 'a.item-edit' ), dir );
 				}
-=======
-			// Events
-			menu.on( 'click', '.menus-move-up', function ( e ) {
-				api.moveMenuItem( $( this ).parents( 'li.menu-item' ).find( 'a.item-edit' ), 'up' );
-				e.preventDefault();
-			});
-			menu.on( 'click', '.menus-move-down', function ( e ) {
-				api.moveMenuItem( $( this ).parents( 'li.menu-item' ).find( 'a.item-edit' ), 'down' );
-				e.preventDefault();
-			});
-			menu.on( 'click', '.menus-move-top', function ( e ) {
-				api.moveMenuItem( $( this ).parents( 'li.menu-item' ).find( 'a.item-edit' ), 'top' );
-				e.preventDefault();
-			});
-			menu.on( 'click', '.menus-move-left', function ( e ) {
-				api.moveMenuItem( $( this ).parents( 'li.menu-item' ).find( 'a.item-edit' ), 'left' );
-				e.preventDefault();
-			});
-			menu.on( 'click', '.menus-move-right', function ( e ) {
-				api.moveMenuItem( $( this ).parents( 'li.menu-item' ).find( 'a.item-edit' ), 'right' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				e.preventDefault();
 			});
 		},
 
-<<<<<<< HEAD
 		/**
 		 * refreshAdvancedAccessibilityOfItem( [itemToRefresh] )
 		 *
@@ -563,87 +521,6 @@ var wpNavMenu;
 
 		refreshKeyboardAccessibility : function() {
 			$( 'a.item-edit' ).off( 'focus' ).on( 'focus', function(){
-=======
-		refreshAdvancedAccessibility : function() {
-
-			// Hide all links by default
-			$( '.menu-item-settings .field-move a' ).css( 'display', 'none' );
-
-			$( '.item-edit' ).each( function() {
-				var thisLink, thisLinkText, primaryItems, itemPosition, title,
-					parentItem, parentItemId, parentItemName, subItems,
-					$this = $(this),
-					menuItem = $this.closest( 'li.menu-item' ).first(),
-					depth = menuItem.menuItemDepth(),
-					isPrimaryMenuItem = ( 0 === depth ),
-					itemName = $this.closest( '.menu-item-handle' ).find( '.menu-item-title' ).text(),
-					position = parseInt( menuItem.index(), 10 ),
-					prevItemDepth = ( isPrimaryMenuItem ) ? depth : parseInt( depth - 1, 10 ),
-					prevItemNameLeft = menuItem.prevAll('.menu-item-depth-' + prevItemDepth).first().find( '.menu-item-title' ).text(),
-					prevItemNameRight = menuItem.prevAll('.menu-item-depth-' + depth).first().find( '.menu-item-title' ).text(),
-					totalMenuItems = $('#menu-to-edit li').length,
-					hasSameDepthSibling = menuItem.nextAll( '.menu-item-depth-' + depth ).length;
-
-				// Where can they move this menu item?
-				if ( 0 !== position ) {
-					thisLink = menuItem.find( '.menus-move-up' );
-					thisLink.prop( 'title', menus.moveUp ).css( 'display', 'inline' );
-				}
-
-				if ( 0 !== position && isPrimaryMenuItem ) {
-					thisLink = menuItem.find( '.menus-move-top' );
-					thisLink.prop( 'title', menus.moveToTop ).css( 'display', 'inline' );
-				}
-
-				if ( position + 1 !== totalMenuItems && 0 !== position ) {
-					thisLink = menuItem.find( '.menus-move-down' );
-					thisLink.prop( 'title', menus.moveDown ).css( 'display', 'inline' );
-				}
-
-				if ( 0 === position && 0 !== hasSameDepthSibling ) {
-					thisLink = menuItem.find( '.menus-move-down' );
-					thisLink.prop( 'title', menus.moveDown ).css( 'display', 'inline' );
-				}
-
-				if ( ! isPrimaryMenuItem ) {
-					thisLink = menuItem.find( '.menus-move-left' ),
-					thisLinkText = menus.outFrom.replace( '%s', prevItemNameLeft );
-					thisLink.prop( 'title', menus.moveOutFrom.replace( '%s', prevItemNameLeft ) ).html( thisLinkText ).css( 'display', 'inline' );
-				}
-
-				if ( 0 !== position ) {
-					if ( menuItem.find( '.menu-item-data-parent-id' ).val() !== menuItem.prev().find( '.menu-item-data-db-id' ).val() ) {
-						thisLink = menuItem.find( '.menus-move-right' ),
-						thisLinkText = menus.under.replace( '%s', prevItemNameRight );
-						thisLink.prop( 'title', menus.moveUnder.replace( '%s', prevItemNameRight ) ).html( thisLinkText ).css( 'display', 'inline' );
-					}
-				}
-
-				if ( isPrimaryMenuItem ) {
-					primaryItems = $( '.menu-item-depth-0' ),
-					itemPosition = primaryItems.index( menuItem ) + 1,
-					totalMenuItems = primaryItems.length,
-
-					// String together help text for primary menu items
-					title = menus.menuFocus.replace( '%1$s', itemName ).replace( '%2$d', itemPosition ).replace( '%3$d', totalMenuItems );
-				} else {
-					parentItem = menuItem.prevAll( '.menu-item-depth-' + parseInt( depth - 1, 10 ) ).first(),
-					parentItemId = parentItem.find( '.menu-item-data-db-id' ).val(),
-					parentItemName = parentItem.find( '.menu-item-title' ).text(),
-					subItems = $( '.menu-item .menu-item-data-parent-id[value="' + parentItemId + '"]' ),
-					itemPosition = $( subItems.parents('.menu-item').get().reverse() ).index( menuItem ) + 1;
-
-					// String together help text for sub menu items
-					title = menus.subMenuFocus.replace( '%1$s', itemName ).replace( '%2$d', itemPosition ).replace( '%3$s', parentItemName );
-				}
-
-				$this.prop('title', title).html( title );
-			});
-		},
-
-		refreshKeyboardAccessibility : function() {
-			$( '.item-edit' ).off( 'focus' ).on( 'focus', function(){
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$(this).off( 'keydown' ).on( 'keydown', function(e){
 
 					var arrows,
@@ -745,10 +622,7 @@ var wpNavMenu;
 			api.menuList.sortable({
 				handle: '.menu-item-handle',
 				placeholder: 'sortable-placeholder',
-<<<<<<< HEAD
 				items: api.options.sortableItems,
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				start: function(e, ui) {
 					var height, width, parent, children, tempHolder;
 
@@ -789,11 +663,7 @@ var wpNavMenu;
 					ui.placeholder.width(width);
 
 					// Update the list of menu items.
-<<<<<<< HEAD
 					tempHolder = ui.placeholder.next( '.menu-item' );
-=======
-					tempHolder = ui.placeholder.next();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					tempHolder.css( 'margin-top', helperHeight + 'px' ); // Set the margin to absorb the placeholder
 					ui.placeholder.detach(); // detach or jQuery UI will think the placeholder is a menu item
 					$(this).sortable( 'refresh' ); // The children aren't sortable. We should let jQ UI know.
@@ -852,7 +722,6 @@ var wpNavMenu;
 					var offset = ui.helper.offset(),
 						edge = api.isRTL ? offset.left + ui.helper.width() : offset.left,
 						depth = api.negateIfRTL * api.pxToDepth( edge - menuEdge );
-<<<<<<< HEAD
 
 					// Check and correct if depth is not within range.
 					// Also, if the dragged element is dragged upwards over
@@ -862,13 +731,6 @@ var wpNavMenu;
 					} else if ( depth < minDepth ) {
 						depth = minDepth;
 					}
-=======
-					// Check and correct if depth is not within range.
-					// Also, if the dragged element is dragged upwards over
-					// an item, shift the placeholder to a child position.
-					if ( depth > maxDepth || offset.top < prevBottom ) depth = maxDepth;
-					else if ( depth < minDepth ) depth = minDepth;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 					if( depth != currentDepth )
 						updateCurrentDepth(ui, depth);
@@ -885,21 +747,12 @@ var wpNavMenu;
 			function updateSharedVars(ui) {
 				var depth;
 
-<<<<<<< HEAD
 				prev = ui.placeholder.prev( '.menu-item' );
 				next = ui.placeholder.next( '.menu-item' );
 
 				// Make sure we don't select the moving item.
 				if( prev[0] == ui.item[0] ) prev = prev.prev( '.menu-item' );
 				if( next[0] == ui.item[0] ) next = next.next( '.menu-item' );
-=======
-				prev = ui.placeholder.prev();
-				next = ui.placeholder.next();
-
-				// Make sure we don't select the moving item.
-				if( prev[0] == ui.item[0] ) prev = prev.prev();
-				if( next[0] == ui.item[0] ) next = next.next();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 				prevBottom = (prev.length) ? prev.offset().top + prev.height() : 0;
 				nextThreshold = (next.length) ? next.offset().top + next.height() / 3 : 0;
@@ -971,11 +824,8 @@ var wpNavMenu;
 				}
 			});
 			$('#add-custom-links input[type="text"]').keypress(function(e){
-<<<<<<< HEAD
 				$('#customlinkdiv').removeClass('form-invalid');
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				if ( e.keyCode === 13 ) {
 					e.preventDefault();
 					$( '#submit-customlinkdiv' ).click();
@@ -1021,15 +871,9 @@ var wpNavMenu;
 				loc.find('select').each(function() {
 					params[this.name] = $(this).val();
 				});
-<<<<<<< HEAD
 				loc.find( '.spinner' ).addClass( 'is-active' );
 				$.post( ajaxurl, params, function() {
 					loc.find( '.spinner' ).removeClass( 'is-active' );
-=======
-				loc.find('.spinner').show();
-				$.post( ajaxurl, params, function() {
-					loc.find('.spinner').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				});
 				return false;
 			});
@@ -1071,11 +915,7 @@ var wpNavMenu;
 				'type': input.attr('name')
 			};
 
-<<<<<<< HEAD
 			$( '.spinner', panel ).addClass( 'is-active' );
-=======
-			$('.spinner', panel).show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			$.post( ajaxurl, params, function(menuMarkup) {
 				api.processQuickSearchQueryResponse(menuMarkup, params, panel);
@@ -1088,7 +928,6 @@ var wpNavMenu;
 
 			processMethod = processMethod || api.addMenuItemToBottom;
 
-<<<<<<< HEAD
 			if ( '' === url || 'http://' == url ) {
 				$('#customlinkdiv').addClass('form-invalid');
 				return false;
@@ -1099,16 +938,6 @@ var wpNavMenu;
 			this.addLinkToMenu( url, label, processMethod, function() {
 				// Remove the ajax spinner
 				$( '.customlinkdiv .spinner' ).removeClass( 'is-active' );
-=======
-			if ( '' === url || 'http://' == url )
-				return false;
-
-			// Show the ajax spinner
-			$('.customlinkdiv .spinner').show();
-			this.addLinkToMenu( url, label, processMethod, function() {
-				// Remove the ajax spinner
-				$('.customlinkdiv .spinner').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				// Set custom link form back to defaults
 				$('#custom-menu-item-name').val('').blur();
 				$('#custom-menu-item-url').val('http://');
@@ -1356,11 +1185,7 @@ var wpNavMenu;
 
 			if( ! $items.length ) {
 				$('.categorychecklist', panel).html( '<li><p>' + navMenuL10n.noResultsFound + '</p></li>' );
-<<<<<<< HEAD
 				$( '.spinner', panel ).removeClass( 'is-active' );
-=======
-				$('.spinner', panel).hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				return;
 			}
 
@@ -1387,11 +1212,7 @@ var wpNavMenu;
 			});
 
 			$('.categorychecklist', panel).html( $items );
-<<<<<<< HEAD
 			$( '.spinner', panel ).removeClass( 'is-active' );
-=======
-			$('.spinner', panel).hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		},
 
 		removeMenuItem : function(el) {
@@ -1408,10 +1229,7 @@ var wpNavMenu;
 						$( '.drag-instructions' ).hide();
 						ins.removeClass( 'menu-instructions-inactive' );
 					}
-<<<<<<< HEAD
 					api.refreshAdvancedAccessibility();
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				});
 		},
 

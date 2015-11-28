@@ -17,7 +17,6 @@
  * @since 2.7.0
  * @access private
  *
-<<<<<<< HEAD
  * @staticvar WP_Http $http
  *
  * @return WP_Http HTTP Transport object.
@@ -28,16 +27,6 @@ function _wp_http_get_object() {
 	if ( is_null( $http ) ) {
 		$http = new WP_Http();
 	}
-=======
- * @return WP_Http HTTP Transport object.
- */
-function _wp_http_get_object() {
-	static $http;
-
-	if ( is_null($http) )
-		$http = new WP_Http();
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	return $http;
 }
 
@@ -162,13 +151,8 @@ function wp_safe_remote_head( $url, $args = array() ) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_request($url, $args = array()) {
-<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->request( $url, $args );
-=======
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->request($url, $args);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -184,13 +168,8 @@ function wp_remote_request($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_get($url, $args = array()) {
-<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->get( $url, $args );
-=======
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->get($url, $args);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -206,13 +185,8 @@ function wp_remote_get($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_post($url, $args = array()) {
-<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->post( $url, $args );
-=======
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->post($url, $args);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -228,13 +202,8 @@ function wp_remote_post($url, $args = array()) {
  * @return WP_Error|array The response or WP_Error on failure.
  */
 function wp_remote_head($url, $args = array()) {
-<<<<<<< HEAD
 	$http = _wp_http_get_object();
 	return $http->head( $url, $args );
-=======
-	$objFetchSite = _wp_http_get_object();
-	return $objFetchSite->head($url, $args);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -257,11 +226,7 @@ function wp_remote_retrieve_headers( $response ) {
  *
  * @since 2.7.0
  *
-<<<<<<< HEAD
  * @param array  $response
-=======
- * @param array $response
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $header Header name to retrieve value from.
  * @return string The header value. Empty string on if incorrect parameter given, or if the header doesn't exist.
  */
@@ -330,21 +295,13 @@ function wp_remote_retrieve_body( $response ) {
  * @since 3.2.0
  *
  * @param array  $capabilities Array of capabilities to test or a wp_remote_request() $args array.
-<<<<<<< HEAD
  * @param string $url          Optional. If given, will check if the URL requires SSL and adds
  *                             that requirement to the capabilities array.
-=======
- * @param string $url Optional. If given, will check if the URL requires SSL and adds that requirement to the capabilities array.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @return bool
  */
 function wp_http_supports( $capabilities = array(), $url = null ) {
-<<<<<<< HEAD
 	$http = _wp_http_get_object();
-=======
-	$objFetchSite = _wp_http_get_object();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	$capabilities = wp_parse_args( $capabilities );
 
@@ -362,11 +319,7 @@ function wp_http_supports( $capabilities = array(), $url = null ) {
 		}
 	}
 
-<<<<<<< HEAD
 	return (bool) $http->_get_first_available_transport( $capabilities );
-=======
-	return (bool) $objFetchSite->_get_first_available_transport( $capabilities );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -432,11 +385,7 @@ function get_allowed_http_origins() {
  * @since 3.4.0
  *
  * @param null|string $origin Origin URL. If not provided, the value of get_http_origin() is used.
-<<<<<<< HEAD
  * @return string True if the origin is allowed. False otherwise.
-=======
- * @return bool|null True if the origin is allowed. False otherwise.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function is_allowed_http_origin( $origin = null ) {
 	$origin_arg = $origin;
@@ -452,13 +401,8 @@ function is_allowed_http_origin( $origin = null ) {
 	 *
 	 * @since 3.4.0
 	 *
-<<<<<<< HEAD
 	 * @param string $origin     Result of check for allowed origin.
 	 * @param string $origin_arg Original origin string passed into is_allowed_http_origin function.
-=======
-	 * @param string $origin Result of check for allowed origin.
-	 * @param string $origin_arg original origin string passed into is_allowed_http_origin function.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	return apply_filters( 'allowed_http_origin', $origin, $origin_arg );
 }
@@ -473,13 +417,8 @@ function is_allowed_http_origin( $origin = null ) {
  *
  * @since 3.4.0
  *
-<<<<<<< HEAD
  * @return string|false Returns the origin URL if headers are sent. Returns false
  *                      if headers are not sent.
-=======
- * @return bool|string Returns the origin URL if headers are sent. Returns false
- * if headers are not sent.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function send_origin_headers() {
 	$origin = get_http_origin();
@@ -551,15 +490,9 @@ function wp_http_validate_url( $url ) {
 				 *
 				 * @since 3.6.0
 				 *
-<<<<<<< HEAD
 				 * @param bool   false Whether HTTP request is external or not.
 				 * @param string $host IP of the requested host.
 				 * @param string $url  URL of the requested host.
-=======
-				 * @param bool false Whether HTTP request is external or not.
-				 * @param string $host IP of the requested host.
-				 * @param string $url URL of the requested host.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				 */
 				if ( ! apply_filters( 'http_request_host_is_external', false, $host, $url ) )
 					return false;
@@ -587,11 +520,7 @@ function wp_http_validate_url( $url ) {
  *
  * @since 3.6.0
  *
-<<<<<<< HEAD
  * @param bool   $is_external
-=======
- * @param bool $is_external
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $host
  * @return bool
  */
@@ -608,14 +537,10 @@ function allowed_http_request_hosts( $is_external, $host ) {
  *
  * @since 3.6.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  * @staticvar array $queried
  *
  * @param bool   $is_external
-=======
- * @param bool $is_external
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $host
  * @return bool
  */

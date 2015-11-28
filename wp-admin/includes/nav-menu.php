@@ -40,11 +40,8 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 	 * @see Walker_Nav_Menu::start_el()
 	 * @since 3.0.0
 	 *
-<<<<<<< HEAD
 	 * @global int $_wp_nav_menu_max_depth
 	 *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param object $item   Menu item data object.
 	 * @param int    $depth  Depth of menu item. Used for padding.
@@ -102,13 +99,8 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 
 		?>
 		<li id="menu-item-<?php echo $item_id; ?>" class="<?php echo implode(' ', $classes ); ?>">
-<<<<<<< HEAD
 			<div class="menu-item-bar">
 				<div class="menu-item-handle">
-=======
-			<dl class="menu-item-bar">
-				<dt class="menu-item-handle">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					<span class="item-title"><span class="menu-item-title"><?php echo esc_html( $title ); ?></span> <span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item' ); ?></span></span>
 					<span class="item-controls">
 						<span class="item-type"><?php echo esc_html( $item->type_label ); ?></span>
@@ -143,19 +135,11 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 							echo ( isset( $_GET['edit-menu-item'] ) && $item_id == $_GET['edit-menu-item'] ) ? admin_url( 'nav-menus.php' ) : add_query_arg( 'edit-menu-item', $item_id, remove_query_arg( $removed_args, admin_url( 'nav-menus.php#menu-item-settings-' . $item_id ) ) );
 						?>"><?php _e( 'Edit Menu Item' ); ?></a>
 					</span>
-<<<<<<< HEAD
 				</div>
 			</div>
 
 			<div class="menu-item-settings" id="menu-item-settings-<?php echo $item_id; ?>">
 				<?php if ( 'custom' == $item->type ) : ?>
-=======
-				</dt>
-			</dl>
-
-			<div class="menu-item-settings" id="menu-item-settings-<?php echo $item_id; ?>">
-				<?php if( 'custom' == $item->type ) : ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					<p class="field-url description description-wide">
 						<label for="edit-menu-item-url-<?php echo $item_id; ?>">
 							<?php _e( 'URL' ); ?><br />
@@ -163,21 +147,13 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 						</label>
 					</p>
 				<?php endif; ?>
-<<<<<<< HEAD
 				<p class="description description-wide">
-=======
-				<p class="description description-thin">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					<label for="edit-menu-item-title-<?php echo $item_id; ?>">
 						<?php _e( 'Navigation Label' ); ?><br />
 						<input type="text" id="edit-menu-item-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-title" name="menu-item-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->title ); ?>" />
 					</label>
 				</p>
-<<<<<<< HEAD
 				<p class="field-title-attribute description description-wide">
-=======
-				<p class="description description-thin">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					<label for="edit-menu-item-attr-title-<?php echo $item_id; ?>">
 						<?php _e( 'Title Attribute' ); ?><br />
 						<input type="text" id="edit-menu-item-attr-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-attr-title" name="menu-item-attr-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->post_excerpt ); ?>" />
@@ -212,28 +188,16 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 				<p class="field-move hide-if-no-js description description-wide">
 					<label>
 						<span><?php _e( 'Move' ); ?></span>
-<<<<<<< HEAD
 						<a href="#" class="menus-move menus-move-up" data-dir="up"><?php _e( 'Up one' ); ?></a>
 						<a href="#" class="menus-move menus-move-down" data-dir="down"><?php _e( 'Down one' ); ?></a>
 						<a href="#" class="menus-move menus-move-left" data-dir="left"></a>
 						<a href="#" class="menus-move menus-move-right" data-dir="right"></a>
 						<a href="#" class="menus-move menus-move-top" data-dir="top"><?php _e( 'To the top' ); ?></a>
-=======
-						<a href="#" class="menus-move-up"><?php _e( 'Up one' ); ?></a>
-						<a href="#" class="menus-move-down"><?php _e( 'Down one' ); ?></a>
-						<a href="#" class="menus-move-left"></a>
-						<a href="#" class="menus-move-right"></a>
-						<a href="#" class="menus-move-top"><?php _e( 'To the top' ); ?></a>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					</label>
 				</p>
 
 				<div class="menu-item-actions description-wide submitbox">
-<<<<<<< HEAD
 					<?php if ( 'custom' != $item->type && $original_title !== false ) : ?>
-=======
-					<?php if( 'custom' != $item->type && $original_title !== false ) : ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						<p class="link-to-original">
 							<?php printf( __('Original: %s'), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' ); ?>
 						</p>
@@ -273,13 +237,10 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
  * @uses Walker_Nav_Menu
  */
 class Walker_Nav_Menu_Checklist extends Walker_Nav_Menu {
-<<<<<<< HEAD
 	/**
 	 *
 	 * @param array $fields
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function __construct( $fields = false ) {
 		if ( $fields ) {
 			$this->db_fields = $fields;
@@ -325,11 +286,8 @@ class Walker_Nav_Menu_Checklist extends Walker_Nav_Menu {
 	 *
 	 * @since 3.0.0
 	 *
-<<<<<<< HEAD
 	 * @global int $_nav_menu_placeholder
 	 *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @param object $item   Menu item data object.
 	 * @param int    $depth  Depth of menu item. Used for padding.
@@ -494,44 +452,27 @@ function _wp_ajax_menu_quick_search( $request = array() ) {
 function wp_nav_menu_setup() {
 	// Register meta boxes
 	wp_nav_menu_post_type_meta_boxes();
-<<<<<<< HEAD
 	add_meta_box( 'add-custom-links', __( 'Custom Links' ), 'wp_nav_menu_item_link_meta_box', 'nav-menus', 'side', 'default' );
-=======
-	add_meta_box( 'add-custom-links', __( 'Links' ), 'wp_nav_menu_item_link_meta_box', 'nav-menus', 'side', 'default' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	wp_nav_menu_taxonomy_meta_boxes();
 
 	// Register advanced menu items (columns)
 	add_filter( 'manage_nav-menus_columns', 'wp_nav_menu_manage_columns' );
 
 	// If first time editing, disable advanced items by default.
-<<<<<<< HEAD
 	if ( false === get_user_option( 'managenav-menuscolumnshidden' ) ) {
 		$user = wp_get_current_user();
 		update_user_option($user->ID, 'managenav-menuscolumnshidden',
 			array( 0 => 'link-target', 1 => 'css-classes', 2 => 'xfn', 3 => 'description', 4 => 'title-attribute', ),
-=======
-	if( false === get_user_option( 'managenav-menuscolumnshidden' ) ) {
-		$user = wp_get_current_user();
-		update_user_option($user->ID, 'managenav-menuscolumnshidden',
-			array( 0 => 'link-target', 1 => 'css-classes', 2 => 'xfn', 3 => 'description', ),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			true);
 	}
 }
 
 /**
-<<<<<<< HEAD
  * Limit the amount of meta boxes to pages, posts, links, and categories for first time users.
  *
  * @since 3.0.0
  *
  * @global array $wp_meta_boxes
-=======
- * Limit the amount of meta boxes to just links, pages and cats for first time users.
- *
- * @since 3.0.0
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  **/
 function wp_initial_nav_menu_meta_boxes() {
 	global $wp_meta_boxes;
@@ -539,11 +480,7 @@ function wp_initial_nav_menu_meta_boxes() {
 	if ( get_user_option( 'metaboxhidden_nav-menus' ) !== false || ! is_array($wp_meta_boxes) )
 		return;
 
-<<<<<<< HEAD
 	$initial_meta_boxes = array( 'add-page', 'add-post', 'add-custom-links', 'add-category' );
-=======
-	$initial_meta_boxes = array( 'nav-menu-theme-locations', 'add-page', 'add-custom-links', 'add-category' );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$hidden_meta_boxes = array();
 
 	foreach ( array_keys($wp_meta_boxes['nav-menus']) as $context ) {
@@ -622,11 +559,7 @@ function wp_nav_menu_taxonomy_meta_boxes() {
  *
  * @since 3.6.0
  *
-<<<<<<< HEAD
  * @global bool $one_theme_location_no_menus to determine if no menus exist
-=======
- * @uses global $one_theme_location_no_menus to determine if no menus exist
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @param int|string $nav_menu_selected_id (id, name or slug) of the currently-selected menu
  * @return string Disabled attribute if at least one menu exists, false if not
@@ -644,12 +577,9 @@ function wp_nav_menu_disabled_check( $nav_menu_selected_id ) {
  * Displays a metabox for the custom links menu item.
  *
  * @since 3.0.0
-<<<<<<< HEAD
  *
  * @global int        $_nav_menu_placeholder
  * @global int|string $nav_menu_selected_id
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_nav_menu_item_link_meta_box() {
 	global $_nav_menu_placeholder, $nav_menu_selected_id;
@@ -689,12 +619,9 @@ function wp_nav_menu_item_link_meta_box() {
  *
  * @since 3.0.0
  *
-<<<<<<< HEAD
  * @global int        $_nav_menu_placeholder
  * @global int|string $nav_menu_selected_id
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $object Not used.
  * @param string $post_type The post type object.
  */
@@ -801,7 +728,6 @@ function wp_nav_menu_item_post_type_meta_box( $object, $post_type ) {
 				$recent_args = array_merge( $args, array( 'orderby' => 'post_date', 'order' => 'DESC', 'posts_per_page' => 15 ) );
 				$most_recent = $get_posts->query( $recent_args );
 				$args['walker'] = $walker;
-<<<<<<< HEAD
 
 				/**
 				 * Filter the posts displayed in the 'Most Recent' tab of the current
@@ -817,8 +743,6 @@ function wp_nav_menu_item_post_type_meta_box( $object, $post_type ) {
 				 */
 				$most_recent = apply_filters( "nav_menu_items_{$post_type_name}_recent", $most_recent, $args, $post_type );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				echo walk_nav_menu_tree( array_map('wp_setup_nav_menu_item', $most_recent), 0, (object) $args );
 				?>
 			</ul>
@@ -956,11 +880,8 @@ function wp_nav_menu_item_post_type_meta_box( $object, $post_type ) {
  *
  * @since 3.0.0
  *
-<<<<<<< HEAD
  * @global int|string $nav_menu_selected_id
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $object Not used.
  * @param string $taxonomy The taxonomy object.
  */
@@ -1274,11 +1195,7 @@ function wp_get_nav_menu_to_edit( $menu_id = 0 ) {
 		$result .= '<p>' . __( 'Add menu items from the column on the left.' ) . '</p>';
 		$result .= '</div>';
 
-<<<<<<< HEAD
 		if ( empty($menu_items) )
-=======
-		if( empty($menu_items) )
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			return $result . ' <ul class="menu" id="menu-to-edit"> </ul>';
 
 		/**
@@ -1331,10 +1248,7 @@ function wp_nav_menu_manage_columns() {
 	return array(
 		'_title' => __('Show advanced menu properties'),
 		'cb' => '<input type="checkbox" />',
-<<<<<<< HEAD
 		'title-attribute' => __('Title Attribute'),
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		'link-target' => __('Link Target'),
 		'css-classes' => __('CSS Classes'),
 		'xfn' => __('Link Relationship (XFN)'),
@@ -1348,10 +1262,7 @@ function wp_nav_menu_manage_columns() {
  * @access private
  * @since 3.0.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function _wp_delete_orphaned_draft_menu_items() {
 	global $wpdb;
@@ -1363,10 +1274,6 @@ function _wp_delete_orphaned_draft_menu_items() {
 	foreach( (array) $menu_items_to_delete as $menu_item_id )
 		wp_delete_post( $menu_item_id, true );
 }
-<<<<<<< HEAD
-=======
-add_action('admin_head-nav-menus.php', '_wp_delete_orphaned_draft_menu_items');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Saves nav menu items
@@ -1379,11 +1286,7 @@ add_action('admin_head-nav-menus.php', '_wp_delete_orphaned_draft_menu_items');
  */
 function wp_nav_menu_update_menu_items ( $nav_menu_selected_id, $nav_menu_selected_title ) {
 	$unsorted_menu_items = wp_get_nav_menu_items( $nav_menu_selected_id, array( 'orderby' => 'ID', 'output' => ARRAY_A, 'output_key' => 'ID', 'post_status' => 'draft,publish' ) );
-<<<<<<< HEAD
 	$messages = array();
-=======
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$menu_items = array();
 	// Index menu items by db ID
 	foreach ( $unsorted_menu_items as $_item )
@@ -1411,18 +1314,11 @@ function wp_nav_menu_update_menu_items ( $nav_menu_selected_id, $nav_menu_select
 
 			$menu_item_db_id = wp_update_nav_menu_item( $nav_menu_selected_id, ( $_POST['menu-item-db-id'][$_key] != $_key ? 0 : $_key ), $args );
 
-<<<<<<< HEAD
 			if ( is_wp_error( $menu_item_db_id ) ) {
 				$messages[] = '<div id="message" class="error"><p>' . $menu_item_db_id->get_error_message() . '</p></div>';
 			} else {
 				unset( $menu_items[ $menu_item_db_id ] );
 			}
-=======
-			if ( is_wp_error( $menu_item_db_id ) )
-				$messages[] = '<div id="message" class="error"><p>' . $menu_item_db_id->get_error_message() . '</p></div>';
-			elseif ( isset( $menu_items[$menu_item_db_id] ) )
-				unset( $menu_items[$menu_item_db_id] );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 	}
 
@@ -1456,11 +1352,7 @@ function wp_nav_menu_update_menu_items ( $nav_menu_selected_id, $nav_menu_select
 	/** This action is documented in wp-includes/nav-menu.php */
 	do_action( 'wp_update_nav_menu', $nav_menu_selected_id );
 
-<<<<<<< HEAD
 	$messages[] = '<div id="message" class="updated notice is-dismissible"><p>' . sprintf( __( '<strong>%1$s</strong> has been updated.' ), $nav_menu_selected_title ) . '</p></div>';
-=======
-	$messages[] = '<div id="message" class="updated"><p>' . sprintf( __( '<strong>%1$s</strong> has been updated.' ), $nav_menu_selected_title ) . '</p></div>';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	unset( $menu_items, $unsorted_menu_items );
 
 	return $messages;

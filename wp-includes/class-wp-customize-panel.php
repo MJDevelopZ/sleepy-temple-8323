@@ -1,6 +1,5 @@
 <?php
 /**
-<<<<<<< HEAD
  * WordPress Customize Panel classes
  *
  * @package WordPress
@@ -16,15 +15,6 @@
  * @since 4.0.0
  *
  * @see WP_Customize_Manager
-=======
- * Customize Panel Class.
- *
- * A UI container for sections, managed by the WP_Customize_Manager.
- *
- * @package WordPress
- * @subpackage Customize
- * @since 4.0.0
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 class WP_Customize_Panel {
 
@@ -34,14 +24,10 @@ class WP_Customize_Panel {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
-<<<<<<< HEAD
 	 *
 	 * @static
 	 * @access protected
 	 * @static
-=======
-	 * @access protected
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @var int
 	 */
 	protected static $instance_count = 0;
@@ -179,11 +165,6 @@ class WP_Customize_Panel {
 		$this->instance_number = self::$instance_count;
 
 		$this->sections = array(); // Users cannot customize the $sections array.
-<<<<<<< HEAD
-=======
-
-		return $this;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -194,11 +175,7 @@ class WP_Customize_Panel {
 	 *
 	 * @return bool Whether the panel is active to the current preview.
 	 */
-<<<<<<< HEAD
 	final public function active() {
-=======
-	public final function active() {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$panel = $this;
 		$active = call_user_func( $this->active_callback, $this );
 
@@ -238,12 +215,8 @@ class WP_Customize_Panel {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
-<<<<<<< HEAD
 		$array = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'type' ) );
 		$array['title'] = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
-=======
-		$array = wp_array_slice_assoc( (array) $this, array( 'title', 'description', 'priority', 'type' ) );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$array['content'] = $this->get_content();
 		$array['active'] = $this->active();
 		$array['instanceNumber'] = $this->instance_number;
@@ -258,11 +231,7 @@ class WP_Customize_Panel {
 	 *
 	 * @return bool False if theme doesn't support the panel or the user doesn't have the capability.
 	 */
-<<<<<<< HEAD
 	final public function check_capabilities() {
-=======
-	public final function check_capabilities() {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( $this->capability && ! call_user_func_array( 'current_user_can', (array) $this->capability ) ) {
 			return false;
 		}
@@ -281,19 +250,10 @@ class WP_Customize_Panel {
 	 *
 	 * @return string Content for the panel.
 	 */
-<<<<<<< HEAD
 	final public function get_content() {
 		ob_start();
 		$this->maybe_render();
 		return trim( ob_get_clean() );
-=======
-	public final function get_content() {
-		ob_start();
-		$this->maybe_render();
-		$template = trim( ob_get_contents() );
-		ob_end_clean();
-		return $template;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -301,11 +261,7 @@ class WP_Customize_Panel {
 	 *
 	 * @since 4.0.0
 	 */
-<<<<<<< HEAD
 	final public function maybe_render() {
-=======
-	public final function maybe_render() {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( ! $this->check_capabilities() ) {
 			return;
 		}
@@ -333,18 +289,13 @@ class WP_Customize_Panel {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Render the panel container, and then its contents (via `this->render_content()`) in a subclass.
 	 *
 	 * Panel containers are now rendered in JS by default, see {@see WP_Customize_Panel::print_template()}.
-=======
-	 * Render the panel container, and then its contents.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @since 4.0.0
 	 * @access protected
 	 */
-<<<<<<< HEAD
 	protected function render() {}
 
 	/**
@@ -397,25 +348,11 @@ class WP_Customize_Panel {
 				<span class="screen-reader-text"><?php _e( 'Press return or enter to open this panel' ); ?></span>
 			</h3>
 			<ul class="accordion-sub-container control-panel-content"></ul>
-=======
-	protected function render() {
-		$classes = 'accordion-section control-section control-panel control-panel-' . $this->type;
-		?>
-		<li id="accordion-panel-<?php echo esc_attr( $this->id ); ?>" class="<?php echo esc_attr( $classes ); ?>">
-			<h3 class="accordion-section-title" tabindex="0">
-				<?php echo esc_html( $this->title ); ?>
-				<span class="screen-reader-text"><?php _e( 'Press return or enter to open this panel' ); ?></span>
-			</h3>
-			<ul class="accordion-sub-container control-panel-content">
-				<?php $this->render_content(); ?>
-			</ul>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		</li>
 		<?php
 	}
 
 	/**
-<<<<<<< HEAD
 	 * An Underscore (JS) template for this panel's content (but not its container).
 	 *
 	 * Class variables for this panel class are available in the `data` JS object;
@@ -442,32 +379,10 @@ class WP_Customize_Panel {
 					{{{ data.description }}}
 				</div>
 			<# } #>
-=======
-	 * Render the sections that have been added to the panel.
-	 *
-	 * @since 4.1.0
-	 * @access protected
-	 */
-	protected function render_content() {
-		?>
-		<li class="panel-meta accordion-section control-section<?php if ( empty( $this->description ) ) { echo ' cannot-expand'; } ?>">
-			<div class="accordion-section-title" tabindex="0">
-				<span class="preview-notice"><?php
-					/* translators: %s is the site/panel title in the Customizer */
-					echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title">' . esc_html( $this->title ) . '</strong>' );
-				?></span>
-			</div>
-			<?php if ( ! empty( $this->description ) ) : ?>
-				<div class="accordion-section-content description">
-					<?php echo $this->description; ?>
-				</div>
-			<?php endif; ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		</li>
 		<?php
 	}
 }
-<<<<<<< HEAD
 
 /**
  * Customize Nav Menus Panel Class
@@ -565,5 +480,3 @@ class WP_Customize_Nav_Menus_Panel extends WP_Customize_Panel {
 	<?php
 	}
 }
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

@@ -394,11 +394,7 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * @param string $path
 	 * @param bool $recursive
-<<<<<<< HEAD
 	 * @return bool
-=======
-	 * @return type
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function rmdir($path, $recursive = false) {
 		return $this->delete($path, $recursive);

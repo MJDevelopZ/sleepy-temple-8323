@@ -17,14 +17,11 @@ if ( is_multisite() ) {
 }
 
 if ( is_multisite() ) {
-<<<<<<< HEAD
 	/**
 	 *
 	 * @param string $text
 	 * @return string
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function admin_created_user_email( $text ) {
 		$roles = get_editable_roles();
 		$role = $roles[ $_REQUEST['role'] ];
@@ -188,20 +185,12 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
     '<p><strong>' . __('For more information:') . '</strong></p>' .
-<<<<<<< HEAD
     '<p>' . __('<a href="https://codex.wordpress.org/Users_Add_New_Screen" target="_blank">Documentation on Adding New Users</a>') . '</p>' .
-=======
-    '<p>' . __('<a href="http://codex.wordpress.org/Users_Add_New_Screen" target="_blank">Documentation on Adding New Users</a>') . '</p>' .
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
     '<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
 wp_enqueue_script('wp-ajax-response');
-<<<<<<< HEAD
 wp_enqueue_script( 'user-profile' );
-=======
-wp_enqueue_script('user-profile');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Filter whether to enable user auto-complete for non-super admins in Multisite.
@@ -248,21 +237,13 @@ if ( isset($_GET['update']) ) {
 }
 ?>
 <div class="wrap">
-<<<<<<< HEAD
 <h1 id="add-new-user"><?php
-=======
-<h2 id="add-new-user"> <?php
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 if ( current_user_can( 'create_users' ) ) {
 	echo _x( 'Add New User', 'user' );
 } elseif ( current_user_can( 'promote_users' ) ) {
 	echo _x( 'Add Existing User', 'user' );
 } ?>
-<<<<<<< HEAD
 </h1>
-=======
-</h2>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <?php if ( isset($errors) && is_wp_error( $errors ) ) : ?>
 	<div class="error">
@@ -277,11 +258,7 @@ if ( current_user_can( 'create_users' ) ) {
 
 if ( ! empty( $messages ) ) {
 	foreach ( $messages as $msg )
-<<<<<<< HEAD
 		echo '<div id="message" class="updated notice is-dismissible"><p>' . $msg . '</p></div>';
-=======
-		echo '<div id="message" class="updated"><p>' . $msg . '</p></div>';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 } ?>
 
 <?php if ( isset($add_user_errors) && is_wp_error( $add_user_errors ) ) : ?>
@@ -308,11 +285,7 @@ if ( is_multisite() ) {
 		$type  = 'text';
 	}
 ?>
-<<<<<<< HEAD
 <form method="post" name="adduser" id="adduser" class="validate" novalidate="novalidate"<?php
-=======
-<form action="" method="post" name="adduser" id="adduser" class="validate" novalidate="novalidate"<?php
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	/**
 	 * Fires inside the adduser form tag.
 	 *
@@ -356,11 +329,7 @@ if ( is_multisite() ) {
  */
 do_action( 'user_new_form', 'add-existing-user' );
 ?>
-<<<<<<< HEAD
 <?php submit_button( __( 'Add Existing User' ), 'primary', 'adduser', true, array( 'id' => 'addusersub' ) ); ?>
-=======
-<?php submit_button( __( 'Add Existing User '), 'primary', 'adduser', true, array( 'id' => 'addusersub' ) ); ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </form>
 <?php
 } // is_multisite()
@@ -370,11 +339,7 @@ if ( current_user_can( 'create_users') ) {
 		echo '<h3 id="create-new-user">' . __( 'Add New User' ) . '</h3>';
 ?>
 <p><?php _e('Create a brand new user and add them to this site.'); ?></p>
-<<<<<<< HEAD
 <form method="post" name="createuser" id="createuser" class="validate" novalidate="novalidate"<?php
-=======
-<form action="" method="post" name="createuser" id="createuser" class="validate" novalidate="novalidate"<?php
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	/** This action is documented in wp-admin/user-new.php */
 	do_action( 'user_new_form_tag' );
 ?>>
@@ -390,22 +355,14 @@ $new_user_lastname = $creating && isset( $_POST['last_name'] ) ? wp_unslash( $_P
 $new_user_email = $creating && isset( $_POST['email'] ) ? wp_unslash( $_POST['email'] ) : '';
 $new_user_uri = $creating && isset( $_POST['url'] ) ? wp_unslash( $_POST['url'] ) : '';
 $new_user_role = $creating && isset( $_POST['role'] ) ? wp_unslash( $_POST['role'] ) : '';
-<<<<<<< HEAD
 $new_user_send_password = $creating && isset( $_POST['send_password'] ) ? wp_unslash( $_POST['send_password'] ) : true;
-=======
-$new_user_send_password = $creating && isset( $_POST['send_password'] ) ? wp_unslash( $_POST['send_password'] ) : '';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unslash( $_POST['noconfirmation'] ) : '';
 
 ?>
 <table class="form-table">
 	<tr class="form-field form-required">
 		<th scope="row"><label for="user_login"><?php _e('Username'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
-<<<<<<< HEAD
 		<td><input name="user_login" type="text" id="user_login" value="<?php echo esc_attr( $new_user_login ); ?>" aria-required="true" autocapitalize="none" autocorrect="off" /></td>
-=======
-		<td><input name="user_login" type="text" id="user_login" value="<?php echo esc_attr($new_user_login); ?>" aria-required="true" /></td>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	</tr>
 	<tr class="form-field form-required">
 		<th scope="row"><label for="email"><?php _e('E-mail'); ?> <span class="description"><?php _e('(required)'); ?></span></label></th>
@@ -433,7 +390,6 @@ $new_user_ignore_pass = $creating && isset( $_POST['noconfirmation'] ) ? wp_unsl
  * @param bool $show Whether to show the password fields. Default true.
  */
 if ( apply_filters( 'show_password_fields', true ) ) : ?>
-<<<<<<< HEAD
 	<tr class="form-field form-required user-pass1-wrap">
 		<th scope="row">
 			<label for="pass1">
@@ -475,27 +431,6 @@ if ( apply_filters( 'show_password_fields', true ) ) : ?>
 				<?php _e( 'Confirm use of weak password' ); ?>
 			</label>
 		</td>
-=======
-	<tr class="form-field form-required">
-		<th scope="row"><label for="pass1"><?php _e('Password'); ?> <span class="description"><?php /* translators: password input field */_e('(required)'); ?></span></label></th>
-		<td>
-			<input class="hidden" value=" " /><!-- #24364 workaround -->
-			<input name="pass1" type="password" id="pass1" autocomplete="off" />
-		</td>
-	</tr>
-	<tr class="form-field form-required">
-		<th scope="row"><label for="pass2"><?php _e('Repeat Password'); ?> <span class="description"><?php /* translators: password input field */_e('(required)'); ?></span></label></th>
-		<td>
-		<input name="pass2" type="password" id="pass2" autocomplete="off" />
-		<br />
-		<div id="pass-strength-result"><?php _e('Strength indicator'); ?></div>
-		<p class="description indicator-hint"><?php echo wp_get_password_hint(); ?></p>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row"><label for="send_password"><?php _e('Send Password?') ?></label></th>
-		<td><label for="send_password"><input type="checkbox" name="send_password" id="send_password" value="1" <?php checked( $new_user_send_password ); ?> /> <?php _e('Send this password to the new user by email.'); ?></label></td>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	</tr>
 <?php endif; ?>
 <?php } // !is_multisite ?>
@@ -523,11 +458,7 @@ if ( apply_filters( 'show_password_fields', true ) ) : ?>
 do_action( 'user_new_form', 'add-new-user' );
 ?>
 
-<<<<<<< HEAD
 <?php submit_button( __( 'Add New User' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?>
-=======
-<?php submit_button( __( 'Add New User '), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 </form>
 <?php } // current_user_can('create_users') ?>

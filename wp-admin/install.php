@@ -52,11 +52,8 @@ $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 0;
  * Display install header.
  *
  * @since 2.5.0
-<<<<<<< HEAD
  *
  * @param string $body_classes
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function display_header( $body_classes = '' ) {
 	header( 'Content-Type: text/html; charset=utf-8' );
@@ -74,12 +71,8 @@ function display_header( $body_classes = '' ) {
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?php _e( 'WordPress &rsaquo; Installation' ); ?></title>
 	<?php
-<<<<<<< HEAD
 		wp_admin_css( 'install', true );
 		wp_admin_css( 'dashicons', true );
-=======
-	wp_admin_css( 'install', true );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	?>
 </head>
 <body class="wp-core-ui<?php echo $body_classes ?>">
@@ -92,11 +85,8 @@ function display_header( $body_classes = '' ) {
  * Display installer setup form.
  *
  * @since 2.8.0
-<<<<<<< HEAD
  *
  * @param string|null $error
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function display_setup_form( $error = null ) {
 	global $wpdb;
@@ -139,7 +129,6 @@ function display_setup_form( $error = null ) {
 			</td>
 		</tr>
 		<?php if ( ! $user_table ) : ?>
-<<<<<<< HEAD
 		<tr class="form-field form-required user-pass1-wrap">
 			<th scope="row">
 				<label for="pass1">
@@ -179,18 +168,6 @@ function display_setup_form( $error = null ) {
 					<input type="checkbox" name="pw_weak" class="pw-checkbox" />
 					<?php _e( 'Confirm use of weak password' ); ?>
 				</label>
-=======
-		<tr>
-			<th scope="row">
-				<label for="pass1"><?php _e('Password, twice'); ?></label>
-				<p><?php _e('A password will be automatically generated for you if you leave this blank.'); ?></p>
-			</th>
-			<td>
-				<input name="admin_password" type="password" id="pass1" size="25" value="" />
-				<p><input name="admin_password2" type="password" id="pass2" size="25" value="" /></p>
-				<div id="pass-strength-result"><?php _e('Strength indicator'); ?></div>
-				<p><?php echo wp_get_password_hint(); ?></p>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			</td>
 		</tr>
 		<?php endif; ?>
@@ -200,19 +177,11 @@ function display_setup_form( $error = null ) {
 			<p><?php _e( 'Double-check your email address before continuing.' ); ?></p></td>
 		</tr>
 		<tr>
-<<<<<<< HEAD
 			<th scope="row"><?php _e( 'Privacy' ); ?></th>
 			<td colspan="2"><label><input type="checkbox" name="blog_public" id="blog_public" value="1" <?php checked( $blog_public ); ?> /> <?php _e( 'Allow search engines to index this site' ); ?></label></td>
 		</tr>
 	</table>
 	<p class="step"><?php submit_button( __( 'Install WordPress' ), 'large', 'Submit', false, array( 'id' => 'submit' ) ); ?></p>
-=======
-			<th scope="row"><label for="blog_public"><?php _e( 'Privacy' ); ?></label></th>
-			<td colspan="2"><label><input type="checkbox" name="blog_public" id="blog_public" value="1" <?php checked( $blog_public ); ?> /> <?php _e( 'Allow search engines to index this site.' ); ?></label></td>
-		</tr>
-	</table>
-	<p class="step"><input type="submit" name="Submit" value="<?php esc_attr_e( 'Install WordPress' ); ?>" class="button button-large" /></p>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<input type="hidden" name="language" value="<?php echo isset( $_REQUEST['language'] ) ? esc_attr( $_REQUEST['language'] ) : ''; ?>" />
 </form>
 <?php
@@ -224,7 +193,6 @@ if ( is_blog_installed() ) {
 	die( '<h1>' . __( 'Already Installed' ) . '</h1><p>' . __( 'You appear to have already installed WordPress. To reinstall please clear your old database tables first.' ) . '</p><p class="step"><a href="../wp-login.php" class="button button-large">' . __( 'Log In' ) . '</a></p></body></html>' );
 }
 
-<<<<<<< HEAD
 /**
  * @global string $wp_version
  * @global string $required_php_version
@@ -233,27 +201,17 @@ if ( is_blog_installed() ) {
  */
 global $wp_version, $required_php_version, $required_mysql_version;
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 $php_version    = phpversion();
 $mysql_version  = $wpdb->db_version();
 $php_compat     = version_compare( $php_version, $required_php_version, '>=' );
 $mysql_compat   = version_compare( $mysql_version, $required_mysql_version, '>=' ) || file_exists( WP_CONTENT_DIR . '/db.php' );
 
 if ( !$mysql_compat && !$php_compat )
-<<<<<<< HEAD
 	$compat = sprintf( __( 'You cannot install because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher and MySQL version %3$s or higher. You are running PHP version %4$s and MySQL version %5$s.' ), $wp_version, $required_php_version, $required_mysql_version, $php_version, $mysql_version );
 elseif ( !$php_compat )
 	$compat = sprintf( __( 'You cannot install because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher. You are running version %3$s.' ), $wp_version, $required_php_version, $php_version );
 elseif ( !$mysql_compat )
 	$compat = sprintf( __( 'You cannot install because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires MySQL version %2$s or higher. You are running version %3$s.' ), $wp_version, $required_mysql_version, $mysql_version );
-=======
-	$compat = sprintf( __( 'You cannot install because <a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher and MySQL version %3$s or higher. You are running PHP version %4$s and MySQL version %5$s.' ), $wp_version, $required_php_version, $required_mysql_version, $php_version, $mysql_version );
-elseif ( !$php_compat )
-	$compat = sprintf( __( 'You cannot install because <a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher. You are running version %3$s.' ), $wp_version, $required_php_version, $php_version );
-elseif ( !$mysql_compat )
-	$compat = sprintf( __( 'You cannot install because <a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires MySQL version %2$s or higher. You are running version %3$s.' ), $wp_version, $required_mysql_version, $mysql_version );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 if ( !$mysql_compat || !$php_compat ) {
 	display_header();
@@ -265,7 +223,6 @@ if ( ! is_string( $wpdb->base_prefix ) || '' === $wpdb->base_prefix ) {
 	die( '<h1>' . __( 'Configuration Error' ) . '</h1><p>' . __( 'Your <code>wp-config.php</code> file has an empty database table prefix, which is not supported.' ) . '</p></body></html>' );
 }
 
-<<<<<<< HEAD
 // Set error message if DO_NOT_UPGRADE_GLOBAL_TABLES isn't set as it will break install.
 if ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
 	display_header();
@@ -276,8 +233,6 @@ if ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
  * @global string    $wp_local_package
  * @global WP_Locale $wp_locale
  */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 $language = '';
 if ( ! empty( $_REQUEST['language'] ) ) {
 	$language = preg_replace( '/[^a-zA-Z_]/', '', $_REQUEST['language'] );
@@ -351,11 +306,7 @@ switch($step) {
 			// TODO: poka-yoke
 			display_setup_form( __( 'Your passwords do not match. Please try again.' ) );
 			$error = true;
-<<<<<<< HEAD
 		} elseif ( empty( $admin_email ) ) {
-=======
-		} else if ( empty( $admin_email ) ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			// TODO: poka-yoke
 			display_setup_form( __( 'You must provide an email address.' ) );
 			$error = true;
@@ -402,13 +353,10 @@ if ( !wp_is_mobile() ) {
 <?php } ?>
 <?php wp_print_scripts( 'user-profile' ); ?>
 <?php wp_print_scripts( 'language-chooser' ); ?>
-<<<<<<< HEAD
 <script type="text/javascript">
 jQuery( function( $ ) {
 	$( '.hide-if-no-js' ).removeClass( 'hide-if-no-js' );
 } );
 </script>
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </body>
 </html>

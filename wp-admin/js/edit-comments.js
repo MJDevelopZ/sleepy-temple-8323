@@ -313,14 +313,9 @@ commentReply = {
 	},
 
 	toggle : function(el) {
-<<<<<<< HEAD
 		if ( 'none' !== $( el ).css( 'display' ) && ( $( '#replyrow' ).parent().is('#com-reply') || window.confirm( adminCommentsL10n.warnQuickEdit ) ) ) {
 			$( el ).find( 'a.vim-q' ).click();
 		}
-=======
-		if ( $(el).css('display') != 'none' )
-			$(el).find('a.vim-q').click();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	},
 
 	revert : function() {
@@ -357,13 +352,8 @@ commentReply = {
 		$('#com-reply').append( replyrow );
 		$('#replycontent').css('height', '').val('');
 		$('#edithead input').val('');
-<<<<<<< HEAD
 		$('.error', replyrow).empty().hide();
 		$( '.spinner', replyrow ).removeClass( 'is-active' );
-=======
-		$('.error', replyrow).html('').hide();
-		$('.spinner', replyrow).hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		this.cid = '';
 	},
@@ -372,12 +362,8 @@ commentReply = {
 		var editRow, rowData, act, replyButton, editHeight,
 			t = this,
 			c = $('#comment-' + comment_id),
-<<<<<<< HEAD
 			h = c.height(),
 			colspanVal = 0;
-=======
-			h = c.height();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		t.close();
 		t.cid = comment_id;
@@ -387,15 +373,12 @@ commentReply = {
 		action = action || 'replyto';
 		act = 'edit' == action ? 'edit' : 'replyto';
 		act = t.act = act + '-comment';
-<<<<<<< HEAD
 		colspanVal = $( 'th:visible, td:visible', c ).length;
 
 		// Make sure it's actually a table and there's a `colspan` value to apply.
 		if ( editRow.hasClass( 'inline-edit-row' ) && 0 !== colspanVal ) {
 			$( 'td', editRow ).attr( 'colspan', colspanVal );
 		}
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		$('#action', editRow).val(act);
 		$('#comment_post_ID', editRow).val(post_id);
@@ -422,11 +405,7 @@ commentReply = {
 			});
 		} else if ( action == 'add' ) {
 			$('#addhead, #addbtn', editRow).show();
-<<<<<<< HEAD
 			$('#replyhead, #replybtn, #edithead, #savebtn', editRow).hide();
-=======
-			$('#replyhead, #replybtn, #edithead, #editbtn', editRow).hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$('#the-comment-list').prepend(editRow);
 			$('#replyrow').fadeIn(300);
 		} else {
@@ -471,11 +450,7 @@ commentReply = {
 		var post = {};
 
 		$('#replysubmit .error').hide();
-<<<<<<< HEAD
 		$( '#replysubmit .spinner' ).addClass( 'is-active' );
-=======
-		$('#replysubmit .spinner').show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		$('#replyrow input').not(':button').each(function() {
 			var t = $(this);
@@ -558,11 +533,7 @@ commentReply = {
 	error : function(r) {
 		var er = r.statusText;
 
-<<<<<<< HEAD
 		$( '#replysubmit .spinner' ).removeClass( 'is-active' );
-=======
-		$('#replysubmit .spinner').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		if ( r.responseText )
 			er = r.responseText.replace( /<.[^<>]*?>/g, '' );
@@ -640,13 +611,9 @@ $(document).ready(function(){
 					disableInInput: true,
 					type: 'keypress',
 					noDisable: '.check-column input[type="checkbox"]'
-<<<<<<< HEAD
 				},
 				cycle_expr: '#the-comment-list tr',
 				start_row_index: 0
-=======
-				}
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		);
 	}

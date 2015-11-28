@@ -9,7 +9,6 @@
  */
 class WP_Plugin_Install_List_Table extends WP_List_Table {
 
-<<<<<<< HEAD
 	public $order = 'ASC';
 	public $orderby = null;
 	public $groups = array();
@@ -20,12 +19,6 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	 *
 	 * @return bool
 	 */
-=======
-	var $order = 'ASC';
-	var $orderby = null;
-	var $groups = array();
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function ajax_user_can() {
 		return current_user_can('install_plugins');
 	}
@@ -39,11 +32,8 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	 *
 	 * @since 4.0.0
 	 * @access protected
-<<<<<<< HEAD
 	 *
 	 * @return array
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	protected function get_installed_plugin_slugs() {
 		$slugs = array();
@@ -64,7 +54,6 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		return $slugs;
 	}
 
-<<<<<<< HEAD
 	/**
 	 *
 	 * @global array  $tabs
@@ -74,8 +63,6 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	 * @global string $term
 	 * @global string $wp_version
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function prepare_items() {
 		include( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 
@@ -112,13 +99,8 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		 *
 		 * @since 2.7.0
 		 *
-<<<<<<< HEAD
 		 * @param array $tabs The tabs shown on the Plugin Install screen. Defaults include 'featured', 'popular',
 		 *                    'recommended', 'favorites', and 'upload'.
-=======
-		 * @param array $tabs The tabs shown on the Plugin Install screen. Defaults are 'dashboard', 'search',
-		 *                    'upload', 'featured', 'popular', 'new', and 'favorites'.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 */
 		$tabs = apply_filters( 'install_plugins_tabs', $tabs );
 
@@ -138,15 +120,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		$args = array(
 			'page' => $paged,
 			'per_page' => $per_page,
-<<<<<<< HEAD
 			'fields' => array(
 				'last_updated' => true,
 				'icons' => true,
 				'active_installs' => true
 			),
-=======
-			'fields' => array( 'last_updated' => true, 'downloaded' => true, 'icons' => true ),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			// Send the locale and installed plugin slugs to the API so it can provide context-sensitive results.
 			'locale' => get_locale(),
 			'installed_plugins' => $this->get_installed_plugin_slugs(),
@@ -202,12 +180,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		 * Filter API request arguments for each Plugin Install screen tab.
 		 *
 		 * The dynamic portion of the hook name, `$tab`, refers to the plugin install tabs.
-<<<<<<< HEAD
 		 * Default tabs include 'featured', 'popular', 'recommended', 'favorites', and 'upload'.
-=======
-		 * Default tabs are 'dashboard', 'search', 'upload', 'featured', 'popular', 'new',
-		 * and 'favorites'.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 *
 		 * @since 3.7.0
 		 *
@@ -241,12 +214,9 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		}
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function no_items() {
 		if ( isset( $this->error ) ) {
 			$message = $this->error->get_error_message() . '<p class="hide-if-no-js"><a href="#" class="button" onclick="document.location.reload(); return false;">' . __( 'Try again' ) . '</a></p>';
@@ -256,7 +226,6 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		echo '<div class="no-plugin-results">' . $message . '</div>';
 	}
 
-<<<<<<< HEAD
 	/**
 	 *
 	 * @global array $tabs
@@ -264,8 +233,6 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	 *
 	 * @return array
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	protected function get_views() {
 		global $tabs, $tab;
 
@@ -334,11 +301,8 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * @global string $tab
 	 *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param string $which
 	 */
 	protected function display_tablenav( $which ) {
@@ -371,22 +335,16 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		}
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return array
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	protected function get_table_classes() {
 		return array( 'widefat', $this->_args['plural'] );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return array
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function get_columns() {
 		return array();
 	}
@@ -416,12 +374,9 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		}
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @global string $wp_version
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function display_rows() {
 		$plugins_allowedtags = array(
 			'a' => array( 'href' => array(),'title' => array(), 'target' => array() ),
@@ -487,22 +442,14 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 					case 'install':
 						if ( $status['url'] ) {
 							/* translators: 1: Plugin name and version. */
-<<<<<<< HEAD
 							$action_links[] = '<a class="install-now button" data-slug="' . esc_attr( $plugin['slug'] ) . '" href="' . esc_url( $status['url'] ) . '" aria-label="' . esc_attr( sprintf( __( 'Install %s now' ), $name ) ) . '" data-name="' . esc_attr( $name ) . '">' . __( 'Install Now' ) . '</a>';
-=======
-							$action_links[] = '<a class="install-now button" href="' . $status['url'] . '" aria-label="' . esc_attr( sprintf( __( 'Install %s now' ), $name ) ) . '">' . __( 'Install Now' ) . '</a>';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						}
 
 						break;
 					case 'update_available':
 						if ( $status['url'] ) {
 							/* translators: 1: Plugin name and version */
-<<<<<<< HEAD
 							$action_links[] = '<a class="update-now button" data-plugin="' . esc_attr( $status['file'] ) . '" data-slug="' . esc_attr( $plugin['slug'] ) . '" href="' . esc_url( $status['url'] ) . '" aria-label="' . esc_attr( sprintf( __( 'Update %s now' ), $name ) ) . '" data-name="' . esc_attr( $name ) . '">' . __( 'Update Now' ) . '</a>';
-=======
-							$action_links[] = '<a class="button" href="' . $status['url'] . '" aria-label="' . esc_attr( sprintf( __( 'Update %s now' ), $name ) ) . '">' . __( 'Update Now' ) . '</a>';
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						}
 
 						break;
@@ -538,16 +485,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 			 * @param array $plugin       The plugin currently being listed.
 			 */
 			$action_links = apply_filters( 'plugin_install_action_links', $action_links, $plugin );
-<<<<<<< HEAD
 
 			$date_format = __( 'M j, Y @ H:i' );
 			$last_updated_timestamp = strtotime( $plugin['last_updated'] );
 		?>
 		<div class="plugin-card plugin-card-<?php echo sanitize_html_class( $plugin['slug'] ); ?>">
-=======
-		?>
-		<div class="plugin-card">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			<div class="plugin-card-top">
 				<a href="<?php echo esc_url( $details_link ); ?>" class="thickbox plugin-icon"><img src="<?php echo esc_attr( $plugin_icon_url ) ?>" /></a>
 				<div class="name column-name">
@@ -571,7 +513,6 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 					<span class="num-ratings">(<?php echo number_format_i18n( $plugin['num_ratings'] ); ?>)</span>
 				</div>
 				<div class="column-updated">
-<<<<<<< HEAD
 					<strong><?php _e( 'Last Updated:' ); ?></strong> <span title="<?php echo esc_attr( date_i18n( $date_format, $last_updated_timestamp ) ); ?>">
 						<?php printf( __( '%s ago' ), human_time_diff( $last_updated_timestamp ) ); ?>
 					</span>
@@ -585,14 +526,6 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 					}
 					printf( __( '%s Active Installs' ), $active_installs_text );
 					?>
-=======
-					<strong><?php _e( 'Last Updated:' ); ?></strong> <span title="<?php echo esc_attr( $plugin['last_updated'] ); ?>">
-						<?php printf( __( '%s ago' ), human_time_diff( strtotime( $plugin['last_updated'] ) ) ); ?>
-					</span>
-				</div>
-				<div class="column-downloaded">
-					<?php echo sprintf( _n( '%s download', '%s downloads', $plugin['downloaded'] ), number_format_i18n( $plugin['downloaded'] ) ); ?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				</div>
 				<div class="column-compatibility">
 					<?php

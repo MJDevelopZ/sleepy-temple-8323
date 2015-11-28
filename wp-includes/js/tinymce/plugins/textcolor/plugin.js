@@ -1,13 +1,8 @@
 /**
  * plugin.js
  *
-<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
-=======
- * Copyright, Moxiecode Systems AB
- * Released under LGPL License.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -164,7 +159,6 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 	}
 
 	function applyFormat(format, value) {
-<<<<<<< HEAD
 		editor.undoManager.transact(function() {
 			editor.focus();
 			editor.formatter.apply(format, {value: value});
@@ -178,17 +172,6 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 			editor.formatter.remove(format, {value: null}, null, true);
 			editor.nodeChanged();
 		});
-=======
-		editor.focus();
-		editor.formatter.apply(format, {value: value});
-		editor.nodeChanged();
-	}
-
-	function removeFormat(format) {
-		editor.focus();
-		editor.formatter.remove(format, {value: null}, null, true);
-		editor.nodeChanged();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	function onPanelClick(e) {
@@ -200,15 +183,12 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 			applyFormat(buttonCtrl.settings.format, value);
 		}
 
-<<<<<<< HEAD
 		function resetColor() {
 			buttonCtrl.hidePanel();
 			buttonCtrl.resetColor();
 			removeFormat(buttonCtrl.settings.format);
 		}
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		function setDivColor(div, value) {
 			div.style.background = value;
 			div.setAttribute('data-mce-color', value);
@@ -255,19 +235,10 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 			this.lastId = e.target.id;
 
 			if (value == 'transparent') {
-<<<<<<< HEAD
 				resetColor();
 			} else {
 				selectColor(value);
 			}
-=======
-				removeFormat(buttonCtrl.settings.format);
-				buttonCtrl.hidePanel();
-				return;
-			}
-
-			selectColor(value);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		} else if (value !== null) {
 			buttonCtrl.hidePanel();
 		}
@@ -278,11 +249,8 @@ tinymce.PluginManager.add('textcolor', function(editor) {
 
 		if (self._color) {
 			applyFormat(self.settings.format, self._color);
-<<<<<<< HEAD
 		} else {
 			removeFormat(self.settings.format);
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 	}
 

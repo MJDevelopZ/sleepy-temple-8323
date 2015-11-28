@@ -12,13 +12,10 @@ class WP_Admin_Bar {
 	private $bound = false;
 	public $user;
 
-<<<<<<< HEAD
 	/**
 	 * @param string $name
 	 * @return string|array|void
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function __get( $name ) {
 		switch ( $name ) {
 			case 'proto' :
@@ -30,12 +27,9 @@ class WP_Admin_Bar {
 		}
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function initialize() {
 		$this->user = new stdClass;
 
@@ -82,22 +76,16 @@ class WP_Admin_Bar {
 		do_action( 'admin_bar_init' );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param array $node
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function add_menu( $node ) {
 		$this->add_node( $node );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param string $id
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function remove_menu( $id ) {
 		$this->remove_node( $id );
 	}
@@ -168,12 +156,9 @@ class WP_Admin_Bar {
 		$this->_set_node( $args );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param array $args
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _set_node( $args ) {
 		$this->nodes[ $args['id'] ] = (object) $args;
 	}
@@ -181,10 +166,7 @@ class WP_Admin_Bar {
 	/**
 	 * Gets a node.
 	 *
-<<<<<<< HEAD
 	 * @param string $id
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @return object Node.
 	 */
 	final public function get_node( $id ) {
@@ -192,13 +174,10 @@ class WP_Admin_Bar {
 			return clone $node;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param string $id
 	 * @return object|void
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _get_node( $id ) {
 		if ( $this->bound )
 			return;
@@ -210,12 +189,9 @@ class WP_Admin_Bar {
 			return $this->nodes[ $id ];
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return array|void
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final public function get_nodes() {
 		if ( ! $nodes = $this->_get_nodes() )
 			return;
@@ -226,12 +202,9 @@ class WP_Admin_Bar {
 		return $nodes;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return array|void
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _get_nodes() {
 		if ( $this->bound )
 			return;
@@ -262,44 +235,31 @@ class WP_Admin_Bar {
 	/**
 	 * Remove a node.
 	 *
-<<<<<<< HEAD
 	 * @param string $id The ID of the item.
-=======
-	 * @param string The ID of the item.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function remove_node( $id ) {
 		$this->_unset_node( $id );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param string $id
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _unset_node( $id ) {
 		unset( $this->nodes[ $id ] );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function render() {
 		$root = $this->_bind();
 		if ( $root )
 			$this->_render( $root );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @return object|void
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _bind() {
 		if ( $this->bound )
 			return;
@@ -421,14 +381,11 @@ class WP_Admin_Bar {
 		return $root;
 	}
 
-<<<<<<< HEAD
 	/**
 	 *
 	 * @global bool $is_IE
 	 * @param object $root
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _render( $root ) {
 		global $is_IE;
 
@@ -447,17 +404,11 @@ class WP_Admin_Bar {
 		}
 
 		?>
-<<<<<<< HEAD
 		<div id="wpadminbar" class="<?php echo $class; ?>">
 			<?php if ( ! is_admin() ) { ?>
 				<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1"><?php _e( 'Skip to toolbar' ); ?></a>
 			<?php } ?>
 			<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="<?php esc_attr_e( 'Toolbar' ); ?>" tabindex="0">
-=======
-		<div id="wpadminbar" class="<?php echo $class; ?>" role="navigation">
-			<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1"><?php _e('Skip to toolbar'); ?></a>
-			<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="<?php esc_attr_e('Top navigation toolbar.'); ?>" tabindex="0">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				<?php foreach ( $root->children as $group ) {
 					$this->_render_group( $group );
 				} ?>
@@ -470,12 +421,9 @@ class WP_Admin_Bar {
 		<?php
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param object $node
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _render_container( $node ) {
 		if ( $node->type != 'container' || empty( $node->children ) )
 			return;
@@ -487,7 +435,6 @@ class WP_Admin_Bar {
 		?></div><?php
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param object $node
 	 */
@@ -496,12 +443,6 @@ class WP_Admin_Bar {
 			$this->_render_container( $node );
 			return;
 		}
-=======
-	final protected function _render_group( $node ) {
-		if ( $node->type == 'container' )
-			return $this->_render_container( $node );
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( $node->type != 'group' || empty( $node->children ) )
 			return;
 
@@ -517,12 +458,9 @@ class WP_Admin_Bar {
 		?></ul><?php
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param object $node
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	final protected function _render_item( $node ) {
 		if ( $node->type != 'item' )
 			return;
@@ -595,24 +533,18 @@ class WP_Admin_Bar {
 		</li><?php
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @param string $id    Unused.
 	 * @param object $node
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function recursive_render( $id, $node ) {
 		_deprecated_function( __METHOD__, '3.3', 'WP_Admin_bar::render(), WP_Admin_Bar::_render_item()' );
 		$this->_render_item( $node );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @access public
 	 */
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	public function add_menus() {
 		// User related, aligned right.
 		add_action( 'admin_bar_menu', 'wp_admin_bar_my_account_menu', 0 );
@@ -624,12 +556,8 @@ class WP_Admin_Bar {
 		add_action( 'admin_bar_menu', 'wp_admin_bar_wp_menu', 10 );
 		add_action( 'admin_bar_menu', 'wp_admin_bar_my_sites_menu', 20 );
 		add_action( 'admin_bar_menu', 'wp_admin_bar_site_menu', 30 );
-<<<<<<< HEAD
 		add_action( 'admin_bar_menu', 'wp_admin_bar_customize_menu', 40 );
 		add_action( 'admin_bar_menu', 'wp_admin_bar_updates_menu', 50 );
-=======
-		add_action( 'admin_bar_menu', 'wp_admin_bar_updates_menu', 40 );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		// Content related.
 		if ( ! is_network_admin() && ! is_user_admin() ) {

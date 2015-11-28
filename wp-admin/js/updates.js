@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* global tb_remove */
 window.wp = window.wp || {};
 
@@ -93,21 +92,10 @@ window.wp = window.wp || {};
 	 * Decrement update counts throughout the various menus.
 	 *
 	 * @since 3.9.0
-=======
-window.wp = window.wp || {};
-
-(function( $, wp ) {
-
-	wp.updates = {};
-
-	/**
-	 * Decrement update counts throughout the various menus
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @param {string} updateType
 	 */
 	wp.updates.decrementCount = function( upgradeType ) {
-<<<<<<< HEAD
 		var count,
 			pluginCount,
 			$adminBarUpdateCount = $( '#wp-admin-bar-updates .ab-label' ),
@@ -116,18 +104,11 @@ window.wp = window.wp || {};
 
 
 		count = $adminBarUpdateCount.text();
-=======
-		var count, pluginCount, $elem;
-
-		$elem = $( '#wp-admin-bar-updates .ab-label' );
-		count = $elem.text();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		count = parseInt( count, 10 ) - 1;
 		if ( count < 0 || isNaN( count ) ) {
 			return;
 		}
 		$( '#wp-admin-bar-updates .ab-item' ).removeAttr( 'title' );
-<<<<<<< HEAD
 		$adminBarUpdateCount.text( count );
 
 
@@ -139,25 +120,10 @@ window.wp = window.wp || {};
 
 		if ( 'plugin' === upgradeType ) {
 			pluginCount = $pluginsMenuItem.find( '.plugin-count' ).eq(0).text();
-=======
-		$elem.text( count );
-
-		$elem = $( 'a[href="update-core.php"] .update-plugins' );
-		$elem.each( function( index, elem ) {
-			elem.className = elem.className.replace( /count-\d+/, 'count-' + count );
-		} );
-		$elem.removeAttr( 'title' );
-		$elem.find( '.update-count' ).text( count );
-
-		if ( 'plugin' === upgradeType ) {
-			$elem = $( '#menu-plugins' );
-			pluginCount = $elem.find( '.plugin-count' ).eq(0).text();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			pluginCount = parseInt( pluginCount, 10 ) - 1;
 			if ( pluginCount < 0 || isNaN( pluginCount ) ) {
 				return;
 			}
-<<<<<<< HEAD
 			$pluginsMenuItem.find( '.plugin-count' ).text( pluginCount );
 			$pluginsMenuItem.find( '.update-plugins' ).each( function( index, elem ) {
 				elem.className = elem.className.replace( /count-\d+/, 'count-' + pluginCount );
@@ -558,15 +524,6 @@ window.wp = window.wp || {};
 
 	} );
 
-=======
-			$elem.find( '.plugin-count' ).text( pluginCount );
-			$elem.find( '.update-plugins' ).each( function( index, elem ) {
-				elem.className = elem.className.replace( /count-\d+/, 'count-' + pluginCount );
-			} );
-		}
-	};
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$( window ).on( 'message', function( e ) {
 		var event = e.originalEvent,
 			message,
@@ -579,7 +536,6 @@ window.wp = window.wp || {};
 
 		message = $.parseJSON( event.data );
 
-<<<<<<< HEAD
 		if ( typeof message.action === 'undefined' ) {
 			return;
 		}
@@ -607,14 +563,3 @@ window.wp = window.wp || {};
 	$( window ).on( 'beforeunload', wp.updates.beforeunload );
 
 })( jQuery, window.wp, window.pagenow, window.ajaxurl );
-=======
-		if ( typeof message.action === 'undefined' || message.action !== 'decrementUpdateCount' ) {
-			return;
-		}
-
-		wp.updates.decrementCount( message.upgradeType );
-
-	} );
-
-})( jQuery, window.wp );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

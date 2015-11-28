@@ -8,7 +8,6 @@
  * @subpackage Administration
  */
 
-<<<<<<< HEAD
 /**
  * Declare these as global in case schema.php is included from a function.
  *
@@ -16,19 +15,10 @@
  * @global array  $wp_queries
  * @global string $charset_collate
  */
-=======
-// Declare these as global in case schema.php is included from a function.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 global $wpdb, $wp_queries, $charset_collate;
 
 /**
  * The database character collate.
-<<<<<<< HEAD
-=======
- * @var string
- * @global string
- * @name $charset_collate
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 $charset_collate = $wpdb->get_charset_collate();
 
@@ -37,11 +27,8 @@ $charset_collate = $wpdb->get_charset_collate();
  *
  * @since 3.3.0
  *
-<<<<<<< HEAD
  * @global wpdb $wpdb
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $scope Optional. The tables for which to retrieve SQL. Can be all, global, ms_global, or blog tables. Defaults to all.
  * @param int $blog_id Optional. The blog ID for which to retrieve SQL. Default is the current blog ID.
  * @return string The SQL needed to create the requested tables.
@@ -62,7 +49,6 @@ function wp_get_db_schema( $scope = 'all', $blog_id = null ) {
 	// Engage multisite if in the middle of turning it on from network.php.
 	$is_multisite = is_multisite() || ( defined( 'WP_INSTALLING_NETWORK' ) && WP_INSTALLING_NETWORK );
 
-<<<<<<< HEAD
 	/*
 	 * Indexes have a maximum size of 767 bytes. Historically, we haven't need to be concerned about that.
 	 * As of 4.2, however, we moved to utf8mb4, which uses 4 bytes per character. This means that an index which
@@ -70,8 +56,6 @@ function wp_get_db_schema( $scope = 'all', $blog_id = null ) {
 	 */
 	$max_index_length = 191;
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	// Blog specific tables.
 	$blog_tables = "CREATE TABLE $wpdb->terms (
  term_id bigint(20) unsigned NOT NULL auto_increment,
@@ -79,13 +63,8 @@ function wp_get_db_schema( $scope = 'all', $blog_id = null ) {
  slug varchar(200) NOT NULL default '',
  term_group bigint(10) NOT NULL default 0,
  PRIMARY KEY  (term_id),
-<<<<<<< HEAD
  KEY slug (slug($max_index_length)),
  KEY name (name($max_index_length))
-=======
- KEY slug (slug),
- KEY name (name)
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 ) $charset_collate;
 CREATE TABLE $wpdb->term_taxonomy (
  term_taxonomy_id bigint(20) unsigned NOT NULL auto_increment,
@@ -112,11 +91,7 @@ CREATE TABLE $wpdb->commentmeta (
   meta_value longtext,
   PRIMARY KEY  (meta_id),
   KEY comment_id (comment_id),
-<<<<<<< HEAD
   KEY meta_key (meta_key($max_index_length))
-=======
-  KEY meta_key (meta_key)
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 ) $charset_collate;
 CREATE TABLE $wpdb->comments (
   comment_ID bigint(20) unsigned NOT NULL auto_increment,
@@ -173,11 +148,7 @@ CREATE TABLE $wpdb->postmeta (
   meta_value longtext,
   PRIMARY KEY  (meta_id),
   KEY post_id (post_id),
-<<<<<<< HEAD
   KEY meta_key (meta_key($max_index_length))
-=======
-  KEY meta_key (meta_key)
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 ) $charset_collate;
 CREATE TABLE $wpdb->posts (
   ID bigint(20) unsigned NOT NULL auto_increment,
@@ -204,11 +175,7 @@ CREATE TABLE $wpdb->posts (
   post_mime_type varchar(100) NOT NULL default '',
   comment_count bigint(20) NOT NULL default '0',
   PRIMARY KEY  (ID),
-<<<<<<< HEAD
   KEY post_name (post_name($max_index_length)),
-=======
-  KEY post_name (post_name),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
   KEY type_status_date (post_type,post_status,post_date,ID),
   KEY post_parent (post_parent),
   KEY post_author (post_author)
@@ -258,11 +225,7 @@ CREATE TABLE $wpdb->posts (
   meta_value longtext,
   PRIMARY KEY  (umeta_id),
   KEY user_id (user_id),
-<<<<<<< HEAD
   KEY meta_key (meta_key($max_index_length))
-=======
-  KEY meta_key (meta_key)
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 ) $charset_collate;\n";
 
 	// Global tables
@@ -310,11 +273,7 @@ CREATE TABLE $wpdb->site (
   domain varchar(200) NOT NULL default '',
   path varchar(100) NOT NULL default '',
   PRIMARY KEY  (id),
-<<<<<<< HEAD
   KEY domain (domain(140),path(51))
-=======
-  KEY domain (domain,path)
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 ) $charset_collate;
 CREATE TABLE $wpdb->sitemeta (
   meta_id bigint(20) NOT NULL auto_increment,
@@ -322,11 +281,7 @@ CREATE TABLE $wpdb->sitemeta (
   meta_key varchar(255) default NULL,
   meta_value longtext,
   PRIMARY KEY  (meta_id),
-<<<<<<< HEAD
   KEY meta_key (meta_key($max_index_length)),
-=======
-  KEY meta_key (meta_key),
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
   KEY site_id (site_id)
 ) $charset_collate;
 CREATE TABLE $wpdb->signups (
@@ -345,11 +300,7 @@ CREATE TABLE $wpdb->signups (
   KEY activation_key (activation_key),
   KEY user_email (user_email),
   KEY user_login_email (user_login,user_email),
-<<<<<<< HEAD
   KEY domain_path (domain(140),path(51))
-=======
-  KEY domain_path (domain,path)
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 ) $charset_collate;";
 
 	switch ( $scope ) {
@@ -387,12 +338,8 @@ $wp_queries = wp_get_db_schema( 'all' );
  * @since 1.5.0
  *
  * @global wpdb $wpdb WordPress database abstraction object.
-<<<<<<< HEAD
  * @global int  $wp_db_version
  * @global int  $wp_current_db_version
-=======
- * @uses $wp_db_version
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function populate_options() {
 	global $wpdb, $wp_db_version, $wp_current_db_version;
@@ -549,12 +496,9 @@ function populate_options() {
 
 	// 3.5
 	'link_manager_enabled' => 0,
-<<<<<<< HEAD
 
 	// 4.3.0
 	'finished_splitting_shared_terms' => 1,
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	);
 
 	// 3.3
@@ -629,7 +573,6 @@ function populate_options() {
 	 * transient_timeout record from table b.
 	 */
 	$time = time();
-<<<<<<< HEAD
 	$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
 		WHERE a.option_name LIKE %s
 		AND a.option_name NOT LIKE %s
@@ -645,23 +588,6 @@ function populate_options() {
 			AND b.option_value < %d";
 		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_site_transient_' ) . '%', $wpdb->esc_like( '_site_transient_timeout_' ) . '%', $time ) );
 	}
-=======
-	$wpdb->query("WITH bx AS (DELETE FROM $wpdb->options a USING $wpdb->options b WHERE
-		a.option_name LIKE '\_transient\_%' AND
-		a.option_name NOT LIKE '\_transient\_timeout\_%' AND
-		b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
-		AND b.option_value < text($time) RETURNING b.option_id)
-		DELETE FROM wp_options WHERE option_id in (select option_id from bx)");
-
-	if ( is_main_site() && is_main_network() ) {
-		$wpdb->query("WITH bx AS (DELETE FROM $wpdb->options a USING $wpdb->options b WHERE
-			a.option_name LIKE '\_site\_transient\_%' AND
-			a.option_name NOT LIKE '\_site\_transient\_timeout\_%' AND
-			b.option_name = CONCAT( '_site_transient_timeout_', SUBSTRING( a.option_name, 17 ) )
-			AND b.option_value < text($time) RETURNING b.option_id)
-			DELETE FROM wp_options WHERE option_id in (select option_id from bx)");
-    }
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -945,14 +871,11 @@ endif;
  *
  * @since 3.0.0
  *
-<<<<<<< HEAD
  * @global wpdb       $wpdb
  * @global object     $current_site
  * @global int        $wp_db_version
  * @global WP_Rewrite $wp_rewrite
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $network_id ID of network to populate.
  * @return bool|WP_Error True on success, or WP_Error on warning (with the install otherwise successful,
  *                       so the error code must be checked) or failure.
@@ -1008,12 +931,8 @@ function populate_network( $network_id = 1, $domain = '', $email = '', $site_nam
 		$site_admins = get_site_option( 'site_admins' );
 	}
 
-<<<<<<< HEAD
 	/* translators: Do not translate USERNAME, SITE_NAME, BLOG_URL, PASSWORD: those are placeholders. */
 	$welcome_email = __( 'Howdy USERNAME,
-=======
-	$welcome_email = __( 'Dear User,
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 Your new SITE_NAME site has been successfully set up at:
 BLOG_URL

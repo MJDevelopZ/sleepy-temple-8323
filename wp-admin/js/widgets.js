@@ -1,7 +1,6 @@
 /*global ajaxurl, isRtl */
 var wpWidgets;
 (function($) {
-<<<<<<< HEAD
 	var $document = $( document );
 
 wpWidgets = {
@@ -11,10 +10,6 @@ wpWidgets = {
 	 * @var element|null
 	 */
 	hoveredSidebar: null,
-=======
-
-wpWidgets = {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	init : function() {
 		var rem, the_id,
@@ -34,19 +29,13 @@ wpWidgets = {
 			} else {
 				$wrap.addClass('closed');
 			}
-<<<<<<< HEAD
 
 			$document.triggerHandler( 'wp-pin-menu' );
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		});
 
 		$('#widgets-left .sidebar-name').click( function() {
 			$(this).closest('.widgets-holder-wrap').toggleClass('closed');
-<<<<<<< HEAD
 			$document.triggerHandler( 'wp-pin-menu' );
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		});
 
 		$(document.body).bind('click.widgets-toggle', function(e) {
@@ -110,12 +99,8 @@ wpWidgets = {
 			distance: 2,
 			helper: 'clone',
 			zIndex: 100,
-<<<<<<< HEAD
 			containment: '#wpwrap',
 			refreshPositions: true,
-=======
-			containment: 'document',
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			start: function( event, ui ) {
 				var chooser = $(this).find('.widgets-chooser');
 
@@ -139,7 +124,6 @@ wpWidgets = {
 			}
 		});
 
-<<<<<<< HEAD
 		/**
 		 * Opens and closes previously closed Sidebars when Widgets are dragged over/out of them.
 		 */
@@ -179,21 +163,15 @@ wpWidgets = {
 			}
 		} );
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		sidebars.sortable({
 			placeholder: 'widget-placeholder',
 			items: '> .widget',
 			handle: '> .widget-top > .widget-title',
 			cursor: 'move',
 			distance: 2,
-<<<<<<< HEAD
 			containment: '#wpwrap',
 			tolerance: 'pointer',
 			refreshPositions: true,
-=======
-			containment: 'document',
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			start: function( event, ui ) {
 				var height, $this = $(this),
 					$wrap = $this.parent(),
@@ -217,12 +195,9 @@ wpWidgets = {
 					$widget = ui.item,
 					id = the_id;
 
-<<<<<<< HEAD
 				// Reset the var to hold a previously closed sidebar.
 				wpWidgets.hoveredSidebar = null;
 
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				if ( $widget.hasClass('deleting') ) {
 					wpWidgets.save( $widget, 1, 0, 1 ); // delete widget
 					$widget.remove();
@@ -254,11 +229,7 @@ wpWidgets = {
 
 					wpWidgets.save( $widget, 0, 0, 1 );
 					$widget.find('input.add_new').val('');
-<<<<<<< HEAD
 					$document.trigger( 'widget-added', [ $widget ] );
-=======
-					$( document ).trigger( 'widget-added', [ $widget ] );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 
 				$sidebar = $widget.parent();
@@ -317,11 +288,7 @@ wpWidgets = {
 			},
 			drop: function(e,ui) {
 				ui.draggable.addClass('deleting');
-<<<<<<< HEAD
 				$('#removing-widget').hide().children('span').empty();
-=======
-				$('#removing-widget').hide().children('span').html('');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			},
 			over: function(e,ui) {
 				ui.draggable.addClass('deleting');
@@ -335,11 +302,7 @@ wpWidgets = {
 			out: function(e,ui) {
 				ui.draggable.removeClass('deleting');
 				$('div.widget-placeholder').show();
-<<<<<<< HEAD
 				$('#removing-widget').hide().children('span').empty();
-=======
-				$('#removing-widget').hide().children('span').html('');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		});
 
@@ -413,11 +376,7 @@ wpWidgets = {
 		};
 
 		if ( sidebarId ) {
-<<<<<<< HEAD
 			$( '#' + sidebarId ).find( '.spinner:first' ).addClass( 'is-active' );
-=======
-			$( '#' + sidebarId ).find('.spinner:first').css('display', 'inline-block');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 
 		$('div.widgets-sortables').each( function() {
@@ -427,11 +386,7 @@ wpWidgets = {
 		});
 
 		$.post( ajaxurl, data, function() {
-<<<<<<< HEAD
 			$( '.spinner' ).removeClass( 'is-active' );
-=======
-			$('.spinner').hide();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		});
 	},
 
@@ -440,11 +395,7 @@ wpWidgets = {
 			data = widget.find('form').serialize(), a;
 
 		widget = $(widget);
-<<<<<<< HEAD
 		$( '.spinner', widget ).addClass( 'is-active' );
-=======
-		$('.spinner', widget).show();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		a = {
 			action: 'save-widget',
@@ -481,19 +432,11 @@ wpWidgets = {
 					widget.remove();
 				}
 			} else {
-<<<<<<< HEAD
 				$( '.spinner' ).removeClass( 'is-active' );
 				if ( r && r.length > 2 ) {
 					$( 'div.widget-content', widget ).html( r );
 					wpWidgets.appendTitle( widget );
 					$document.trigger( 'widget-updated', [ widget ] );
-=======
-				$('.spinner').hide();
-				if ( r && r.length > 2 ) {
-					$( 'div.widget-content', widget ).html( r );
-					wpWidgets.appendTitle( widget );
-					$( document ).trigger( 'widget-updated', [ widget ] );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 			}
 			if ( order ) {
@@ -558,11 +501,7 @@ wpWidgets = {
 		// No longer "new" widget
 		widget.find( 'input.add_new' ).val('');
 
-<<<<<<< HEAD
 		$document.trigger( 'widget-added', [ widget ] );
-=======
-		$( document ).trigger( 'widget-added', [ widget ] );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		/*
 		 * Check if any part of the sidebar is visible in the viewport. If it is, don't scroll.
@@ -602,7 +541,6 @@ wpWidgets = {
 	clearWidgetSelection: function() {
 		$( '#widgets-left' ).removeClass( 'chooser' );
 		$( '.widget-in-question' ).removeClass( 'widget-in-question' );
-<<<<<<< HEAD
 	},
 
 	/**
@@ -620,11 +558,5 @@ wpWidgets = {
 };
 
 $document.ready( function(){ wpWidgets.init(); } );
-=======
-	}
-};
-
-$(document).ready( function(){ wpWidgets.init(); } );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 })(jQuery);

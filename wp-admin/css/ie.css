@@ -50,22 +50,6 @@
 	width: 35%;
 }
 
-<<<<<<< HEAD
-=======
-.wp-fullscreen-title {
-	width: 97%;
-}
-
-#wp_mce_fullscreen_ifr {
-	background-color: #f9f9f9;
-}
-
-#wp-fullscreen-tagline {
-	color: #888;
-	font-size: 14px;
-}
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 #adminmenuback {
 	left: 0;
 	background-image: none;
@@ -500,24 +484,16 @@ table.ie-fixed {
 }
 
 .widefat tr,
-<<<<<<< HEAD
 .widefat th,
 .widefat thead td,
 .widefat tfoot td {
-=======
-.widefat th {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin-bottom: 0;
 	border-spacing: 0;
 }
 
-<<<<<<< HEAD
 .widefat th input,
 .widefat thead td input,
 .widefat tfoot td input {
-=======
-.widefat th input {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin: 0 0 0 5px;
 }
 
@@ -685,11 +661,7 @@ input[type="password"],
 }
 
 .mce-btn i.mce-i-wp_adv {
-<<<<<<< HEAD
 	background-color: #a0a5aa;
-=======
-	background-color: #aaa;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .mce-btn i.mce-i-help,

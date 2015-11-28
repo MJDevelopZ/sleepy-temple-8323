@@ -143,11 +143,7 @@ foreach( $load as $handle ) {
 	$out .= get_file($path) . "\n";
 }
 
-<<<<<<< HEAD
 header('Content-Type: application/javascript; charset=UTF-8');
-=======
-header('Content-Type: application/x-javascript; charset=UTF-8');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 header('Expires: ' . gmdate( "D, d M Y H:i:s", time() + $expires_offset ) . ' GMT');
 header("Cache-Control: public, max-age=$expires_offset");
 

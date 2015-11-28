@@ -50,11 +50,8 @@ function install_themes_feature_list() {
  * Display search form for searching themes.
  *
  * @since 2.8.0
-<<<<<<< HEAD
  *
  * @param bool $type_selector
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function install_theme_search_form( $type_selector = true ) {
 	$type = isset( $_REQUEST['type'] ) ? wp_unslash( $_REQUEST['type'] ) : 'term';
@@ -62,11 +59,7 @@ function install_theme_search_form( $type_selector = true ) {
 	if ( ! $type_selector )
 		echo '<p class="install-help">' . __( 'Search for themes by keyword.' ) . '</p>';
 	?>
-<<<<<<< HEAD
 <form id="search-themes" method="get">
-=======
-<form id="search-themes" method="get" action="">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<input type="hidden" name="tab" value="search" />
 	<?php if ( $type_selector ) : ?>
 	<label class="screen-reader-text" for="typeselector"><?php _e('Type of search'); ?></label>
@@ -108,11 +101,7 @@ function install_themes_dashboard() {
 <h4><?php _e('Feature Filter') ?></h4>
 <p class="install-help"><?php _e( 'Find a theme based on specific features.' ); ?></p>
 
-<<<<<<< HEAD
 <form method="get">
-=======
-<form method="get" action="">
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<input type="hidden" name="tab" value="search" />
 	<?php
 	$feature_list = get_theme_feature_list();
@@ -145,15 +134,10 @@ function install_themes_dashboard() {
 </form>
 <?php
 }
-<<<<<<< HEAD
 
 /**
  * @since 2.8.0
  */
-=======
-// add_action('install_themes_dashboard', 'install_themes_dashboard');
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function install_themes_upload() {
 ?>
 <p class="install-help"><?php _e('If you have a theme in a .zip format, you may install it by uploading it here.'); ?></p>
@@ -164,22 +148,15 @@ function install_themes_upload() {
 </form>
 	<?php
 }
-<<<<<<< HEAD
-=======
-// add_action('install_themes_upload', 'install_themes_upload', 10, 0);
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Prints a theme on the Install Themes pages.
  *
  * @deprecated 3.4.0
-<<<<<<< HEAD
  *
  * @global WP_Theme_Install_List_Table $wp_list_table
  *
  * @param object $theme
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function display_theme( $theme ) {
 	_deprecated_function( __FUNCTION__, '3.4' );
@@ -195,11 +172,8 @@ function display_theme( $theme ) {
  * Display theme content based on theme list.
  *
  * @since 2.8.0
-<<<<<<< HEAD
  *
  * @global WP_Theme_Install_List_Table $wp_list_table
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function display_themes() {
 	global $wp_list_table;
@@ -211,23 +185,13 @@ function display_themes() {
 	$wp_list_table->display();
 
 }
-<<<<<<< HEAD
-=======
-// add_action('install_themes_search', 'display_themes');
-// add_action('install_themes_featured', 'display_themes');
-// add_action('install_themes_new', 'display_themes');
-// add_action('install_themes_updated', 'display_themes');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Display theme information in dialog box form.
  *
  * @since 2.8.0
-<<<<<<< HEAD
  *
  * @global WP_Theme_Install_List_Table $wp_list_table
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function install_theme_information() {
 	global $wp_list_table;
@@ -245,7 +209,3 @@ function install_theme_information() {
 	iframe_footer();
 	exit;
 }
-<<<<<<< HEAD
-=======
-add_action('install_themes_pre_theme-information', 'install_theme_information');
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

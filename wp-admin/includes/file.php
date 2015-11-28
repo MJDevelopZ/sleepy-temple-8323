@@ -50,11 +50,7 @@ $wp_file_descriptions = array(
  *
  * @since 1.5.0
  *
-<<<<<<< HEAD
  * @global array $wp_file_descriptions
-=======
- * @uses $wp_file_descriptions
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $file Filesystem path or filename
  * @return string Description of file from $wp_file_descriptions or basename of $file if description doesn't exist
  */
@@ -145,7 +141,6 @@ function list_files( $folder = '', $levels = 100 ) {
  * @param string $dir      Optional. Directory to store the file in. Default empty.
  * @return string a writable filename
  */
-<<<<<<< HEAD
 function wp_tempnam( $filename = '', $dir = '' ) {
 	if ( empty( $dir ) ) {
 		$dir = get_temp_dir();
@@ -169,19 +164,6 @@ function wp_tempnam( $filename = '', $dir = '' ) {
 	touch( $temp_filename );
 
 	return $temp_filename;
-=======
-function wp_tempnam($filename = '', $dir = '') {
-	if ( empty($dir) )
-		$dir = get_temp_dir();
-	$filename = basename($filename);
-	if ( empty($filename) )
-		$filename = time();
-
-	$filename = preg_replace('|\..*$|', '.tmp', $filename);
-	$filename = $dir . wp_unique_filename($dir, $filename);
-	touch($filename);
-	return $filename;
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**
@@ -221,18 +203,10 @@ function validate_file_to_edit( $file, $allowed_files = '' ) {
  *
  * @see wp_handle_upload_error
  *
-<<<<<<< HEAD
  * @param array       $file      Reference to a single element of $_FILES. Call the function once for each uploaded file.
  * @param array|false $overrides An associative array of names => values to override default variables. Default false.
  * @param string      $time      Time formatted in 'yyyy/mm'.
  * @param string      $action    Expected value for $_POST['action'].
-=======
- * @param array  $file      Reference to a single element of $_FILES. Call the function once for
- *                          each uploaded file.
- * @param array  $overrides An associative array of names => values to override default variables.
- * @param string $time      Time formatted in 'yyyy/mm'.
- * @param string $action    Expected value for $_POST['action'].
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return array On success, returns an associative array of file attributes. On failure, returns
  *               $overrides['upload_error_handler'](&$file, $message ) or array( 'error'=>$message ).
 */
@@ -542,11 +516,8 @@ function verify_file_md5( $filename, $expected_md5 ) {
  *
  * @since 2.5.0
  *
-<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $file Full path and filename of zip archive
  * @param string $to Full path on the filesystem to extract archive to
  * @return mixed WP_Error on failure, True on success
@@ -610,11 +581,8 @@ function unzip_file($file, $to) {
  * @see unzip_file
  * @access private
  *
-<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $file Full path and filename of zip archive
  * @param string $to Full path on the filesystem to extract archive to
  * @param array $needed_dirs A partial list of required folders needed to be created.
@@ -675,15 +643,10 @@ function _unzip_file_ziparchive($file, $to, $needed_dirs = array() ) {
 
 	// Create those directories if need be:
 	foreach ( $needed_dirs as $_dir ) {
-<<<<<<< HEAD
 		// Only check to see if the Dir exists upon creation failure. Less I/O this way.
 		if ( ! $wp_filesystem->mkdir( $_dir, FS_CHMOD_DIR ) && ! $wp_filesystem->is_dir( $_dir ) ) {
 			return new WP_Error( 'mkdir_failed_ziparchive', __( 'Could not create directory.' ), substr( $_dir, strlen( $to ) ) );
 		}
-=======
-		if ( ! $wp_filesystem->mkdir($_dir, FS_CHMOD_DIR) && ! $wp_filesystem->is_dir($_dir) ) // Only check to see if the Dir exists upon creation failure. Less I/O this way.
-			return new WP_Error( 'mkdir_failed_ziparchive', __( 'Could not create directory.' ), substr( $_dir, strlen( $to ) ) );
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 	unset($needed_dirs);
 
@@ -718,11 +681,8 @@ function _unzip_file_ziparchive($file, $to, $needed_dirs = array() ) {
  * @see unzip_file
  * @access private
  *
-<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $file Full path and filename of zip archive
  * @param string $to Full path on the filesystem to extract archive to
  * @param array $needed_dirs A partial list of required folders needed to be created.
@@ -815,11 +775,8 @@ function _unzip_file_pclzip($file, $to, $needed_dirs = array()) {
  *
  * @since 2.5.0
  *
-<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $from source directory
  * @param string $to destination directory
  * @param array $skip_list a list of files/folders to skip copying
@@ -874,7 +831,6 @@ function copy_dir($from, $to, $skip_list = array() ) {
  *
  * @since 2.5.0
  *
-<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
  * @param array|false  $args                         Optional. Connection args, These are passed directly to
@@ -882,15 +838,6 @@ function copy_dir($from, $to, $skip_list = array() ) {
  * @param string|false $context                      Optional. Context for get_filesystem_method(). Default false.
  * @param bool         $allow_relaxed_file_ownership Optional. Whether to allow Group/World writable. Default false.
  * @return null|bool false on failure, true on success.
-=======
- * @param array  $args                         Optional. Connection args, These are passed directly to
- *                                             the `WP_Filesystem_*()` classes. Default false.
- * @param string $context                      Optional. Context for {@see get_filesystem_method()}.
- *                                             Default false.
- * @param bool   $allow_relaxed_file_ownership Optional. Whether to allow Group/World writable.
- *                                             Default false.
- * @return null|boolean false on failure, true on success.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function WP_Filesystem( $args = false, $context = false, $allow_relaxed_file_ownership = false ) {
 	global $wp_filesystem;
@@ -947,7 +894,6 @@ function WP_Filesystem( $args = false, $context = false, $allow_relaxed_file_own
 }
 
 /**
-<<<<<<< HEAD
  * Determines which method to use for reading, writing, modifying, or deleting
  * files on the filesystem.
  *
@@ -971,30 +917,6 @@ function WP_Filesystem( $args = false, $context = false, $allow_relaxed_file_own
  *                                             for being writable. Default false.
  * @param bool   $allow_relaxed_file_ownership Optional. Whether to allow Group/World writable.
  *                                             Default false.
-=======
- * Determines which Filesystem Method to use.
- *
- * The priority of the Transports are: Direct, SSH2, FTP PHP Extension,
- * FTP Sockets (Via Sockets class, or `fsockopen()`).
- *
- * Note that the return value of this function can be overridden in 2 ways
- *
- *  - By defining FS_METHOD in your `wp-config.php` file
- *  - By using the filesystem_method filter
- *
- * Valid values for these are: 'direct', 'ssh2', 'ftpext' or 'ftpsockets'.
- *
- * Plugins may also define a custom transport handler, See the WP_Filesystem
- * function for more information.
- *
- * @since 2.5.0
- *
- * @todo Properly mark arguments as optional.
- *
- * @param array $args Connection details.
- * @param string $context Full path to the directory that is tested for being writable.
- * @param bool $allow_relaxed_file_ownership Whether to allow Group/World writable.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return string The transport to use, see description for valid return values.
  */
 function get_filesystem_method( $args = array(), $context = false, $allow_relaxed_file_ownership = false ) {
@@ -1025,19 +947,11 @@ function get_filesystem_method( $args = array(), $context = false, $allow_relaxe
 			}
 
 			if ( $wp_file_owner !== false && $wp_file_owner === $temp_file_owner ) {
-<<<<<<< HEAD
 				// WordPress is creating files as the same owner as the WordPress files,
 				// this means it's safe to modify & create new files via PHP.
 				$method = 'direct';
 				$GLOBALS['_wp_filesystem_direct_method'] = 'file_owner';
 			} elseif ( $allow_relaxed_file_ownership ) {
-=======
-				// WordPress is creating files as the same owner as the WordPress files, 
-				// this means it's safe to modify & create new files via PHP.
-				$method = 'direct';
-				$GLOBALS['_wp_filesystem_direct_method'] = 'file_owner';
-			} else if ( $allow_relaxed_file_ownership ) {
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				// The $context directory is writable, and $allow_relaxed_file_ownership is set, this means we can modify files
 				// safely in this directory. This mode doesn't create new files, only alter existing ones.
 				$method = 'direct';
@@ -1082,7 +996,6 @@ function get_filesystem_method( $args = array(), $context = false, $allow_relaxe
  *
  * @todo Properly mark optional arguments as such
  *
-<<<<<<< HEAD
  * @param string $form_post    the URL to post the form to
  * @param string $type         the chosen Filesystem method in use
  * @param bool   $error        if the current request has failed to connect
@@ -1090,15 +1003,6 @@ function get_filesystem_method( $args = array(), $context = false, $allow_relaxe
  * @param array  $extra_fields Extra POST fields which should be checked for to be included in the post.
  * @param bool   $allow_relaxed_file_ownership Whether to allow Group/World writable.
  * @return bool False on failure. True on success.
-=======
- * @param string $form_post the URL to post the form to
- * @param string $type the chosen Filesystem method in use
- * @param boolean $error if the current request has failed to connect
- * @param string $context The directory which is needed access to, The write-test will be performed on this directory by get_filesystem_method()
- * @param string $extra_fields Extra POST fields which should be checked for to be included in the post.
- * @param bool $allow_relaxed_file_ownership Whether to allow Group/World writable.
- * @return boolean False on failure. True on success.
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function request_filesystem_credentials($form_post, $type = '', $error = false, $context = false, $extra_fields = null, $allow_relaxed_file_ownership = false ) {
 
@@ -1156,7 +1060,6 @@ function request_filesystem_credentials($form_post, $type = '', $error = false, 
 		unset($credentials['port']);
 	}
 
-<<<<<<< HEAD
 	if ( ( defined( 'FTP_SSH' ) && FTP_SSH ) || ( defined( 'FS_METHOD' ) && 'ssh2' == FS_METHOD ) ) {
 		$credentials['connection_type'] = 'ssh';
 	} elseif ( ( defined( 'FTP_SSL' ) && FTP_SSL ) && 'ftpext' == $type ) { //Only the FTP Extension understands SSL
@@ -1166,17 +1069,6 @@ function request_filesystem_credentials($form_post, $type = '', $error = false, 
 	} elseif ( ! isset( $credentials['connection_type'] ) ) { //All else fails (And it's not defaulted to something else saved), Default to FTP
 		$credentials['connection_type'] = 'ftp';
 	}
-=======
-	if ( ( defined('FTP_SSH') && FTP_SSH ) || ( defined('FS_METHOD') && 'ssh2' == FS_METHOD ) )
-		$credentials['connection_type'] = 'ssh';
-	else if ( (defined('FTP_SSL') && FTP_SSL) && 'ftpext' == $type ) //Only the FTP Extension understands SSL
-		$credentials['connection_type'] = 'ftps';
-	else if ( !empty($_POST['connection_type']) )
-		$credentials['connection_type'] = wp_unslash( $_POST['connection_type'] );
-	else if ( !isset($credentials['connection_type']) ) //All else fails (And it's not defaulted to something else saved), Default to FTP
-		$credentials['connection_type'] = 'ftp';
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	if ( ! $error &&
 			(
 				( !empty($credentials['password']) && !empty($credentials['username']) && !empty($credentials['hostname']) ) ||
@@ -1238,24 +1130,14 @@ jQuery(function($){
 	jQuery("#ftp, #ftps").click(function () {
 		jQuery("#ssh_keys").hide();
 	});
-<<<<<<< HEAD
 	jQuery('#request-filesystem-credentials-form input[value=""]:first').focus();
-=======
-	jQuery('form input[value=""]:first').focus();
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 });
 -->
 </script>
 <form action="<?php echo esc_url( $form_post ) ?>" method="post">
-<<<<<<< HEAD
 <div id="request-filesystem-credentials-form" class="request-filesystem-credentials-form">
 <h3 id="request-filesystem-credentials-title"><?php _e( 'Connection Information' ) ?></h3>
 <p id="request-filesystem-credentials-desc"><?php
-=======
-<div>
-<h3><?php _e('Connection Information') ?></h3>
-<p><?php
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$label_user = __('Username');
 	$label_pass = __('Password');
 	_e('To perform the requested action, WordPress needs to access your web server.');
@@ -1274,7 +1156,6 @@ jQuery(function($){
 	}
 	_e('If you do not remember your credentials, you should contact your web host.');
 ?></p>
-<<<<<<< HEAD
 <label for="hostname">
 	<span class="field-title"><?php _e( 'Hostname' ) ?></span>
 	<input name="hostname" type="text" id="hostname" aria-describedby="request-filesystem-credentials-desc" class="code" placeholder="<?php esc_attr_e( 'example: www.wordpress.org' ) ?>" value="<?php echo esc_attr($hostname); if ( !empty($port) ) echo ":$port"; ?>"<?php disabled( defined('FTP_HOST') ); ?> />
@@ -1305,41 +1186,6 @@ jQuery(function($){
 <span id="auth-keys-desc"><?php _e('Enter the location on the server where the public and private keys are located. If a passphrase is needed, enter that in the password field above.') ?></span>
 <?php endif; ?>
 <h4><?php _e('Connection Type') ?></h4>
-=======
-<table class="form-table">
-<tr>
-<th scope="row"><label for="hostname"><?php _e('Hostname') ?></label></th>
-<td><input name="hostname" type="text" id="hostname" value="<?php echo esc_attr($hostname); if ( !empty($port) ) echo ":$port"; ?>"<?php disabled( defined('FTP_HOST') ); ?> size="40" /></td>
-</tr>
-
-<tr>
-<th scope="row"><label for="username"><?php echo $label_user; ?></label></th>
-<td><input name="username" type="text" id="username" value="<?php echo esc_attr($username) ?>"<?php disabled( defined('FTP_USER') ); ?> size="40" /></td>
-</tr>
-
-<tr>
-<th scope="row"><label for="password"><?php echo $label_pass; ?></label></th>
-<td><div><input name="password" type="password" id="password" value="<?php if ( defined('FTP_PASS') ) echo '*****'; ?>"<?php disabled( defined('FTP_PASS') ); ?> size="40" /></div>
-<div><em><?php if ( ! defined('FTP_PASS') ) _e( 'This password will not be stored on the server.' ); ?></em></div></td>
-</tr>
-
-<?php if ( isset($types['ssh']) ) : ?>
-<tr id="ssh_keys" style="<?php if ( 'ssh' != $connection_type ) echo 'display:none' ?>">
-<th scope="row"><?php _e('Authentication Keys') ?>
-<div class="key-labels textright">
-<label for="public_key"><?php _e('Public Key:') ?></label ><br />
-<label for="private_key"><?php _e('Private Key:') ?></label>
-</div></th>
-<td><br /><input name="public_key" type="text" id="public_key" value="<?php echo esc_attr($public_key) ?>"<?php disabled( defined('FTP_PUBKEY') ); ?> size="40" />
-	<br /><input name="private_key" type="text" id="private_key" value="<?php echo esc_attr($private_key) ?>"<?php disabled( defined('FTP_PRIKEY') ); ?> size="40" />
-<div><?php _e('Enter the location on the server where the keys are located. If a passphrase is needed, enter that in the password field above.') ?></div></td>
-</tr>
-<?php endif; ?>
-
-<tr>
-<th scope="row"><?php _e('Connection Type') ?></th>
-<td>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <fieldset><legend class="screen-reader-text"><span><?php _e('Connection Type') ?></span></legend>
 <?php
 	$disabled = disabled( (defined('FTP_SSL') && FTP_SSL) || (defined('FTP_SSH') && FTP_SSH), true, false );
@@ -1350,34 +1196,21 @@ jQuery(function($){
 	</label>
 	<?php endforeach; ?>
 </fieldset>
-<<<<<<< HEAD
-=======
-</td>
-</tr>
-</table>
-
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php
 foreach ( (array) $extra_fields as $field ) {
 	if ( isset( $_POST[ $field ] ) )
 		echo '<input type="hidden" name="' . esc_attr( $field ) . '" value="' . esc_attr( wp_unslash( $_POST[ $field ] ) ) . '" />';
 }
-<<<<<<< HEAD
 ?>
 	<p class="request-filesystem-credentials-action-buttons">
 		<button class="button cancel-button" data-js-action="close" type="button"><?php _e( 'Cancel' ); ?></button>
 		<?php submit_button( __( 'Proceed' ), 'button', 'upgrade', false ); ?>
 	</p>
-=======
-submit_button( __( 'Proceed' ), 'button', 'upgrade' );
-?>
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </div>
 </form>
 <?php
 	return false;
 }
-<<<<<<< HEAD
 
 /**
  * Print the filesystem credentials modal when needed.
@@ -1404,5 +1237,3 @@ function wp_print_request_filesystem_credentials_modal() {
 	</div>
 	<?php
 }
-=======
->>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
