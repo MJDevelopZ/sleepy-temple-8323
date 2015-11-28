@@ -5,7 +5,11 @@
  * @package WordPress
  * @subpackage Administration
  *
+<<<<<<< HEAD
  * @link https://codex.wordpress.org/AJAX_in_Plugins
+=======
+ * @link http://codex.wordpress.org/AJAX_in_Plugins
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 
 /**
@@ -56,11 +60,16 @@ $core_actions_post = array(
 	'hidden-columns', 'update-welcome-panel', 'menu-get-metabox', 'wp-link-ajax',
 	'menu-locations-save', 'menu-quick-search', 'meta-box-order', 'get-permalink',
 	'sample-permalink', 'inline-save', 'inline-save-tax', 'find_posts', 'widgets-order',
+<<<<<<< HEAD
 	'save-widget', 'set-post-thumbnail', 'date_format', 'time_format',
+=======
+	'save-widget', 'set-post-thumbnail', 'date_format', 'time_format', 'wp-fullscreen-save-post',
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'wp-remove-post-lock', 'dismiss-wp-pointer', 'upload-attachment', 'get-attachment',
 	'query-attachments', 'save-attachment', 'save-attachment-compat', 'send-link-to-editor',
 	'send-attachment-to-editor', 'save-attachment-order', 'heartbeat', 'get-revision-diffs',
 	'save-user-color-scheme', 'update-widget', 'query-themes', 'parse-embed', 'set-attachment-thumbnail',
+<<<<<<< HEAD
 	'parse-media-shortcode', 'destroy-sessions', 'install-plugin', 'update-plugin', 'press-this-save-post',
 	'press-this-add-category', 'crop-image',
 );
@@ -68,6 +77,11 @@ $core_actions_post = array(
 // Deprecated
 $core_actions_post[] = 'wp-fullscreen-save-post';
 
+=======
+	'parse-media-shortcode', 'destroy-sessions'
+);
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 // Register core Ajax calls.
 if ( ! empty( $_GET['action'] ) && in_array( $_GET['action'], $core_actions_get ) )
 	add_action( 'wp_ajax_' . $_GET['action'], 'wp_ajax_' . str_replace( '-', '_', $_GET['action'] ), 1 );

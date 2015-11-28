@@ -81,11 +81,14 @@ function admin_url() {}
  */
 function wp_guess_url() {}
 
+<<<<<<< HEAD
 /**
  *
  * @param string $path
  * @return string
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function get_file($path) {
 
 	if ( function_exists('realpath') )

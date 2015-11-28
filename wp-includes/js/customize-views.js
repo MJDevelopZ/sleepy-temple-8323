@@ -3,6 +3,10 @@
 	if ( ! wp || ! wp.customize ) { return; }
 	var api = wp.customize;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	/**
 	 * wp.customize.HeaderTool.CurrentView
 	 *

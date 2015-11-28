@@ -45,7 +45,11 @@ inlineEditTax = {
 	},
 
 	edit : function(id) {
+<<<<<<< HEAD
 		var editRow, rowData, val,
+=======
+		var editRow, rowData,
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			t = this;
 		t.revert();
 
@@ -54,6 +58,7 @@ inlineEditTax = {
 		}
 
 		editRow = $('#inline-edit').clone(true), rowData = $('#inline_'+id);
+<<<<<<< HEAD
 		$( 'td', editRow ).attr( 'colspan', $( 'th:visible, td:visible', '.widefat:first thead' ).length );
 
 		$(t.what+id).hide().after(editRow).after('<tr class="hidden"></tr>');
@@ -67,6 +72,18 @@ inlineEditTax = {
 		val.find( 'img' ).replaceWith( function() { return this.alt; } );
 		val = val.text();
 		$(':input[name="slug"]', editRow).val( val );
+=======
+		$('td', editRow).attr('colspan', $('.widefat:first thead th:visible').length);
+
+		if ( $( t.what + id ).hasClass( 'alternate' ) ) {
+			$(editRow).addClass('alternate');
+		}
+
+		$(t.what+id).hide().after(editRow);
+
+		$(':input[name="name"]', editRow).val( $('.name', rowData).text() );
+		$(':input[name="slug"]', editRow).val( $('.slug', rowData).text() );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		$(editRow).attr('id', 'edit-'+id).addClass('inline-editor').show();
 		$('.ptitle', editRow).eq(0).focus();
@@ -81,7 +98,11 @@ inlineEditTax = {
 			id = this.getId(id);
 		}
 
+<<<<<<< HEAD
 		$( 'table.widefat .spinner' ).addClass( 'is-active' );
+=======
+		$('table.widefat .spinner').show();
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		params = {
 			action: 'inline-save-tax',
@@ -96,6 +117,7 @@ inlineEditTax = {
 		// make ajax request
 		$.post( ajaxurl, params,
 			function(r) {
+<<<<<<< HEAD
 				var row, new_id, option_value;
 				$( 'table.widefat .spinner' ).removeClass( 'is-active' );
 
@@ -117,6 +139,18 @@ inlineEditTax = {
 						// Update the value in the Parent dropdown.
 						$( '#parent' ).find( 'option[value=' + option_value + ']' ).text( row.find( '.row-title' ).text() );
 
+=======
+				var row, new_id;
+				$('table.widefat .spinner').hide();
+
+				if (r) {
+					if ( -1 !== r.indexOf( '<tr' ) ) {
+						$(inlineEditTax.what+id).remove();
+						new_id = $(r).attr('id');
+
+						$('#edit-'+id).before(r).remove();
+						row = new_id ? $('#'+new_id) : $(inlineEditTax.what+id);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						row.hide().fadeIn();
 					} else {
 						$('#edit-'+id+' .inline-edit-save .error').html(r).show();
@@ -124,6 +158,13 @@ inlineEditTax = {
 				} else {
 					$('#edit-'+id+' .inline-edit-save .error').html(inlineEditL10n.error).show();
 				}
+<<<<<<< HEAD
+=======
+
+				if ( $( row ).prev( 'tr' ).hasClass( 'alternate' ) ) {
+					$(row).removeClass('alternate');
+				}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 		);
 		return false;
@@ -133,8 +174,13 @@ inlineEditTax = {
 		var id = $('table.widefat tr.inline-editor').attr('id');
 
 		if ( id ) {
+<<<<<<< HEAD
 			$( 'table.widefat .spinner' ).removeClass( 'is-active' );
 			$('#'+id).siblings('tr.hidden').addBack().remove();
+=======
+			$('table.widefat .spinner').hide();
+			$('#'+id).remove();
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			id = id.substr( id.lastIndexOf('-') + 1 );
 			$(this.what+id).show();
 		}

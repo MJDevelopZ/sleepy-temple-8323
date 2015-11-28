@@ -10,6 +10,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 
+<<<<<<< HEAD
 /**
  * @global string  $post_type
  * @global object  $post_type_object
@@ -17,6 +18,8 @@ if ( !defined('ABSPATH') )
  */
 global $post_type, $post_type_object, $post;
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 wp_enqueue_script('post');
 $_wp_editor_expand = $_content_editor_dfw = false;
 
@@ -50,6 +53,7 @@ $post_ID = isset($post_ID) ? (int) $post_ID : 0;
 $user_ID = isset($user_ID) ? (int) $user_ID : 0;
 $action = isset($action) ? $action : '';
 
+<<<<<<< HEAD
 if ( $post_ID == get_option( 'page_for_posts' ) && empty( $post->post_content ) ) {
 	add_action( 'edit_form_after_title', '_wp_posts_page_notice' );
 	remove_post_type_support( $post_type, 'editor' );
@@ -60,6 +64,13 @@ if ( ! $thumbnail_support && 'attachment' === $post_type && $post->post_mime_typ
 	if ( wp_attachment_is( 'audio', $post ) ) {
 		$thumbnail_support = post_type_supports( 'attachment:audio', 'thumbnail' ) || current_theme_supports( 'post-thumbnails', 'attachment:audio' );
 	} elseif ( wp_attachment_is( 'video', $post ) ) {
+=======
+$thumbnail_support = current_theme_supports( 'post-thumbnails', $post_type ) && post_type_supports( $post_type, 'thumbnail' );
+if ( ! $thumbnail_support && 'attachment' === $post_type && $post->post_mime_type ) {
+	if ( 0 === strpos( $post->post_mime_type, 'audio/' ) ) {
+		$thumbnail_support = post_type_supports( 'attachment:audio', 'thumbnail' ) || current_theme_supports( 'post-thumbnails', 'attachment:audio' );
+	} elseif ( 0 === strpos( $post->post_mime_type, 'video/' ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$thumbnail_support = post_type_supports( 'attachment:video', 'thumbnail' ) || current_theme_supports( 'post-thumbnails', 'attachment:video' );
 	}
 }
@@ -75,6 +86,7 @@ add_action( 'admin_footer', '_local_storage_notice' );
 /*
  * @todo Document the $messages array(s).
  */
+<<<<<<< HEAD
 $permalink = get_permalink( $post_ID );
 if ( ! $permalink ) {
 	$permalink = '';
@@ -87,11 +99,18 @@ $post_preview_url = apply_filters( 'preview_post_link', add_query_arg( 'preview'
 $messages['post'] = array(
 	 0 => '', // Unused. Messages start at index 1.
 	 1 => sprintf( __('Post updated. <a href="%s">View post</a>'), esc_url( $permalink ) ),
+=======
+$messages = array();
+$messages['post'] = array(
+	 0 => '', // Unused. Messages start at index 1.
+	 1 => sprintf( __('Post updated. <a href="%s">View post</a>'), esc_url( get_permalink($post_ID) ) ),
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 2 => __('Custom field updated.'),
 	 3 => __('Custom field deleted.'),
 	 4 => __('Post updated.'),
 	/* translators: %s: date and time of the revision */
 	 5 => isset($_GET['revision']) ? sprintf( __('Post restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+<<<<<<< HEAD
 	 6 => sprintf( __('Post published. <a href="%s">View post</a>'), esc_url( $permalink ) ),
 	 7 => __('Post saved.'),
 	 8 => sprintf( __('Post submitted. <a target="_blank" href="%s">Preview post</a>'), esc_url( $post_preview_url ) ),
@@ -107,15 +126,36 @@ $page_preview_url = apply_filters( 'preview_post_link', add_query_arg( 'preview'
 $messages['page'] = array(
 	 0 => '', // Unused. Messages start at index 1.
 	 1 => sprintf( __('Page updated. <a href="%s">View page</a>'), esc_url( $permalink ) ),
+=======
+	 6 => sprintf( __('Post published. <a href="%s">View post</a>'), esc_url( get_permalink($post_ID) ) ),
+	 7 => __('Post saved.'),
+	 8 => sprintf( __('Post submitted. <a target="_blank" href="%s">Preview post</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+	 9 => sprintf( __('Post scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview post</a>'),
+		/* translators: Publish box date format, see http://php.net/date */
+		date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+	10 => sprintf( __('Post draft updated. <a target="_blank" href="%s">Preview post</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+);
+$messages['page'] = array(
+	 0 => '', // Unused. Messages start at index 1.
+	 1 => sprintf( __('Page updated. <a href="%s">View page</a>'), esc_url( get_permalink($post_ID) ) ),
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 2 => __('Custom field updated.'),
 	 3 => __('Custom field deleted.'),
 	 4 => __('Page updated.'),
 	 5 => isset($_GET['revision']) ? sprintf( __('Page restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+<<<<<<< HEAD
 	 6 => sprintf( __('Page published. <a href="%s">View page</a>'), esc_url( $permalink ) ),
 	 7 => __('Page saved.'),
 	 8 => sprintf( __('Page submitted. <a target="_blank" href="%s">Preview page</a>'), esc_url( $page_preview_url ) ),
 	 9 => sprintf( __('Page scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview page</a>'), date_i18n( __( 'M j, Y @ H:i' ), strtotime( $post->post_date ) ), esc_url( $permalink ) ),
 	10 => sprintf( __('Page draft updated. <a target="_blank" href="%s">Preview page</a>'), esc_url( $page_preview_url ) ),
+=======
+	 6 => sprintf( __('Page published. <a href="%s">View page</a>'), esc_url( get_permalink($post_ID) ) ),
+	 7 => __('Page saved.'),
+	 8 => sprintf( __('Page submitted. <a target="_blank" href="%s">Preview page</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+	 9 => sprintf( __('Page scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview page</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+	10 => sprintf( __('Page draft updated. <a target="_blank" href="%s">Preview page</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 );
 $messages['attachment'] = array_fill( 1, 10, __( 'Media attachment updated.' ) ); // Hack, for now.
 
@@ -190,7 +230,11 @@ if ( 'attachment' == $post_type ) {
 	add_meta_box( 'submitdiv', __('Save'), 'attachment_submit_meta_box', null, 'side', 'core' );
 	add_action( 'edit_form_after_title', 'edit_form_image_editor' );
 
+<<<<<<< HEAD
 	if ( wp_attachment_is( 'audio', $post ) ) {
+=======
+	if ( 0 === strpos( $post->post_mime_type, 'audio/' ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		add_meta_box( 'attachment-id3', __( 'Metadata' ), 'attachment_id3_data_meta_box', null, 'normal', 'core' );
 	}
 } else {
@@ -220,7 +264,11 @@ if ( post_type_supports($post_type, 'page-attributes') )
 	add_meta_box('pageparentdiv', 'page' == $post_type ? __('Page Attributes') : __('Attributes'), 'page_attributes_meta_box', null, 'side', 'core');
 
 if ( $thumbnail_support && current_user_can( 'upload_files' ) )
+<<<<<<< HEAD
 	add_meta_box('postimagediv', esc_html( $post_type_object->labels->featured_image ), 'post_thumbnail_meta_box', null, 'side', 'low');
+=======
+	add_meta_box('postimagediv', __('Featured Image'), 'post_thumbnail_meta_box', null, 'side', 'low');
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 if ( post_type_supports($post_type, 'excerpt') )
 	add_meta_box('postexcerpt', __('Excerpt'), 'post_excerpt_meta_box', null, 'normal', 'core');
@@ -319,6 +367,7 @@ if ( 'post' == $post_type ) {
 	) );
 
 	get_current_screen()->set_help_sidebar(
+<<<<<<< HEAD
 			'<p>' . sprintf(__('You can also create posts with the <a href="%s">Press This bookmarklet</a>.'), 'tools.php') . '</p>' .
 			'<p><strong>' . __('For more information:') . '</strong></p>' .
 			'<p>' . __('<a href="https://codex.wordpress.org/Posts_Add_New_Screen" target="_blank">Documentation on Writing and Editing Posts</a>') . '</p>' .
@@ -326,6 +375,15 @@ if ( 'post' == $post_type ) {
 	);
 } elseif ( 'page' == $post_type ) {
 	$about_pages = '<p>' . __('Pages are similar to posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest pages under other pages by making one the &#8220;Parent&#8221; of the other, creating a group of pages.') . '</p>' .
+=======
+			'<p>' . sprintf(__('You can also create posts with the <a href="%s">Press This bookmarklet</a>.'), 'options-writing.php') . '</p>' .
+			'<p><strong>' . __('For more information:') . '</strong></p>' .
+			'<p>' . __('<a href="http://codex.wordpress.org/Posts_Add_New_Screen" target="_blank">Documentation on Writing and Editing Posts</a>') . '</p>' .
+			'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
+	);
+} elseif ( 'page' == $post_type ) {
+	$about_pages = '<p>' . __('Pages are similar to Posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest Pages under other Pages by making one the &#8220;Parent&#8221; of the other, creating a group of Pages.') . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		'<p>' . __('Creating a Page is very similar to creating a Post, and the screens can be customized in the same way using drag and drop, the Screen Options tab, and expanding/collapsing boxes as you choose. This screen also has the distraction-free writing space, available in both the Visual and Text modes via the Fullscreen buttons. The Page editor mostly works the same as the Post editor, but there are some Page-specific features in the Page Attributes box:') . '</p>';
 
 	get_current_screen()->add_help_tab( array(
@@ -336,8 +394,13 @@ if ( 'post' == $post_type ) {
 
 	get_current_screen()->set_help_sidebar(
 			'<p><strong>' . __('For more information:') . '</strong></p>' .
+<<<<<<< HEAD
 			'<p>' . __('<a href="https://codex.wordpress.org/Pages_Add_New_Screen" target="_blank">Documentation on Adding New Pages</a>') . '</p>' .
 			'<p>' . __('<a href="https://codex.wordpress.org/Pages_Screen#Editing_Individual_Pages" target="_blank">Documentation on Editing Pages</a>') . '</p>' .
+=======
+			'<p>' . __('<a href="http://codex.wordpress.org/Pages_Add_New_Screen" target="_blank">Documentation on Adding New Pages</a>') . '</p>' .
+			'<p>' . __('<a href="http://codex.wordpress.org/Pages_Screen#Editing_Individual_Pages" target="_blank">Documentation on Editing Pages</a>') . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 	);
 } elseif ( 'attachment' == $post_type ) {
@@ -353,14 +416,22 @@ if ( 'post' == $post_type ) {
 
 	get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Media_Add_New_Screen#Edit_Media" target="_blank">Documentation on Edit Media</a>') . '</p>' .
+=======
+	'<p>' . __('<a href="http://codex.wordpress.org/Media_Add_New_Screen#Edit_Media" target="_blank">Documentation on Edit Media</a>') . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 	);
 }
 
 if ( 'post' == $post_type || 'page' == $post_type ) {
 	$inserting_media = '<p>' . __( 'You can upload and insert media (images, audio, documents, etc.) by clicking the Add Media button. You can select from the images and files already uploaded to the Media Library, or upload new media to add to your page or post. To create an image gallery, select the images to add and click the &#8220;Create a new gallery&#8221; button.' ) . '</p>';
+<<<<<<< HEAD
 	$inserting_media .= '<p>' . __( 'You can also embed media from many popular websites including Twitter, YouTube, Flickr and others by pasting the media URL on its own line into the content of your post/page. Please refer to the Codex to <a href="https://codex.wordpress.org/Embeds">learn more about embeds</a>.' ) . '</p>';
+=======
+	$inserting_media .= '<p>' . __( 'You can also embed media from many popular websites including Twitter, YouTube, Flickr and others by pasting the media URL on its own line into the content of your post/page. Please refer to the Codex to <a href="http://codex.wordpress.org/Embeds">learn more about embeds</a>.' ) . '</p>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	get_current_screen()->add_help_tab( array(
 		'id'		=> 'inserting-media',
@@ -374,12 +445,20 @@ if ( 'post' == $post_type ) {
 	$publish_box .= '<ul><li>' . __('<strong>Publish</strong> - You can set the terms of publishing your post in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a post or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a post to be published in the future or backdate a post.') . '</li>';
 
 	if ( current_theme_supports( 'post-formats' ) && post_type_supports( 'post', 'post-formats' ) ) {
+<<<<<<< HEAD
 		$publish_box .= '<li>' . __( '<strong>Format</strong> - Post Formats designate how your theme will display a specific post. For example, you could have a <em>standard</em> blog post with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Please refer to the Codex for <a href="https://codex.wordpress.org/Post_Formats#Supported_Formats">descriptions of each post format</a>. Your theme could enable all or some of 10 possible formats.' ) . '</li>';
 	}
 
 	if ( current_theme_supports( 'post-thumbnails' ) && post_type_supports( 'post', 'thumbnail' ) ) {
 		/* translators: %s: Featured Image */
 		$publish_box .= '<li>' . sprintf( __( '<strong>%s</strong> - This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the image as a post thumbnail on the home page, a custom header, etc.' ), esc_html( $post_type_object->labels->featured_image ) ) . '</li>';
+=======
+		$publish_box .= '<li>' . __( '<strong>Format</strong> - Post Formats designate how your theme will display a specific post. For example, you could have a <em>standard</em> blog post with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Please refer to the Codex for <a href="http://codex.wordpress.org/Post_Formats#Supported_Formats">descriptions of each post format</a>. Your theme could enable all or some of 10 possible formats.' ) . '</li>';
+	}
+
+	if ( current_theme_supports( 'post-thumbnails' ) && post_type_supports( 'post', 'thumbnail' ) ) {
+		$publish_box .= '<li>' . __('<strong>Featured Image</strong> - This allows you to associate an image with your post without inserting it. This is usually useful only if your theme makes use of the featured image as a post thumbnail on the home page, a custom header, etc.') . '</li>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	$publish_box .= '</ul>';
@@ -414,16 +493,28 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php
 echo esc_html( $title );
 if ( isset( $post_new_file ) && current_user_can( $post_type_object->cap->create_posts ) )
 	echo ' <a href="' . esc_url( admin_url( $post_new_file ) ) . '" class="page-title-action">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
 ?></h1>
+=======
+<h2><?php
+echo esc_html( $title );
+if ( isset( $post_new_file ) && current_user_can( $post_type_object->cap->create_posts ) )
+	echo ' <a href="' . esc_url( admin_url( $post_new_file ) ) . '" class="add-new-h2">' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+?></h2>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php if ( $notice ) : ?>
 <div id="notice" class="notice notice-warning"><p id="has-newer-autosave"><?php echo $notice ?></p></div>
 <?php endif; ?>
 <?php if ( $message ) : ?>
+<<<<<<< HEAD
 <div id="message" class="updated notice notice-success is-dismissible"><p><?php echo $message; ?></p></div>
+=======
+<div id="message" class="updated"><p><?php echo $message; ?></p></div>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php endif; ?>
 <div id="lost-connection-notice" class="error hidden">
 	<p><span class="spinner"></span> <?php _e( '<strong>Connection lost.</strong> Saving has been disabled until you&#8217;re reconnected.' ); ?>
@@ -439,8 +530,11 @@ if ( isset( $post_new_file ) && current_user_can( $post_type_object->cap->create
  * @param WP_Post $post Post object.
  */
 do_action( 'post_edit_form_tag', $post );
+<<<<<<< HEAD
 
 $referer = wp_get_referer();
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 ?>>
 <?php wp_nonce_field($nonce_action); ?>
 <input type="hidden" id="user-id" name="user_ID" value="<?php echo (int) $user_ID ?>" />
@@ -449,7 +543,11 @@ $referer = wp_get_referer();
 <input type="hidden" id="post_author" name="post_author" value="<?php echo esc_attr( $post->post_author ); ?>" />
 <input type="hidden" id="post_type" name="post_type" value="<?php echo esc_attr( $post_type ) ?>" />
 <input type="hidden" id="original_post_status" name="original_post_status" value="<?php echo esc_attr( $post->post_status) ?>" />
+<<<<<<< HEAD
 <input type="hidden" id="referredby" name="referredby" value="<?php echo $referer ? esc_url( $referer ) : ''; ?>" />
+=======
+<input type="hidden" id="referredby" name="referredby" value="<?php echo esc_url(wp_get_referer()); ?>" />
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php if ( ! empty( $active_post_lock ) ) { ?>
 <input type="hidden" id="active_post_lock" value="<?php echo esc_attr( implode( ':', $active_post_lock ) ); ?>" />
 <?php
@@ -494,7 +592,11 @@ do_action( 'edit_form_top', $post ); ?>
 	$title_placeholder = apply_filters( 'enter_title_here', __( 'Enter title here' ), $post );
 	?>
 	<label class="screen-reader-text" id="title-prompt-text" for="title"><?php echo $title_placeholder; ?></label>
+<<<<<<< HEAD
 	<input type="text" name="post_title" size="30" value="<?php echo esc_attr( $post->post_title ); ?>" id="title" spellcheck="true" autocomplete="off" />
+=======
+	<input type="text" name="post_title" size="30" value="<?php echo esc_attr( htmlspecialchars( $post->post_title ) ); ?>" id="title" spellcheck="true" autocomplete="off" />
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </div>
 <?php
 /**
@@ -510,7 +612,11 @@ do_action( 'edit_form_before_permalink', $post );
 <?php
 $sample_permalink_html = $post_type_object->public ? get_sample_permalink_html($post->ID) : '';
 $shortlink = wp_get_shortlink($post->ID, 'post');
+<<<<<<< HEAD
 
+=======
+$permalink = get_permalink( $post->ID );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 if ( !empty( $shortlink ) && $shortlink !== $permalink && $permalink !== home_url('?page_id=' . $post->ID) )
     $sample_permalink_html .= '<input id="shortlink" type="hidden" value="' . esc_attr($shortlink) . '" /><a href="#" class="button button-small" onclick="prompt(&#39;URL:&#39;, jQuery(\'#shortlink\').val()); return false;">' . __('Get Shortlink') . '</a>';
 

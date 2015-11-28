@@ -10,6 +10,7 @@
 if ( ! defined( 'WP_ADMIN' ) )
 	require_once( dirname( __FILE__ ) . '/admin.php' );
 
+<<<<<<< HEAD
 /**
  * In case admin-header.php is included in a function.
  *
@@ -23,6 +24,9 @@ if ( ! defined( 'WP_ADMIN' ) )
  * @global int       $total_update_count
  * @global string    $parent_file
  */
+=======
+// In case admin-header.php is included in a function.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 global $title, $hook_suffix, $current_screen, $wp_locale, $pagenow, $wp_version,
 	$update_title, $total_update_count, $parent_file;
 
@@ -36,7 +40,11 @@ $title = esc_html( strip_tags( $title ) );
 if ( is_network_admin() )
 	$admin_title = sprintf( __( 'Network Admin: %s' ), esc_html( get_current_site()->site_name ) );
 elseif ( is_user_admin() )
+<<<<<<< HEAD
 	$admin_title = sprintf( __( 'User Dashboard: %s' ), esc_html( get_current_site()->site_name ) );
+=======
+	$admin_title = sprintf( __( 'Global Dashboard: %s' ), esc_html( get_current_site()->site_name ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 else
 	$admin_title = get_bloginfo( 'name' );
 
@@ -202,6 +210,10 @@ if ( current_user_can( 'customize' ) ) {
 ?>
 
 <div id="wpwrap">
+<<<<<<< HEAD
+=======
+<a tabindex="1" href="#wpbody-content" class="screen-reader-shortcut"><?php _e('Skip to main content'); ?></a>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php require(ABSPATH . 'wp-admin/menu-header.php'); ?>
 <div id="wpcontent">
 
@@ -214,7 +226,11 @@ if ( current_user_can( 'customize' ) ) {
 do_action( 'in_admin_header' );
 ?>
 
+<<<<<<< HEAD
 <div id="wpbody" role="main">
+=======
+<div id="wpbody">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php
 unset($title_class, $blog_name, $total_update_count, $update_title);
 

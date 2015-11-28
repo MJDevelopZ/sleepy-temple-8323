@@ -29,7 +29,11 @@ require( ABSPATH . WPINC . '/default-constants.php' );
 global $wp_version, $wp_db_version, $tinymce_version, $required_php_version, $required_mysql_version;
 require( ABSPATH . WPINC . '/version.php' );
 
+<<<<<<< HEAD
 // Set initial default constants including WP_MEMORY_LIMIT, WP_MAX_MEMORY_LIMIT, WP_DEBUG, SCRIPT_DEBUG, WP_CONTENT_DIR and WP_CACHE.
+=======
+// Set initial default constants including WP_MEMORY_LIMIT, WP_MAX_MEMORY_LIMIT, WP_DEBUG, WP_CONTENT_DIR and WP_CACHE.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 wp_initial_constants();
 
 // Check for the required PHP version and for the MySQL extension or a database drop-in.
@@ -192,7 +196,11 @@ do_action( 'muplugins_loaded' );
 if ( is_multisite() )
 	ms_cookie_constants(  );
 
+<<<<<<< HEAD
 // Define constants after multisite is loaded.
+=======
+// Define constants after multisite is loaded. Cookie-related constants may be overridden in ms_network_cookies().
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 wp_cookie_constants();
 
 // Define and enforce our SSL constants
@@ -367,7 +375,11 @@ if ( is_multisite() ) {
  * AJAX requests should use wp-admin/admin-ajax.php. admin-ajax.php can handle requests for
  * users not logged in.
  *
+<<<<<<< HEAD
  * @link https://codex.wordpress.org/AJAX_in_Plugins
+=======
+ * @link http://codex.wordpress.org/AJAX_in_Plugins
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @since 3.0.0
  */

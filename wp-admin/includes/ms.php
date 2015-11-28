@@ -41,14 +41,21 @@ function check_upload_size( $file ) {
 
 	return $file;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'wp_handle_upload_prefilter', 'check_upload_size' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Delete a blog.
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int  $blog_id Blog ID.
  * @param bool $drop    True if blog's table should be dropped. Default is false.
  */
@@ -137,7 +144,11 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 		$index = 0;
 
 		while ( $index < count( $stack ) ) {
+<<<<<<< HEAD
 			// Get indexed directory from stack
+=======
+			# Get indexed directory from stack
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$dir = $stack[$index];
 
 			$dh = @opendir( $dir );
@@ -146,11 +157,18 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
 					if ( $file == '.' || $file == '..' )
 						continue;
 
+<<<<<<< HEAD
 					if ( @is_dir( $dir . DIRECTORY_SEPARATOR . $file ) ) {
 						$stack[] = $dir . DIRECTORY_SEPARATOR . $file;
 					} elseif ( @is_file( $dir . DIRECTORY_SEPARATOR . $file ) ) {
 						@unlink( $dir . DIRECTORY_SEPARATOR . $file );
 					}
+=======
+					if ( @is_dir( $dir . DIRECTORY_SEPARATOR . $file ) )
+						$stack[] = $dir . DIRECTORY_SEPARATOR . $file;
+					else if ( @is_file( $dir . DIRECTORY_SEPARATOR . $file ) )
+						@unlink( $dir . DIRECTORY_SEPARATOR . $file );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 				@closedir( $dh );
 			}
@@ -177,8 +195,11 @@ function wpmu_delete_blog( $blog_id, $drop = false ) {
  *
  * @todo Merge with wp_delete_user() ?
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $id The user ID.
  * @return bool True if the user was deleted, otherwise false.
  */
@@ -190,6 +211,7 @@ function wpmu_delete_user( $id ) {
 
 	if ( !$user->exists() )
 		return false;
+<<<<<<< HEAD
 
 	// Global super-administrators are protected, and cannot be deleted.
 	$_super_admins = get_super_admins();
@@ -197,6 +219,8 @@ function wpmu_delete_user( $id ) {
 		return false;
 	}
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	/**
 	 * Fires before a user is deleted from the network.
 	 *
@@ -263,12 +287,19 @@ function update_option_new_admin_email( $old_value, $value ) {
 	);
 	update_option( 'adminhash', $new_admin_email );
 
+<<<<<<< HEAD
 	/* translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL: those are placeholders. */
 	$email_text = __( 'Howdy ###USERNAME###,
 
 You recently requested to have the administration email address on
 your site changed.
 
+=======
+	$email_text = __( 'Dear user,
+
+You recently requested to have the administration email address on
+your site changed.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 If this is correct, please click on the following link to change it:
 ###ADMIN_URL###
 
@@ -285,8 +316,12 @@ All at ###SITENAME###
 	 * Filter the email text sent when the site admin email is changed.
 	 *
 	 * The following strings have a special meaning and will get replaced dynamically:
+<<<<<<< HEAD
 	 * ###USERNAME###  The current user's username.
 	 * ###ADMIN_URL### The link to click on to confirm the email change.
+=======
+	 * ###ADMIN_URL### The link to click on to confirm the email change. Required otherwise this functunalty is will break.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * ###EMAIL###     The new email.
 	 * ###SITENAME###  The name of the site.
 	 * ###SITEURL###   The URL to the site.
@@ -298,8 +333,11 @@ All at ###SITENAME###
 	 */
 	$content = apply_filters( 'new_admin_email_content', $email_text, $new_admin_email );
 
+<<<<<<< HEAD
 	$current_user = wp_get_current_user();
 	$content = str_replace( '###USERNAME###', $current_user->user_login, $content );
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$content = str_replace( '###ADMIN_URL###', esc_url( admin_url( 'options.php?adminhash='.$hash ) ), $content );
 	$content = str_replace( '###EMAIL###', $value, $content );
 	$content = str_replace( '###SITENAME###', get_site_option( 'site_name' ), $content );
@@ -307,6 +345,11 @@ All at ###SITENAME###
 
 	wp_mail( $value, sprintf( __( '[%s] New Admin Email Address' ), wp_specialchars_decode( get_option( 'blogname' ) ) ), $content );
 }
+<<<<<<< HEAD
+=======
+add_action( 'update_option_new_admin_email', 'update_option_new_admin_email', 10, 2 );
+add_action( 'add_option_new_admin_email', 'update_option_new_admin_email', 10, 2 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Sends an email when an email address change is requested.
@@ -344,11 +387,17 @@ function send_confirmation_on_profile_email() {
 				);
 		update_option( $current_user->ID . '_new_email', $new_user_email );
 
+<<<<<<< HEAD
 		/* translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL: those are placeholders. */
 		$email_text = __( 'Howdy ###USERNAME###,
 
 You recently requested to have the email address on your account changed.
 
+=======
+		$email_text = __( 'Dear user,
+
+You recently requested to have the email address on your account changed.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 If this is correct, please click on the following link to change it:
 ###ADMIN_URL###
 
@@ -365,11 +414,18 @@ All at ###SITENAME###
 		 * Filter the email text sent when a user changes emails.
 		 *
 		 * The following strings have a special meaning and will get replaced dynamically:
+<<<<<<< HEAD
 		 * ###USERNAME###  The current user's username.
 		 * ###ADMIN_URL### The link to click on to confirm the email change.
 		 * ###EMAIL###     The new email.
 		 * ###SITENAME###  The name of the site.
 		 * ###SITEURL###   The URL to the site.
+=======
+		 * ###ADMIN_URL### The link to click on to confirm the email change. Required otherwise this functunalty is will break.
+		 * ###EMAIL### The new email.
+		 * ###SITENAME### The name of the site.
+		 * ###SITEURL### The URL to the site.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		 *
 		 * @since MU
 		 *
@@ -378,7 +434,10 @@ All at ###SITENAME###
 		 */
 		$content = apply_filters( 'new_user_email_content', $email_text, $new_user_email );
 
+<<<<<<< HEAD
 		$content = str_replace( '###USERNAME###', $current_user->user_login, $content );
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$content = str_replace( '###ADMIN_URL###', esc_url( admin_url( 'profile.php?newuseremail='.$hash ) ), $content );
 		$content = str_replace( '###EMAIL###', $_POST['email'], $content);
 		$content = str_replace( '###SITENAME###', get_site_option( 'site_name' ), $content );
@@ -388,6 +447,10 @@ All at ###SITENAME###
 		$_POST['email'] = $current_user->user_email;
 	}
 }
+<<<<<<< HEAD
+=======
+add_action( 'personal_options_update', 'send_confirmation_on_profile_email' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Adds an admin notice alerting the user to check for confirmation email
@@ -399,6 +462,10 @@ function new_user_email_admin_notice() {
 	if ( strpos( $_SERVER['PHP_SELF'], 'profile.php' ) && isset( $_GET['updated'] ) && $email = get_option( get_current_user_id() . '_new_email' ) )
 		echo "<div class='update-nag'>" . sprintf( __( "Your email address has not been updated yet. Please check your inbox at %s for a confirmation email." ), $email['newemail'] ) . "</div>";
 }
+<<<<<<< HEAD
+=======
+add_action( 'admin_notices', 'new_user_email_admin_notice' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Check whether a blog has used its allotted upload space.
@@ -461,9 +528,15 @@ function display_space_usage() {
  * @return int Max size in bytes
  */
 function fix_import_form_size( $size ) {
+<<<<<<< HEAD
 	if ( upload_is_user_over_quota( false ) ) {
 		return 0;
 	}
+=======
+	if ( upload_is_user_over_quota( false ) == true )
+		return 0;
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$available = get_upload_space_available();
 	return min( $size, $available );
 }
@@ -485,6 +558,7 @@ function upload_space_setting( $id ) {
 
 	?>
 	<tr>
+<<<<<<< HEAD
 		<th><label for="blog-upload-space-number"><?php _e( 'Site Upload Space Quota' ); ?></label></th>
 		<td>
 			<input type="number" step="1" min="0" style="width: 100px" name="option[blog_upload_space]" id="blog-upload-space-number" aria-describedby="blog-upload-space-desc" value="<?php echo $quota; ?>" />
@@ -493,6 +567,14 @@ function upload_space_setting( $id ) {
 	</tr>
 	<?php
 }
+=======
+		<th><?php _e( 'Site Upload Space Quota '); ?></th>
+		<td><input type="number" step="1" min="0" style="width: 100px" name="option[blog_upload_space]" value="<?php echo $quota; ?>" /> <?php _e( 'MB (Leave blank for network default)' ); ?></td>
+	</tr>
+	<?php
+}
+add_action( 'wpmueditblogaction', 'upload_space_setting' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Update the status of a user in the database.
@@ -501,8 +583,11 @@ function upload_space_setting( $id ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int    $id         The user ID.
  * @param string $pref       The column in the wp_users table to update the user's status
  *                           in (presumably user_status, spam, or deleted).
@@ -606,10 +691,17 @@ function format_code_lang( $code = '' ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param object $term     The term.
  * @param string $taxonomy The taxonomy for $term. Should be 'category' or 'post_tag', as these are
  *                         the only taxonomies which are processed by this function; anything else
  *                         will be returned untouched.
+=======
+ * @param $term     The term.
+ * @param $taxonomy The taxonomy for $term. Should be 'category' or 'post_tag', as these are
+ *                  the only taxonomies which are processed by this function; anything else
+ *                  will be returned untouched.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return object|array Returns `$term`, after filtering the 'slug' field with {@see sanitize_title()}
  *                      if $taxonomy is 'category' or 'post_tag'.
  */
@@ -623,6 +715,10 @@ function sync_category_tag_slugs( $term, $taxonomy ) {
 	}
 	return $term;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'get_term', 'sync_category_tag_slugs', 10, 2 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Displays an access denied message when a user tries to view a site's dashboard they
@@ -643,7 +739,11 @@ function _access_denied_splash() {
 	$blog_name = get_bloginfo( 'name' );
 
 	if ( empty( $blogs ) )
+<<<<<<< HEAD
 		wp_die( sprintf( __( 'You attempted to access the "%1$s" dashboard, but you do not currently have privileges on this site. If you believe you should be able to access the "%1$s" dashboard, please contact your network administrator.' ), $blog_name ), 403 );
+=======
+		wp_die( sprintf( __( 'You attempted to access the "%1$s" dashboard, but you do not currently have privileges on this site. If you believe you should be able to access the "%1$s" dashboard, please contact your network administrator.' ), $blog_name ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	$output = '<p>' . sprintf( __( 'You attempted to access the "%1$s" dashboard, but you do not currently have privileges on this site. If you believe you should be able to access the "%1$s" dashboard, please contact your network administrator.' ), $blog_name ) . '</p>';
 	$output .= '<p>' . __( 'If you reached this screen by accident and meant to visit one of your own sites, here are some shortcuts to help you find your way.' ) . '</p>';
@@ -661,8 +761,14 @@ function _access_denied_splash() {
 
 	$output .= '</table>';
 
+<<<<<<< HEAD
 	wp_die( $output, 403 );
 }
+=======
+	wp_die( $output );
+}
+add_action( 'admin_page_access_denied', '_access_denied_splash', 99 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Checks if the current user has permissions to import new users.
@@ -677,6 +783,10 @@ function check_import_new_users( $permission ) {
 		return false;
 	return true;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'import_allow_create_users', 'check_import_new_users' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 // See "import_allow_fetch_attachments" and "import_attachment_size_limit" filters too.
 
 /**
@@ -735,8 +845,11 @@ function mu_dropdown_languages( $lang_files = array(), $current = '' ) {
  * @since 3.0.0
  *
  * @global int $wp_db_version The version number of the database.
+<<<<<<< HEAD
  *
  * @return false False if the current user is not a super admin.
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function site_admin_notice() {
 	global $wp_db_version;
@@ -745,6 +858,11 @@ function site_admin_notice() {
 	if ( get_site_option( 'wpmu_upgrade_site' ) != $wp_db_version )
 		echo "<div class='update-nag'>" . sprintf( __( 'Thank you for Updating! Please visit the <a href="%s">Upgrade Network</a> page to update all your sites.' ), esc_url( network_admin_url( 'upgrade.php' ) ) ) . "</div>";
 }
+<<<<<<< HEAD
+=======
+add_action( 'admin_notices', 'site_admin_notice' );
+add_action( 'network_admin_notices', 'site_admin_notice' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Avoids a collision between a site slug and a permalink slug.
@@ -779,6 +897,10 @@ function avoid_blog_page_permalink_collision( $data, $postarr ) {
 	}
 	return $data;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'wp_insert_post_data', 'avoid_blog_page_permalink_collision', 10, 2 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Handles the display of choosing a user's primary site.
@@ -793,7 +915,11 @@ function choose_primary_blog() {
 	<table class="form-table">
 	<tr>
 	<?php /* translators: My sites label */ ?>
+<<<<<<< HEAD
 		<th scope="row"><label for="primary_blog"><?php _e( 'Primary Site' ); ?></label></th>
+=======
+		<th scope="row"><?php _e( 'Primary Site' ); ?></th>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		<td>
 		<?php
 		$all_blogs = get_blogs_of_user( get_current_user_id() );
@@ -801,7 +927,11 @@ function choose_primary_blog() {
 		if ( count( $all_blogs ) > 1 ) {
 			$found = false;
 			?>
+<<<<<<< HEAD
 			<select name="primary_blog" id="primary_blog">
+=======
+			<select name="primary_blog">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				<?php foreach( (array) $all_blogs as $blog ) {
 					if ( $primary_blog == $blog->userblog_id )
 						$found = true;
@@ -810,12 +940,21 @@ function choose_primary_blog() {
 			</select>
 			<?php
 			if ( !$found ) {
+<<<<<<< HEAD
 				$blog = reset( $all_blogs );
 				update_user_meta( get_current_user_id(), 'primary_blog', $blog->userblog_id );
 			}
 		} elseif ( count( $all_blogs ) == 1 ) {
 			$blog = reset( $all_blogs );
 			echo esc_url( get_home_url( $blog->userblog_id ) );
+=======
+				$blog = array_shift( $all_blogs );
+				update_user_meta( get_current_user_id(), 'primary_blog', $blog->userblog_id );
+			}
+		} elseif ( count( $all_blogs ) == 1 ) {
+			$blog = array_shift( $all_blogs );
+			echo $blog->domain;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			if ( $primary_blog != $blog->userblog_id ) // Set the primary blog again if it's out of sync with blog list.
 				update_user_meta( get_current_user_id(), 'primary_blog', $blog->userblog_id );
 		} else {
@@ -844,8 +983,11 @@ function choose_primary_blog() {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global array $super_admins
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $user_id ID of the user to be granted Super Admin privileges.
  * @return bool True on success, false on failure. This can fail when the user is
  *              already a super admin or when the `$super_admins` global is defined.
@@ -891,8 +1033,11 @@ function grant_super_admin( $user_id ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global array $super_admins
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $user_id ID of the user Super Admin privileges to be revoked from.
  * @return bool True on success, false on failure. This can fail when the user's email
  *              is the network admin email or when the `$super_admins` global is defined.
@@ -943,8 +1088,11 @@ function revoke_super_admin( $user_id ) {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global wpdb $wpdb
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param int $site_id The network/site ID to check.
  * @return bool True if network can be edited, otherwise false.
  */
@@ -977,7 +1125,13 @@ function can_edit_network( $site_id ) {
 function _thickbox_path_admin_subfolder() {
 ?>
 <script type="text/javascript">
+<<<<<<< HEAD
 var tb_pathToImage = "<?php echo includes_url( 'js/thickbox/loadingAnimation.gif', 'relative' ); ?>";
+=======
+//<![CDATA[
+var tb_pathToImage = "<?php echo includes_url( 'js/thickbox/loadingAnimation.gif', 'relative' ); ?>";
+//]]>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </script>
 <?php
 }

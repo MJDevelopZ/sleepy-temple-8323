@@ -20,9 +20,12 @@ define( 'WXR_VERSION', '1.2' );
  *
  * @since 2.1.0
  *
+<<<<<<< HEAD
  * @global wpdb    $wpdb
  * @global WP_Post $post
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param array $args Filters defining what should be included in the export.
  */
 function export_wp( $args = array() ) {
@@ -98,7 +101,11 @@ function export_wp( $args = array() ) {
 		$cat = get_term( $term['term_id'], 'category' );
 		$cats = array( $cat->term_id => $cat );
 		unset( $term, $cat );
+<<<<<<< HEAD
 	} elseif ( 'all' == $args['content'] ) {
+=======
+	} else if ( 'all' == $args['content'] ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$categories = (array) get_categories( array( 'get' => 'all' ) );
 		$tags = (array) get_tags( array( 'get' => 'all' ) );
 
@@ -133,9 +140,15 @@ function export_wp( $args = array() ) {
 	 * @return string
 	 */
 	function wxr_cdata( $str ) {
+<<<<<<< HEAD
 		if ( ! seems_utf8( $str ) ) {
 			$str = utf8_encode( $str );
 		}
+=======
+		if ( seems_utf8( $str ) == false )
+			$str = utf8_encode( $str );
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// $str = ent2ncr(esc_html($str));
 		$str = '<![CDATA[' . str_replace( ']]>', ']]]]><![CDATA[>', $str ) . ']]>';
 
@@ -247,8 +260,11 @@ function export_wp( $args = array() ) {
 	 *
 	 * @since 3.1.0
 	 *
+<<<<<<< HEAD
 	 * @global wpdb $wpdb
 	 *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param array $post_ids Array of post IDs to filter the query by. Optional.
 	 */
 	function wxr_authors_list( array $post_ids = null ) {
@@ -315,12 +331,15 @@ function export_wp( $args = array() ) {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 *
 	 * @param bool   $return_me
 	 * @param string $meta_key
 	 * @return bool
 	 */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	function wxr_filter_postmeta( $return_me, $meta_key ) {
 		if ( '_edit_lock' == $meta_key )
 			$return_me = true;
@@ -386,9 +405,12 @@ function export_wp( $args = array() ) {
 	?>
 
 <?php if ( $post_ids ) {
+<<<<<<< HEAD
 	/**
 	 * @global WP_Query $wp_query
 	 */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	global $wp_query;
 
 	// Fake being in the loop.

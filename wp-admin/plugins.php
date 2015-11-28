@@ -23,8 +23,11 @@ $s = isset($_REQUEST['s']) ? urlencode($_REQUEST['s']) : '';
 // Clean up request URI from temporary args for screen options/paging uri's to work as expected.
 $_SERVER['REQUEST_URI'] = remove_query_arg(array('error', 'deleted', 'activate', 'activate-multi', 'deactivate', 'deactivate-multi', '_error_nonce'), $_SERVER['REQUEST_URI']);
 
+<<<<<<< HEAD
 wp_enqueue_script( 'updates' );
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 if ( $action ) {
 
 	switch ( $action ) {
@@ -122,7 +125,11 @@ if ( $action ) {
 			require_once(ABSPATH . 'wp-admin/admin-header.php');
 
 			echo '<div class="wrap">';
+<<<<<<< HEAD
 			echo '<h1>' . esc_html( $title ) . '</h1>';
+=======
+			echo '<h2>' . esc_html( $title ) . '</h2>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			$url = self_admin_url('update.php?action=update-selected&amp;plugins=' . urlencode( join(',', $plugins) ));
 			$url = wp_nonce_url($url, 'bulk-update-plugins');
@@ -148,9 +155,12 @@ if ( $action ) {
 
 			@ini_set('display_errors', true); //Ensure that Fatal errors are displayed.
 			// Go back to "sandbox" scope so we get the same errors as before
+<<<<<<< HEAD
 			/**
 			 * @param string $plugin
 			 */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			function plugin_sandbox_scrape( $plugin ) {
 				wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $plugin );
 				include( WP_PLUGIN_DIR . '/' . $plugin );
@@ -286,6 +296,7 @@ if ( $action ) {
 						}
 					}
 					$plugins_to_delete = count( $plugin_info );
+<<<<<<< HEAD
 				?>
 				<?php if ( 1 == $plugins_to_delete ) : ?>
 					<h1><?php _e( 'Delete Plugin' ); ?></h1>
@@ -300,6 +311,14 @@ if ( $action ) {
 					<?php endif; ?>
 					<p><?php _e( 'You are about to remove the following plugins:' ); ?></p>
 				<?php endif; ?>
+=======
+					echo '<h2>' . _n( 'Delete Plugin', 'Delete Plugins', $plugins_to_delete ) . '</h2>';
+				?>
+				<?php if ( $have_non_network_plugins && is_network_admin() ) : ?>
+				<div class="error"><p><strong><?php _e( 'Caution:' ); ?></strong> <?php echo _n( 'This plugin may be active on other sites in the network.', 'These plugins may be active on other sites in the network.', $plugins_to_delete ); ?></p></div>
+				<?php endif; ?>
+				<p><?php echo _n( 'You are about to remove the following plugin:', 'You are about to remove the following plugins:', $plugins_to_delete ); ?></p>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					<ul class="ul-disc">
 						<?php
 						$data_to_delete = false;
@@ -330,6 +349,7 @@ if ( $action ) {
 						}
 					?>
 					<?php wp_nonce_field('bulk-plugins') ?>
+<<<<<<< HEAD
 					<?php submit_button( $data_to_delete ? __( 'Yes, delete these files and data' ) : __( 'Yes, delete these files' ), 'button', 'submit', false ); ?>
 				</form>
 				<?php
@@ -337,6 +357,12 @@ if ( $action ) {
 				?>
 				<form method="post" action="<?php echo $referer ? esc_url( $referer ) : ''; ?>" style="display:inline;">
 					<?php submit_button( __( 'No, return me to the plugin list' ), 'button', 'submit', false ); ?>
+=======
+					<?php submit_button( $data_to_delete ? __( 'Yes, Delete these files and data' ) : __( 'Yes, Delete these files' ), 'button', 'submit', false ); ?>
+				</form>
+				<form method="post" action="<?php echo esc_url(wp_get_referer()); ?>" style="display:inline;">
+					<?php submit_button( __( 'No, Return me to the plugin list' ), 'button', 'submit', false ); ?>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				</form>
 
 				<p><a href="#" onclick="jQuery('#files-list').toggle(); return false;"><?php _e('Click to view entire list of files which will be deleted'); ?></a></p>
@@ -372,7 +398,11 @@ $wp_list_table->prepare_items();
 wp_enqueue_script('plugin-install');
 add_thickbox();
 
+<<<<<<< HEAD
 add_screen_option( 'per_page', array( 'default' => 999 ) );
+=======
+add_screen_option( 'per_page', array('label' => _x( 'Plugins', 'plugins per page (screen options)' ), 'default' => 999 ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 get_current_screen()->add_help_tab( array(
 'id'		=> 'overview',
@@ -391,7 +421,11 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Managing_Plugins#Plugin_Management" target="_blank">Documentation on Managing Plugins</a>') . '</p>' .
+=======
+	'<p>' . __('<a href="http://codex.wordpress.org/Managing_Plugins#Plugin_Management" target="_blank">Documentation on Managing Plugins</a>') . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
@@ -429,6 +463,7 @@ if ( !empty($invalid) )
 		delete_transient( 'plugins_delete_result_' . $user_ID );
 
 		if ( is_wp_error($delete_result) ) : ?>
+<<<<<<< HEAD
 		<div id="message" class="error notice is-dismissible"><p><?php printf( __('Plugin could not be deleted due to an error: %s'), $delete_result->get_error_message() ); ?></p></div>
 		<?php else : ?>
 		<div id="message" class="updated notice is-dismissible"><p><?php _e('The selected plugins have been <strong>deleted</strong>.'); ?></p></div>
@@ -453,6 +488,32 @@ if ( ( ! is_multisite() || is_network_admin() ) && current_user_can('install_plu
 if ( $s )
 	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( $s ) ); ?>
 </h1>
+=======
+		<div id="message" class="error"><p><?php printf( __('Plugin could not be deleted due to an error: %s'), $delete_result->get_error_message() ); ?></p></div>
+		<?php else : ?>
+		<div id="message" class="updated"><p><?php _e('The selected plugins have been <strong>deleted</strong>.'); ?></p></div>
+		<?php endif; ?>
+<?php elseif ( isset($_GET['activate']) ) : ?>
+	<div id="message" class="updated"><p><?php _e('Plugin <strong>activated</strong>.') ?></p></div>
+<?php elseif (isset($_GET['activate-multi'])) : ?>
+	<div id="message" class="updated"><p><?php _e('Selected plugins <strong>activated</strong>.'); ?></p></div>
+<?php elseif ( isset($_GET['deactivate']) ) : ?>
+	<div id="message" class="updated"><p><?php _e('Plugin <strong>deactivated</strong>.') ?></p></div>
+<?php elseif (isset($_GET['deactivate-multi'])) : ?>
+	<div id="message" class="updated"><p><?php _e('Selected plugins <strong>deactivated</strong>.'); ?></p></div>
+<?php elseif ( 'update-selected' == $action ) : ?>
+	<div id="message" class="updated"><p><?php _e('No out of date plugins were selected.'); ?></p></div>
+<?php endif; ?>
+
+<div class="wrap">
+<h2><?php echo esc_html( $title );
+if ( ( ! is_multisite() || is_network_admin() ) && current_user_can('install_plugins') ) { ?>
+ <a href="<?php echo self_admin_url( 'plugin-install.php' ); ?>" class="add-new-h2"><?php echo esc_html_x('Add New', 'plugin'); ?></a>
+<?php }
+if ( $s )
+	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( $s ) ); ?>
+</h2>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <?php
 /**
@@ -472,11 +533,19 @@ do_action( 'pre_current_active_plugins', $plugins['all'] );
 
 <?php $wp_list_table->views(); ?>
 
+<<<<<<< HEAD
 <form method="get">
 <?php $wp_list_table->search_box( __( 'Search Installed Plugins' ), 'plugin' ); ?>
 </form>
 
 <form method="post" id="bulk-action-form">
+=======
+<form method="get" action="">
+<?php $wp_list_table->search_box( __( 'Search Installed Plugins' ), 'plugin' ); ?>
+</form>
+
+<form method="post" action="">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <input type="hidden" name="plugin_status" value="<?php echo esc_attr($status) ?>" />
 <input type="hidden" name="paged" value="<?php echo esc_attr($page) ?>" />
@@ -487,6 +556,9 @@ do_action( 'pre_current_active_plugins', $plugins['all'] );
 </div>
 
 <?php
+<<<<<<< HEAD
 wp_print_request_filesystem_credentials_modal();
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 include(ABSPATH . 'wp-admin/admin-footer.php');

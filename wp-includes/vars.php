@@ -10,7 +10,11 @@
  * servers with known pretty permalink capability.
  *
  * Note: Though Nginx is detected, WordPress does not currently
+<<<<<<< HEAD
  * generate rewrite rules for it. See https://codex.wordpress.org/Nginx
+=======
+ * generate rewrite rules for it. See http://codex.wordpress.org/Nginx
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @package WordPress
  */
@@ -118,6 +122,7 @@ $is_iis7 = $is_IIS && intval( substr( $_SERVER['SERVER_SOFTWARE'], strpos( $_SER
 /**
  * Test if the current browser runs on a mobile device (smart phone, tablet, etc.)
  *
+<<<<<<< HEAD
  * @staticvar bool $is_mobile
  *
  * @return bool
@@ -128,6 +133,15 @@ function wp_is_mobile() {
 	if ( isset( $is_mobile ) ) {
 		return $is_mobile;
 	}
+=======
+ * @return bool true|false
+ */
+function wp_is_mobile() {
+	static $is_mobile;
+
+	if ( isset($is_mobile) )
+		return $is_mobile;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
 		$is_mobile = false;

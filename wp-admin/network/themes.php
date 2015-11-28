@@ -86,7 +86,11 @@ if ( $action ) {
 			require_once(ABSPATH . 'wp-admin/admin-header.php');
 
 			echo '<div class="wrap">';
+<<<<<<< HEAD
 			echo '<h1>' . esc_html( $title ) . '</h1>';
+=======
+			echo '<h2>' . esc_html( $title ) . '</h2>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			$url = self_admin_url('update.php?action=update-selected-themes&amp;themes=' . urlencode( join(',', $themes) ));
 			$url = wp_nonce_url($url, 'bulk-update-themes');
@@ -146,6 +150,7 @@ if ( $action ) {
 			if ( ! isset( $_REQUEST['verify-delete'] ) ) {
 				wp_enqueue_script( 'jquery' );
 				require_once( ABSPATH . 'wp-admin/admin-header.php' );
+<<<<<<< HEAD
 				$themes_to_delete = count( $themes );
 				?>
 			<div class="wrap">
@@ -158,6 +163,16 @@ if ( $action ) {
 					<div class="error"><p><strong><?php _e( 'Caution:' ); ?></strong> <?php _e( 'These themes may be active on other sites in the network.' ); ?></p></div>
 					<p><?php _e( 'You are about to remove the following themes:' ); ?></p>
 				<?php endif; ?>
+=======
+				?>
+			<div class="wrap">
+				<?php
+					$themes_to_delete = count( $themes );
+					echo '<h2>' . _n( 'Delete Theme', 'Delete Themes', $themes_to_delete ) . '</h2>';
+				?>
+				<div class="error"><p><strong><?php _e( 'Caution:' ); ?></strong> <?php echo _n( 'This theme may be active on other sites in the network.', 'These themes may be active on other sites in the network.', $themes_to_delete ); ?></p></div>
+				<p><?php echo _n( 'You are about to remove the following theme:', 'You are about to remove the following themes:', $themes_to_delete ); ?></p>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					<ul class="ul-disc">
 					<?php
 						foreach ( $theme_info as $theme ) {
@@ -166,11 +181,15 @@ if ( $action ) {
 						}
 					?>
 					</ul>
+<<<<<<< HEAD
 				<?php if ( 1 == $themes_to_delete ) : ?>
 					<p><?php _e( 'Are you sure you wish to delete this theme?' ); ?></p>
 				<?php else : ?>
 					<p><?php _e( 'Are you sure you wish to delete these themes?' ); ?></p>
 				<?php endif; ?>
+=======
+				<p><?php _e('Are you sure you wish to delete these themes?'); ?></p>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				<form method="post" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" style="display:inline;">
 					<input type="hidden" name="verify-delete" value="1" />
 					<input type="hidden" name="action" value="delete-selected" />
@@ -178,6 +197,7 @@ if ( $action ) {
 						foreach ( (array) $themes as $theme ) {
 							echo '<input type="hidden" name="checked[]" value="' . esc_attr($theme) . '" />';
 						}
+<<<<<<< HEAD
 
 						wp_nonce_field( 'bulk-themes' );
 
@@ -193,6 +213,14 @@ if ( $action ) {
 				?>
 				<form method="post" action="<?php echo $referer ? esc_url( $referer ) : ''; ?>" style="display:inline;">
 					<?php submit_button( __( 'No, return me to the theme list' ), 'button', 'submit', false ); ?>
+=======
+					?>
+					<?php wp_nonce_field('bulk-themes') ?>
+					<?php submit_button( _n( 'Yes, Delete this theme', 'Yes, Delete these themes', $themes_to_delete ), 'button', 'submit', false ); ?>
+				</form>
+				<form method="post" action="<?php echo esc_url(wp_get_referer()); ?>" style="display:inline;">
+					<?php submit_button( __( 'No, Return me to the theme list' ), 'button', 'submit', false ); ?>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				</form>
 
 				<p><a href="#" onclick="jQuery('#files-list').toggle(); return false;"><?php _e('Click to view entire list of files which will be deleted'); ?></a></p>
@@ -234,7 +262,11 @@ $wp_list_table->prepare_items();
 
 add_thickbox();
 
+<<<<<<< HEAD
 add_screen_option( 'per_page' );
+=======
+add_screen_option( 'per_page', array('label' => _x( 'Themes', 'themes per page (screen options)' )) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
@@ -247,7 +279,11 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Network_Admin_Themes_Screen" target="_blank">Documentation on Network Themes</a>') . '</p>' .
+=======
+	'<p>' . __('<a href="http://codex.wordpress.org/Network_Admin_Themes_Screen" target="_blank">Documentation on Network Themes</a>') . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
@@ -261,6 +297,7 @@ require_once(ABSPATH . 'wp-admin/admin-header.php');
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php echo esc_html( $title ); if ( current_user_can('install_themes') ) { ?> <a href="theme-install.php" class="page-title-action"><?php echo esc_html_x('Add New', 'theme'); ?></a><?php }
 if ( $s )
 	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( $s ) ); ?>
@@ -295,11 +332,36 @@ if ( isset( $_GET['enabled'] ) ) {
 	echo '<div id="message" class="error notice is-dismissible"><p>' . __( 'No theme selected.' ) . '</p></div>';
 } elseif ( isset( $_GET['error'] ) && 'main' == $_GET['error'] ) {
 	echo '<div class="error notice is-dismissible"><p>' . __( 'You cannot delete a theme while it is active on the main site.' ) . '</p></div>';
+=======
+<h2><?php echo esc_html( $title ); if ( current_user_can('install_themes') ) { ?> <a href="theme-install.php" class="add-new-h2"><?php echo esc_html_x('Add New', 'theme'); ?></a><?php }
+if ( $s )
+	printf( '<span class="subtitle">' . __('Search results for &#8220;%s&#8221;') . '</span>', esc_html( $s ) ); ?>
+</h2>
+
+<?php
+if ( isset( $_GET['enabled'] ) ) {
+	$_GET['enabled'] = absint( $_GET['enabled'] );
+	echo '<div id="message" class="updated"><p>' . sprintf( _n( 'Theme enabled.', '%s themes enabled.', $_GET['enabled'] ), number_format_i18n( $_GET['enabled'] ) ) . '</p></div>';
+} elseif ( isset( $_GET['disabled'] ) ) {
+	$_GET['disabled'] = absint( $_GET['disabled'] );
+	echo '<div id="message" class="updated"><p>' . sprintf( _n( 'Theme disabled.', '%s themes disabled.', $_GET['disabled'] ), number_format_i18n( $_GET['disabled'] ) ) . '</p></div>';
+} elseif ( isset( $_GET['deleted'] ) ) {
+	$_GET['deleted'] = absint( $_GET['deleted'] );
+	echo '<div id="message" class="updated"><p>' . sprintf( _nx( 'Theme deleted.', '%s themes deleted.', $_GET['deleted'], 'network' ), number_format_i18n( $_GET['deleted'] ) ) . '</p></div>';
+} elseif ( isset( $_GET['error'] ) && 'none' == $_GET['error'] ) {
+	echo '<div id="message" class="error"><p>' . __( 'No theme selected.' ) . '</p></div>';
+} elseif ( isset( $_GET['error'] ) && 'main' == $_GET['error'] ) {
+	echo '<div class="error"><p>' . __( 'You cannot delete a theme while it is active on the main site.' ) . '</p></div>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 ?>
 
+<<<<<<< HEAD
 <form method="get">
+=======
+<form method="get" action="">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php $wp_list_table->search_box( __( 'Search Installed Themes' ), 'theme' ); ?>
 </form>
 
@@ -310,7 +372,11 @@ if ( 'broken' == $status )
 	echo '<p class="clear">' . __('The following themes are installed but incomplete. Themes must have a stylesheet and a template.') . '</p>';
 ?>
 
+<<<<<<< HEAD
 <form method="post">
+=======
+<form method="post" action="">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <input type="hidden" name="theme_status" value="<?php echo esc_attr($status) ?>" />
 <input type="hidden" name="paged" value="<?php echo esc_attr($page) ?>" />
 

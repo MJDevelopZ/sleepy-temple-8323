@@ -22,6 +22,7 @@ if ( is_multisite() && ! is_network_admin() ) {
 if ( ! current_user_can( 'update_core' ) && ! current_user_can( 'update_themes' ) && ! current_user_can( 'update_plugins' ) )
 	wp_die( __( 'You do not have sufficient permissions to update this site.' ) );
 
+<<<<<<< HEAD
 /**
  *
  * @global string $wp_local_package
@@ -32,6 +33,8 @@ if ( ! current_user_can( 'update_core' ) && ! current_user_can( 'update_themes' 
  *
  * @param object $update
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function list_core_update( $update ) {
  	global $wp_local_package, $wpdb, $wp_version;
   	static $first_pass = true;
@@ -68,6 +71,7 @@ function list_core_update( $update ) {
 				$mysql_compat = version_compare( $mysql_version, $update->mysql_version, '>=' );
 
 			if ( !$mysql_compat && !$php_compat )
+<<<<<<< HEAD
 				$message = sprintf( __('You cannot update because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher and MySQL version %3$s or higher. You are running PHP version %4$s and MySQL version %5$s.'), $update->current, $update->php_version, $update->mysql_version, $php_version, $mysql_version );
 			elseif ( !$php_compat )
 				$message = sprintf( __('You cannot update because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher. You are running version %3$s.'), $update->current, $update->php_version, $php_version );
@@ -75,6 +79,15 @@ function list_core_update( $update ) {
 				$message = sprintf( __('You cannot update because <a href="https://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires MySQL version %2$s or higher. You are running version %3$s.'), $update->current, $update->mysql_version, $mysql_version );
 			else
 				$message = 	sprintf(__('You can update to <a href="https://codex.wordpress.org/Version_%1$s">WordPress %2$s</a> automatically or download the package and install it manually:'), $update->current, $version_string);
+=======
+				$message = sprintf( __('You cannot update because <a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher and MySQL version %3$s or higher. You are running PHP version %4$s and MySQL version %5$s.'), $update->current, $update->php_version, $update->mysql_version, $php_version, $mysql_version );
+			elseif ( !$php_compat )
+				$message = sprintf( __('You cannot update because <a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires PHP version %2$s or higher. You are running version %3$s.'), $update->current, $update->php_version, $php_version );
+			elseif ( !$mysql_compat )
+				$message = sprintf( __('You cannot update because <a href="http://codex.wordpress.org/Version_%1$s">WordPress %1$s</a> requires MySQL version %2$s or higher. You are running version %3$s.'), $update->current, $update->mysql_version, $mysql_version );
+			else
+				$message = 	sprintf(__('You can update to <a href="http://codex.wordpress.org/Version_%1$s">WordPress %2$s</a> automatically or download the package and install it manually:'), $update->current, $version_string);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			if ( !$mysql_compat || !$php_compat )
 				$show_buttons = false;
 		}
@@ -114,9 +127,12 @@ function list_core_update( $update ) {
 
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.7.0
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function dismissed_updates() {
 	$dismissed = get_core_updates( array( 'dismissed' => true, 'available' => false ) );
 	if ( $dismissed ) {
@@ -149,9 +165,13 @@ function dismissed_updates() {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @global string $wp_version
  * @global string $required_php_version
  * @global string $required_mysql_version
+=======
+ * @return null
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function core_upgrade_preamble() {
 	global $wp_version, $required_php_version, $required_mysql_version;
@@ -177,8 +197,13 @@ function core_upgrade_preamble() {
 		}
 		echo '</h3>';
 	} else {
+<<<<<<< HEAD
 		echo '<div class="notice notice-warning"><p>';
 		_e('<strong>Important:</strong> before updating, please <a href="https://codex.wordpress.org/WordPress_Backups">back up your database and files</a>. For help with updates, visit the <a href="https://codex.wordpress.org/Updating_WordPress">Updating WordPress</a> Codex page.');
+=======
+		echo '<div class="updated inline"><p>';
+		_e('<strong>Important:</strong> before updating, please <a href="http://codex.wordpress.org/WordPress_Backups">back up your database and files</a>. For help with updates, visit the <a href="http://codex.wordpress.org/Updating_WordPress">Updating WordPress</a> Codex page.');
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		echo '</p></div>';
 
 		echo '<h3 class="response">';
@@ -213,10 +238,13 @@ function core_upgrade_preamble() {
 	dismissed_updates();
 }
 
+<<<<<<< HEAD
 /**
  *
  * @global string $wp_version
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function list_plugin_updates() {
 	global $wp_version;
 
@@ -245,11 +273,24 @@ function list_plugin_updates() {
 <table class="widefat" id="update-plugins-table">
 	<thead>
 	<tr>
+<<<<<<< HEAD
 		<td scope="col" class="manage-column check-column"><input type="checkbox" id="plugins-select-all" /></td>
+=======
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="plugins-select-all" /></th>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		<th scope="col" class="manage-column"><label for="plugins-select-all"><?php _e('Select All'); ?></label></th>
 	</tr>
 	</thead>
 
+<<<<<<< HEAD
+=======
+	<tfoot>
+	<tr>
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="plugins-select-all-2" /></th>
+		<th scope="col" class="manage-column"><label for="plugins-select-all-2"><?php _e('Select All'); ?></label></th>
+	</tr>
+	</tfoot>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<tbody class="plugins">
 <?php
 	foreach ( (array) $plugins as $plugin_file => $plugin_data) {
@@ -295,6 +336,7 @@ function list_plugin_updates() {
 	}
 ?>
 	</tbody>
+<<<<<<< HEAD
 
 	<tfoot>
 	<tr>
@@ -302,15 +344,20 @@ function list_plugin_updates() {
 		<th scope="col" class="manage-column"><label for="plugins-select-all-2"><?php _e( 'Select All' ); ?></label></th>
 	</tr>
 	</tfoot>
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </table>
 <p><input id="upgrade-plugins-2" class="button" type="submit" value="<?php esc_attr_e('Update Plugins'); ?>" name="upgrade" /></p>
 </form>
 <?php
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.9.0
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function list_theme_updates() {
 	$themes = get_theme_updates();
 	if ( empty( $themes ) ) {
@@ -320,21 +367,42 @@ function list_theme_updates() {
 	}
 
 	$form_action = 'update-core.php?action=do-theme-upgrade';
+<<<<<<< HEAD
 ?>
 <h3><?php _e( 'Themes' ); ?></h3>
 <p><?php _e( 'The following themes have new versions available. Check the ones you want to update and then click &#8220;Update Themes&#8221;.' ); ?></p>
 <p><?php printf( __( '<strong>Please Note:</strong> Any customizations you have made to theme files will be lost. Please consider using <a href="%s">child themes</a> for modifications.' ), __( 'https://codex.wordpress.org/Child_Themes' ) ); ?></p>
+=======
+
+?>
+<h3><?php _e( 'Themes' ); ?></h3>
+<p><?php _e( 'The following themes have new versions available. Check the ones you want to update and then click &#8220;Update Themes&#8221;.' ); ?></p>
+<p><?php printf( __( '<strong>Please Note:</strong> Any customizations you have made to theme files will be lost. Please consider using <a href="%s">child themes</a> for modifications.' ), __( 'http://codex.wordpress.org/Child_Themes' ) ); ?></p>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <form method="post" action="<?php echo esc_url( $form_action ); ?>" name="upgrade-themes" class="upgrade">
 <?php wp_nonce_field('upgrade-core'); ?>
 <p><input id="upgrade-themes" class="button" type="submit" value="<?php esc_attr_e('Update Themes'); ?>" name="upgrade" /></p>
 <table class="widefat" id="update-themes-table">
 	<thead>
 	<tr>
+<<<<<<< HEAD
 		<td scope="col" class="manage-column check-column"><input type="checkbox" id="themes-select-all" /></td>
+=======
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="themes-select-all" /></th>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		<th scope="col" class="manage-column"><label for="themes-select-all"><?php _e('Select All'); ?></label></th>
 	</tr>
 	</thead>
 
+<<<<<<< HEAD
+=======
+	<tfoot>
+	<tr>
+		<th scope="col" class="manage-column check-column"><input type="checkbox" id="themes-select-all-2" /></th>
+		<th scope="col" class="manage-column"><label for="themes-select-all-2"><?php _e('Select All'); ?></label></th>
+	</tr>
+	</tfoot>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<tbody class="plugins">
 <?php
 	foreach ( $themes as $stylesheet => $theme ) {
@@ -346,6 +414,7 @@ function list_theme_updates() {
 	}
 ?>
 	</tbody>
+<<<<<<< HEAD
 
 	<tfoot>
 	<tr>
@@ -353,15 +422,20 @@ function list_theme_updates() {
 		<th scope="col" class="manage-column"><label for="themes-select-all-2"><?php _e( 'Select All' ); ?></label></th>
 	</tr>
 	</tfoot>
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </table>
 <p><input id="upgrade-themes-2" class="button" type="submit" value="<?php esc_attr_e('Update Themes'); ?>" name="upgrade" /></p>
 </form>
 <?php
 }
 
+<<<<<<< HEAD
 /**
  * @since 3.7.0
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function list_translation_updates() {
 	$updates = wp_get_translation_updates();
 	if ( ! $updates ) {
@@ -376,7 +450,11 @@ function list_translation_updates() {
 	?>
 	<h3><?php _e( 'Translations' ); ?></h3>
 	<form method="post" action="<?php echo esc_url( $form_action ); ?>" name="upgrade-translations" class="upgrade">
+<<<<<<< HEAD
 		<p><?php _e( 'New translations are available.' ); ?></p>
+=======
+		<p><?php _e( 'Some of your translations are out of date.' ); ?></p>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		<?php wp_nonce_field( 'upgrade-translations' ); ?>
 		<p><input class="button" type="submit" value="<?php esc_attr_e( 'Update Translations' ); ?>" name="upgrade" /></p>
 	</form>
@@ -388,9 +466,13 @@ function list_translation_updates() {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @global WP_Filesystem_Base $wp_filesystem Subclass
  *
  * @param bool $reinstall
+=======
+ * @return null
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function do_core_upgrade( $reinstall = false ) {
 	global $wp_filesystem;
@@ -415,17 +497,28 @@ function do_core_upgrade( $reinstall = false ) {
 
 ?>
 	<div class="wrap">
+<<<<<<< HEAD
 	<h1><?php _e( 'Update WordPress' ); ?></h1>
 <?php
 
 	if ( false === ( $credentials = request_filesystem_credentials( $url, '', false, ABSPATH, array( 'version', 'locale' ), $allow_relaxed_file_ownership ) ) ) {
+=======
+	<h2><?php _e('Update WordPress'); ?></h2>
+<?php
+
+	if ( false === ( $credentials = request_filesystem_credentials( $url, '', false, ABSPATH, array(), $allow_relaxed_file_ownership ) ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		echo '</div>';
 		return;
 	}
 
 	if ( ! WP_Filesystem( $credentials, ABSPATH, $allow_relaxed_file_ownership ) ) {
 		// Failed to connect, Error and request again
+<<<<<<< HEAD
 		request_filesystem_credentials( $url, '', true, ABSPATH, array( 'version', 'locale' ), $allow_relaxed_file_ownership );
+=======
+		request_filesystem_credentials( $url, '', true, ABSPATH, array(), $allow_relaxed_file_ownership );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		echo '</div>';
 		return;
 	}
@@ -466,9 +559,12 @@ function do_core_upgrade( $reinstall = false ) {
 	<?php
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.7.0
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function do_dismiss_core_update() {
 	$version = isset( $_POST['version'] )? $_POST['version'] : false;
 	$locale = isset( $_POST['locale'] )? $_POST['locale'] : 'en_US';
@@ -480,9 +576,12 @@ function do_dismiss_core_update() {
 	exit;
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.7.0
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function do_undismiss_core_update() {
 	$version = isset( $_POST['version'] )? $_POST['version'] : false;
 	$locale = isset( $_POST['locale'] )? $_POST['locale'] : 'en_US';
@@ -530,7 +629,11 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
+<<<<<<< HEAD
 	'<p>' . __( '<a href="https://codex.wordpress.org/Dashboard_Updates_Screen" target="_blank">Documentation on Updating WordPress</a>' ) . '</p>' .
+=======
+	'<p>' . __( '<a href="http://codex.wordpress.org/Dashboard_Updates_Screen" target="_blank">Documentation on Updating WordPress</a>' ) . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __( '<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
 );
 
@@ -542,7 +645,11 @@ if ( 'upgrade-core' == $action ) {
 	require_once(ABSPATH . 'wp-admin/admin-header.php');
 	?>
 	<div class="wrap">
+<<<<<<< HEAD
 	<h1><?php _e( 'WordPress Updates' ); ?></h1>
+=======
+	<h2><?php _e('WordPress Updates'); ?></h2>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<?php
 	if ( $upgrade_error ) {
 		echo '<div class="error"><p>';
@@ -624,7 +731,11 @@ if ( 'upgrade-core' == $action ) {
 
 	require_once(ABSPATH . 'wp-admin/admin-header.php');
 	echo '<div class="wrap">';
+<<<<<<< HEAD
 	echo '<h1>' . __( 'Update Plugins' ) . '</h1>';
+=======
+	echo '<h2>' . esc_html__('Update Plugins') . '</h2>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	echo '<iframe src="', $url, '" style="width: 100%; height: 100%; min-height: 750px;" frameborder="0"></iframe>';
 	echo '</div>';
 	include(ABSPATH . 'wp-admin/admin-footer.php');
@@ -653,7 +764,11 @@ if ( 'upgrade-core' == $action ) {
 	require_once(ABSPATH . 'wp-admin/admin-header.php');
 	?>
 	<div class="wrap">
+<<<<<<< HEAD
 		<h1><?php _e( 'Update Themes' ); ?></h1>
+=======
+		<h2><?php echo esc_html__('Update Themes') ?></h2>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		<iframe src="<?php echo $url ?>" style="width: 100%; height: 100%; min-height: 750px;" frameborder="0"></iframe>
 	</div>
 	<?php

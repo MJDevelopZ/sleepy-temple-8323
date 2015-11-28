@@ -5,7 +5,11 @@
  * @package WordPress
  */
 
+<<<<<<< HEAD
 header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . get_option('blog_charset'), true);
+=======
+header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_option('blog_charset'), true);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
 

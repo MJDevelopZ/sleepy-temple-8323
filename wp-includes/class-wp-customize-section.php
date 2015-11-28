@@ -1,11 +1,18 @@
 <?php
 /**
+<<<<<<< HEAD
  * WordPress Customize Section classes
+=======
+ * Customize Section Class.
+ *
+ * A UI container for controls, managed by the WP_Customize_Manager.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @package WordPress
  * @subpackage Customize
  * @since 3.4.0
  */
+<<<<<<< HEAD
 
 /**
  * Customize Section class.
@@ -16,6 +23,8 @@
  *
  * @see WP_Customize_Manager
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 class WP_Customize_Section {
 
 	/**
@@ -24,8 +33,11 @@ class WP_Customize_Section {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 *
 	 * @static
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @access protected
 	 * @var int
 	 */
@@ -173,6 +185,11 @@ class WP_Customize_Section {
 		$this->instance_number = self::$instance_count;
 
 		$this->controls = array(); // Users cannot customize the $controls array.
+<<<<<<< HEAD
+=======
+
+		return $this;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -183,7 +200,11 @@ class WP_Customize_Section {
 	 *
 	 * @return bool Whether the section is active to the current preview.
 	 */
+<<<<<<< HEAD
 	final public function active() {
+=======
+	public final function active() {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$section = $this;
 		$active = call_user_func( $this->active_callback, $this );
 
@@ -209,7 +230,11 @@ class WP_Customize_Section {
 	 * @since 4.1.0
 	 * @access public
 	 *
+<<<<<<< HEAD
 	 * @return true Always true.
+=======
+	 * @return bool Always true.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function active_callback() {
 		return true;
@@ -223,6 +248,7 @@ class WP_Customize_Section {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
+<<<<<<< HEAD
 		$array = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'panel', 'type' ) );
 		$array['title'] = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content'] = $this->get_content();
@@ -236,6 +262,12 @@ class WP_Customize_Section {
 			$array['customizeAction'] = __( 'Customizing' );
 		}
 
+=======
+		$array = wp_array_slice_assoc( (array) $this, array( 'title', 'description', 'priority', 'panel', 'type' ) );
+		$array['content'] = $this->get_content();
+		$array['active'] = $this->active();
+		$array['instanceNumber'] = $this->instance_number;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		return $array;
 	}
 
@@ -247,7 +279,11 @@ class WP_Customize_Section {
 	 *
 	 * @return bool False if theme doesn't support the section or user doesn't have the capability.
 	 */
+<<<<<<< HEAD
 	final public function check_capabilities() {
+=======
+	public final function check_capabilities() {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( $this->capability && ! call_user_func_array( 'current_user_can', (array) $this->capability ) ) {
 			return false;
 		}
@@ -260,16 +296,29 @@ class WP_Customize_Section {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Get the section's content for insertion into the Customizer pane.
+=======
+	 * Get the section's content template for insertion into the Customizer pane.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @since 4.1.0
 	 *
 	 * @return string Contents of the section.
 	 */
+<<<<<<< HEAD
 	final public function get_content() {
 		ob_start();
 		$this->maybe_render();
 		return trim( ob_get_clean() );
+=======
+	public final function get_content() {
+		ob_start();
+		$this->maybe_render();
+		$template = trim( ob_get_contents() );
+		ob_end_clean();
+		return $template;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -277,7 +326,11 @@ class WP_Customize_Section {
 	 *
 	 * @since 3.4.0
 	 */
+<<<<<<< HEAD
 	final public function maybe_render() {
+=======
+	public final function maybe_render() {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( ! $this->check_capabilities() ) {
 			return;
 		}
@@ -304,6 +357,7 @@ class WP_Customize_Section {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Render the section UI in a subclass.
 	 *
 	 * Sections are now rendered in JS by default, see {@see WP_Customize_Section::print_template()}.
@@ -368,6 +422,26 @@ class WP_Customize_Section {
 						</div>
 					<# } #>
 				</li>
+=======
+	 * Render the section, and the controls that have been added to it.
+	 *
+	 * @since 3.4.0
+	 */
+	protected function render() {
+		$classes = 'accordion-section control-section control-section-' . $this->type;
+		?>
+		<li id="accordion-section-<?php echo esc_attr( $this->id ); ?>" class="<?php echo esc_attr( $classes ); ?>">
+			<h3 class="accordion-section-title" tabindex="0">
+				<?php echo esc_html( $this->title ); ?>
+				<span class="screen-reader-text"><?php _e( 'Press return or enter to expand' ); ?></span>
+			</h3>
+			<ul class="accordion-section-content">
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<li class="customize-section-description-container">
+						<p class="description customize-section-description"><?php echo $this->description; ?></p>
+					</li>
+				<?php endif; ?>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			</ul>
 		</li>
 		<?php
@@ -375,6 +449,7 @@ class WP_Customize_Section {
 }
 
 /**
+<<<<<<< HEAD
  * Customize Themes Section class.
  *
  * A UI container for theme controls, which behaves like a backwards Panel.
@@ -453,6 +528,13 @@ class WP_Customize_Themes_Section extends WP_Customize_Section {
 /**
  * Customizer section representing widget area (sidebar).
  *
+=======
+ * Customizer section representing widget area (sidebar).
+ *
+ * @package WordPress
+ * @subpackage Customize
+ *
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @since 4.1.0
  *
  * @see WP_Customize_Section
@@ -502,6 +584,7 @@ class WP_Customize_Sidebar_Section extends WP_Customize_Section {
 		return $this->manager->widgets->is_sidebar_rendered( $this->sidebar_id );
 	}
 }
+<<<<<<< HEAD
 
 /**
  * Customize Menu Section Class
@@ -575,3 +658,5 @@ class WP_Customize_New_Menu_Section extends WP_Customize_Section {
 		<?php
 	}
 }
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

@@ -43,7 +43,11 @@ define( 'ARRAY_N', 'ARRAY_N' );
  * file to your class. The wpdb class will still be included,
  * so you can extend it or simply use your own.
  *
+<<<<<<< HEAD
  * @link https://codex.wordpress.org/Function_Reference/wpdb_Class
+=======
+ * @link http://codex.wordpress.org/Function_Reference/wpdb_Class
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * @package WordPress
  * @subpackage Database
@@ -84,19 +88,33 @@ class wpdb {
 	 * Amount of queries made
 	 *
 	 * @since 1.2.0
+<<<<<<< HEAD
 	 * @access public
 	 * @var int
 	 */
 	public $num_queries = 0;
+=======
+	 * @access private
+	 * @var int
+	 */
+	var $num_queries = 0;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	/**
 	 * Count of rows returned by previous query
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 * @access public
 	 * @var int
 	 */
 	public $num_rows = 0;
+=======
+	 * @access private
+	 * @var int
+	 */
+	var $num_rows = 0;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	/**
 	 * Count of affected rows by previous query
@@ -114,7 +132,11 @@ class wpdb {
 	 * @access public
 	 * @var int
 	 */
+<<<<<<< HEAD
 	public $insert_id = 0;
+=======
+	var $insert_id = 0;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	/**
 	 * Last query made
@@ -144,6 +166,7 @@ class wpdb {
 	protected $result;
 
 	/**
+<<<<<<< HEAD
 	 * Cached column info, for sanity checking data before inserting
 	 *
 	 * @since 4.2.0
@@ -181,6 +204,8 @@ class wpdb {
 	private $checking_collation = false;
 
 	/**
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * Saved info on the table column
 	 *
 	 * @since 0.71
@@ -216,10 +241,17 @@ class wpdb {
 	 * security precautions.
 	 *
 	 * @since 2.5.0
+<<<<<<< HEAD
 	 * @access public
 	 * @var string
 	 */
 	public $prefix = '';
+=======
+	 * @access private
+	 * @var string
+	 */
+	var $prefix = '';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	/**
 	 * WordPress base table prefix.
@@ -240,7 +272,11 @@ class wpdb {
 	var $ready = false;
 
 	/**
+<<<<<<< HEAD
 	 * Blog ID.
+=======
+	 * {@internal Missing Description}}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @since 3.0.0
 	 * @access public
@@ -249,7 +285,11 @@ class wpdb {
 	public $blogid = 0;
 
 	/**
+<<<<<<< HEAD
 	 * Site ID.
+=======
+	 * {@internal Missing Description}}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @since 3.0.0
 	 * @access public
@@ -607,12 +647,19 @@ class wpdb {
 	 * @link https://core.trac.wordpress.org/ticket/3354
 	 * @since 2.0.8
 	 *
+<<<<<<< HEAD
 	 * @global string $wp_version
 	 *
 	 * @param string $dbuser     MySQL database user
 	 * @param string $dbpassword MySQL database password
 	 * @param string $dbname     MySQL database name
 	 * @param string $dbhost     MySQL database host
+=======
+	 * @param string $dbuser MySQL database user
+	 * @param string $dbpassword MySQL database password
+	 * @param string $dbname MySQL database name
+	 * @param string $dbhost MySQL database host
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function __construct( $dbuser, $dbpassword, $dbname, $dbhost ) {
 		register_shutdown_function( array( $this, '__destruct' ) );
@@ -636,6 +683,11 @@ class wpdb {
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		$this->init_charset();
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$this->dbuser = $dbuser;
 		$this->dbpassword = $dbpassword;
 		$this->dbname = $dbname;
@@ -654,7 +706,11 @@ class wpdb {
 	 *
 	 * @see wpdb::__construct()
 	 * @since 2.0.8
+<<<<<<< HEAD
 	 * @return true
+=======
+	 * @return bool true
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function __destruct() {
 		return true;
@@ -684,6 +740,7 @@ class wpdb {
 	 * @param mixed  $value The value to set
 	 */
 	public function __set( $name, $value ) {
+<<<<<<< HEAD
 		$protected_members = array(
 			'col_meta',
 			'table_charset',
@@ -692,6 +749,8 @@ class wpdb {
 		if (  in_array( $name, $protected_members, true ) ) {
 			return;
 		}
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$this->$name = $value;
 	}
 
@@ -727,15 +786,23 @@ class wpdb {
 	public function init_charset() {
 		if ( function_exists('is_multisite') && is_multisite() ) {
 			$this->charset = 'utf8';
+<<<<<<< HEAD
 			if ( defined( 'DB_COLLATE' ) && DB_COLLATE ) {
 				$this->collate = DB_COLLATE;
 			} else {
 				$this->collate = 'utf8_general_ci';
 			}
+=======
+			if ( defined( 'DB_COLLATE' ) && DB_COLLATE )
+				$this->collate = DB_COLLATE;
+			else
+				$this->collate = 'utf8_general_ci';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		} elseif ( defined( 'DB_COLLATE' ) ) {
 			$this->collate = DB_COLLATE;
 		}
 
+<<<<<<< HEAD
 		if ( defined( 'DB_CHARSET' ) ) {
 			$this->charset = DB_CHARSET;
 		}
@@ -751,6 +818,10 @@ class wpdb {
 		if ( 'utf8mb4' === $this->charset && ( ! $this->collate || stripos( $this->collate, 'utf8_' ) === 0 ) ) {
 			$this->collate = 'utf8mb4_unicode_ci';
 		}
+=======
+		if ( defined( 'DB_CHARSET' ) )
+			$this->charset = DB_CHARSET;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -775,7 +846,11 @@ class wpdb {
 					$query = $this->prepare( 'SET NAMES %s', $charset );
 					if ( ! empty( $collate ) )
 						$query .= $this->prepare( ' COLLATE %s', $collate );
+<<<<<<< HEAD
 					mysqli_query( $dbh, $query );
+=======
+					mysqli_query( $query, $dbh );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 			} else {
 				if ( function_exists( 'mysql_set_charset' ) && $this->has_cap( 'set_charset' ) ) {
@@ -860,8 +935,13 @@ class wpdb {
 	 *
 	 * @since 2.5.0
 	 *
+<<<<<<< HEAD
 	 * @param string $prefix          Alphanumeric name for the new prefix.
 	 * @param bool   $set_table_names Optional. Whether the table names, e.g. wpdb::$posts, should be updated or not.
+=======
+	 * @param string $prefix Alphanumeric name for the new prefix.
+	 * @param bool $set_table_names Optional. Whether the table names, e.g. wpdb::$posts, should be updated or not.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @return string|WP_Error Old prefix or WP_Error on error
 	 */
 	public function set_prefix( $prefix, $set_table_names = true ) {
@@ -899,7 +979,10 @@ class wpdb {
 	 *
 	 * @since 3.0.0
 	 * @access public
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param int $blog_id
 	 * @param int $site_id Optional.
 	 * @return int previous blog id
@@ -964,10 +1047,17 @@ class wpdb {
 	 * @uses wpdb::$global_tables
 	 * @uses wpdb::$ms_global_tables
 	 *
+<<<<<<< HEAD
 	 * @param string $scope   Optional. Can be all, global, ms_global, blog, or old tables. Defaults to all.
 	 * @param bool   $prefix  Optional. Whether to include table prefixes. Default true. If blog
 	 *                        prefix is requested, then the custom users and usermeta tables will be mapped.
 	 * @param int    $blog_id Optional. The blog_id to prefix. Defaults to wpdb::$blogid. Used only when prefix is requested.
+=======
+	 * @param string $scope Optional. Can be all, global, ms_global, blog, or old tables. Defaults to all.
+	 * @param bool $prefix Optional. Whether to include table prefixes. Default true. If blog
+	 * 	prefix is requested, then the custom users and usermeta tables will be mapped.
+	 * @param int $blog_id Optional. The blog_id to prefix. Defaults to wpdb::$blogid. Used only when prefix is requested.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @return array Table names. When a prefix is requested, the key is the unprefixed table name.
 	 */
 	public function tables( $scope = 'all', $prefix = true, $blog_id = 0 ) {
@@ -1027,8 +1117,14 @@ class wpdb {
 	 *
 	 * @since 0.71
 	 *
+<<<<<<< HEAD
 	 * @param string        $db  MySQL database name
 	 * @param resource|null $dbh Optional link identifier.
+=======
+	 * @param string $db MySQL database name
+	 * @param resource $dbh Optional link identifier.
+	 * @return null Always null.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function select( $db, $dbh = null ) {
 		if ( is_null($dbh) )
@@ -1052,6 +1148,10 @@ class wpdb {
 </ul>
 <p>If you don\'t know how to set up a database you should <strong>contact your host</strong>. If all else fails you may find help at the <a href="https://wordpress.org/support/">WordPress Support Forums</a>.</p>' ), htmlspecialchars( $db, ENT_QUOTES ), htmlspecialchars( $this->dbuser, ENT_QUOTES ) ), 'db_select_fail' );
 			}
+<<<<<<< HEAD
+=======
+			return;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 	}
 
@@ -1163,10 +1263,16 @@ class wpdb {
 	 * Escapes content by reference for insertion into the database, for security
 	 *
 	 * @uses wpdb::_real_escape()
+<<<<<<< HEAD
 	 *
 	 * @since 2.3.0
 	 *
 	 * @param string $string to escape
+=======
+	 * @since 2.3.0
+	 * @param string $string to escape
+	 * @return void
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function escape_by_ref( &$string ) {
 		if ( ! is_float( $string ) )
@@ -1199,6 +1305,7 @@ class wpdb {
 	 * @link http://php.net/sprintf Description of syntax.
 	 * @since 2.3.0
 	 *
+<<<<<<< HEAD
 	 * @param string      $query    Query statement with sprintf()-like placeholders
 	 * @param array|mixed $args     The array of variables to substitute into the query's placeholders if being called like
 	 *                              {@link http://php.net/vsprintf vsprintf()}, or the first variable to substitute into the query's placeholders if
@@ -1206,6 +1313,16 @@ class wpdb {
 	 * @param mixed       $args,... further variables to substitute into the query's placeholders if being called like
 	 *                              {@link http://php.net/sprintf sprintf()}.
 	 * @return string|void Sanitized query string, if there is a query to prepare.
+=======
+	 * @param string $query Query statement with sprintf()-like placeholders
+	 * @param array|mixed $args The array of variables to substitute into the query's placeholders if being called like
+	 * 	{@link http://php.net/vsprintf vsprintf()}, or the first variable to substitute into the query's placeholders if
+	 * 	being called like {@link http://php.net/sprintf sprintf()}.
+	 * @param mixed $args,... further variables to substitute into the query's placeholders if being called like
+	 * 	{@link http://php.net/sprintf sprintf()}.
+	 * @return null|false|string Sanitized query string, null if there is no query, false if there is an error and string
+	 * 	if there was something to prepare
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function prepare( $query, $args ) {
 		if ( is_null( $query ) )
@@ -1262,7 +1379,11 @@ class wpdb {
 	 * @global array $EZSQL_ERROR Stores error information of query and error string
 	 *
 	 * @param string $str The error to display
+<<<<<<< HEAD
 	 * @return false|void False if the showing of errors is disabled.
+=======
+	 * @return false|null False if the showing of errors is disabled.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function print_error( $str = '' ) {
 		global $EZSQL_ERROR;
@@ -1294,6 +1415,7 @@ class wpdb {
 
 		// If there is an error then take note of it
 		if ( is_multisite() ) {
+<<<<<<< HEAD
 			$msg = sprintf(
 				"%s [%s]\n%s\n",
 				__( 'WordPress database error:' ),
@@ -1307,16 +1429,30 @@ class wpdb {
 			if ( defined( 'DIEONDBERROR' ) ) {
 				wp_die( $msg );
 			}
+=======
+			$msg = "WordPress database error: [$str]\n{$this->last_query}\n";
+			if ( defined( 'ERRORLOGFILE' ) )
+				error_log( $msg, 3, ERRORLOGFILE );
+			if ( defined( 'DIEONDBERROR' ) )
+				wp_die( $msg );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		} else {
 			$str   = htmlspecialchars( $str, ENT_QUOTES );
 			$query = htmlspecialchars( $this->last_query, ENT_QUOTES );
 
+<<<<<<< HEAD
 			printf(
 				'<div id="error"><p class="wpdberror"><strong>%s</strong> [%s]<br /><code>%s</code></p></div>',
 				__( 'WordPress database error:' ),
 				$str,
 				$query
 			);
+=======
+			print "<div id='error'>
+			<p class='wpdberror'><strong>WordPress database error:</strong> [$str]<br />
+			<code>$query</code></p>
+			</div>";
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 	}
 
@@ -1377,6 +1513,10 @@ class wpdb {
 	 * Kill cached query results.
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
+=======
+	 * @return void
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function flush() {
 		$this->last_result = array();
@@ -1398,7 +1538,11 @@ class wpdb {
 			while ( mysqli_more_results( $this->dbh ) ) {
 				mysqli_next_result( $this->dbh );
 			}
+<<<<<<< HEAD
 		} elseif ( is_resource( $this->result ) ) {
+=======
+		} else if ( is_resource( $this->result ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			mysql_free_result( $this->result );
 		}
 	}
@@ -1413,9 +1557,16 @@ class wpdb {
 	 * @since 3.9.0 $allow_bail parameter added.
 	 *
 	 * @param bool $allow_bail Optional. Allows the function to bail. Default true.
+<<<<<<< HEAD
 	 * @return bool True with a successful connection, false on failure.
 	 */
 	public function db_connect( $allow_bail = true ) {
+=======
+	 * @return null|bool True with a successful connection, false on failure.
+	 */
+	public function db_connect( $allow_bail = true ) {
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		$this->is_mysql = true;
 
 		/*
@@ -1466,9 +1617,15 @@ class wpdb {
 
 				if ( $this->has_connected ) {
 					$attempt_fallback = false;
+<<<<<<< HEAD
 				} elseif ( defined( 'WP_USE_EXT_MYSQL' ) && ! WP_USE_EXT_MYSQL ) {
 					$attempt_fallback = false;
 				} elseif ( ! function_exists( 'mysql_connect' ) ) {
+=======
+				} else if ( defined( 'WP_USE_EXT_MYSQL' ) && ! WP_USE_EXT_MYSQL ) {
+					$attempt_fallback = false;
+				} else if ( ! function_exists( 'mysql_connect' ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					$attempt_fallback = false;
 				}
 
@@ -1506,6 +1663,7 @@ class wpdb {
 " ), htmlspecialchars( $this->dbhost, ENT_QUOTES ) ), 'db_connect_fail' );
 
 			return false;
+<<<<<<< HEAD
 		} elseif ( $this->dbh ) {
 			if ( ! $this->has_connected ) {
 				$this->init_charset();
@@ -1517,6 +1675,13 @@ class wpdb {
 
 			$this->ready = true;
 			$this->set_sql_mode();
+=======
+		} else if ( $this->dbh ) {
+			$this->has_connected = true;
+			$this->set_charset( $this->dbh );
+			$this->set_sql_mode();
+			$this->ready = true;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$this->select( $this->dbname, $this->dbh );
 
 			return true;
@@ -1537,7 +1702,11 @@ class wpdb {
 	 * @since 3.9.0
 	 *
 	 * @param bool $allow_bail Optional. Allows the function to bail. Default true.
+<<<<<<< HEAD
 	 * @return bool|void True if the connection is up.
+=======
+	 * @return bool|null True if the connection is up.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function check_connection( $allow_bail = true ) {
 		if ( $this->use_mysqli ) {
@@ -1613,7 +1782,10 @@ class wpdb {
 	 */
 	public function query( $query ) {
 		if ( ! $this->ready ) {
+<<<<<<< HEAD
 			$this->check_current_query = true;
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			return false;
 		}
 
@@ -1634,6 +1806,7 @@ class wpdb {
 		// Log how the function was called
 		$this->func_call = "\$db->query(\"$query\")";
 
+<<<<<<< HEAD
 		// If we're writing to the database, make sure the query will write safely.
 		if ( $this->check_current_query && ! $this->check_ascii( $query ) ) {
 			$stripped_query = $this->strip_invalid_text_from_query( $query );
@@ -1648,6 +1821,8 @@ class wpdb {
 
 		$this->check_current_query = true;
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// Keep track of the last query for debug..
 		$this->last_query = $query;
 
@@ -1713,7 +1888,11 @@ class wpdb {
 					$this->last_result[$num_rows] = $row;
 					$num_rows++;
 				}
+<<<<<<< HEAD
 			} elseif ( is_resource( $this->result ) ) {
+=======
+			} else if ( is_resource( $this->result ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				while ( $row = @mysql_fetch_object( $this->result ) ) {
 					$this->last_result[$num_rows] = $row;
 					$num_rows++;
@@ -1767,6 +1946,7 @@ class wpdb {
 	 * @see wpdb::$field_types
 	 * @see wp_set_wpdb_vars()
 	 *
+<<<<<<< HEAD
 	 * @param string       $table  Table name
 	 * @param array        $data   Data to insert (in column => value pairs).
 	 *                             Both $data columns and $data values should be "raw" (neither should be SQL escaped).
@@ -1774,6 +1954,12 @@ class wpdb {
 	 *                             If string, that format will be used for all of the values in $data.
 	 *                             A format is one of '%d', '%f', '%s' (integer, float, string).
 	 *                             If omitted, all values in $data will be treated as strings unless otherwise specified in wpdb::$field_types.
+=======
+	 * @param string $table table name
+	 * @param array $data Data to insert (in column => value pairs). Both $data columns and $data values should be "raw" (neither should be SQL escaped).
+	 * @param array|string $format Optional. An array of formats to be mapped to each of the value in $data. If string, that format will be used for all of the values in $data.
+	 * 	A format is one of '%d', '%f', '%s' (integer, float, string). If omitted, all values in $data will be treated as strings unless otherwise specified in wpdb::$field_types.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @return int|false The number of rows inserted, or false on error.
 	 */
 	public function insert( $table, $data, $format = null ) {
@@ -1791,6 +1977,7 @@ class wpdb {
 	 * @see wpdb::$field_types
 	 * @see wp_set_wpdb_vars()
 	 *
+<<<<<<< HEAD
 	 * @param string       $table  Table name
 	 * @param array        $data   Data to insert (in column => value pairs).
 	 *                             Both $data columns and $data values should be "raw" (neither should be SQL escaped).
@@ -1798,6 +1985,12 @@ class wpdb {
 	 *                             If string, that format will be used for all of the values in $data.
 	 *                             A format is one of '%d', '%f', '%s' (integer, float, string).
 	 *                             If omitted, all values in $data will be treated as strings unless otherwise specified in wpdb::$field_types.
+=======
+	 * @param string $table table name
+	 * @param array $data Data to insert (in column => value pairs). Both $data columns and $data values should be "raw" (neither should be SQL escaped).
+	 * @param array|string $format Optional. An array of formats to be mapped to each of the value in $data. If string, that format will be used for all of the values in $data.
+	 * 	A format is one of '%d', '%f', '%s' (integer, float, string). If omitted, all values in $data will be treated as strings unless otherwise specified in wpdb::$field_types.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @return int|false The number of rows affected, or false on error.
 	 */
 	public function replace( $table, $data, $format = null ) {
@@ -1815,6 +2008,7 @@ class wpdb {
 	 * @see wpdb::$field_types
 	 * @see wp_set_wpdb_vars()
 	 *
+<<<<<<< HEAD
 	 * @param string       $table  Table name
 	 * @param array        $data   Data to insert (in column => value pairs).
 	 *                             Both $data columns and $data values should be "raw" (neither should be SQL escaped).
@@ -1850,6 +2044,33 @@ class wpdb {
 
 		$this->check_current_query = false;
 		return $this->query( $this->prepare( $sql, $values ) );
+=======
+	 * @param string $table table name
+	 * @param array $data Data to insert (in column => value pairs). Both $data columns and $data values should be "raw" (neither should be SQL escaped).
+	 * @param array|string $format Optional. An array of formats to be mapped to each of the value in $data. If string, that format will be used for all of the values in $data.
+	 * 	A format is one of '%d', '%f', '%s' (integer, float, string). If omitted, all values in $data will be treated as strings unless otherwise specified in wpdb::$field_types.
+	 * @param string $type Optional. What type of operation is this? INSERT or REPLACE. Defaults to INSERT.
+	 * @return int|false The number of rows affected, or false on error.
+	 */
+	function _insert_replace_helper( $table, $data, $format = null, $type = 'INSERT' ) {
+		if ( ! in_array( strtoupper( $type ), array( 'REPLACE', 'INSERT' ) ) )
+			return false;
+		$this->insert_id = 0;
+		$formats = $format = (array) $format;
+		$fields = array_keys( $data );
+		$formatted_fields = array();
+		foreach ( $fields as $field ) {
+			if ( !empty( $format ) )
+				$form = ( $form = array_shift( $formats ) ) ? $form : $format[0];
+			elseif ( isset( $this->field_types[$field] ) )
+				$form = $this->field_types[$field];
+			else
+				$form = '%s';
+			$formatted_fields[] = $form;
+		}
+		$sql = "{$type} INTO `$table` (`" . implode( '`,`', $fields ) . "`) VALUES (" . implode( ",", $formatted_fields ) . ")";
+		return $this->query( $this->prepare( $sql, $data ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -1863,6 +2084,7 @@ class wpdb {
 	 * @see wpdb::$field_types
 	 * @see wp_set_wpdb_vars()
 	 *
+<<<<<<< HEAD
 	 * @param string       $table        Table name
 	 * @param array        $data         Data to update (in column => value pairs).
 	 *                                   Both $data columns and $data values should be "raw" (neither should be SQL escaped).
@@ -1910,6 +2132,45 @@ class wpdb {
 
 		$this->check_current_query = false;
 		return $this->query( $this->prepare( $sql, $values ) );
+=======
+	 * @param string $table table name
+	 * @param array $data Data to update (in column => value pairs). Both $data columns and $data values should be "raw" (neither should be SQL escaped).
+	 * @param array $where A named array of WHERE clauses (in column => value pairs). Multiple clauses will be joined with ANDs. Both $where columns and $where values should be "raw".
+	 * @param array|string $format Optional. An array of formats to be mapped to each of the values in $data. If string, that format will be used for all of the values in $data.
+	 * 	A format is one of '%d', '%f', '%s' (integer, float, string). If omitted, all values in $data will be treated as strings unless otherwise specified in wpdb::$field_types.
+	 * @param array|string $where_format Optional. An array of formats to be mapped to each of the values in $where. If string, that format will be used for all of the items in $where. A format is one of '%d', '%f', '%s' (integer, float, string). If omitted, all values in $where will be treated as strings.
+	 * @return int|false The number of rows updated, or false on error.
+	 */
+	public function update( $table, $data, $where, $format = null, $where_format = null ) {
+		if ( ! is_array( $data ) || ! is_array( $where ) )
+			return false;
+
+		$formats = $format = (array) $format;
+		$bits = $wheres = array();
+		foreach ( (array) array_keys( $data ) as $field ) {
+			if ( !empty( $format ) )
+				$form = ( $form = array_shift( $formats ) ) ? $form : $format[0];
+			elseif ( isset($this->field_types[$field]) )
+				$form = $this->field_types[$field];
+			else
+				$form = '%s';
+			$bits[] = "`$field` = {$form}";
+		}
+
+		$where_formats = $where_format = (array) $where_format;
+		foreach ( (array) array_keys( $where ) as $field ) {
+			if ( !empty( $where_format ) )
+				$form = ( $form = array_shift( $where_formats ) ) ? $form : $where_format[0];
+			elseif ( isset( $this->field_types[$field] ) )
+				$form = $this->field_types[$field];
+			else
+				$form = '%s';
+			$wheres[] = "`$field` = {$form}";
+		}
+
+		$sql = "UPDATE `$table` SET " . implode( ', ', $bits ) . ' WHERE ' . implode( ' AND ', $wheres );
+		return $this->query( $this->prepare( $sql, array_merge( array_values( $data ), array_values( $where ) ) ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -1923,6 +2184,7 @@ class wpdb {
 	 * @see wpdb::$field_types
 	 * @see wp_set_wpdb_vars()
 	 *
+<<<<<<< HEAD
 	 * @param string       $table        Table name
 	 * @param array        $where        A named array of WHERE clauses (in column => value pairs).
 	 *                                   Multiple clauses will be joined with ANDs.
@@ -2093,6 +2355,35 @@ class wpdb {
 		}
 
 		return $data;
+=======
+	 * @param string $table table name
+	 * @param array $where A named array of WHERE clauses (in column => value pairs). Multiple clauses will be joined with ANDs. Both $where columns and $where values should be "raw".
+	 * @param array|string $where_format Optional. An array of formats to be mapped to each of the values in $where. If string, that format will be used for all of the items in $where. A format is one of '%d', '%f', '%s' (integer, float, string). If omitted, all values in $where will be treated as strings unless otherwise specified in wpdb::$field_types.
+	 * @return int|false The number of rows updated, or false on error.
+	 */
+	public function delete( $table, $where, $where_format = null ) {
+		if ( ! is_array( $where ) )
+			return false;
+
+		$wheres = array();
+
+		$where_formats = $where_format = (array) $where_format;
+
+		foreach ( array_keys( $where ) as $field ) {
+			if ( !empty( $where_format ) ) {
+				$form = ( $form = array_shift( $where_formats ) ) ? $form : $where_format[0];
+			} elseif ( isset( $this->field_types[ $field ] ) ) {
+				$form = $this->field_types[ $field ];
+			} else {
+				$form = '%s';
+			}
+
+			$wheres[] = "$field = $form";
+		}
+
+		$sql = "DELETE FROM $table WHERE " . implode( ' AND ', $wheres );
+		return $this->query( $this->prepare( $sql, $where ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -2105,17 +2396,25 @@ class wpdb {
 	 * @since 0.71
 	 *
 	 * @param string|null $query Optional. SQL query. Defaults to null, use the result from the previous query.
+<<<<<<< HEAD
 	 * @param int         $x     Optional. Column of value to return. Indexed from 0.
 	 * @param int         $y     Optional. Row of value to return. Indexed from 0.
+=======
+	 * @param int $x Optional. Column of value to return. Indexed from 0.
+	 * @param int $y Optional. Row of value to return. Indexed from 0.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @return string|null Database query result (as string), or null on failure
 	 */
 	public function get_var( $query = null, $x = 0, $y = 0 ) {
 		$this->func_call = "\$db->get_var(\"$query\", $x, $y)";
 
+<<<<<<< HEAD
 		if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
 			$this->check_current_query = false;
 		}
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( $query ) {
 			$this->query( $query );
 		}
@@ -2136,6 +2435,7 @@ class wpdb {
 	 *
 	 * @since 0.71
 	 *
+<<<<<<< HEAD
 	 * @param string|null $query  SQL query.
 	 * @param string      $output Optional. one of ARRAY_A | ARRAY_N | OBJECT constants.
 	 *                            Return an associative array (column => value, ...),
@@ -2151,6 +2451,16 @@ class wpdb {
 			$this->check_current_query = false;
 		}
 
+=======
+	 * @param string|null $query SQL query.
+	 * @param string $output Optional. one of ARRAY_A | ARRAY_N | OBJECT constants. Return an associative array (column => value, ...),
+	 * 	a numerically indexed array (0 => value, ...) or an object ( ->column = value ), respectively.
+	 * @param int $y Optional. Row to return. Indexed from 0.
+	 * @return mixed Database query result in format specified by $output or null on failure
+	 */
+	public function get_row( $query = null, $output = OBJECT, $y = 0 ) {
+		$this->func_call = "\$db->get_row(\"$query\",$output,$y)";
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( $query ) {
 			$this->query( $query );
 		} else {
@@ -2184,6 +2494,7 @@ class wpdb {
 	 * @since 0.71
 	 *
 	 * @param string|null $query Optional. SQL query. Defaults to previous query.
+<<<<<<< HEAD
 	 * @param int         $x     Optional. Column to return. Indexed from 0.
 	 * @return array Database query result. Array indexed from 0 by SQL result row number.
 	 */
@@ -2192,6 +2503,12 @@ class wpdb {
 			$this->check_current_query = false;
 		}
 
+=======
+	 * @param int $x Optional. Column to return. Indexed from 0.
+	 * @return array Database query result. Array indexed from 0 by SQL result row number.
+	 */
+	public function get_col( $query = null , $x = 0 ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( $query ) {
 			$this->query( $query );
 		}
@@ -2211,6 +2528,7 @@ class wpdb {
 	 *
 	 * @since 0.71
 	 *
+<<<<<<< HEAD
 	 * @param string $query  SQL query.
 	 * @param string $output Optional. Any of ARRAY_A | ARRAY_N | OBJECT | OBJECT_K constants.
 	 *                       With one of the first three, return an array of rows indexed from 0 by SQL result row number.
@@ -2218,14 +2536,24 @@ class wpdb {
 	 *                       With OBJECT_K, return an associative array of row objects keyed by the value of each row's first column's value.
 	 *                       Duplicate keys are discarded.
 	 * @return array|object|null Database query results
+=======
+	 * @param string $query SQL query.
+	 * @param string $output Optional. Any of ARRAY_A | ARRAY_N | OBJECT | OBJECT_K constants. With one of the first three, return an array of rows indexed from 0 by SQL result row number.
+	 * 	Each row is an associative array (column => value, ...), a numerically indexed array (0 => value, ...), or an object. ( ->column = value ), respectively.
+	 * 	With OBJECT_K, return an associative array of row objects keyed by the value of each row's first column's value. Duplicate keys are discarded.
+	 * @return mixed Database query results
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function get_results( $query = null, $output = OBJECT ) {
 		$this->func_call = "\$db->get_results(\"$query\", $output)";
 
+<<<<<<< HEAD
 		if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
 			$this->check_current_query = false;
 		}
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( $query ) {
 			$this->query( $query );
 		} else {
@@ -2268,6 +2596,7 @@ class wpdb {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves the character set for the given table.
 	 *
 	 * @since 4.2.0
@@ -2905,6 +3234,8 @@ class wpdb {
 	}
 
 	/**
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * Load the column metadata from the last query.
 	 *
 	 * @since 3.5.0
@@ -2916,6 +3247,7 @@ class wpdb {
 			return;
 
 		if ( $this->use_mysqli ) {
+<<<<<<< HEAD
 			$num_fields = @mysqli_num_fields( $this->result );
 			for ( $i = 0; $i < $num_fields; $i++ ) {
 				$this->col_info[ $i ] = @mysqli_fetch_field( $this->result );
@@ -2923,6 +3255,13 @@ class wpdb {
 		} else {
 			$num_fields = @mysql_num_fields( $this->result );
 			for ( $i = 0; $i < $num_fields; $i++ ) {
+=======
+			for ( $i = 0; $i < @mysqli_num_fields( $this->result ); $i++ ) {
+				$this->col_info[ $i ] = @mysqli_fetch_field( $this->result );
+			}
+		} else {
+			for ( $i = 0; $i < @mysql_num_fields( $this->result ); $i++ ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				$this->col_info[ $i ] = @mysql_fetch_field( $this->result, $i );
 			}
 		}
@@ -2933,8 +3272,13 @@ class wpdb {
 	 *
 	 * @since 0.71
 	 *
+<<<<<<< HEAD
 	 * @param string $info_type  Optional. Type one of name, table, def, max_length, not_null, primary_key, multiple_key, unique_key, numeric, blob, type, unsigned, zerofill
 	 * @param int    $col_offset Optional. 0: col name. 1: which table the col's in. 2: col's max length. 3: if the col is numeric. 4: col's type
+=======
+	 * @param string $info_type Optional. Type one of name, table, def, max_length, not_null, primary_key, multiple_key, unique_key, numeric, blob, type, unsigned, zerofill
+	 * @param int $col_offset Optional. 0: col name. 1: which table the col's in. 2: col's max length. 3: if the col is numeric. 4: col's type
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @return mixed Column Results
 	 */
 	public function get_col_info( $info_type = 'name', $col_offset = -1 ) {
@@ -2960,7 +3304,11 @@ class wpdb {
 	 *
 	 * @since 1.5.0
 	 *
+<<<<<<< HEAD
 	 * @return true
+=======
+	 * @return bool
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function timer_start() {
 		$this->time_start = microtime( true );
@@ -2985,7 +3333,11 @@ class wpdb {
 	 *
 	 * @since 1.5.0
 	 *
+<<<<<<< HEAD
 	 * @param string $message    The Error message
+=======
+	 * @param string $message The Error message
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param string $error_code Optional. A Computer readable string to identify the error.
 	 * @return false|void
 	 */
@@ -3004,11 +3356,18 @@ class wpdb {
 	 * Whether MySQL database is at least the required minimum version.
 	 *
 	 * @since 2.5.0
+<<<<<<< HEAD
 	 *
 	 * @global string $wp_version
 	 * @global string $required_mysql_version
 	 *
 	 * @return WP_Error|void
+=======
+	 * @uses $wp_version
+	 * @uses $required_mysql_version
+	 *
+	 * @return WP_Error
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function check_database_version() {
 		global $wp_version, $required_mysql_version;
@@ -3062,7 +3421,11 @@ class wpdb {
 	 * @param string $db_cap The feature to check for. Accepts 'collation',
 	 *                       'group_concat', 'subqueries', 'set_charset',
 	 *                       or 'utf8mb4'.
+<<<<<<< HEAD
 	 * @return int|false Whether the database feature is supported, false otherwise.
+=======
+	 * @return bool Whether the database feature is supported, false otherwise.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function has_cap( $db_cap ) {
 		$version = $this->db_version();
@@ -3075,6 +3438,7 @@ class wpdb {
 			case 'set_charset' :
 				return version_compare( $version, '5.0.7', '>=' );
 			case 'utf8mb4' :      // @since 4.1.0
+<<<<<<< HEAD
 				if ( version_compare( $version, '5.5.3', '<' ) ) {
 					return false;
 				}
@@ -3094,6 +3458,9 @@ class wpdb {
 				} else {
 					return version_compare( $client_version, '5.5.3', '>=' );
 				}
+=======
+				return version_compare( $version, '5.5.3', '>=' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 
 		return false;
@@ -3107,7 +3474,11 @@ class wpdb {
 	 *
 	 * @since 2.5.0
 	 *
+<<<<<<< HEAD
 	 * @return string|array The name of the calling function
+=======
+	 * @return string The name of the calling function
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function get_caller() {
 		return wp_debug_backtrace_summary( __CLASS__ );

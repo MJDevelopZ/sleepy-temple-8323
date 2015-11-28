@@ -109,7 +109,11 @@ if ( $post_id )
 else
 	$title = __('Comments');
 
+<<<<<<< HEAD
 add_screen_option( 'per_page' );
+=======
+add_screen_option( 'per_page', array('label' => _x( 'Comments', 'comments per page (screen options)' )) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 get_current_screen()->add_help_tab( array(
 'id'		=> 'overview',
@@ -124,15 +128,25 @@ get_current_screen()->add_help_tab( array(
 		'<p>' . __( 'A red bar on the left means the comment is waiting for you to moderate it.' ) . '</p>' .
 		'<p>' . __( 'In the <strong>Author</strong> column, in addition to the author&#8217;s name, email address, and blog URL, the commenter&#8217;s IP address is shown. Clicking on this link will show you all the comments made from this IP address.' ) . '</p>' .
 		'<p>' . __( 'In the <strong>Comment</strong> column, above each comment it says &#8220;Submitted on,&#8221; followed by the date and time the comment was left on your site. Clicking on the date/time link will take you to that comment on your live site. Hovering over any comment gives you options to approve, reply (and approve), quick edit, edit, spam mark, or trash that comment.' ) . '</p>' .
+<<<<<<< HEAD
 		'<p>' . __( 'In the <strong>In Response To</strong> column, there are three elements. The text is the name of the post that inspired the comment, and links to the post editor for that entry. The View Post link leads to that post on your live site. The small bubble with the number in it shows the number of approved comments that post has received. If there are pending comments, a red notification circle with the number of pending comments is displayed. Clicking the notification circle will filter the comments screen to show only pending comments on that post.' ) . '</p>' .
+=======
+		'<p>' . __( 'In the <strong>In Response To</strong> column, there are three elements. The text is the name of the post that inspired the comment, and links to the post editor for that entry. The View Post link leads to that post on your live site. The small bubble with the number in it shows the number of approved comments that post has received. If the bubble is gray, you have moderated all comments for that post. If it is blue, there are pending comments. Clicking the bubble will filter the comments screen to show only comments on that post.' ) . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		'<p>' . __( 'Many people take advantage of keyboard shortcuts to moderate their comments more quickly. Use the link to the side to learn more.' ) . '</p>'
 ) );
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
+<<<<<<< HEAD
 	'<p>' . __( '<a href="https://codex.wordpress.org/Administration_Screens#Comments" target="_blank">Documentation on Comments</a>' ) . '</p>' .
 	'<p>' . __( '<a href="https://codex.wordpress.org/Comment_Spam" target="_blank">Documentation on Comment Spam</a>' ) . '</p>' .
 	'<p>' . __( '<a href="https://codex.wordpress.org/Keyboard_Shortcuts" target="_blank">Documentation on Keyboard Shortcuts</a>' ) . '</p>' .
+=======
+	'<p>' . __( '<a href="http://codex.wordpress.org/Administration_Screens#Comments" target="_blank">Documentation on Comments</a>' ) . '</p>' .
+	'<p>' . __( '<a href="http://codex.wordpress.org/Comment_Spam" target="_blank">Documentation on Comment Spam</a>' ) . '</p>' .
+	'<p>' . __( '<a href="http://codex.wordpress.org/Keyboard_Shortcuts" target="_blank">Documentation on Keyboard Shortcuts</a>' ) . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __( '<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>' ) . '</p>'
 );
 
@@ -140,7 +154,11 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php
+=======
+<h2><?php
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 if ( $post_id )
 	echo sprintf( __( 'Comments on &#8220;%s&#8221;' ),
 		sprintf( '<a href="%s">%s</a>',
@@ -149,11 +167,19 @@ if ( $post_id )
 		)
 	);
 else
+<<<<<<< HEAD
 	_e( 'Comments' );
 
 if ( isset($_REQUEST['s']) && $_REQUEST['s'] )
 	echo '<span class="subtitle">' . sprintf( __( 'Search results for &#8220;%s&#8221;' ), wp_html_excerpt( esc_html( wp_unslash( $_REQUEST['s'] ) ), 50, '&hellip;' ) ) . '</span>'; ?>
 </h1>
+=======
+	echo __('Comments');
+
+if ( isset($_REQUEST['s']) && $_REQUEST['s'] )
+	echo '<span class="subtitle">' . sprintf( __( 'Search results for &#8220;%s&#8221;' ), wp_html_excerpt( esc_html( wp_unslash( $_REQUEST['s'] ) ), 50, '&hellip;' ) ) . '</span>'; ?>
+</h2>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <?php
 if ( isset( $_REQUEST['error'] ) ) {
@@ -161,7 +187,11 @@ if ( isset( $_REQUEST['error'] ) ) {
 	$error_msg = '';
 	switch ( $error ) {
 		case 1 :
+<<<<<<< HEAD
 			$error_msg = __( 'Invalid comment ID.' );
+=======
+			$error_msg = __( 'Oops, no comment with this ID.' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			break;
 		case 2 :
 			$error_msg = __( 'You are not allowed to edit comments on this post.' );
@@ -217,14 +247,22 @@ if ( isset($_REQUEST['approved']) || isset($_REQUEST['deleted']) || isset($_REQU
 			}
 		}
 
+<<<<<<< HEAD
 		echo '<div id="moderated" class="updated notice is-dismissible"><p>' . implode( "<br/>\n", $messages ) . '</p></div>';
+=======
+		echo '<div id="moderated" class="updated"><p>' . implode( "<br/>\n", $messages ) . '</p></div>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 }
 ?>
 
 <?php $wp_list_table->views(); ?>
 
+<<<<<<< HEAD
 <form id="comments-form" method="get">
+=======
+<form id="comments-form" action="" method="get">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <?php $wp_list_table->search_box( __( 'Search Comments' ), 'comment' ); ?>
 

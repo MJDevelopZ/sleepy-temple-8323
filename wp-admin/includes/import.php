@@ -11,7 +11,10 @@
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
  * @global array $wp_importers
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return array
  */
 function get_importers() {
@@ -43,12 +46,19 @@ function _usort_by_first_member( $a, $b ) {
  *
  * @since 2.0.0
  *
+<<<<<<< HEAD
  * @global array $wp_importers
  *
  * @param string   $id          Importer tag. Used to uniquely identify importer.
  * @param string   $name        Importer name and title.
  * @param string   $description Importer description.
  * @param callback $callback    Callback to run.
+=======
+ * @param string $id Importer tag. Used to uniquely identify importer.
+ * @param string $name Importer name and title.
+ * @param string $description Importer description.
+ * @param callback $callback Callback to run.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return WP_Error Returns WP_Error when $callback is WP_Error.
  */
 function register_importer( $id, $name, $description, $callback ) {
@@ -79,14 +89,21 @@ function wp_import_cleanup( $id ) {
  * @return array Uploaded file's details on success, error message on failure
  */
 function wp_import_handle_upload() {
+<<<<<<< HEAD
 	if ( ! isset( $_FILES['import'] ) ) {
 		return array(
 			'error' => __( 'File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini.' )
 		);
+=======
+	if ( !isset($_FILES['import']) ) {
+		$file['error'] = __( 'File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini.' );
+		return $file;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	$overrides = array( 'test_form' => false, 'test_type' => false );
 	$_FILES['import']['name'] .= '.txt';
+<<<<<<< HEAD
 	$upload = wp_handle_upload( $_FILES['import'], $overrides );
 
 	if ( isset( $upload['error'] ) ) {
@@ -99,12 +116,33 @@ function wp_import_handle_upload() {
 		'post_content' => $upload['url'],
 		'post_mime_type' => $upload['type'],
 		'guid' => $upload['url'],
+=======
+	$file = wp_handle_upload( $_FILES['import'], $overrides );
+
+	if ( isset( $file['error'] ) )
+		return $file;
+
+	$url = $file['url'];
+	$type = $file['type'];
+	$file = $file['file'];
+	$filename = basename( $file );
+
+	// Construct the object array
+	$object = array( 'post_title' => $filename,
+		'post_content' => $url,
+		'post_mime_type' => $type,
+		'guid' => $url,
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		'context' => 'import',
 		'post_status' => 'private'
 	);
 
 	// Save the data
+<<<<<<< HEAD
 	$id = wp_insert_attachment( $object, $upload['file'] );
+=======
+	$id = wp_insert_attachment( $object, $file );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	/*
 	 * Schedule a cleanup for one day from now in case of failed
@@ -112,7 +150,11 @@ function wp_import_handle_upload() {
 	 */
 	wp_schedule_single_event( time() + DAY_IN_SECONDS, 'importer_scheduled_cleanup', array( $id ) );
 
+<<<<<<< HEAD
 	return array( 'file' => $upload['file'], 'id' => $id );
+=======
+	return array( 'file' => $file, 'id' => $id );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 /**

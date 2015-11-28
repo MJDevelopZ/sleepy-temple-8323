@@ -10,12 +10,18 @@
  * The current page.
  *
  * @global string $self
+<<<<<<< HEAD
+=======
+ * @name $self
+ * @var string
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 $self = preg_replace('|^.*/wp-admin/network/|i', '', $_SERVER['PHP_SELF']);
 $self = preg_replace('|^.*/wp-admin/|i', '', $self);
 $self = preg_replace('|^.*/plugins/|i', '', $self);
 $self = preg_replace('|^.*/mu-plugins/|i', '', $self);
 
+<<<<<<< HEAD
 /**
  * For when admin-header is included from within a function.
  *
@@ -24,6 +30,9 @@ $self = preg_replace('|^.*/mu-plugins/|i', '', $self);
  * @global string $parent_file
  */
 global $menu, $submenu, $parent_file;
+=======
+global $menu, $submenu, $parent_file; //For when admin-header is included from within a function.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Filter the parent file of an admin menu sub-menu item.
@@ -44,6 +53,7 @@ get_admin_page_parent();
  * @access private
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @global string $self
  * @global string $parent_file
  * @global string $submenu_file
@@ -53,6 +63,11 @@ get_admin_page_parent();
  * @param array $menu
  * @param array $submenu
  * @param bool  $submenu_as_parent
+=======
+ * @param array $menu
+ * @param array $submenu
+ * @param bool $submenu_as_parent
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 	global $self, $parent_file, $submenu_file, $plugin_page, $typenow;
@@ -71,7 +86,11 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 			$first = false;
 		}
 
+<<<<<<< HEAD
 		$submenu_items = array();
+=======
+		$submenu_items = false;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( ! empty( $submenu[$item[2]] ) ) {
 			$class[] = 'wp-has-submenu';
 			$submenu_items = $submenu[$item[2]];
@@ -157,7 +176,11 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 
 		if ( ! empty( $submenu_items ) ) {
 			echo "\n\t<ul class='wp-submenu wp-submenu-wrap'>";
+<<<<<<< HEAD
 			echo "<li class='wp-submenu-head' aria-hidden='true'>{$item[0]}</li>";
+=======
+			echo "<li class='wp-submenu-head'>{$item[0]}</li>";
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			$first = true;
 
@@ -185,7 +208,11 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 						$class[] = 'current';
 				// If plugin_page is set the parent must either match the current page or not physically exist.
 				// This allows plugin pages with the same hook to exist under different parents.
+<<<<<<< HEAD
 				} elseif (
+=======
+				} else if (
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					( ! isset( $plugin_page ) && $self == $sub_item[2] ) ||
 					( isset( $plugin_page ) && $plugin_page == $sub_item[2] && ( $item[2] == $self_type || $item[2] == $self || file_exists($menu_file) === false ) )
 				) {
@@ -230,12 +257,18 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 
 ?>
 
+<<<<<<< HEAD
 <div id="adminmenumain" role="navigation" aria-label="<?php esc_attr_e( 'Main menu' ); ?>">
 <a href="#wpbody-content" class="screen-reader-shortcut"><?php _e( 'Skip to main content' ); ?></a>
 <a href="#wp-toolbar" class="screen-reader-shortcut"><?php _e( 'Skip to toolbar' ); ?></a>
 <div id="adminmenuback"></div>
 <div id="adminmenuwrap">
 <ul id="adminmenu">
+=======
+<div id="adminmenuback"></div>
+<div id="adminmenuwrap">
+<ul id="adminmenu" role="navigation">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <?php
 
@@ -250,4 +283,7 @@ do_action( 'adminmenu' );
 ?>
 </ul>
 </div>
+<<<<<<< HEAD
 </div>
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

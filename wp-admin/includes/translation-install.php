@@ -124,8 +124,11 @@ function wp_get_available_translations() {
  *
  * @since 4.0.0
  *
+<<<<<<< HEAD
  * @global string $wp_local_package
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param array $languages Array of available languages (populated via the Translation API).
  */
 function wp_install_language_form( $languages ) {
@@ -143,7 +146,11 @@ function wp_install_language_form( $languages ) {
 			$language = $languages[ $wp_local_package ];
 			printf( '<option value="%s" lang="%s" data-continue="%s"%s>%s</option>' . "\n",
 				esc_attr( $language['language'] ),
+<<<<<<< HEAD
 				esc_attr( current( $language['iso'] ) ),
+=======
+				esc_attr( $language['iso'][1] ),
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				esc_attr( $language['strings']['continue'] ),
 				in_array( $language['language'], $installed_languages ) ? ' data-installed="1"' : '',
 				esc_html( $language['native_name'] ) );
@@ -155,7 +162,11 @@ function wp_install_language_form( $languages ) {
 	foreach ( $languages as $language ) {
 		printf( '<option value="%s" lang="%s" data-continue="%s"%s>%s</option>' . "\n",
 			esc_attr( $language['language'] ),
+<<<<<<< HEAD
 			esc_attr( current( $language['iso'] ) ),
+=======
+			esc_attr( $language['iso'][1] ),
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			esc_attr( $language['strings']['continue'] ),
 			in_array( $language['language'], $installed_languages ) ? ' data-installed="1"' : '',
 			esc_html( $language['native_name'] ) );
@@ -231,7 +242,10 @@ function wp_can_install_language_pack() {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 	$skin = new Automatic_Upgrader_Skin;
 	$upgrader = new Language_Pack_Upgrader( $skin );
+<<<<<<< HEAD
 	$upgrader->init();
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	$check = $upgrader->fs_connect( array( WP_CONTENT_DIR, WP_LANG_DIR ) );
 

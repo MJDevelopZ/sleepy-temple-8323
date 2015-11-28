@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* global _wpCustomizeHeader */
+=======
+/* globals _wpCustomizeHeader, _ */
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 (function( $, wp ) {
 	var api = wp.customize;
 	api.HeaderTool = {};

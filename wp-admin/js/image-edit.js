@@ -306,7 +306,11 @@ var imageEdit = window.imageEdit = {
 			btn = $('#imgedit-open-btn-' + postid), spin = btn.siblings('.spinner');
 
 		btn.prop('disabled', true);
+<<<<<<< HEAD
 		spin.addClass( 'is-active' );
+=======
+		spin.show();
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		data = {
 			'action': 'image-editor',
@@ -324,7 +328,11 @@ var imageEdit = window.imageEdit = {
 			head.fadeOut('fast', function(){
 				elem.fadeIn('fast');
 				btn.removeAttr('disabled');
+<<<<<<< HEAD
 				spin.removeClass( 'is-active' );
+=======
+				spin.hide();
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			});
 		});
 

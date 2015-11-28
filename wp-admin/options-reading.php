@@ -23,6 +23,10 @@ $parent_file = 'options-general.php';
 function options_reading_add_js() {
 ?>
 <script type="text/javascript">
+<<<<<<< HEAD
+=======
+//<![CDATA[
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	jQuery(document).ready(function($){
 		var section = $('#front-static-pages'),
 			staticPage = section.find('input:radio[value="page"]'),
@@ -33,6 +37,10 @@ function options_reading_add_js() {
 		check_disabled();
  		section.find('input:radio').change(check_disabled);
 	});
+<<<<<<< HEAD
+=======
+//]]>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </script>
 <?php
 }
@@ -45,7 +53,11 @@ add_action('admin_head', 'options_reading_add_js');
  */
 function options_reading_blog_charset() {
 	echo '<input name="blog_charset" type="text" id="blog_charset" value="' . esc_attr( get_option( 'blog_charset' ) ) . '" class="regular-text" />';
+<<<<<<< HEAD
 	echo '<p class="description">' . __( 'The <a href="https://codex.wordpress.org/Glossary#Character_set">character encoding</a> of your site (UTF-8 is recommended)' ) . '</p>';
+=======
+	echo '<p class="description">' . __( 'The <a href="http://codex.wordpress.org/Glossary#Character_set">character encoding</a> of your site (UTF-8 is recommended)' ) . '</p>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 get_current_screen()->add_help_tab( array(
@@ -66,7 +78,11 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Settings_Reading_Screen" target="_blank">Documentation on Reading Settings</a>') . '</p>' .
+=======
+	'<p>' . __('<a href="http://codex.wordpress.org/Settings_Reading_Screen" target="_blank">Documentation on Reading Settings</a>') . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
@@ -74,7 +90,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php echo esc_html( $title ); ?></h1>
+=======
+<h2><?php echo esc_html( $title ); ?></h2>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <form method="post" action="options.php">
 <?php

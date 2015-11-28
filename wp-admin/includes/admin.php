@@ -15,9 +15,12 @@ if ( ! defined('WP_ADMIN') ) {
 	load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
 }
 
+<<<<<<< HEAD
 /** WordPress Administration Hooks */
 require_once(ABSPATH . 'wp-admin/includes/admin-filters.php');
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /** WordPress Bookmark Administration API */
 require_once(ABSPATH . 'wp-admin/includes/bookmark.php');
 
@@ -64,9 +67,12 @@ require_once(ABSPATH . 'wp-admin/includes/theme.php');
 /** WordPress User Administration API */
 require_once(ABSPATH . 'wp-admin/includes/user.php');
 
+<<<<<<< HEAD
 /** WordPress Site Icon API */
 require_once(ABSPATH . 'wp-admin/includes/class-wp-site-icon.php');
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /** WordPress Update Administration API */
 require_once(ABSPATH . 'wp-admin/includes/update.php');
 
@@ -75,7 +81,10 @@ require_once(ABSPATH . 'wp-admin/includes/deprecated.php');
 
 /** WordPress Multisite support API */
 if ( is_multisite() ) {
+<<<<<<< HEAD
 	require_once(ABSPATH . 'wp-admin/includes/ms-admin-filters.php');
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	require_once(ABSPATH . 'wp-admin/includes/ms.php');
 	require_once(ABSPATH . 'wp-admin/includes/ms-deprecated.php');
 }

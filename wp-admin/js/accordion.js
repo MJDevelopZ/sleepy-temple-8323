@@ -53,10 +53,14 @@
 	 */
 	function accordionSwitch ( el ) {
 		var section = el.closest( '.accordion-section' ),
+<<<<<<< HEAD
 			sectionToggleControl = section.find( '[aria-expanded]' ).first(),
 			container = section.closest( '.accordion-container' ),
 			siblings = container.find( '.open' ),
 			siblingsToggleControl = siblings.find( '[aria-expanded]' ).first(),
+=======
+			siblings = section.closest( '.accordion-container' ).find( '.open' ),
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			content = section.find( '.accordion-section-content' );
 
 		// This section has no content and cannot be expanded.
@@ -64,20 +68,27 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		// Add a class to the container to let us know something is happening inside.
 		// This helps in cases such as hiding a scrollbar while animations are executing.
 		container.addClass( 'opening' );
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if ( section.hasClass( 'open' ) ) {
 			section.toggleClass( 'open' );
 			content.toggle( true ).slideToggle( 150 );
 		} else {
+<<<<<<< HEAD
 			siblingsToggleControl.attr( 'aria-expanded', 'false' );
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			siblings.removeClass( 'open' );
 			siblings.find( '.accordion-section-content' ).show().slideUp( 150 );
 			content.toggle( false ).slideToggle( 150 );
 			section.toggleClass( 'open' );
 		}
+<<<<<<< HEAD
 
 		// We have to wait for the animations to finish
 		setTimeout(function(){
@@ -88,6 +99,8 @@
 		if ( sectionToggleControl ) {
 			sectionToggleControl.attr( 'aria-expanded', String( sectionToggleControl.attr( 'aria-expanded' ) === 'false' ) );
 		}
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 })(jQuery);

@@ -38,8 +38,11 @@ function got_mod_rewrite() {
  *
  * @since 3.7.0
  *
+<<<<<<< HEAD
  * @global bool $is_nginx
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return bool Whether the server supports URL rewriting.
  */
 function got_url_rewrite() {
@@ -155,8 +158,11 @@ function insert_with_markers( $filename, $marker, $insertion ) {
  * blank out old rules.
  *
  * @since 1.5.0
+<<<<<<< HEAD
  *
  * @global WP_Rewrite $wp_rewrite
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function save_mod_rewrite_rules() {
 	if ( is_multisite() )
@@ -187,8 +193,11 @@ function save_mod_rewrite_rules() {
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @global WP_Rewrite $wp_rewrite
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return bool True if web.config was updated successfully
  */
 function iis7_save_url_rewrite_rules(){
@@ -250,6 +259,13 @@ function update_home_siteurl( $old_value, $value ) {
 	flush_rewrite_rules();
 }
 
+<<<<<<< HEAD
+=======
+add_action( 'update_option_home', 'update_home_siteurl', 10, 2 );
+add_action( 'update_option_siteurl', 'update_home_siteurl', 10, 2 );
+add_action( 'update_option_page_on_front', 'update_home_siteurl', 10, 2 );
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 /**
  * Shorten an URL, to be used as link text
  *
@@ -310,12 +326,15 @@ function show_message($message) {
 	flush();
 }
 
+<<<<<<< HEAD
 /**
  * @since 2.8.0
  *
  * @param string $content
  * @return array
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function wp_doc_link_parse( $content ) {
 	if ( !is_string( $content ) || empty( $content ) )
 		return array();
@@ -601,8 +620,11 @@ function saveDomDocument($doc, $filename) {
  * Display the default admin color scheme picker (Used in user-edit.php)
  *
  * @since 3.0.0
+<<<<<<< HEAD
  *
  * @global array $_wp_admin_css_colors
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function admin_color_scheme_picker( $user_id ) {
 	global $_wp_admin_css_colors;
@@ -656,10 +678,13 @@ function admin_color_scheme_picker( $user_id ) {
 	<?php
 }
 
+<<<<<<< HEAD
 /**
  *
  * @global array $_wp_admin_css_colors
  */
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function wp_color_scheme_settings() {
 	global $_wp_admin_css_colors;
 
@@ -676,15 +701,24 @@ function wp_color_scheme_settings() {
 		$icon_colors = $_wp_admin_css_colors['fresh']->icon_colors;
 	} else {
 		// Fall back to the default set of icon colors if the default scheme is missing.
+<<<<<<< HEAD
 		$icon_colors = array( 'base' => '#999', 'focus' => '#00a0d2', 'current' => '#fff' );
+=======
+		$icon_colors = array( 'base' => '#999', 'focus' => '#2ea2cc', 'current' => '#fff' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	echo '<script type="text/javascript">var _wpColorScheme = ' . wp_json_encode( array( 'icons' => $icon_colors ) ) . ";</script>\n";
 }
+<<<<<<< HEAD
 
 /**
  * @since 3.3.0
  */
+=======
+add_action( 'admin_head', 'wp_color_scheme_settings' );
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function _ipad_meta() {
 	if ( wp_is_mobile() ) {
 		?>
@@ -692,6 +726,10 @@ function _ipad_meta() {
 		<?php
 	}
 }
+<<<<<<< HEAD
+=======
+add_action('admin_head', '_ipad_meta');
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Check lock status for posts displayed on the Posts screen
@@ -722,6 +760,10 @@ function wp_check_locked_posts( $response, $data, $screen_id ) {
 
 	return $response;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'heartbeat_received', 'wp_check_locked_posts', 10, 3 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Check lock status on the New/Edit Post screen and refresh the lock
@@ -760,6 +802,10 @@ function wp_refresh_post_lock( $response, $data, $screen_id ) {
 
 	return $response;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'heartbeat_received', 'wp_refresh_post_lock', 10, 3 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Check nonce expiration on the New/Edit Post screen and refresh if needed
@@ -771,6 +817,7 @@ function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 		$received = $data['wp-refresh-post-nonces'];
 		$response['wp-refresh-post-nonces'] = array( 'check' => 1 );
 
+<<<<<<< HEAD
 		if ( ! $post_id = absint( $received['post_id'] ) ) {
 			return $response;
 		}
@@ -789,18 +836,45 @@ function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 			),
 			'heartbeatNonce' => wp_create_nonce( 'heartbeat-nonce' ),
 		);
+=======
+		if ( ! $post_id = absint( $received['post_id'] ) )
+			return $response;
+
+		if ( ! current_user_can( 'edit_post', $post_id ) || empty( $received['post_nonce'] ) )
+			return $response;
+
+		if ( 2 === wp_verify_nonce( $received['post_nonce'], 'update-post_' . $post_id ) ) {
+			$response['wp-refresh-post-nonces'] = array(
+				'replace' => array(
+					'getpermalinknonce' => wp_create_nonce('getpermalink'),
+					'samplepermalinknonce' => wp_create_nonce('samplepermalink'),
+					'closedpostboxesnonce' => wp_create_nonce('closedpostboxes'),
+					'_ajax_linking_nonce' => wp_create_nonce( 'internal-linking' ),
+					'_wpnonce' => wp_create_nonce( 'update-post_' . $post_id ),
+				),
+				'heartbeatNonce' => wp_create_nonce( 'heartbeat-nonce' ),
+			);
+		}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	return $response;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'heartbeat_received', 'wp_refresh_post_nonces', 10, 3 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Disable suspension of Heartbeat on the Add/Edit Post screens.
  *
  * @since 3.8.0
  *
+<<<<<<< HEAD
  * @global string $pagenow
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param array $settings An array of Heartbeat settings.
  * @return array Filtered Heartbeat settings.
  */
@@ -813,6 +887,10 @@ function wp_heartbeat_set_suspension( $settings ) {
 
 	return $settings;
 }
+<<<<<<< HEAD
+=======
+add_filter( 'heartbeat_settings', 'wp_heartbeat_set_suspension' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Autosave with heartbeat
@@ -837,6 +915,11 @@ function heartbeat_autosave( $response, $data ) {
 
 	return $response;
 }
+<<<<<<< HEAD
+=======
+// Run later as we have to set DOING_AUTOSAVE for back-compat
+add_filter( 'heartbeat_received', 'heartbeat_autosave', 500, 2 );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 /**
  * Disables autocomplete on the 'post' form (Add/Edit Post screens) for WebKit browsers,
@@ -844,9 +927,12 @@ function heartbeat_autosave( $response, $data ) {
  * when the user navigates to it with the browser's Back button. See #28037
  *
  * @since 4.0
+<<<<<<< HEAD
  *
  * @global bool $is_safari
  * @global bool $is_chrome
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function post_form_autocomplete_off() {
 	global $is_safari, $is_chrome;
@@ -856,6 +942,7 @@ function post_form_autocomplete_off() {
 	}
 }
 
+<<<<<<< HEAD
 /**
  * Remove single-use URL parameters and create canonical link based on new URL.
  *
@@ -899,3 +986,6 @@ function wp_admin_canonical_url() {
 	</script>
 <?php
 }
+=======
+add_action( 'post_edit_form_tag', 'post_form_autocomplete_off' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

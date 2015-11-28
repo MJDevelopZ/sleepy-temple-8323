@@ -14,7 +14,11 @@ if ( ! is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
 
 if ( ! current_user_can( 'manage_sites' ) )
+<<<<<<< HEAD
 	wp_die( __( 'You do not have permission to access this page.' ), 403 );
+=======
+	wp_die( __( 'You do not have permission to access this page.' ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 $wp_list_table = _get_list_table( 'WP_MS_Sites_List_Table' );
 $pagenum = $wp_list_table->get_pagenum();
@@ -22,7 +26,11 @@ $pagenum = $wp_list_table->get_pagenum();
 $title = __( 'Sites' );
 $parent_file = 'sites.php';
 
+<<<<<<< HEAD
 add_screen_option( 'per_page' );
+=======
+add_screen_option( 'per_page', array( 'label' => _x( 'Sites', 'sites per page (screen options)' ) ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
@@ -42,7 +50,11 @@ get_current_screen()->add_help_tab( array(
 
 get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __('For more information:') . '</strong></p>' .
+<<<<<<< HEAD
 	'<p>' . __('<a href="https://codex.wordpress.org/Network_Admin_Sites_Screen" target="_blank">Documentation on Site Management</a>') . '</p>' .
+=======
+	'<p>' . __('<a href="http://codex.wordpress.org/Network_Admin_Sites_Screen" target="_blank">Documentation on Site Management</a>') . '</p>' .
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	'<p>' . __('<a href="https://wordpress.org/support/forum/multisite/" target="_blank">Support Forums</a>') . '</p>'
 );
 
@@ -52,6 +64,7 @@ if ( isset( $_GET['action'] ) ) {
 	/** This action is documented in wp-admin/network/edit.php */
 	do_action( 'wpmuadminedit' );
 
+<<<<<<< HEAD
 	// A list of valid actions and their associated messaging for confirmation output.
 	$manage_actions = array(
 		'activateblog'   => __( 'You are about to activate the site %s' ),
@@ -79,6 +92,10 @@ if ( isset( $_GET['action'] ) ) {
 		} else {
 			check_admin_referer( $site_action . '_' . $id );
 		}
+=======
+	if ( 'confirm' === $_GET['action'] ) {
+		check_admin_referer( 'confirm' );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		if ( ! headers_sent() ) {
 			nocache_headers();
@@ -89,6 +106,7 @@ if ( isset( $_GET['action'] ) ) {
 			wp_die( __( 'You are not allowed to change the current site.' ) );
 		}
 
+<<<<<<< HEAD
 		$site_details = get_blog_details( $id );
 		$site_address = untrailingslashit( $site_details->domain . $site_details->path );
 
@@ -102,26 +120,57 @@ if ( isset( $_GET['action'] ) ) {
 					<input type="hidden" name="_wp_http_referer" value="<?php echo esc_attr( wp_get_referer() ); ?>" />
 					<?php wp_nonce_field( $site_action . '_' . $id, '_wpnonce', false ); ?>
 					<p><?php echo sprintf( $manage_actions[ $site_action ], $site_address ); ?></p>
+=======
+		require_once( ABSPATH . 'wp-admin/admin-header.php' );
+		?>
+			<div class="wrap">
+				<h2><?php _e( 'Confirm your action' ); ?></h2>
+				<form action="sites.php?action=<?php echo esc_attr( $_GET['action2'] ) ?>" method="post">
+					<input type="hidden" name="action" value="<?php echo esc_attr( $_GET['action2'] ) ?>" />
+					<input type="hidden" name="id" value="<?php echo esc_attr( $id ); ?>" />
+					<input type="hidden" name="_wp_http_referer" value="<?php echo esc_attr( wp_get_referer() ); ?>" />
+					<?php wp_nonce_field( $_GET['action2'], '_wpnonce', false ); ?>
+					<p><?php echo esc_html( wp_unslash( $_GET['msg'] ) ); ?></p>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					<?php submit_button( __( 'Confirm' ), 'button' ); ?>
 				</form>
 			</div>
 		<?php
 		require_once( ABSPATH . 'wp-admin/admin-footer.php' );
 		exit();
+<<<<<<< HEAD
 	} elseif ( array_key_exists( $_GET['action'], $manage_actions ) ) {
 		$action = $_GET['action'];
 		check_admin_referer( $action . '_' . $id );
 	} elseif ( 'allblogs' === $_GET['action'] ) {
 		check_admin_referer( 'bulk-sites' );
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	$updated_action = '';
 
+<<<<<<< HEAD
+=======
+	$manage_actions = array( 'deleteblog', 'allblogs', 'archiveblog', 'unarchiveblog', 'activateblog', 'deactivateblog', 'unspamblog', 'spamblog', 'unmatureblog', 'matureblog' );
+	if ( in_array( $_GET['action'], $manage_actions ) ) {
+		$action = $_GET['action'];
+		if ( 'allblogs' === $action )
+			$action = 'bulk-sites';
+
+		check_admin_referer( $action );
+	}
+
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	switch ( $_GET['action'] ) {
 
 		case 'deleteblog':
 			if ( ! current_user_can( 'delete_sites' ) )
+<<<<<<< HEAD
 				wp_die( __( 'You do not have permission to access this page.' ), '', array( 'response' => 403 ) );
+=======
+				wp_die( __( 'You do not have permission to access this page.' ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			$updated_action = 'not_deleted';
 			if ( $id != '0' && $id != $current_site->blog_id && current_user_can( 'delete_site', $id ) ) {
@@ -202,9 +251,14 @@ if ( isset( $_GET['action'] ) ) {
 		break;
 	}
 
+<<<<<<< HEAD
 	if ( empty( $updated_action ) && array_key_exists( $_GET['action'], $manage_actions ) ) {
 		$updated_action = $_GET['action'];
 	}
+=======
+	if ( empty( $updated_action ) && in_array( $_GET['action'], $manage_actions ) )
+		$updated_action = $_GET['action'];
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	if ( ! empty( $updated_action ) ) {
 		wp_safe_redirect( add_query_arg( array( 'updated' => $updated_action ), wp_get_referer() ) );
@@ -264,7 +318,11 @@ if ( isset( $_GET['updated'] ) ) {
 	}
 
 	if ( ! empty( $msg ) )
+<<<<<<< HEAD
 		$msg = '<div class="updated" id="message notice is-dismissible"><p>' . $msg . '</p></div>';
+=======
+		$msg = '<div class="updated" id="message"><p>' . $msg . '</p></div>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 $wp_list_table->prepare_items();
@@ -273,20 +331,35 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php _e( 'Sites' ); ?>
 
 <?php if ( current_user_can( 'create_sites') ) : ?>
 	<a href="<?php echo network_admin_url('site-new.php'); ?>" class="page-title-action"><?php echo esc_html_x( 'Add New', 'site' ); ?></a>
+=======
+<h2><?php _e( 'Sites' ) ?>
+
+<?php if ( current_user_can( 'create_sites') ) : ?>
+	<a href="<?php echo network_admin_url('site-new.php'); ?>" class="add-new-h2"><?php echo esc_html_x( 'Add New', 'site' ); ?></a>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php endif; ?>
 
 <?php if ( isset( $_REQUEST['s'] ) && $_REQUEST['s'] ) {
 	printf( '<span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;' ) . '</span>', esc_html( $s ) );
 } ?>
+<<<<<<< HEAD
 </h1>
 
 <?php echo $msg; ?>
 
 <form method="get" id="ms-search">
+=======
+</h2>
+
+<?php echo $msg; ?>
+
+<form action="" method="get" id="ms-search">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 <?php $wp_list_table->search_box( __( 'Search Sites' ), 'site' ); ?>
 <input type="hidden" name="action" value="blogs" />
 </form>

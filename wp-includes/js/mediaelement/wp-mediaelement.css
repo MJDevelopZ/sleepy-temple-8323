@@ -23,7 +23,11 @@
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-current {
+<<<<<<< HEAD
 	background: #0073aa;
+=======
+	background: #0074a2;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 }
 
 .mejs-controls .mejs-time-rail .mejs-time-total,
@@ -106,16 +110,23 @@
 }
 
 .media-embed-details .setting p,
+<<<<<<< HEAD
 .media-embed-details .setting .remove-setting {
+=======
+.media-embed-details .setting a {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	color: #a00;
 	font-size: 10px;
 	text-transform: uppercase;
 }
 
+<<<<<<< HEAD
 .media-embed-details .setting .remove-setting {
 	padding: 0;
 }
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 .media-embed-details .setting a:hover {
 	color: #f00;
 }
@@ -130,8 +141,12 @@
 	height: auto;
 }
 
+<<<<<<< HEAD
 .wp_attachment_holder .wp-video,
 .wp_attachment_holder .wp-audio-shortcode {
+=======
+.wp_attachment_holder .wp-video {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	margin-top: 18px;
 }
 

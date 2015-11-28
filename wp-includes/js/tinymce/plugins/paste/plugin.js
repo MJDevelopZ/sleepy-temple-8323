@@ -63,12 +63,19 @@
 	}
 
 	function expose(ids) {
+<<<<<<< HEAD
 		var i, target, id, fragments, privateModules;
 
 		for (i = 0; i < ids.length; i++) {
 			target = exports;
 			id = ids[i];
 			fragments = id.split(/[.\/]/);
+=======
+		for (var i = 0; i < ids.length; i++) {
+			var target = exports;
+			var id = ids[i];
+			var fragments = id.split(/[.\/]/);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 			for (var fi = 0; fi < fragments.length - 1; ++fi) {
 				if (target[fragments[fi]] === undefined) {
@@ -80,6 +87,7 @@
 
 			target[fragments[fragments.length - 1]] = modules[id];
 		}
+<<<<<<< HEAD
 		
 		// Expose private modules for unit tests
 		if (exports.AMDLC_TESTS) {
@@ -95,6 +103,8 @@
 
 			exports.privateModules = privateModules;
 		}
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 // Included from: js/tinymce/plugins/paste/classes/Utils.js
@@ -102,8 +112,13 @@
 /**
  * Utils.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -112,7 +127,12 @@
 /**
  * This class contails various utility functions for the paste plugin.
  *
+<<<<<<< HEAD
  * @class tinymce.pasteplugin.Utils
+=======
+ * @class tinymce.pasteplugin.Clipboard
+ * @private
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 define("tinymce/pasteplugin/Utils", [
 	"tinymce/util/Tools",
@@ -234,8 +254,13 @@ define("tinymce/pasteplugin/Utils", [
 /**
  * Clipboard.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -262,6 +287,7 @@ define("tinymce/pasteplugin/Utils", [
  */
 define("tinymce/pasteplugin/Clipboard", [
 	"tinymce/Env",
+<<<<<<< HEAD
 	"tinymce/dom/RangeUtils",
 	"tinymce/util/VK",
 	"tinymce/pasteplugin/Utils"
@@ -270,6 +296,14 @@ define("tinymce/pasteplugin/Clipboard", [
 		var self = this, pasteBinElm, lastRng, keyboardPasteTimeStamp = 0, draggingInternally = false;
 		var pasteBinDefaultContent = '%MCEPASTEBIN%', keyboardPastePlainTextState;
 		var mceInternalUrlPrefix = 'data:text/mce-internal,';
+=======
+	"tinymce/util/VK",
+	"tinymce/pasteplugin/Utils"
+], function(Env, VK, Utils) {
+	return function(editor) {
+		var self = this, pasteBinElm, lastRng, keyboardPasteTimeStamp = 0, draggingInternally = false;
+		var pasteBinDefaultContent = '%MCEPASTEBIN%', keyboardPastePlainTextState;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		/**
 		 * Pastes the specified HTML. This means that the HTML is filtered and then
@@ -298,7 +332,11 @@ define("tinymce/pasteplugin/Clipboard", [
 				}
 
 				if (!args.isDefaultPrevented()) {
+<<<<<<< HEAD
 					editor.insertContent(html, {merge: editor.settings.paste_merge_formats !== false, data: {paste: true}});
+=======
+					editor.insertContent(html, {merge: editor.settings.paste_merge_formats !== false});
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 			}
 		}
@@ -526,9 +564,13 @@ define("tinymce/pasteplugin/Clipboard", [
 				if (dataTransfer.getData) {
 					var legacyText = dataTransfer.getData('Text');
 					if (legacyText && legacyText.length > 0) {
+<<<<<<< HEAD
 						if (legacyText.indexOf(mceInternalUrlPrefix) == -1) {
 							data['text/plain'] = legacyText;
 						}
+=======
+						data['text/plain'] = legacyText;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					}
 				}
 
@@ -566,9 +608,15 @@ define("tinymce/pasteplugin/Clipboard", [
 			var dataTransfer = e.clipboardData || e.dataTransfer;
 
 			function processItems(items) {
+<<<<<<< HEAD
 				var i, item, reader, hadImage = false;
 
 				function pasteImage(reader) {
+=======
+				var i, item, reader;
+
+				function pasteImage() {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					if (rng) {
 						editor.selection.setRng(rng);
 						rng = null;
@@ -581,6 +629,7 @@ define("tinymce/pasteplugin/Clipboard", [
 					for (i = 0; i < items.length; i++) {
 						item = items[i];
 
+<<<<<<< HEAD
 						if (/^image\/(jpeg|png|gif|bmp)$/.test(item.type)) {
 							reader = new FileReader();
 							reader.onload = pasteImage.bind(null, reader);
@@ -593,6 +642,18 @@ define("tinymce/pasteplugin/Clipboard", [
 				}
 
 				return hadImage;
+=======
+						if (/^image\/(jpeg|png|gif)$/.test(item.type)) {
+							reader = new FileReader();
+							reader.onload = pasteImage;
+							reader.readAsDataURL(item.getAsFile ? item.getAsFile() : item);
+
+							e.preventDefault();
+							return true;
+						}
+					}
+				}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			}
 
 			if (editor.settings.paste_data_images && dataTransfer) {
@@ -613,7 +674,32 @@ define("tinymce/pasteplugin/Clipboard", [
 		}
 
 		function getCaretRangeFromEvent(e) {
+<<<<<<< HEAD
 			return RangeUtils.getCaretRangeFromPoint(e.clientX, e.clientY, editor.getDoc());
+=======
+			var doc = editor.getDoc(), rng, point;
+
+			if (doc.caretPositionFromPoint) {
+				point = doc.caretPositionFromPoint(e.clientX, e.clientY);
+				rng = doc.createRange();
+				rng.setStart(point.offsetNode, point.offset);
+				rng.collapse(true);
+			} else if (doc.caretRangeFromPoint) {
+				rng = doc.caretRangeFromPoint(e.clientX, e.clientY);
+			} else if (doc.body.createTextRange) {
+				rng = doc.body.createTextRange();
+
+				try {
+					rng.moveToPoint(e.clientX, e.clientY);
+					rng.collapse(true);
+				} catch (ex) {
+					// Append to top or bottom depending on drop location
+					rng.collapse(e.clientY < doc.body.clientHeight);
+				}
+			}
+
+			return rng;
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		}
 
 		function hasContentType(clipboardContent, mimeType) {
@@ -808,8 +894,21 @@ define("tinymce/pasteplugin/Clipboard", [
 			});
 
 			editor.on('dragover dragend', function(e) {
+<<<<<<< HEAD
 				if (editor.settings.paste_data_images) {
 					e.preventDefault();
+=======
+				var i, dataTransfer = e.dataTransfer;
+
+				if (editor.settings.paste_data_images && dataTransfer) {
+					for (i = 0; i < dataTransfer.types.length; i++) {
+						// Prevent default if we have files dragged into the editor since the pasteImageData handles that
+						if (dataTransfer.types[i] == "Files") {
+							e.preventDefault();
+							return false;
+						}
+					}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 			});
 		}
@@ -822,6 +921,7 @@ define("tinymce/pasteplugin/Clipboard", [
 
 			// Remove all data images from paste for example from Gecko
 			// except internal images like video elements
+<<<<<<< HEAD
 			editor.parser.addNodeFilter('img', function(nodes, name, args) {
 				function isPasteInsert(args) {
 					return args.data && args.data.paste === true;
@@ -842,11 +942,16 @@ define("tinymce/pasteplugin/Clipboard", [
 				}
 
 				if (!editor.settings.paste_data_images && isPasteInsert(args)) {
+=======
+			editor.parser.addNodeFilter('img', function(nodes) {
+				if (!editor.settings.paste_data_images) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					var i = nodes.length;
 
 					while (i--) {
 						var src = nodes[i].attributes.map.src;
 
+<<<<<<< HEAD
 						if (!src) {
 							continue;
 						}
@@ -856,6 +961,14 @@ define("tinymce/pasteplugin/Clipboard", [
 							remove(nodes[i]);
 						} else if (!editor.settings.allow_html_data_urls && isDataUri(src)) {
 							remove(nodes[i]);
+=======
+						// Some browsers automatically produce data uris on paste
+						// Safari on Mac produces webkit-fake-url see: https://bugs.webkit.org/show_bug.cgi?id=49141
+						if (src && /^(data:image|webkit\-fake\-url)/.test(src)) {
+							if (!nodes[i].attr('data-mce-object') && src !== Env.transparentSrc) {
+								nodes[i].remove();
+							}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 						}
 					}
 				}
@@ -869,8 +982,13 @@ define("tinymce/pasteplugin/Clipboard", [
 /**
  * WordFilter.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -879,7 +997,11 @@ define("tinymce/pasteplugin/Clipboard", [
 /**
  * This class parses word HTML into proper TinyMCE markup.
  *
+<<<<<<< HEAD
  * @class tinymce.pasteplugin.WordFilter
+=======
+ * @class tinymce.pasteplugin.Quirks
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @private
  */
 define("tinymce/pasteplugin/WordFilter", [
@@ -930,7 +1052,11 @@ define("tinymce/pasteplugin/WordFilter", [
 	}
 
 	function isBulletList(text) {
+<<<<<<< HEAD
 		return /^[\s\u00a0]*[\u2022\u00b7\u00a7\u25CF]\s*/.test(text);
+=======
+		return /^[\s\u00a0]*[\u2022\u00b7\u00a7\u00d8\u25CF]\s*/.test(text);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	function WordFilter(editor) {
@@ -939,10 +1065,13 @@ define("tinymce/pasteplugin/WordFilter", [
 		editor.on('BeforePastePreProcess', function(e) {
 			var content = e.content, retainStyleProperties, validStyles;
 
+<<<<<<< HEAD
 			// Remove google docs internal guid markers
 			content = content.replace(/<b[^>]+id="?docs-internal-[^>]*>/gi, '');
 			content = content.replace(/<br class="?Apple-interchange-newline"?>/gi, '');
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			retainStyleProperties = settings.paste_retain_style_properties;
 			if (retainStyleProperties) {
 				validStyles = Tools.makeMap(retainStyleProperties.split(/[, ]/));
@@ -1046,7 +1175,11 @@ define("tinymce/pasteplugin/WordFilter", [
 					// Remove start of list item "1. " or "&middot; " etc
 					removeIgnoredNodes(paragraphNode);
 					trimListStart(paragraphNode, /^\u00a0+/);
+<<<<<<< HEAD
 					trimListStart(paragraphNode, /^\s*([\u2022\u00b7\u00a7\u25CF]|\w+\.)/);
+=======
+					trimListStart(paragraphNode, /^\s*([\u2022\u00b7\u00a7\u00d8\u25CF]|\w+\.)/);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					trimListStart(paragraphNode, /^\u00a0+/);
 				}
 
@@ -1253,7 +1386,10 @@ define("tinymce/pasteplugin/WordFilter", [
 				// Add style/class attribute to all element rules since the user might have removed them from
 				// paste_word_valid_elements config option and we need to check them for properties
 				Tools.each(schema.elements, function(rule) {
+<<<<<<< HEAD
 					/*eslint dot-notation:0*/
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					if (!rule.attributes["class"]) {
 						rule.attributes["class"] = {};
 						rule.attributesOrder.push("class");
@@ -1291,7 +1427,11 @@ define("tinymce/pasteplugin/WordFilter", [
 						node = nodes[i];
 
 						className = node.attr('class');
+<<<<<<< HEAD
 						if (/^(MsoCommentReference|MsoCommentText|msoDel)$/i.test(className)) {
+=======
+						if (/^(MsoCommentReference|MsoCommentText|msoDel|MsoCaption)$/i.test(className)) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 							node.remove();
 						}
 
@@ -1370,8 +1510,13 @@ define("tinymce/pasteplugin/WordFilter", [
 /**
  * Quirks.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -1532,8 +1677,13 @@ define("tinymce/pasteplugin/Quirks", [
 /**
  * Plugin.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -1640,5 +1790,9 @@ define("tinymce/pasteplugin/Plugin", [
 	});
 });
 
+<<<<<<< HEAD
 expose(["tinymce/pasteplugin/Utils"]);
+=======
+expose(["tinymce/pasteplugin/Utils","tinymce/pasteplugin/WordFilter"]);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 })(this);

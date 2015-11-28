@@ -12,7 +12,12 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 if ( !is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
 
+<<<<<<< HEAD
 if ( ! current_user_can( 'delete_site' ) )
+=======
+// @todo Create a delete blog cap.
+if ( ! current_user_can( 'manage_options' ) )
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	wp_die(__( 'You do not have sufficient permissions to delete this site.'));
 
 if ( isset( $_GET['h'] ) && $_GET['h'] != '' && get_option( 'delete_blog_hash' ) != false ) {
@@ -25,14 +30,21 @@ if ( isset( $_GET['h'] ) && $_GET['h'] != '' && get_option( 'delete_blog_hash' )
 }
 
 $blog = get_blog_details();
+<<<<<<< HEAD
 $user = wp_get_current_user();
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 $title = __( 'Delete Site' );
 $parent_file = 'tools.php';
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 echo '<div class="wrap">';
+<<<<<<< HEAD
 echo '<h1>' . esc_html( $title ) . '</h1>';
+=======
+echo '<h2>' . esc_html( $title ) . '</h2>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 if ( isset( $_POST['action'] ) && $_POST['action'] == 'deleteblog' && isset( $_POST['confirmdelete'] ) && $_POST['confirmdelete'] == '1' ) {
 	check_admin_referer( 'delete-blog' );
@@ -42,12 +54,18 @@ if ( isset( $_POST['action'] ) && $_POST['action'] == 'deleteblog' && isset( $_P
 
 	$url_delete = esc_url( admin_url( 'ms-delete-site.php?h=' . $hash ) );
 
+<<<<<<< HEAD
 	/* translators: Do not translate USERNAME, URL_DELETE, SITE_NAME: those are placeholders. */
 	$content = __( "Howdy ###USERNAME###,
 
 You recently clicked the 'Delete Site' link on your site and filled in a
 form on that page.
 
+=======
+	$content = __( "Dear User,
+You recently clicked the 'Delete Site' link on your site and filled in a
+form on that page.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 If you really want to delete your site, click the link below. You will not
 be asked to confirm again so only click this link if you are absolutely certain:
 ###URL_DELETE###
@@ -68,14 +86,21 @@ Webmaster
 	 */
 	$content = apply_filters( 'delete_site_email_content', $content );
 
+<<<<<<< HEAD
 	$content = str_replace( '###USERNAME###', $user->user_login, $content );
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	$content = str_replace( '###URL_DELETE###', $url_delete, $content );
 	$content = str_replace( '###SITE_NAME###', $current_site->site_name, $content );
 
 	wp_mail( get_option( 'admin_email' ), "[ " . wp_specialchars_decode( get_option( 'blogname' ) ) . " ] ".__( 'Delete My Site' ), $content );
 	?>
 
+<<<<<<< HEAD
 	<p><?php _e( 'Thank you. Please check your email for a link to confirm your action. Your site will not be deleted until this link is clicked.' ) ?></p>
+=======
+	<p><?php _e( 'Thank you. Please check your email for a link to confirm your action. Your site will not be deleted until this link is clicked. ') ?></p>
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 <?php } else {
 	?>

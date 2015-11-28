@@ -213,7 +213,11 @@ class WP_Dependencies {
 	 * @param array  $deps   Optional. An array of item handle strings on which this item depends.
 	 * @param string $ver    Optional. Version (used for cache busting).
 	 * @param mixed  $args   Optional. Custom property of the item. NOT the class property $args. Examples: $media, $in_footer.
+<<<<<<< HEAD
 	 * @return bool Whether the item has been registered. True on success, false on failure.
+=======
+	 * @return bool True on success, false on failure.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function add( $handle, $src, $deps = array(), $ver = false, $args = null ) {
 		if ( isset($this->registered[$handle]) )
@@ -331,7 +335,11 @@ class WP_Dependencies {
 	 *
 	 * @param array  $queue  An array of queued _WP_Dependency handle objects.
 	 * @param string $handle Name of the item. Should be unique.
+<<<<<<< HEAD
 	 * @return bool Whether the handle is found after recursively searching the dependency tree.
+=======
+	 * @return boolean Whether the handle is found after recursively searching the dependency tree.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	protected function recurse_deps( $queue, $handle ) {
 		foreach ( $queue as $queued ) {

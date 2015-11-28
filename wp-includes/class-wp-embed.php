@@ -11,8 +11,11 @@ class WP_Embed {
 	public $post_ID;
 	public $usecache = true;
 	public $linkifunknown = true;
+<<<<<<< HEAD
 	public $last_attr = array();
 	public $last_url = '';
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 	/**
 	 * When an URL cannot be embedded, return false instead of returning a link
@@ -44,7 +47,11 @@ class WP_Embed {
 	 * this function removes all existing shortcodes, registers the [embed] shortcode,
 	 * calls {@link do_shortcode()}, and then re-registers the old shortcodes.
 	 *
+<<<<<<< HEAD
 	 * @global array $shortcode_tags
+=======
+	 * @uses $shortcode_tags
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 *
 	 * @param string $content Content to parse
 	 * @return string Content with shortcode parsed
@@ -59,7 +66,11 @@ class WP_Embed {
 		add_shortcode( 'embed', array( $this, 'shortcode' ) );
 
 		// Do the shortcode (only the [embed] one is registered)
+<<<<<<< HEAD
 		$content = do_shortcode( $content, true );
+=======
+		$content = do_shortcode( $content );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		// Put the original shortcodes back
 		$shortcode_tags = $orig_shortcode_tags;
@@ -79,9 +90,17 @@ class WP_Embed {
 
 ?>
 <script type="text/javascript">
+<<<<<<< HEAD
 	jQuery(document).ready(function($){
 		$.get("<?php echo admin_url( 'admin-ajax.php?action=oembed-cache&post=' . $post->ID, 'relative' ); ?>");
 	});
+=======
+/* <![CDATA[ */
+	jQuery(document).ready(function($){
+		$.get("<?php echo admin_url( 'admin-ajax.php?action=oembed-cache&post=' . $post->ID, 'relative' ); ?>");
+	});
+/* ]]> */
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 </script>
 <?php
 	}
@@ -92,7 +111,11 @@ class WP_Embed {
 	 *
 	 * @param string $id An internal ID/name for the handler. Needs to be unique.
 	 * @param string $regex The regex that will be used to see if this handler should be used for a URL.
+<<<<<<< HEAD
 	 * @param callable $callback The callback function that will be called if the regex is matched.
+=======
+	 * @param callback $callback The callback function that will be called if the regex is matched.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 * @param int $priority Optional. Used to specify the order in which the registered handlers will be tested (default: 10). Lower numbers correspond with earlier testing, and handlers with the same priority are tested in the order in which they were added to the action.
 	 */
 	public function register_handler( $id, $regex, $callback, $priority = 10 ) {
@@ -109,7 +132,12 @@ class WP_Embed {
 	 * @param int $priority Optional. The priority of the handler to be removed (default: 10).
 	 */
 	public function unregister_handler( $id, $priority = 10 ) {
+<<<<<<< HEAD
 		unset( $this->handlers[ $priority ][ $id ] );
+=======
+		if ( isset($this->handlers[$priority][$id]) )
+			unset($this->handlers[$priority][$id]);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -125,8 +153,12 @@ class WP_Embed {
 	 *     @type int $height Height of the embed in pixels.
 	 * }
 	 * @param string $url The URL attempting to be embedded.
+<<<<<<< HEAD
 	 * @return string|false The embed HTML on success, otherwise the original URL.
 	 *                      `->maybe_make_link()` can return false on failure.
+=======
+	 * @return string The embed HTML on success, otherwise the original URL.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	 */
 	public function shortcode( $attr, $url = '' ) {
 		$post = get_post();
@@ -135,18 +167,26 @@ class WP_Embed {
 			$url = $attr['src'];
 		}
 
+<<<<<<< HEAD
 		$this->last_url = $url;
 
 		if ( empty( $url ) ) {
 			$this->last_attr = $attr;
 			return '';
 		}
+=======
+		if ( empty( $url ) )
+			return '';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		$rawattr = $attr;
 		$attr = wp_parse_args( $attr, wp_embed_defaults( $url ) );
 
+<<<<<<< HEAD
 		$this->last_attr = $attr;
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		// kses converts & into &amp; and we need to undo this
 		// See https://core.trac.wordpress.org/ticket/11311
 		$url = str_replace( '&amp;', '&', $url );
@@ -318,6 +358,7 @@ class WP_Embed {
 	 * @return string Potentially modified $content.
 	 */
 	public function autoembed( $content ) {
+<<<<<<< HEAD
 		// Replace line breaks from all HTML elements with placeholders.
 		$content = wp_replace_in_html_tags( $content, array( "\n" => '<!-- wp-line-break -->' ) );
 
@@ -326,6 +367,9 @@ class WP_Embed {
 
 		// Put the line breaks back.
 		return str_replace( '<!-- wp-line-break -->', "\n", $content );
+=======
+		return preg_replace_callback( '|^\s*(https?://[^\s"]+)\s*$|im', array( $this, 'autoembed_callback' ), $content );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**
@@ -337,10 +381,17 @@ class WP_Embed {
 	public function autoembed_callback( $match ) {
 		$oldval = $this->linkifunknown;
 		$this->linkifunknown = false;
+<<<<<<< HEAD
 		$return = $this->shortcode( array(), $match[2] );
 		$this->linkifunknown = $oldval;
 
 		return $match[1] . $return . $match[3];
+=======
+		$return = $this->shortcode( array(), $match[1] );
+		$this->linkifunknown = $oldval;
+
+		return "\n$return\n";
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	}
 
 	/**

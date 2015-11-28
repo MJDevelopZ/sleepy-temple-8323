@@ -288,4 +288,8 @@ class getid3_dts extends getid3_handler
 		return false;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18

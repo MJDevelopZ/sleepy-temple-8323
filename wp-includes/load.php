@@ -12,6 +12,11 @@
  *
  * @since 2.1.0
  * @access private
+<<<<<<< HEAD
+=======
+ *
+ * @return null Will return null if register_globals PHP directive was disabled.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_unregister_GLOBALS() {
 	if ( !ini_get( 'register_globals' ) )
@@ -50,14 +55,22 @@ function wp_fix_server_vars() {
 	$_SERVER = array_merge( $default_server_values, $_SERVER );
 
 	// Fix for IIS when running with PHP ISAPI
+<<<<<<< HEAD
 	if ( empty( $_SERVER['REQUEST_URI'] ) || ( PHP_SAPI != 'cgi-fcgi' && preg_match( '/^Microsoft-IIS\//', $_SERVER['SERVER_SOFTWARE'] ) ) ) {
+=======
+	if ( empty( $_SERVER['REQUEST_URI'] ) || ( php_sapi_name() != 'cgi-fcgi' && preg_match( '/^Microsoft-IIS\//', $_SERVER['SERVER_SOFTWARE'] ) ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		// IIS Mod-Rewrite
 		if ( isset( $_SERVER['HTTP_X_ORIGINAL_URL'] ) ) {
 			$_SERVER['REQUEST_URI'] = $_SERVER['HTTP_X_ORIGINAL_URL'];
 		}
 		// IIS Isapi_Rewrite
+<<<<<<< HEAD
 		elseif ( isset( $_SERVER['HTTP_X_REWRITE_URL'] ) ) {
+=======
+		else if ( isset( $_SERVER['HTTP_X_REWRITE_URL'] ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			$_SERVER['REQUEST_URI'] = $_SERVER['HTTP_X_REWRITE_URL'];
 		} else {
 			// Use ORIG_PATH_INFO if there is no PATH_INFO
@@ -215,6 +228,7 @@ function timer_start() {
  *
  * @since 0.71
  *
+<<<<<<< HEAD
  * @global float   $timestart Seconds from when timer_start() is called.
  * @global float   $timeend   Seconds from when function is called.
  *
@@ -222,6 +236,15 @@ function timer_start() {
  *                            1|true for echo. Default 0|false.
  * @param int      $precision The number of digits from the right of the decimal to display.
  *                            Default 3.
+=======
+ * @global float $timestart Seconds from when timer_start() is called.
+ * @global float $timeend   Seconds from when function is called.
+ *
+ * @param int $display   Whether to echo or return the results. Accepts 0|false for return,
+ *                       1|true for echo. Default 0|false.
+ * @param int $precision The number of digits from the right of the decimal to display.
+ *                       Default 3.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return string The "second.microsecond" finished time calculation. The number is formatted
  *                for human consumption, both localized and rounded.
  */
@@ -384,13 +407,21 @@ function wp_set_wpdb_vars() {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Access/Modify private global variable `$_wp_using_ext_object_cache`.
+ *
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * Toggle `$_wp_using_ext_object_cache` on and off without directly
  * touching global.
  *
  * @since 3.7.0
  *
+<<<<<<< HEAD
  * @global bool $_wp_using_ext_object_cache
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param bool $using Whether external object cache is being used.
  * @return bool The current 'using' setting.
  */
@@ -425,7 +456,11 @@ function wp_start_object_cache() {
 		}
 
 		$first_init = true;
+<<<<<<< HEAD
 	} elseif ( ! wp_using_ext_object_cache() && file_exists( WP_CONTENT_DIR . '/object-cache.php' ) ) {
+=======
+	} else if ( ! wp_using_ext_object_cache() && file_exists( WP_CONTENT_DIR . '/object-cache.php' ) ) {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		/*
 		 * Sometimes advanced-cache.php can load object-cache.php before
 		 * it is loaded here. This breaks the function_exists check above
@@ -449,7 +484,11 @@ function wp_start_object_cache() {
 		wp_cache_init();
 
 	if ( function_exists( 'wp_cache_add_global_groups' ) ) {
+<<<<<<< HEAD
 		wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog-id-cache' ) );
+=======
+		wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'site-transient', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog-id-cache' ) );
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		wp_cache_add_non_persistent_groups( array( 'comment', 'counts', 'plugins' ) );
 	}
 }
@@ -635,8 +674,11 @@ function wp_clone( $object ) {
  *
  * @since 1.5.1
  *
+<<<<<<< HEAD
  * @global WP_Screen $current_screen
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return bool True if inside WordPress administration interface, false otherwise.
  */
 function is_admin() {
@@ -658,8 +700,11 @@ function is_admin() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global WP_Screen $current_screen
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return bool True if inside WordPress blog administration pages.
  */
 function is_blog_admin() {
@@ -681,8 +726,11 @@ function is_blog_admin() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global WP_Screen $current_screen
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return bool True if inside WordPress network administration pages.
  */
 function is_network_admin() {
@@ -705,8 +753,11 @@ function is_network_admin() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global WP_Screen $current_screen
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return bool True if inside WordPress user administration pages.
  */
 function is_user_admin() {
@@ -740,8 +791,11 @@ function is_multisite() {
  *
  * @since 3.1.0
  *
+<<<<<<< HEAD
  * @global int $blog_id
  *
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @return int Blog id
  */
 function get_current_blog_id() {
@@ -762,10 +816,14 @@ function get_current_blog_id() {
  * @since 3.4.0
  * @access private
  *
+<<<<<<< HEAD
  * @global string    $text_direction
  * @global WP_Locale $wp_locale      The WordPress date and time locale object.
  *
  * @staticvar bool $loaded
+=======
+ * @global $wp_locale The WordPress date and time locale object.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  */
 function wp_load_translations_early() {
 	global $text_direction, $wp_locale;

@@ -26,6 +26,7 @@ if ( !defined('ABSPATH') ) {
 	require_once( dirname( __FILE__ ) . '/wp-load.php' );
 }
 
+<<<<<<< HEAD
 /**
  * Retrieves the cron lock.
  *
@@ -36,6 +37,9 @@ if ( !defined('ABSPATH') ) {
  *
  * @return string|false Value of the `doing_cron` transient, 0|false otherwise.
  */
+=======
+// Uncached doing_cron transient fetch
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 function _get_cron_lock() {
 	global $wpdb;
 
@@ -64,9 +68,13 @@ $gmt_time = microtime( true );
 if ( isset($keys[0]) && $keys[0] > $gmt_time )
 	die();
 
+<<<<<<< HEAD
 
 // The cron lock: a unix timestamp from when the cron was spawned.
 $doing_cron_transient = get_transient( 'doing_cron' );
+=======
+$doing_cron_transient = get_transient( 'doing_cron');
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 // Use global $doing_wp_cron lock otherwise use the GET lock. If no lock, trying grabbing a new lock.
 if ( empty( $doing_wp_cron ) ) {
@@ -81,10 +89,14 @@ if ( empty( $doing_wp_cron ) ) {
 	}
 }
 
+<<<<<<< HEAD
 /*
  * The cron lock (a unix timestamp set when the cron was spawned),
  * must match $doing_wp_cron (the "key").
  */
+=======
+// Check lock
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 if ( $doing_cron_transient != $doing_wp_cron )
 	return;
 
@@ -108,7 +120,11 @@ foreach ( $crons as $timestamp => $cronhooks ) {
 			/**
 			 * Fires scheduled events.
 			 *
+<<<<<<< HEAD
 			 * @ignore
+=======
+			 * @internal
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			 * @since 2.1.0
 			 *
 			 * @param string $hook Name of the hook that was scheduled to be fired.

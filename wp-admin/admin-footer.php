@@ -15,7 +15,11 @@ if ( !defined('ABSPATH') )
 <div class="clear"></div></div><!-- wpbody -->
 <div class="clear"></div></div><!-- wpcontent -->
 
+<<<<<<< HEAD
 <div id="wpfooter" role="contentinfo">
+=======
+<div id="wpfooter">
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	<?php
 	/**
 	 * Fires after the opening tag for the admin footer.
@@ -81,7 +85,10 @@ do_action( 'admin_print_footer_scripts' );
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @global string $hook_suffix
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  * @param string $hook_suffix The current admin page.
  */
 do_action( "admin_footer-" . $GLOBALS['hook_suffix'] );

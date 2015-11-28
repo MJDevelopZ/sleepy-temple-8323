@@ -1,8 +1,13 @@
 /**
  * plugin.js
  *
+<<<<<<< HEAD
  * Released under LGPL License.
  * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
+=======
+ * Copyright, Moxiecode Systems AB
+ * Released under LGPL License.
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -14,18 +19,29 @@
 
 tinymce.PluginManager.add('media', function(editor, url) {
 	var urlPatterns = [
+<<<<<<< HEAD
 		{regex: /youtu\.be\/([\w\-.]+)/, type: 'iframe', w: 425, h: 350, url: '//www.youtube.com/embed/$1', allowFullscreen: true},
 		{regex: /youtube\.com(.+)v=([^&]+)/, type: 'iframe', w: 425, h: 350, url: '//www.youtube.com/embed/$2', allowFullscreen: true},
 		{regex: /vimeo\.com\/([0-9]+)/, type: 'iframe', w: 425, h: 350, url: '//player.vimeo.com/video/$1?title=0&byline=0&portrait=0&color=8dc7dc', allowfullscreen: true},
 		{regex: /vimeo\.com\/(.*)\/([0-9]+)/, type: "iframe", w: 425, h: 350, url: "//player.vimeo.com/video/$2?title=0&amp;byline=0", allowfullscreen: true},
 		{regex: /maps\.google\.([a-z]{2,3})\/maps\/(.+)msid=(.+)/, type: 'iframe', w: 425, h: 350, url: '//maps.google.com/maps/ms?msid=$2&output=embed"', allowFullscreen: false}
+=======
+		{regex: /youtu\.be\/([\w\-.]+)/, type: 'iframe', w: 425, h: 350, url: '//www.youtube.com/embed/$1'},
+		{regex: /youtube\.com(.+)v=([^&]+)/, type: 'iframe', w: 425, h: 350, url: '//www.youtube.com/embed/$2'},
+		{regex: /vimeo\.com\/([0-9]+)/, type: 'iframe', w: 425, h: 350, url: '//player.vimeo.com/video/$1?title=0&byline=0&portrait=0&color=8dc7dc'},
+		{regex: /vimeo\.com\/(.*)\/([0-9]+)/, type: "iframe", w: 425, h: 350, url: "//player.vimeo.com/video/$2?title=0&amp;byline=0"},
+		{regex: /maps\.google\.([a-z]{2,3})\/maps\/(.+)msid=(.+)/, type: 'iframe', w: 425, h: 350, url: '//maps.google.com/maps/ms?msid=$2&output=embed"'}
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 	];
 
 	var embedChange = (tinymce.Env.ie && tinymce.Env.ie <= 8) ? 'onChange' : 'onInput';
 
 	function guessMime(url) {
+<<<<<<< HEAD
 		url = url.toLowerCase();
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		if (url.indexOf('.mp3') != -1) {
 			return 'audio/mpeg';
 		}
@@ -96,6 +112,7 @@ tinymce.PluginManager.add('media', function(editor, url) {
 			if (win.find('#constrain')[0].checked() && width && height && newWidth && newHeight) {
 				if (e.control == widthCtrl) {
 					newHeight = Math.round((newWidth / width) * newHeight);
+<<<<<<< HEAD
 
 					if (!isNaN(newHeight)) {
 						heightCtrl.value(newHeight);
@@ -106,6 +123,12 @@ tinymce.PluginManager.add('media', function(editor, url) {
 					if (!isNaN(newWidth)) {
 						widthCtrl.value(newWidth);
 					}
+=======
+					heightCtrl.value(newHeight);
+				} else {
+					newWidth = Math.round((newHeight / height) * newWidth);
+					widthCtrl.value(newWidth);
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				}
 			}
 
@@ -129,9 +152,15 @@ tinymce.PluginManager.add('media', function(editor, url) {
 				align: 'center',
 				spacing: 5,
 				items: [
+<<<<<<< HEAD
 					{name: 'width', type: 'textbox', maxLength: 5, size: 3, onchange: recalcSize, ariaLabel: 'Width'},
 					{type: 'label', text: 'x'},
 					{name: 'height', type: 'textbox', maxLength: 5, size: 3, onchange: recalcSize, ariaLabel: 'Height'},
+=======
+					{name: 'width', type: 'textbox', maxLength: 3, size: 3, onchange: recalcSize},
+					{type: 'label', text: 'x'},
+					{name: 'height', type: 'textbox', maxLength: 3, size: 3, onchange: recalcSize},
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					{name: 'constrain', type: 'checkbox', checked: true, text: 'Constrain proportions'}
 				]
 			});
@@ -175,7 +204,11 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 				{
 					title: 'Embed',
+<<<<<<< HEAD
 					type: "container",
+=======
+					type: "panel",
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					layout: 'flex',
 					direction: 'column',
 					align: 'stretch',
@@ -265,7 +298,10 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 				data.source1 = url;
 				data.type = pattern.type;
+<<<<<<< HEAD
 				data.allowFullscreen = pattern.allowFullscreen;
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				data.width = data.width || pattern.w;
 				data.height = data.height || pattern.h;
 			}
@@ -289,8 +325,12 @@ tinymce.PluginManager.add('media', function(editor, url) {
 			});
 
 			if (data.type == "iframe") {
+<<<<<<< HEAD
 				var allowFullscreen = data.allowFullscreen ? ' allowFullscreen="1"' : '';
 				html += '<iframe src="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '"' + allowFullscreen + '></iframe>';
+=======
+				html += '<iframe src="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '"></iframe>';
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 			} else if (data.source1mime == "application/x-shockwave-flash") {
 				html += '<object data="' + data.source1 + '" width="' + data.width + '" height="' + data.height + '" type="application/x-shockwave-flash">';
 
@@ -396,7 +436,11 @@ tinymce.PluginManager.add('media', function(editor, url) {
 			return html;
 		}
 
+<<<<<<< HEAD
 		var writer = new tinymce.html.Writer(), blocked;
+=======
+		var writer = new tinymce.html.Writer();
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 
 		new tinymce.html.SaxParser({
 			validate: false,
@@ -416,8 +460,11 @@ tinymce.PluginManager.add('media', function(editor, url) {
 			},
 
 			start: function(name, attrs, empty) {
+<<<<<<< HEAD
 				blocked = true;
 
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 				if (name == 'script' || name == 'noscript') {
 					return;
 				}
@@ -426,6 +473,7 @@ tinymce.PluginManager.add('media', function(editor, url) {
 					if (attrs[i].name.indexOf('on') === 0) {
 						return;
 					}
+<<<<<<< HEAD
 
 					if (attrs[i].name == 'style') {
 						attrs[i].value = editor.dom.serializeStyle(editor.dom.parseStyle(attrs[i].value), name);
@@ -438,6 +486,15 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 			end: function(name) {
 				if (blocked) {
+=======
+				}
+
+				writer.start(name, attrs, empty);
+			},
+
+			end: function(name) {
+				if (name == 'script' || name == 'noscript') {
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 					return;
 				}
 
@@ -783,11 +840,18 @@ tinymce.PluginManager.add('media', function(editor, url) {
 
 	editor.addMenuItem('media', {
 		icon: 'media',
+<<<<<<< HEAD
 		text: 'Insert/edit video',
+=======
+		text: 'Insert video',
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 		onclick: showDialog,
 		context: 'insert',
 		prependToContext: true
 	});
+<<<<<<< HEAD
 
 	this.showDialog = showDialog;
+=======
+>>>>>>> a846214aae567d7dae5e1824a1a64b1d23ddbf18
 });
